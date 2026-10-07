@@ -1,0 +1,50 @@
+# Integration map
+
+Generated 2026-10-07 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+
+## Modules
+
+| Repo | Package id | Foundry title | Version | Foundry | System | Requires |
+|---|---|---|---|---|---|---|
+| fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.1 | 13–14 | any | none |
+| fvtt-mod-battleflow | fvtt-mod-battleflow | Open Roll 5e: Battle Flow | 2.15.0 | 14–14 | dnd5e | none |
+| fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.5.1 | 13–14 | any | none |
+| fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.1.1 | 13–14 | dnd5e | none |
+| fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.7.0 | 14–14 | dnd5e | sequencer |
+| fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.0 | 13–14 | dnd5e | none |
+| fvtt-mod-miscpatches | fvtt-mod-miscpatches | Misc Patches | 1.1.0 | 13–14 | dnd5e | none |
+| fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
+| fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.1 | 13–14 | dnd5e | none |
+| fvtt-mod-soundscape | fvtt-mod-soundscape | Open Roll 5e: Soundscape | 1.1.1 | 13–14 | any | none |
+
+## Who references whom
+
+Occurrences of another suite package's id in source (`game.modules.get`, settings keys, flags, docs strings). A reference means the code knows the other module exists; every module still works alone.
+
+| From | To | Hits | First seen in |
+|---|---|---|---|
+| fvtt-app-sessionscribe | fvtt-mod-battleflow | 3 | fvtt-app-sessionscribe/src/page/combat-stats.ts |
+| fvtt-mcp-dnd5e | fvtt-mod-soundscape | 9 | fvtt-mcp-dnd5e/scripts/verify-soundscape-tooling.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-openserver | 8 | fvtt-mcp-dnd5e/scripts/verify-landing-scene.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-autoexplore | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-battleflow | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-combatplus | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-fxstudio | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-lootshelf | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-miscpatches | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-partystash | 4 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mod-battleflow | fvtt-mod-fxstudio | 4 | fvtt-mod-battleflow/tools/smoke-hitmenu.mjs |
+| fvtt-mod-battleflow | fvtt-mod-vendorfixes | 3 | fvtt-mod-battleflow/tools/smoke-aasimar.mjs |
+| fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/battleflow.js |
+| fvtt-mod-lootshelf | fvtt-mod-partystash | 4 | fvtt-mod-lootshelf/tools/verify-receipt-settings.mjs |
+| fvtt-mod-soundscape-sfx | fvtt-mod-soundscape | 1 | fvtt-mod-soundscape-sfx/tools/remap-soundscape-scene-paths.mjs |
+
+## Custom hooks
+
+Hooks named after a suite module (`battleflow.*`, `fxstudio.*`, ...). Emitters call them; listeners subscribe. Anything listed under both is the real cross-module contract.
+
+| Repo | Emits | Listens |
+|---|---|---|
+| fvtt-mod-battleflow | battleflow.areaAskAnswered (1), battleflow.armorBlock (1), battleflow.styleDice (1), battleflow.moment (1), battleflow.${event} (1), battleflow.holdOpened (1), battleflow.castReleased (1), battleflow.deferredUsageCard (1) | battleflow.moment (11), battleflow.styleDice (1), battleflow.armorBlock (1), battleflow.holdOpened (1) |
+| fvtt-mod-fxstudio | fxstudio.rebuilt (1), battleflow.moment (1) | battleflow.moment (1), fxstudio.rebuilt (1) |
+

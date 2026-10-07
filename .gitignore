@@ -1,0 +1,12 @@
+# The sibling repos are cloned INSIDE this folder (see repos.json) but are their own git repos.
+# This repo never tracks their contents. If a fvtt-* path ever shows up in `git status` here,
+# this ignore is broken; fix that before committing anything.
+fvtt-*/
+
+# Claude Code per-machine state and worktrees it makes for this repo
+.claude/settings.local.json
+.claude/worktrees/
+
+# Accidents
+node_modules/
+*.log

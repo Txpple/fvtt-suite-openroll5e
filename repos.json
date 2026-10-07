@@ -1,0 +1,153 @@
+{
+  "$comment": "Manifest of the Open Roll 5e family. sync.ps1 clones and fast-forwards the repos with \"sync\": true; tools/integration-map.mjs scans whatever is cloned. Keep this in step with GitHub: add a repo here when it is created, flip status when it is archived or retired.",
+  "owner": "Txpple",
+  "repos": [
+    {
+      "name": "fvtt-mod-autoexplore",
+      "kind": "mod",
+      "title": "Open Roll 5e: Autoexplore",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Lets a scene start fully explored: the whole map shows through the fog of war while tokens still need line of sight, and no fog data is written."
+    },
+    {
+      "name": "fvtt-mod-battleflow",
+      "kind": "mod",
+      "title": "Open Roll 5e: Battle Flow",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Combat automation for dnd5e 2024 rules: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, concentration is tracked.",
+      "note": "fvtt-mod-battleflow-cover next to it is a git worktree of this repo on feat/cover-hover, not a separate clone; sync.ps1 leaves worktrees alone."
+    },
+    {
+      "name": "fvtt-mod-combatplus",
+      "kind": "mod",
+      "title": "Open Roll 5e: Combat Plus",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Automates the chores of running a fight: combat music, an initiative gate, an out-of-turn movement block, defeated marking at 0 HP, turn alerts."
+    },
+    {
+      "name": "fvtt-mod-errata5e",
+      "kind": "mod",
+      "title": "Open Roll 5e: Errata",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Corrects, in memory, bugs in the premium D&D 2024 books, the dnd5e system and Foundry itself, each fix held until the vendor ships its own. Successor of fvtt-mod-vendorfixes."
+    },
+    {
+      "name": "fvtt-mod-fxstudio",
+      "kind": "mod",
+      "title": "Open Roll 5e: FX Studio",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Visual and sound effects for dnd5e played from what actually happened at the table, through Sequencer with JB2A and PSFX; about a thousand stock FX and an authoring window."
+    },
+    {
+      "name": "fvtt-mod-lootshelf",
+      "kind": "mod",
+      "title": "Open Roll 5e: Loot Shelf",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Loot chests and merchant shelves players can take from, buy from and sell to without owning them, with a chat receipt for every trade."
+    },
+    {
+      "name": "fvtt-mod-openserver",
+      "kind": "mod",
+      "title": "Open Roll 5e: Open Server",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own."
+    },
+    {
+      "name": "fvtt-mod-partystash",
+      "kind": "mod",
+      "title": "Open Roll 5e: Party Stash",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copy, coin moves through Deposit and Withdraw, stacks split, every transfer posts a receipt."
+    },
+    {
+      "name": "fvtt-mod-soundscape",
+      "kind": "mod",
+      "title": "Open Roll 5e: Soundscape",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, quiet during combat."
+    },
+    {
+      "name": "fvtt-mod-soundscape-sfx",
+      "kind": "assets",
+      "visibility": "private",
+      "status": "active",
+      "sync": true,
+      "description": "Private audio library for Soundscape (interval sound sets, ambient loop beds). Not a Foundry module."
+    },
+    {
+      "name": "fvtt-mcp-dnd5e",
+      "kind": "mcp",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e."
+    },
+    {
+      "name": "fvtt-app-artificer",
+      "kind": "app",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Gemini image generation for Foundry art (icons, tokens, portraits, illustrations). Formerly fvtt-mcp-artificer."
+    },
+    {
+      "name": "fvtt-app-sessionscribe",
+      "kind": "app",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Craig recording + Foundry chat log to session record (transcript, recap, combat report). Home of the session-scribe skill."
+    },
+    {
+      "name": "fvtt-campaign-echoesofhalruaa",
+      "kind": "campaign",
+      "visibility": "private",
+      "status": "active",
+      "sync": true,
+      "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Has its own session-hook sync.ps1 that commits; this repo's sync only fast-forwards it."
+    },
+    {
+      "name": "fvtt-campaign-greenrest",
+      "kind": "campaign",
+      "visibility": "private",
+      "status": "archived",
+      "sync": false,
+      "description": "The Broken Heart of Greenrest, concluded. GitHub repo archived read-only 2026-10-01; the clone is a reference."
+    },
+    {
+      "name": "fvtt-mod-miscpatches",
+      "kind": "mod",
+      "title": "Misc Patches",
+      "visibility": "none",
+      "status": "retired",
+      "sync": false,
+      "description": "Retired 2026-09-25. The GitHub repo no longer resolves (deleted after archiving); a clone may still be on disk."
+    },
+    {
+      "name": "fvtt-mod-vendorfixes",
+      "kind": "mod",
+      "visibility": "private",
+      "status": "retired",
+      "sync": false,
+      "description": "Replaced by fvtt-mod-errata5e. GitHub repo archived; not cloned here."
+    }
+  ]
+}
