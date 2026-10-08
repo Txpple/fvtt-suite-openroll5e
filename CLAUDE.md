@@ -126,11 +126,6 @@ The full picture is `docs/integration-map.md`. The shape of it:
   are on Molten Hosting and reached through the MCP. Prefer the MCP over raw file edits for world
   data.
 
-## Loose ends (2026-10-08)
-
-- The local Foundry install on desktop-ny still carries pre-rename copies of the modules and
-  `fvtt-mod-vendorfixes`; update or remove next time in Foundry.
-
 ## Keep this file current
 
 Same rule as the machine repos: when something changes that spans modules (a new sibling, a
