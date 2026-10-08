@@ -2,29 +2,48 @@
 
 ## What this is
 
-The umbrella for the **Open Roll 5e** family: nine public Foundry VTT modules, the dnd5e MCP server,
-two apps, the campaign repos and a private asset library. Every one of those is its own GitHub repo
-with its own history, releases and CI, and that stays true. This repo is the thin layer over them:
+The umbrella for the **Open Roll 5e** family: nine public Foundry VTT modules, three MCP servers
+(the dnd5e DM assistant, image generation, the session scribe) and a private asset library. Every
+one of those is its own GitHub repo with its own history, releases and CI, and that stays true.
+This repo is the thin layer over them:
 
 - `repos.json`: the manifest. Every sibling, its kind, visibility and status.
 - `sync.ps1`: clones missing siblings into this folder and fast-forwards clean ones on `main`.
   `-Status` only reports. It never commits, pushes, stashes or switches branches.
 - `tools/integration-map.mjs`: writes `docs/integration-map.md` from the clones.
+- `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
 - this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
 
 **Not a monorepo.** Nothing builds here, no code is shared through here, and the sibling repos
 are not submodules. They are ordinary clones that happen to live in this folder, ignored by this
 repo's `.gitignore` (`fvtt-*/`). The point is one working directory that sees the whole family.
 
+**What is in and what is out.** Inside: anything whose code reaches into another family member's
+data or hooks (the modules, the three MCP servers, the Soundscape audio library). Next to it, in the
+parent folder: the campaign repos. They are content, not code, nothing references them by relative
+path (the scribe finds its campaign through `SCRIBE_CAMPAIGN_REPO`, the dnd5e server through its
+`.env.*` files), and they have their own committing `sync.ps1` on session hooks. `repos.json` marks
+them `"parent": true` so `sync.ps1 -Status` still reports them.
+
 ## Where it lives
 
-- **desktop-ny:** `D:\Workbench\FVTT\Repos`. The folder predates this repo and keeps its name:
-  the MCP servers in `~\.claude.json` run from `fvtt-mcp-dnd5e/dist`, `fvtt-app-artificer/dist`
-  and `fvtt-app-sessionscribe/dist` under this path, the campaign sync hooks resolve from it, and
-  `fvtt-mod-battleflow-cover` is a git worktree with absolute paths. Renaming the folder breaks all
-  of those; don't.
-- **Other machines:** clone this repo to wherever that machine keeps its FVTT repos (the machine's
-  `local-*` CLAUDE.md says where), then run `.\sync.ps1`.
+```
+D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hold unrelated repos
+  fvtt-suite-openroll5e\                 this repo
+    fvtt-mod-*\  fvtt-mcp-*\             the siblings, each its own clone, gitignored here
+  fvtt-campaign-echoesofhalruaa\         campaigns stay above
+  fvtt-campaign-greenrest\
+```
+
+- **desktop-ny:** `D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e`. Until 2026-10-08 the clones sat
+  flat in `D:\Workbench\FVTT\Repos` and that folder was the suite repo; `tools\migrate-layout.ps1`
+  moved them (and repaired the Battle Flow and Errata worktrees, patched `~\.claude.json` and the
+  per-repo local config, and renamed the `~\.claude\projects` folders so session history followed).
+  The MCP servers in `~\.claude.json` run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist` and
+  `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
+  patching those again.
+- **Other machines:** clone this repo into that machine's FVTT repo parent (the machine's `local-*`
+  CLAUDE.md says where), `cd` into it, run `.\sync.ps1`, and clone the campaign repos next to it.
 
 ## Working here
 
@@ -43,7 +62,7 @@ repo's `.gitignore` (`fvtt-*/`). The point is one working directory that sees th
 
 ## The family
 
-Snapshot 2026-10-07. Versions and compatibility are in `docs/integration-map.md`, regenerated from
+Snapshot 2026-10-08. Versions and compatibility are in `docs/integration-map.md`, regenerated from
 the manifests; the table there is the one to trust.
 
 **Modules** (public, Foundry title `Open Roll 5e: <Name>`, package id = repo name):
@@ -60,18 +79,20 @@ the manifests; the table there is the one to trust.
 | `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
 | `fvtt-mod-soundscape` | Soundscape | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat |
 
-**Tools and apps:**
+**MCP servers and assets:**
 
 - `fvtt-mcp-dnd5e` (public): the DM-assistant MCP server; drives any live Foundry world (Molten
   Hosting, a local install, a URL) through Claude Code. Formerly `fvtt-mcp-molten5e`.
-- `fvtt-app-artificer` (public): Gemini image generation for Foundry art. Formerly `fvtt-mcp-artificer`.
-- `fvtt-app-sessionscribe` (public): Craig recording + Foundry chat log to session record; home of
-  the `session-scribe` skill.
+- `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `artificer`. Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
+- `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `scribe`; home of
+  the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
 - `fvtt-mod-soundscape-sfx` (private): the audio library Soundscape ships from. Not a module.
 
-**Campaigns** (private): `fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded
-2026-09-27 as `fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks).
-`fvtt-campaign-greenrest` is concluded and archived read-only on GitHub (2026-10-01).
+**Campaigns** (private, next to the suite in the parent folder, `"parent": true` in `repos.json`):
+`fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded 2026-09-27 as
+`fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks, which the dnd5e MCP
+repo's session hooks also call). `fvtt-campaign-greenrest` is concluded and archived read-only on
+GitHub (2026-10-01).
 
 **Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
 `fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is
@@ -101,8 +122,8 @@ The full picture is `docs/integration-map.md`. The shape of it:
 
 ## Conventions
 
-- **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `app`, `campaign`, `suite`; the
-  name part has no hyphens. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
+- **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `campaign`, `suite`; the
+  name part has no hyphens; `app` was tried for the two smaller servers and dropped 2026-10-08, since each is one stdio MCP server like the dnd5e one. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
   2026-10-02 rename round is complete, Battle Flow included (its manifest and all nine README
   sections say `Open Roll 5e: Battle Flow`).
 - **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.

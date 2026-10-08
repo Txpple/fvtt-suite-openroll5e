@@ -24,11 +24,18 @@ if (-not (Test-Path $manifestPath)) { Write-Error "sync: repos.json not found ne
 $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
 $owner = $manifest.owner
 
+# Pre-migration guard: until tools/migrate-layout.ps1 has run, this file sits in the flat layout, and
+# cloning from here would plant duplicates (the renamed servers, the campaign) in the wrong places.
+if ((Split-Path $root -Leaf) -ne 'fvtt-suite-openroll5e' -and -not $Status) {
+    Write-Output "sync: $root is not the suite folder (pre-migration layout?). Run tools/migrate-layout.ps1 first; -Status still works."
+    exit 0
+}
+
 $seen = @{}
 foreach ($r in $manifest.repos) {
     $name = $r.name
     $seen[$name] = $true
-    $path = Join-Path $root $name
+    $path = if ($r.parent) { Join-Path (Split-Path -Parent $root) $name } else { Join-Path $root $name }
     $git = Join-Path $path '.git'
 
     if (-not (Test-Path $path)) {

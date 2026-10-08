@@ -1,5 +1,5 @@
 {
-  "$comment": "Manifest of the Open Roll 5e family. sync.ps1 clones and fast-forwards the repos with \"sync\": true; tools/integration-map.mjs scans whatever is cloned. Keep this in step with GitHub: add a repo here when it is created, flip status when it is archived or retired.",
+  "$comment": "Manifest of the Open Roll 5e family. sync.ps1 clones and fast-forwards the repos with \"sync\": true; a repo with \"parent\": true lives one folder ABOVE the suite (next to it, not inside it). tools/integration-map.mjs scans whatever is cloned inside. Keep this in step with GitHub: add a repo here when it is created, flip status when it is archived or retired.",
   "owner": "Txpple",
   "repos": [
     {
@@ -98,23 +98,23 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e."
+      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e. Writes Open Server's landing-scene flag and Soundscape's scene sound sets."
     },
     {
-      "name": "fvtt-app-artificer",
-      "kind": "app",
+      "name": "fvtt-mcp-imagegen",
+      "kind": "mcp",
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Gemini image generation for Foundry art (icons, tokens, portraits, illustrations). Formerly fvtt-mcp-artificer."
+      "description": "Gemini image generation for Foundry art (icons, tokens, portraits, illustrations). MCP server key `artificer`. Formerly fvtt-app-artificer (renamed 2026-10-08) and before that fvtt-mcp-artificer."
     },
     {
-      "name": "fvtt-app-sessionscribe",
-      "kind": "app",
+      "name": "fvtt-mcp-sessionscribe",
+      "kind": "mcp",
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Craig recording + Foundry chat log to session record (transcript, recap, combat report). Home of the session-scribe skill."
+      "description": "Craig recording + Foundry chat log to session record (transcript, recap, combat report). MCP server key `scribe`; home of the session-scribe skill. Formerly fvtt-app-sessionscribe (renamed 2026-10-08)."
     },
     {
       "name": "fvtt-campaign-echoesofhalruaa",
@@ -122,7 +122,8 @@
       "visibility": "private",
       "status": "active",
       "sync": true,
-      "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Has its own session-hook sync.ps1 that commits; this repo's sync only fast-forwards it."
+      "parent": true,
+      "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Lives ABOVE the suite, next to it: content, not code, with its own committing sync.ps1 on session hooks. This repo's sync only fast-forwards it."
     },
     {
       "name": "fvtt-campaign-greenrest",
@@ -130,7 +131,8 @@
       "visibility": "private",
       "status": "archived",
       "sync": false,
-      "description": "The Broken Heart of Greenrest, concluded. GitHub repo archived read-only 2026-10-01; the clone is a reference."
+      "parent": true,
+      "description": "The Broken Heart of Greenrest, concluded. GitHub repo archived read-only 2026-10-01; the clone, above the suite, is a reference."
     },
     {
       "name": "fvtt-mod-miscpatches",
@@ -139,7 +141,7 @@
       "visibility": "none",
       "status": "retired",
       "sync": false,
-      "description": "Retired 2026-09-25. The GitHub repo no longer resolves (deleted after archiving); a clone may still be on disk."
+      "description": "Retired 2026-09-25. The GitHub repo no longer resolves (deleted after archiving) and no clone is kept (the last one was deleted 2026-10-08)."
     },
     {
       "name": "fvtt-mod-vendorfixes",
