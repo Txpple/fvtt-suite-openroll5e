@@ -74,8 +74,8 @@ the manifests; the table there is the one to trust.
 `fvtt-campaign-greenrest` is concluded and archived read-only on GitHub (2026-10-01).
 
 **Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
-`fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves, a clone may still be
-on disk; the Open Roll 5e README sections stopped listing it).
+`fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is
+kept; the Open Roll 5e README sections stopped listing it).
 
 ## How they fit together
 
@@ -130,7 +130,6 @@ The full picture is `docs/integration-map.md`. The shape of it:
 
 - The local Foundry install on desktop-ny still carries pre-rename copies of the modules and
   `fvtt-mod-vendorfixes`; update or remove next time in Foundry.
-- `fvtt-mod-miscpatches` is still cloned on desktop-ny with no remote to push to; delete when sure.
 
 ## Keep this file current
 
