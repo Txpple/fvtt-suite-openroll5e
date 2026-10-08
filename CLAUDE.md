@@ -51,8 +51,9 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
   siblings on a locked folder; the script resumes when the suite folder already exists, and the
   second run finished the move the same day.
   The MCP servers registered with Claude Code run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist`
-  and `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
-  patching those registrations again.
+  and `fvtt-mcp-sessionscribe/dist` under the suite path. The dnd5e server is registered twice:
+  `foundry-halruaa5e` (the current campaign's Molten box, PROD) and `foundry-local5e` (the sandbox).
+  Renaming or moving the suite folder means patching those registrations again.
 - **Relative paths across the boundary.** `../fvtt-mcp-dnd5e` from a sibling still resolves (they
   moved together); the campaign repos are `../../fvtt-campaign-*` from a sibling; anything outside the
   family (vendor snapshots, FX Studio's asset drops, kept next to the repo parent) is three levels
@@ -108,7 +109,7 @@ the manifests; the table there is the one to trust.
 `fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks, which the dnd5e MCP
 repo's session hooks also call); it is private. `fvtt-campaign-greenrest` is concluded and public
 (since 2026-10-08) as the worked example of a campaign repo; its clone is a reference, nothing syncs
-it.
+it, and it has no MCP bridge (`foundry-greenrest5e` was retired 2026-10-08; its Molten box is still up).
 
 **Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
 `fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is

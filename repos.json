@@ -107,7 +107,7 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e. Writes Open Server's landing-scene flag and Soundscape's scene sound sets.",
+      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e. Writes Open Server's landing-scene flag and Soundscape's scene sound sets. Registered with Claude Code as foundry-halruaa5e (the current campaign's Molten box) and foundry-local5e (the sandbox); the Greenrest bridge was retired 2026-10-08 and the concluded campaign has none.",
       "blurb": "builds D&D 5e content in a live Foundry world from Claude Code: a stat block becomes a complete NPC, a map image a walled and lit scene, an adventure its journals, tables and handouts."
     },
     {
@@ -135,7 +135,7 @@
       "status": "active",
       "sync": true,
       "parent": true,
-      "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Lives ABOVE the suite, next to it: content, not code, with its own committing sync.ps1 on session hooks. This repo's sync only fast-forwards it."
+      "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Lives ABOVE the suite, next to it: content, not code, with its own committing sync.ps1 on session hooks. This repo's sync only fast-forwards it. Its Molten box is the foundry-halruaa5e MCP bridge."
     },
     {
       "name": "fvtt-mod-miscpatches",
