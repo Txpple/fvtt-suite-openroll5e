@@ -38,7 +38,7 @@ D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hol
 - **desktop-ny:** `D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e`. Until 2026-10-08 the clones sat
   flat in `D:\Workbench\FVTT\Repos` and that folder was the suite repo; `tools\migrate-layout.ps1`
   moved them (and repaired the Battle Flow and Errata worktrees, patched `~\.claude.json` and the
-  per-repo local config, and renamed the `~\.claude\projects` folders so session history followed).
+  per-repo local config, and renamed the `~\.claude\projects` folders so session history followed). The first run stopped after four siblings on a locked folder; the script resumes when the suite folder already exists, and the second run finished the move the same day.
   The MCP servers in `~\.claude.json` run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist` and
   `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
   patching those again.
