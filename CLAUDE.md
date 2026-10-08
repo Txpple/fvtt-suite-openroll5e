@@ -7,12 +7,18 @@ The umbrella for the **Open Roll 5e** family: nine public Foundry VTT modules, t
 one of those is its own GitHub repo with its own history, releases and CI, and that stays true.
 This repo is the thin layer over them:
 
-- `repos.json`: the manifest. Every sibling, its kind, visibility and status.
+- `repos.json`: the manifest. Every sibling, its kind, visibility, status and, for the public ones,
+  the one-line `blurb` every README uses for it.
 - `sync.ps1`: clones missing siblings into this folder and fast-forwards clean ones on `main`.
   `-Status` only reports. It never commits, pushes, stashes or switches branches.
 - `tools/integration-map.mjs`: writes `docs/integration-map.md` from the clones.
+- `tools/suite-sections.mjs`: writes the "Part of Open Roll 5e" section of every sibling README and
+  the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
 - this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
+
+This repo is public (since 2026-10-08), like the modules and the servers; its README is the public
+front door of the family. The campaigns and the audio library stay private.
 
 **Not a monorepo.** Nothing builds here, no code is shared through here, and the sibling repos
 are not submodules. They are ordinary clones that happen to live in this folder, ignored by this
@@ -56,9 +62,9 @@ D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hol
 - `fvtt-mod-battleflow-cover` is a worktree of Battle Flow on `feat/cover-hover`, not a clone.
   `fvtt-mod-battleflow/.claude/worktrees/` may hold more. `sync.ps1` and the map generator skip
   worktrees.
-- After adding, renaming or retiring a module: update `repos.json`, rerun
-  `node tools/integration-map.mjs`, sweep the nine "Sister modules" README sections (below), and
-  commit the result here.
+- After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
+  (the "Part of Open Roll 5e" README sections, below) and `node tools/integration-map.mjs`, commit
+  the rewritten READMEs in their own repos, and commit the result here.
 
 ## The family
 
@@ -102,7 +108,7 @@ kept; the Open Roll 5e README sections stopped listing it).
 
 The full picture is `docs/integration-map.md`. The shape of it:
 
-- **Every module installs and works alone.** The "Sister modules" section in each README promises
+- **Every module installs and works alone.** The "Part of Open Roll 5e" section in each README promises
   that ("each installs and works on its own and none needs another"). Cross-module behaviour is
   detection, `game.modules.get(id)?.active`, never a `requires` relationship. The only hard
   dependency in the family is FX Studio on the third-party `sequencer`.
@@ -125,16 +131,18 @@ The full picture is `docs/integration-map.md`. The shape of it:
 - **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `campaign`, `suite`; the
   name part has no hyphens; `app` was tried for the two smaller servers and dropped 2026-10-08, since each is one stdio MCP server like the dnd5e one. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
   2026-10-02 rename round is complete, Battle Flow included (its manifest and all nine README
-  sections say `Open Roll 5e: Battle Flow`).
+  sections say `Open Roll 5e: Battle Flow`). "Sister" and "sibling" are not used in public text; a
+  module is "part of Open Roll 5e" and two that pair up are "companions".
 - **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.
 - **Releases.** One GitHub release per module version. The manifest URL every world installs from
   is `https://github.com/Txpple/<repo>/releases/latest/download/module.json` and the download is
   `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. Battle Flow
   has `release.yml` + `verify.yml`; Errata has `check.yml` + `upstream-watch.yml`; the MCP and
   Session Scribe have `ci.yml`. The other modules release by hand.
-- **"Sister modules" README sections.** All nine public module READMEs carry one, each listing the
-  other eight with the same one-line descriptions. Adding, renaming or retiring a module is a
-  nine-file edit; keep the lines identical across repos.
+- **"Part of Open Roll 5e" README sections.** All nine module READMEs and the three server READMEs
+  carry one, between `<!-- openroll5e:family -->` markers, listing the rest of the family with the
+  `blurb` from `repos.json`. `node tools/suite-sections.mjs` rewrites them all (`--check` to verify);
+  never edit the section by hand. The sections replaced the "Sister modules" sections on 2026-10-08.
 - **Foundry compatibility.** All verified on 14; minimums range 11 to 14 (Battle Flow and FX Studio
   are 14-only). The system, where declared, is dnd5e. The local reference checkout of dnd5e source
   on desktop-ny is `D:\Workbench\LOCAL\Repos\dnd5e-release-5.3.3`.

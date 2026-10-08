@@ -1,56 +1,122 @@
-# Open Roll 5e suite
+# Open Roll 5e
 
-The umbrella for the **Open Roll 5e** family of Foundry VTT modules and the MCP servers built around
-them (the dnd5e DM assistant, image generation, the session scribe).
+Open Roll 5e is a family of [Foundry VTT](https://foundryvtt.com) modules and
+[Claude Code](https://claude.com/claude-code) tooling for a D&D 5e table on the 2024 rules, built
+for one table and shared. Nine modules cover the table from the fog of war to the loot: combat
+automation, visual effects, background sound, loot and the party's stash, fixes for vendor bugs,
+and the chores of a hosted world. Three MCP servers let Claude Code build content in a live world,
+make the art and write the session record. Every module installs and works on its own and none
+needs another.
 
-This is a thin repo, not a monorepo. Each module and server keeps its own repository, history,
-releases and CI. What lives here is the glue:
+This repository is the umbrella. It holds the manifest of the family, the map of how its members
+fit together, and a script that lays the clones out in one working directory. Nothing builds here
+and no code is shared through here: each module and server is its own repository with its own
+history, releases and CI.
 
-- `repos.json`: the manifest of every sibling repo, with kind, visibility and status.
-- `sync.ps1`: clones missing siblings into this folder and fast-forwards clean ones. Never commits.
-- `tools/integration-map.mjs`: scans the clones and writes `docs/integration-map.md`, the record of
-  which repo references which and the custom hooks they share.
-- `CLAUDE.md`: the working notes for the family as a whole: conventions, release mechanics, loose ends.
-- `tools/migrate-layout.ps1`: the one-time move from the old flat layout to this one (see below).
+<!-- openroll5e:catalogue -->
+## The modules
 
-## Layout
+| Module | Does |
+| --- | --- |
+| [Open Roll 5e: Autoexplore](https://github.com/Txpple/fvtt-mod-autoexplore) | Lets a scene start fully explored, so the whole map shows through the fog of war while tokens still need line of sight. |
+| [Open Roll 5e: Battle Flow](https://github.com/Txpple/fvtt-mod-battleflow) | Combat automation for dnd5e 2024 rules: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, and concentration is tracked. Every rule that touches a fight in the 2024 core books, Heroes of Faerûn, Arcana Unleashed and Ravenloft: The Horrors Within. |
+| [Open Roll 5e: Combat Plus](https://github.com/Txpple/fvtt-mod-combatplus) | Automates the chores of running a fight: combat music, an initiative gate, an out-of-turn movement block, defeated marking at 0 HP and turn alerts. |
+| [Open Roll 5e: Errata](https://github.com/Txpple/fvtt-mod-errata5e) | Corrects, in memory, bugs in the premium D&D 2024 books, the dnd5e system and Foundry itself, each fix held until the vendor ships its own. |
+| [Open Roll 5e: FX Studio](https://github.com/Txpple/fvtt-mod-fxstudio) | Visual and sound effects for dnd5e, played from what actually happened at the table, with about a thousand stock FX and a window for authoring your own. |
+| [Open Roll 5e: Loot Shelf](https://github.com/Txpple/fvtt-mod-lootshelf) | Loot chests and merchant shelves that players can take from, buy from and sell to without owning them, with a receipt for every trade. |
+| [Open Roll 5e: Open Server](https://github.com/Txpple/fvtt-mod-openserver) | For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own. |
+| [Open Roll 5e: Party Stash](https://github.com/Txpple/fvtt-mod-partystash) | Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt. |
+| [Open Roll 5e: Soundscape](https://github.com/Txpple/fvtt-mod-soundscape) | Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat. |
 
-The sibling clones sit **inside** this folder and are gitignored. The campaign repos (content, not
-code) sit **next to** it, in the parent folder:
+## The MCP servers
+
+- [fvtt-mcp-dnd5e](https://github.com/Txpple/fvtt-mcp-dnd5e): builds D&D 5e content in a live Foundry world from Claude Code: a stat block becomes a complete NPC, a map image a walled and lit scene, an adventure its journals, tables and handouts.
+- [fvtt-mcp-imagegen](https://github.com/Txpple/fvtt-mcp-imagegen): makes the art with Google's Gemini image models: icons, tokens, props, portraits, illustrations and battlemap restyles, grounded in what the world already shows.
+- [fvtt-mcp-sessionscribe](https://github.com/Txpple/fvtt-mcp-sessionscribe): turns a session's Discord recording and Foundry chat log into its record: a speaker-labelled transcript, a player recap, a combat report and GM notes.
+<!-- /openroll5e:catalogue -->
+
+Install any module by pasting its manifest URL into Foundry's *Install Module* dialog; the pattern
+is the same for all nine:
 
 ```
-D:\Workbench\FVTT\Repos\
-  fvtt-suite-openroll5e\          <- this repo
-    CLAUDE.md  README.md  repos.json  sync.ps1  tools\  docs\
-    fvtt-mod-battleflow\          <- its own git repo, ignored here
-    fvtt-mod-fxstudio\            <- its own git repo, ignored here
-    fvtt-mcp-dnd5e\
-    fvtt-mcp-imagegen\
-    fvtt-mcp-sessionscribe\
+https://github.com/Txpple/<repo>/releases/latest/download/module.json
+```
+
+Each README states its own Foundry and system requirements, and
+[docs/integration-map.md](docs/integration-map.md), regenerated from the manifests, is the table to
+trust for versions and compatibility. The servers are set up from their own READMEs and run under
+Claude Code.
+
+## How they fit together
+
+- **Every module works alone.** Cross-module behaviour is detection, `game.modules.get(id)?.active`,
+  never a `requires` relationship. The only hard dependency in the family is FX Studio on the
+  third-party Sequencer module.
+- **Battle Flow is the hub.** It emits `battleflow.moment` and a handful of narrower hooks. FX
+  Studio listens to them to play effects from what happened, and Session Scribe reads Battle Flow's
+  chat cards for the combat report.
+- **Loot Shelf and Party Stash are companions.** One owns loot on the ground and goods for sale,
+  the other the party's shared inventory, and their receipt settings line up when both are present.
+- **The dnd5e server writes into two modules' data:** Open Server's landing-scene flag and
+  Soundscape's per-scene sound sets, flags only.
+- **A hook is named after its module.** `<short>.<event>` belongs to the module whose id is
+  `fvtt-mod-<short>`. New hooks are added in the emitting module, and every listener tolerates the
+  hook never firing.
+
+The generated [integration map](docs/integration-map.md) lists who references whom and which hooks
+cross repo lines.
+
+## This repository
+
+```
+repos.json                 the manifest: every repo, its kind, visibility, status and one-line blurb
+sync.ps1                   clones missing siblings into this folder and fast-forwards clean ones
+tools/integration-map.mjs  writes docs/integration-map.md from the clones
+tools/suite-sections.mjs   writes the "Part of Open Roll 5e" section of every README from repos.json
+tools/migrate-layout.ps1   the one-time move from the flat layout used until 2026-10-08
+docs/integration-map.md    the generated map
+CLAUDE.md                  working notes for sessions that span the family
+```
+
+The sibling clones sit inside this folder and are gitignored (`fvtt-*/`), so one working directory
+sees the whole family while every repo keeps its own git:
+
+```
+<your repos folder>/
+  fvtt-suite-openroll5e/        this repo
+    fvtt-mod-battleflow/        its own clone, ignored here
+    fvtt-mod-fxstudio/          ...
+    fvtt-mcp-dnd5e/
     ...
-  fvtt-campaign-echoesofhalruaa\  <- above the suite, listed in repos.json with "parent": true
-  fvtt-campaign-greenrest\
 ```
 
-Open a Claude Code session (or an editor) at the suite folder to work across the whole family; run
-git inside a sibling to commit to it.
-
-## Set up on a new machine
+To set it up:
 
 ```powershell
-cd D:\Workbench\FVTT\Repos
 git clone https://github.com/Txpple/fvtt-suite-openroll5e.git
 cd fvtt-suite-openroll5e
 .\sync.ps1
 ```
 
-`.\sync.ps1 -Status` reports every sibling's branch, dirty files and ahead/behind without changing
-anything.
+`sync.ps1` clones what is missing and fast-forwards clean clones on `main`. It never commits,
+pushes, stashes or switches branches: a clone that is dirty, on another branch or ahead of origin
+is named and left alone, and a repo you cannot reach is reported and left for later. `-Status`
+only reports and `-NoClone` skips the clone step. A few entries in `repos.json` are private (the
+audio library Soundscape ships from, and the campaign repos, which live next to the suite rather
+than in it); without access they simply fail to clone.
 
-## Moving a machine from the old flat layout
+After adding, renaming or retiring a repo: edit `repos.json`, run `node tools/suite-sections.mjs`
+and `node tools/integration-map.mjs`, and commit the READMEs the first one rewrote in their own
+repos.
 
-Until 2026-10-08 the clones sat directly in `D:\Workbench\FVTT\Repos\` and that folder was the
-suite repo. `tools\migrate-layout.ps1` moves everything into the layout above, repairs git
-worktrees, patches the absolute paths in `~\.claude.json` and per-repo local config, and renames
-the Claude Code project folders so session history follows. Run it from your own PowerShell with
-the Claude desktop app closed; `-DryRun` prints the plan first.
+## Conventions
+
+- **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `campaign` or `suite`. A module's
+  package id is its repo name and its Foundry title is `Open Roll 5e: <Name>`.
+- **Releases.** One GitHub release per module version, carrying both `module.json` and
+  `<repo>.zip`, so the `releases/latest` manifest URL always resolves.
+- **Branches.** `main` everywhere; feature work in a branch or worktree.
+
+## License
+
+MIT. See [LICENSE](LICENSE). Each module and server carries its own license file.
