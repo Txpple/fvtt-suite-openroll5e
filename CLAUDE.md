@@ -126,9 +126,7 @@ The full picture is `docs/integration-map.md`. The shape of it:
   are on Molten Hosting and reached through the MCP. Prefer the MCP over raw file edits for world
   data.
 
-## Loose ends (2026-10-07)
-
-- Battle Flow `tools/smoke-aasimar.mjs` still checks `fvtt-mod-vendorfixes`; Errata is the
+## Loose ends (2026-10-08)
   successor and the setting keys moved with it.
 - The MCP's siblings census still names `fvtt-mod-miscpatches`.
 - The local Foundry install on desktop-ny still carries pre-rename copies of the modules and
