@@ -15,6 +15,9 @@ This repo is the thin layer over them:
 - `tools/suite-sections.mjs`: writes the "Part of Open Roll 5e" section of every sibling README and
   the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
+- `docs/examples/session-scribe/`: two complete session records Session Scribe produced for the
+  Greenrest campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here because the campaign
+  repo is private; the public example of what the scribe makes. Transcripts and chat logs stay out.
 - this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
 
 This repo is public (since 2026-10-08), like the modules and the servers; its README is the public
@@ -48,6 +51,10 @@ D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hol
   The MCP servers in `~\.claude.json` run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist` and
   `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
   patching those again.
+- **Relative paths across the boundary.** `../fvtt-mcp-dnd5e` from a sibling still resolves (they
+  moved together); the campaign repos are `../../fvtt-campaign-*` from a sibling; anything outside the
+  family (`D:\Workbench\FVTT\vendor-snapshots`, `D:\Workbench\FVTT\fxstudio-assets`) is three
+  levels up from a sibling, not two. Errata's snapshot default was corrected on 2026-10-08.
 - **Other machines:** clone this repo into that machine's FVTT repo parent (the machine's `local-*`
   CLAUDE.md says where), `cd` into it, run `.\sync.ps1`, and clone the campaign repos next to it.
 
@@ -134,6 +141,12 @@ The full picture is `docs/integration-map.md`. The shape of it:
   sections say `Open Roll 5e: Battle Flow`). "Sister" and "sibling" are not used in public text; a
   module is "part of Open Roll 5e" and two that pair up are "companions".
 - **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.
+- **Contributions.** Every public repo accepts issues and does not accept pull requests (the user,
+  2026-10-08). The generated README section says so, and each repo carries
+  `.github/PULL_REQUEST_TEMPLATE.md` saying it again to anyone who opens one.
+- **State blocks.** A sibling CLAUDE.md carries at most one dated `**State (YYYY-MM-DD).**` block,
+  near the top, rewritten in place when the facts change; dated status lives nowhere else in that
+  file. Errata, FX Studio and Session Scribe follow it since 2026-10-08.
 - **Releases.** One GitHub release per module version. The manifest URL every world installs from
   is `https://github.com/Txpple/<repo>/releases/latest/download/module.json` and the download is
   `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. Battle Flow

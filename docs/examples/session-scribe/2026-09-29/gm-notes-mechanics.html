@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 9 — GM Notes · Mechanics · The Heart Knot</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+  ul,ol{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:6px}
+  .check{list-style:none;padding-left:4px}
+  .check li{padding-left:26px;position:relative}
+  .check li::before{content:"\2610";position:absolute;left:0;top:0;color:var(--muted)}
+  .check li.done::before{content:"\2611";color:var(--accent)}
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+  table.data tr:last-child td{border-bottom:none}
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+  blockquote{margin:0 0 14px;padding:8px 16px;border-left:3px solid var(--rule);font-size:15px;line-height:1.6}
+  blockquote p{margin:0}
+  blockquote .who{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings travel with what they introduce (the .keep
+     groups), pages numbered. Look at every page of the PDF before shipping. */
+  /* flow-root matters: as a plain block the keep is split when the heading fits at the
+     page foot and its block does not (measured on session 8's combat log, 2026-09-24). */
+  .keep{display:flow-root;break-inside:avoid;page-break-inside:avoid}
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 9 \00B7  GM Notes \00B7  Mechanics \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3{page-break-after:avoid;break-after:avoid}
+    p,li,tr,.callout,blockquote,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ ul),p:has(+ ol){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 9 &mdash; GM Notes &middot; Mechanics</p>
+  <h1>The Heart Knot</h1>
+  <p class="sub">Tuesday, 29 September 2026 &middot; bookkeeping, friction, rulings, table</p>
+</header>
+
+<section>
+  <div class="keep">
+  <p class="lead">System and table: the bookkeeping to apply to the live world, automation that cost time, rulings to keep consistent, and what the table said. The combat numbers are in <code>combat-stats.md</code>.</p>
+  <div class="callout flag"><p><strong>Act on this first:</strong> the campaign is over, so the checklist is about leaving the world in a clean end state. The one real leftover is <strong>the Thornheart is still on Invictus's sheet (attuned)</strong> — the other three hearts are already gone from theirs.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>1 &middot; Bookkeeping checklist (live world)</h2>
+  <ul class="check" style="margin-bottom:6px"><li class="done">Pudgy raised with the Thornheart (its use recovered at dawn).</li></ul>
+  </div>
+  <ul class="check"><li class="done">Midnight removed from Invictus's sheet (you did it at the burial).</li><li class="done">Honeysuckle's and Pinenut's bodies removed from Gren's inventory.</li><li class="done">Duskheart, Graveheart, Tideheart gone from Jetten's, Morgash's and Gren's sheets.</li><li><strong>The Thornheart is still on Invictus, attuned</strong> (3 attuned: Cloak of Protection, Gauntlets, Thornheart). Remove it.</li><li class="done">Invictus took the <strong>Scimitar</strong> from the stash (equipped); Morgash took the Ember-Touched Greatsword back.</li><li><strong>Standing effects to clear:</strong> Gren shows <strong>Restrained</strong> (from Jetten's R5 Entangle recast), <em>Mage Armor</em>, <em>Protection from Death</em>, Innate Sorcery and a <em>Hypnotic Pattern</em> concentration; Jetten shows Concentrating: Entangle and Bloodied. The post-game Hypnotic Pattern (Pudgy and Invictus rolled Wisdom saves at 01:30) left effects too.</li><li>Potions of Fire Breath at 0 uses still on Morgash's and Invictus's sheets (from session 8).</li><li>Rename the actor <strong>Invictus → Thomas</strong>? He has his name back; the sheet and the Player Backstories page still say Invictus.</li><li>Pudgy: an actor exists (he rolled a Wisdom save); if you want him on Gren's side permanently, move him to the party or Gren's companions.</li><li>Mobs: nothing to do; nobody was killed or tallied — only 39 damage landed on 1,050 HP (Morgash's two Ripostes, 35, were never declared lethal or nonlethal).</li><li>Bestiary: no new monsters were killed; nothing to add.</li><li>World-state / plot doc: a closing "how it ended" entry (the story notes carry it).</li></ul>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>2 &middot; Automation and friction that cost time</h2>
+  <div class="scroll"><table class="data"><thead><tr><th>What</th><th>Time lost</th><th>Detail</th></tr></thead><tbody><tr><td>Hypnotic Pattern opening</td><td>~3 min</td><td>The mobs weren't in the combat tracker yet (shown invisible); Gren's Careful Spell excluded the selected crowd; the cast was refunded and redone twice; the save posted as a <strong>Wisdom ability check</strong> (12) — you ruled it a failed save by hand.</td></tr><tr><td>Sharing Shar's card with Andrew</td><td>~2.5 min</td><td>Ownership / Show-to-player fumbling before the "Jetten — read this first" page opened for him. Next time: set OBSERVER on the journal for the player before the session.</td></tr><tr><td>Entangle recast (R5)</td><td>~1.5 min</td><td>The template landed in the wrong place ("the purple circle popped up"), fired caltrops damage, and caught <strong>Gren (restrained, Str 8)</strong> and <strong>Jetten (Str 15)</strong> as well as the Farmhands (saved 16, 18).</td></tr><tr><td>Entangle escape rolls</td><td>~1 min</td><td>The restrained crowd's escapes posted as Strength ability checks and saves under different mob sheets; a couple of R2 rolls went out under the Farmhands for the entangled crowd.</td></tr><tr><td>Find Steed</td><td>~1 min</td><td>Hunting for the casting time; 2024 has it as an action with no long cast — you ruled instant.</td></tr><tr><td>Spellfire Burst — Bolstering Flames</td><td>&lt;1 min</td><td>Not automated; applied by hand.</td></tr><tr><td>Browser lock-up</td><td>~15 s</td><td>Your browser froze once mid-round 4.</td></tr><tr><td>Battle Flow flagged disadvantage on 8 Farmhands attacks</td><td>—</td><td>6 were rolled straight anyway (2 of those 8 hit). The source of the flag isn't clear from the ledger — worth a look at which effect it read.</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>3 &middot; Rulings to keep consistent</h2>
+  <ul style="margin-bottom:6px"><li><strong>Placing a heart</strong> = a full turn of concentration at the knot; interrupted = start over; one at a time; absorbed at the start of the placer's next turn.</li></ul>
+  </div>
+  <ul><li><strong>Nonlethal</strong>: melee only; same damage; flavour (flat of the blade).</li><li><strong>Intimidating a mob</strong>: DC 17, rising to 21 and then 25 as the crowd heated up. <em>Thaumaturgy</em>'s booming voice grants advantage. A success made that mob pause and lose its round.</li><li><strong>Single-target control on a mob</strong> (Hold Person): affects one person in the crowd — not worth it. Area spells work normally.</li><li><strong>Find Steed</strong>: instantaneous; mounting takes the action; leaning from the saddle to the knot = Athletics DC 15; taking a hit while leaning = Athletics DC 15 to stay seated.</li><li><strong>The Thornheart's Raise Dead</strong> was cast as an action, not the spell's hour.</li><li><strong>Caltrops vs a mob</strong>: a normal 5-ft square even though the mob is bigger.</li></ul>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>4 &middot; Table observations</h2>
+  <ul style="margin-bottom:6px"><li><strong>Feedback, worth keeping:</strong> Andrew: <em>"The Dryad should have definitely given us some treasure."</em> Anthony wanted an interaction with her — a chance to bargain for the town, <em>"at least have an interaction with the people that save her."</em> You: <em>"That's good feedback."</em></li></ul>
+  </div>
+  <ul><li><strong>Robert's turn and redemption</strong> carried the first hour: the argument, the prayer, the burial. The group talked him out of it in character, which is exactly the scene the offer was built for.</li><li><strong>Andrew read Shar's card cold</strong> and well; the "read this first" page worked once he could see it.</li><li><strong>Session length</strong> 1h51m: ~38 min of story before initiative, a ~40-minute five-round fight, ~15 min of passing and epilogue, then ~30 min of next-campaign talk.</li><li><strong>Next campaign:</strong> <em>Echoes of Halruaa</em> (Forgotten Realms, 2024 rules, levels 1–10+, "a very magical setting"); the pitch is in the Foundry chat. <strong>Tuesdays stay.</strong> Robert is schedule coordinator; the 13th was floated for a one-shot or test characters; you're away next week (Santa Barbara). Class thoughts: Andrew leaning warlock, Robert bard or rogue, Tom flexible, will fit in around the others.</li><li>The Foundry splash screen still shows the stock frost giant — you want to swap it for campaign art.</li></ul>
+  <footer>GM-only. Compiled from the transcript, the chat log and the live sheets by the session scribe.</footer>
+</section>
+
+</div>
+</div>
+</body>
+</html>

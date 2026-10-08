@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 8 — Combat Log · The Wyrmwood</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+
+  /* ---- figure: single-series magnitude bars (see rule 2 + 3 above) ---- */
+  figure{margin:0 0 20px}
+  figcaption{font-size:14px;color:var(--head);margin:0 0 10px;font-weight:bold}
+  .bars{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;align-items:center}
+  .bars .name{font-size:14px;color:var(--ink2);white-space:nowrap;padding:3px 0}
+  .bars .track{display:block;position:relative;height:16px;background:var(--accent-soft);
+               border-radius:3px;overflow:hidden}
+  .bars .fill{display:block;height:16px;background:var(--accent);border-radius:0 4px 4px 0;
+              transition:filter .15s ease}
+  .bars .row:hover .fill{filter:brightness(1.12)}
+  .bars .val{font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums;
+             white-space:nowrap;padding:3px 0}
+  .bars .row{display:contents}
+  .figure-note{font-size:13px;color:var(--muted);margin:8px 0 0}
+
+  /* ---- tables ---- */
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;
+    white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;
+    line-height:1.5}
+  table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;
+    white-space:nowrap}
+  table.data tr:last-child td{border-bottom:none}
+  table.data tbody tr:hover{background:#faf6ec}
+  .lead-row td{font-weight:bold;color:var(--ink)}
+
+  /* ---- callout ---- */
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+
+  ul{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:5px}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);
+    font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings and intro lines travel with what they
+     introduce, pages numbered. Look at every page of the PDF before shipping. */
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 8 \00B7  Combat Log \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3,figure,figcaption{page-break-after:avoid;break-after:avoid}
+    p,li,tr,figure,.callout,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ figure),p:has(+ ul){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 8</p>
+  <h1>Combat Log &mdash; The Wyrmwood</h1>
+  <p class="sub">22 September 2026 &middot; 3 combats &middot; folded from 166 Battle&nbsp;Flow stamped messages of 485</p>
+</header>
+
+<section>
+  <p class="lead">Three fights in Bramblemaw's Lair: a two-round Shambling Mound, a two-round druid and giant crocodile, and a four-round adult green dragon. The party dealt 584 and took 269. Jetten and Invictus each hit 0 twice; nobody died. All three squirrel allies died to the dragon's first breath.</p>
+
+  <div class="callout flag">
+    <p><strong>Bramblemaw died with 3 hit points to spare &mdash; 292 damage into a 289&nbsp;HP dragon.</strong> He had about 12 left when Gren's Fireball went off, and its <em>saved</em> half (15) was enough. Take away any one of the three biggest contributors below and the dragon lives: Topple's advantage (65), Morgash's second Action Surge (29), or the wand's Magic Missile (22).</p>
+  </div>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>What</th><th class="num">Damage supplied</th><th>Bramblemaw without it</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td><strong>Topple &rarr; advantage</strong> on Morgash's follow-ups (5 misses converted)</td><td class="num">65</td><td>alive on ~62</td></tr>
+      <tr><td><strong>Morgash's second Action Surge</strong> (round 4: 15 + 14)</td><td class="num">29</td><td>alive on ~26 &mdash; see ruling note</td></tr>
+      <tr><td>Gren's Magic Missile (wand, five darts)</td><td class="num">22</td><td>alive on ~19</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><p><strong>Ruling note.</strong> Morgash surged in round 3 (on the sheet) and again in round 4 on the call <em>"you have two Action Surges"</em>. At Fighter 6 it is one per rest; two arrives at level 17. Not a retcon &mdash; it is in the mechanics notes so the ruling stays consistent.</p></div>
+</section>
+
+<section>
+  <h2>1 &middot; Headline numbers</h2>
+  <figure>
+    <figcaption>Damage dealt to Bramblemaw, by character</figcaption>
+    <div class="bars">
+      <div class="row"><span class="name">Morgash</span><span class="track"><span class="fill" style="width:100.0%"></span></span><span class="val">107</span></div>
+      <div class="row"><span class="name">Invictus</span><span class="track"><span class="fill" style="width:82.2%"></span></span><span class="val">88</span></div>
+      <div class="row"><span class="name">Jetten</span><span class="track"><span class="fill" style="width:56.1%"></span></span><span class="val">60</span></div>
+      <div class="row"><span class="name">Gren</span><span class="track"><span class="fill" style="width:34.6%"></span></span><span class="val">37</span></div>
+    </div>
+    <p class="figure-note">Gren's Fireball also put 30 into a giant crocodile in the water. Round by round the dragon took 62 &middot; 51 &middot; 76 &middot; 103.</p>
+  </figure>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Character</th><th class="num">Dealt</th><th class="num">Taken</th><th class="num">Healing done (incl. self)</th><th class="num">Nat 20s</th><th class="num">Nat 1s</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Morgash the Gravemaker</td><td class="num">175</td><td class="num">36</td><td class="num">38</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Invictus</td><td class="num">161</td><td class="num">111</td><td class="num">35</td><td class="num">1</td><td class="num">1</td></tr>
+      <tr><td>Jetten Elisedil</td><td class="num">158</td><td class="num">89</td><td class="num">15</td><td class="num">1</td><td class="num">2</td></tr>
+      <tr><td>Gren Greenmantle</td><td class="num">90</td><td class="num">33</td><td class="num">31</td><td class="num">1</td><td class="num">0</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Opposition</h3>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Foe</th><th class="num">Dealt</th><th>Accuracy</th><th class="num">Taken</th><th>Fate</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Bramblemaw</td><td class="num">314 (78.5/rd)</td><td>5/9</td><td class="num">292</td><td>killed &mdash; Gren's Fireball</td></tr>
+      <tr><td>Giant Crocodile</td><td class="num">38</td><td>2/2</td><td class="num">87</td><td>killed &mdash; Invictus's <em>Death Armor</em></td></tr>
+      <tr><td>Shambling Mound</td><td class="num">13</td><td>1/3</td><td class="num">111</td><td>killed &mdash; Jetten's shortsword</td></tr>
+      <tr><td>Geas Druid</td><td class="num">0</td><td>&mdash;</td><td class="num">64</td><td>down &mdash; Jetten's longbow</td></tr>
+      <tr><td>Pinenut &middot; Honeysuckle &middot; Pudgy</td><td class="num">&mdash;</td><td>&mdash;</td><td class="num">32 each</td><td>killed &mdash; the first breath</td></tr>
+      <tr><td>Giant Crocodile (lake)</td><td class="num">&mdash;</td><td>&mdash;</td><td class="num">30</td><td>swam off</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Of Bramblemaw's 314: <strong>218 into the party, 96 into the squirrels.</strong> Poison 218, slashing 54, psychic 42.</p>
+</section>
+
+<section>
+  <h2>2 &middot; The Shambling Mound &mdash; 2 rounds</h2>
+  <p>Morgash's maul <strong>toppled it twice</strong> (14, then 5 vs DC 15), a whiffed tendril became a <strong>Riposte for 21</strong>, and its one hit (16) was cut to 13 by Heavy Armor Master. <strong>Jetten's shortsword killed it</strong> &mdash; an advantaged roll off the prone that would have missed on the low die (12 vs AC 15).</p>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Combatant</th><th class="num">Dealt</th><th class="num">Per round</th><th>Accuracy</th><th class="num">Taken</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Morgash</td><td class="num">47</td><td class="num">23.5</td><td>3/3 &middot; 100%</td><td class="num">13</td></tr>
+      <tr><td>Jetten</td><td class="num">34</td><td class="num">17.0</td><td>3/3 &middot; 100%</td><td class="num">0</td></tr>
+      <tr><td>Invictus</td><td class="num">30</td><td class="num">15.0</td><td>2/2 &middot; 100%</td><td class="num">0</td></tr>
+      <tr><td>Shambling Mound</td><td class="num">13</td><td class="num">6.5</td><td>1/3 &middot; 33%</td><td class="num">111</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>3 &middot; The druid and the crocodile &mdash; 2 rounds</h2>
+  <p>151 dealt, 38 taken &mdash; all of it by Invictus, in the crocodile's jaws. <strong>Jetten took the druid alone</strong>: 8, 10, a <strong>natural-20 crit for 33</strong> (13 piercing + 20 psychic <em>Dreadful Strike</em>) that the druid held concentration through (18 vs 16), and 13 to drop him. <strong>The crocodile bit Invictus twice (24, 14) and died of it</strong> &mdash; <em>Death Armor</em> struck back for 5, then 6, and the 6 was the kill. Gren's Fire Bolt rolled a natural 20 on <em>disadvantage</em> &mdash; both dice &mdash; for 23.</p>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Combatant</th><th class="num">Dealt</th><th class="num">Per round</th><th>Accuracy</th><th class="num">Taken</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Jetten</td><td class="num">64</td><td class="num">32.0</td><td>4/4 &middot; 100%</td><td class="num">0</td></tr>
+      <tr><td>Invictus</td><td class="num">43</td><td class="num">21.5</td><td>2/2 &middot; 100% (+2 <em>Death Armor</em>)</td><td class="num">38</td></tr>
+      <tr><td>Gren</td><td class="num">23</td><td class="num">11.5</td><td>1/2 &middot; 50%</td><td class="num">0</td></tr>
+      <tr><td>Morgash</td><td class="num">21</td><td class="num">10.5</td><td>2/2 &middot; 100%</td><td class="num">0 (3 from <em>Spike Growth</em>)</td></tr>
+      <tr><td>Giant Crocodile</td><td class="num">38</td><td class="num">19.0</td><td>2/2 &middot; 100%</td><td class="num">87</td></tr>
+      <tr><td>Geas Druid</td><td class="num">0</td><td class="num">&mdash;</td><td>&mdash;</td><td class="num">64</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>4 &middot; Bramblemaw &mdash; 4 rounds</h2>
+  <p><strong>What the dragon did.</strong> Two breaths (32, 30) &mdash; the first killed all three squirrels and put Jetten to 14; three <em>Mind Spikes</em> (19, 15, 8), two of which dropped a PC; five <em>Pounces</em>; three <em>Noxious Miasmas</em>; and two Legendary Resistances, spent on Invictus's shield bash and Gren's <em>Slow</em>. His Rends found Invictus's AC&nbsp;22 twice in six tries.</p>
+  <p><strong>Downs:</strong> Jetten (round 1 &mdash; <em>Mind Spike</em> after an unresisted breath) &middot; Invictus (round 3 &mdash; <em>Mind Spike</em>; one failed death save, 8 with advantage) &middot; Jetten and Invictus together (round 4 &mdash; the second breath). <strong>Raised by</strong> Gren's <em>Healing Word</em> twice, Selma's Superior Healing (27, Morgash &rarr; Invictus), and 2 points of Lay on Hands (Invictus &rarr; Jetten).</p>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Combatant</th><th class="num">Dealt</th><th class="num">Per round</th><th>Accuracy</th><th class="num">Taken</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Morgash</td><td class="num">107</td><td class="num">26.8</td><td>9/13 &middot; 69%</td><td class="num">23</td></tr>
+      <tr><td>Invictus</td><td class="num">88</td><td class="num">22.0</td><td>6/7 &middot; 86%</td><td class="num">73</td></tr>
+      <tr><td>Gren</td><td class="num">67 (37 to the dragon)</td><td class="num">16.8</td><td>auto (Magic Missile, Fireball)</td><td class="num">33</td></tr>
+      <tr><td>Jetten</td><td class="num">60</td><td class="num">15.0</td><td>5/10 &middot; 50%</td><td class="num">89</td></tr>
+      <tr><td>Bramblemaw</td><td class="num">314</td><td class="num">78.5</td><td>5/9 &middot; 56%</td><td class="num">292</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout flag">
+    <p><strong>A deadly fight, run straight, won by 3 HP &mdash; and the dice were unkind to two of the four.</strong> Invictus failed every save he rolled against the dragon: four Con saves at +4 vs DC 16 (55% to fail each) and one Wis at +6 (45%) &mdash; about <strong>4%, 1 in 24</strong>, one of them a natural 1. Jetten failed all three <em>Mind Spike</em> saves <em>with advantage</em> (36% to fail each) &mdash; about <strong>5%, 1 in 21</strong>.</p>
+    <p>The other way: the breath recharged at the top of round 3 but went unchecked until after the dragon's action, so the second breath came a round late; and two of his three Legendary Resistances went on a shield bash and <em>Slow</em> rather than on the two topples that actually killed him. An adult green dragon into four level-6 PCs is meant to be deadly, and it played that way. Not a balance problem.</p>
+  </div>
+</section>
+
+<section>
+  <h2>5 &middot; What the buffs and features actually bought</h2>
+  <p>Every spell, mastery and maneuver that touched a number tonight, and what it produced, ranked by how much it moved the fights.</p>
+  <figure>
+    <figcaption>Damage added or prevented, by effect</figcaption>
+    <div class="bars">
+      <div class="row"><span class="name">Poison Resistance &times;4</span><span class="track"><span class="fill" style="width:100.0%"></span></span><span class="val">~75 prevented</span></div>
+      <div class="row"><span class="name">Topple &rarr; advantage</span><span class="track"><span class="fill" style="width:86.7%"></span></span><span class="val">65 added</span></div>
+      <div class="row"><span class="name">Death Armor</span><span class="track"><span class="fill" style="width:28.0%"></span></span><span class="val">21 added</span></div>
+      <div class="row"><span class="name">Riposte</span><span class="track"><span class="fill" style="width:28.0%"></span></span><span class="val">21 added</span></div>
+      <div class="row"><span class="name">Bless</span><span class="track"><span class="fill" style="width:24.0%"></span></span><span class="val">18 added</span></div>
+      <div class="row"><span class="name">Fire Breath &times;3</span><span class="track"><span class="fill" style="width:10.7%"></span></span><span class="val">8 added</span></div>
+      <div class="row"><span class="name">Precision Attack</span><span class="track"><span class="fill" style="width:9.3%"></span></span><span class="val">7 added</span></div>
+      <div class="row"><span class="name">Vex</span><span class="track"><span class="fill" style="width:9.3%"></span></span><span class="val">7 added</span></div>
+      <div class="row"><span class="name">Heavy Armor Master</span><span class="track"><span class="fill" style="width:4.0%"></span></span><span class="val">3 prevented</span></div>
+      <div class="row"><span class="name">Sap</span><span class="track"><span class="fill" style="width:0.5%"></span></span><span class="val">0</span></div>
+      <div class="row"><span class="name">Aura of Protection</span><span class="track"><span class="fill" style="width:0.5%"></span></span><span class="val">0</span></div>
+    </div>
+    <p class="figure-note">Poison Resistance by PC: Invictus ~37, Jetten 16, Gren 14, Morgash 8. Topple: 5 advantaged maul swings on the dragon that would have missed on the low die.</p>
+  </figure>
+  <h3>The winners</h3>
+  <ul>
+    <li><strong>Topple, 4 for 4.</strong> Two prone on the Mound, two on the dragon, none resisted. On Bramblemaw the advantage converted five misses (totals on the low die: 18, 16, 13, 12, 10 vs AC 19) into 65 damage &mdash; the single biggest thing any feature did tonight.</li>
+    <li><strong>Potions of Poison Resistance, 800&nbsp;gp for ~75 HP.</strong> The best money the party has spent. The lesson in it: <strong>Jetten drank Antitoxin, not resistance, before the doors.</strong> The first breath took him 46 &rarr; 14 and the <em>Mind Spike</em> finished him. With the potion down first he takes 16, sits on ~28 after the Miasma, and survives the spike on ~9.</li>
+    <li><strong>Death Armor killed a giant crocodile by itself</strong> (the 6 on its second bite) and put 10 more into the dragon. Its death-save advantage didn't save the one roll it got (8).</li>
+    <li><strong>Selma's Superior Healing</strong> &mdash; the price of a finger &mdash; took Invictus from 0 to 27 in round 4, and his first act back up was 2 points of Lay on Hands that stood Jetten up. Jetten then saved the next Miasma on a 20 and hit for 15.</li>
+    <li><strong>Bless, one flip:</strong> Jetten 18 &rarr; 19 against AC 19, 18 damage.</li>
+  </ul>
+  <h3>The duds, named as plainly</h3>
+  <ul>
+    <li><strong>Sap: nine applications, no outcome changed.</strong> Both dragon Rends it put at disadvantage (13, 12) would have missed AC 22 on the higher die anyway (16, 14).</li>
+    <li><strong>Aura of Protection (new at 6): no save flipped.</strong> Morgash passed with room to spare; Invictus's closest miss was 15 vs 16 with the +2 already in; Jetten missed three of his four aura saves by 3 or more.</li>
+    <li><strong>Antitoxin &times;3: nothing.</strong> Nothing in the lair imposed Poisoned &mdash; the Miasma takes AC.</li>
+    <li><strong>Counterspell:</strong> the dragon saved, 22 vs DC 18. <strong>Heroic Inspiration:</strong> Morgash's reroll went 17 &rarr; 15, still a miss.</li>
+    <li><strong>Potions of Fire Breath, 600&nbsp;gp for 8 damage.</strong> Invictus exhaled once (17, saved to 8). Morgash drank his and never exhaled; Jetten never drank his.</li>
+    <li><strong>Innate Sorcery:</strong> +1 DC on a <em>Slow</em> the dragon failed by 6; no spell attacks in its minute. <strong>Death Ward</strong> never triggered; Gren bottomed out at 8.</li>
+  </ul>
+  <h3>Maneuvers and masteries</h3>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Effect</th><th class="num">Uses</th><th>What it produced</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Topple (maul)</td><td class="num">4</td><td><strong>4 prone, 0 resisted</strong> &mdash; 65 converted on the dragon</td></tr>
+      <tr><td>Sap (Midnight)</td><td class="num">9</td><td>disadvantage on 2 Rends that missed anyway</td></tr>
+      <tr><td>Shield Master &mdash; bash</td><td class="num">7 offers</td><td>crocodile prone, dragon prone (round 1), 1 Legendary Resistance burned</td></tr>
+      <tr><td>Slow (Careful)</td><td class="num">1</td><td>1 Legendary Resistance burned; no other effect</td></tr>
+      <tr><td>Dreadful Strike</td><td class="num">3</td><td>36 psychic (20 on the druid crit, 16 on the dragon)</td></tr>
+      <tr><td>Action Surge</td><td class="num">2</td><td>4 extra maul swings on the dragon, 54 damage (see ruling note)</td></tr>
+      <tr><td>Riposte</td><td class="num">1</td><td>21 on the Mound</td></tr>
+      <tr><td>Precision Attack</td><td class="num">1</td><td>1 miss &rarr; hit (16 + 8 = 24 vs 19), 7</td></tr>
+      <tr><td>Vex (shortsword)</td><td class="num">1</td><td>1 Goldthorn miss &rarr; hit, 7</td></tr>
+      <tr><td>Magic Missile (wand, 3 charges)</td><td class="num">1</td><td>22 force</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>6 &middot; Combat flow &mdash; decision speed</h2>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Character</th><th class="num">Avg decision</th><th class="num">Timed moments</th><th>Slowest call</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Jetten Elisedil</td><td class="num">3.1s</td><td class="num">8</td><td>6.2s &mdash; mastery</td></tr>
+      <tr><td>Invictus</td><td class="num">8.6s</td><td class="num">10</td><td>24.0s &mdash; bash offer (timed out)</td></tr>
+      <tr><td>Morgash the Gravemaker</td><td class="num">15.2s</td><td class="num">13</td><td>24.0s &mdash; d20 fold (timed out, twice)</td></tr>
+      <tr><td>Gren Greenmantle</td><td class="num">17.7s</td><td class="num">1</td><td>17.7s &mdash; concentration</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Jetten is faster again (4.6s &rarr; 3.1s). Invictus nearly halved his average (14.1s &rarr; 8.6s). Morgash is slower (12.5s &rarr; 15.2s), mostly on Heroic Inspiration and Precision prompts that ran the timer out.</p>
+</section>
+
+<section>
+  <h2>7 &middot; Economy and flavour</h2>
+  <h3>Resources spent</h3>
+  <ul>
+    <li><strong>Gren</strong> &mdash; 1st &times;2 (Bless, Healing Word), 3rd &times;2 (Slow, Fireball), Counterspell off the Vesper Staff (3 charges, 7/10 left), 2 sorcery points (Careful Spell &times;2), Wand of Magic Missiles 3 charges (4/7 left), Innate Sorcery, Death Ward; Pearl of Power after the fight.</li>
+    <li><strong>Invictus</strong> &mdash; one 2nd-level slot (Misty Step) and Death Armor. <strong>Four 1st-level slots and a 2nd were still unspent at the end: no Divine Smite and no Vow of Enmity against the dragon.</strong> Lay on Hands 19 of 30 across the night.</li>
+    <li><strong>Morgash</strong> &mdash; Riposte, Precision Attack, Action Surge, Adrenaline Rush, Second Wind, Heroic Inspiration, and Selma's Superior Healing (into Invictus).</li>
+    <li><strong>Jetten</strong> &mdash; Dreadful Strike &times;3, two Potions of Healing, Healing Word (Magic Initiate).</li>
+  </ul>
+  <h3>The night's dice</h3>
+  <ul>
+    <li><strong>Buff-die flips:</strong> 1 &mdash; Jetten vs Bramblemaw, 18 + 1 = 19 vs AC 19.</li>
+    <li><strong>Natural 20s:</strong> Jetten (the druid crit), Gren (Fire Bolt &mdash; on disadvantage), Invictus (javelin), Bramblemaw (the crit Rend on Gren).</li>
+    <li><strong>Natural 1s:</strong> Jetten &times;2, Invictus (a save vs the second breath), Bramblemaw (a breath recharge), the Giant Crocodile (its save vs the shield bash).</li>
+    <li><strong>Advantage rolled:</strong> Morgash &times;9, Jetten &times;7, Invictus &times;2, Gren &times;2 &mdash; disadvantage: Shambling Mound &times;2, Bramblemaw &times;2, Invictus, Gren.</li>
+    <li><strong>Death saves:</strong> Invictus 0 made / 1 failed.</li>
+  </ul>
+</section>
+
+<footer>
+  Generated from the Battle Flow ledger via <code>get-combat-stats</code> &mdash; read-only scan, reverted applications subtracted, poison-resistance halves rounded down. Monster token identifiers resolved to names by hand; counterfactuals worked from the individual dice in the chat log.
+</footer>
+
+</div>
+</div>
+</body>
+</html>

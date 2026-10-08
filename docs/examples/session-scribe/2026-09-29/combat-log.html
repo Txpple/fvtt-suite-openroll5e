@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 9 — Combat Log · The Heart Knot</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+
+  /* ---- figure: single-series magnitude bars (see rule 2 + 3 above) ---- */
+  figure{margin:0 0 20px}
+  figcaption{font-size:14px;color:var(--head);margin:0 0 10px;font-weight:bold}
+  .bars{display:grid;grid-template-columns:auto 1fr auto;gap:2px 12px;align-items:center}
+  .bars .name{font-size:14px;color:var(--ink2);white-space:nowrap;padding:3px 0}
+  .bars .track{display:block;position:relative;height:16px;background:var(--accent-soft);
+               border-radius:3px;overflow:hidden}
+  .bars .fill{display:block;height:16px;background:var(--accent);border-radius:0 4px 4px 0;
+              transition:filter .15s ease}
+  .bars .row:hover .fill{filter:brightness(1.12)}
+  .bars .val{font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums;
+             white-space:nowrap;padding:3px 0}
+  .bars .row{display:contents}
+  .figure-note{font-size:13px;color:var(--muted);margin:8px 0 0}
+
+  /* ---- tables ---- */
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;
+    white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;
+    line-height:1.5}
+  table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums;
+    white-space:nowrap}
+  table.data tr:last-child td{border-bottom:none}
+  table.data tbody tr:hover{background:#faf6ec}
+  .lead-row td{font-weight:bold;color:var(--ink)}
+
+  /* ---- callout ---- */
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+
+  ul{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:5px}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);
+    font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings travel with what they introduce (the .keep
+     groups — rule 9), pages numbered. Look at every page of the PDF before shipping. */
+  /* flow-root matters: as a plain block the keep is split when the heading fits at the
+     page foot and its block does not (measured on session 8's combat log, 2026-09-24). */
+  .keep{display:flow-root;break-inside:avoid;page-break-inside:avoid}
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 9 \00B7  Combat Log \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3,figure,figcaption{page-break-after:avoid;break-after:avoid}
+    p,li,tr,figure,.callout,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ figure),p:has(+ ul){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 9</p>
+  <h1>Combat Log &mdash; The Heart Knot</h1>
+  <p class="sub">Tuesday, 29 September 2026 &middot; 1 combat &middot; folded from 56 Battle&nbsp;Flow stamped messages of 152</p>
+</header>
+
+<section>
+  <div class="keep">
+  <p class="lead">One fight, and not a fight to win: the party had to hold the square for four rounds while the four hearts went into the heart knot one at a time, against three Greenrest Mobs of 350 hit points and five attacks each. They spent almost every action on the hearts, on crowd control and on threats, and almost none on damage.</p>
+  <div class="callout flag">
+    <p><strong>Four hearts home in four rounds, 39 damage dealt to 1,050 hit points of neighbours &mdash; and exactly 39 taken back.</strong> Nobody on either side went down, and no heart placement was ever interrupted.</p>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>1 &middot; Headline numbers</h2>
+  <figure>
+    <figcaption>Damage taken, by character</figcaption>
+    <div class="bars">
+      <div class="row"><span class="name">Jetten</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">24</span></div>
+      <div class="row"><span class="name">Morgash</span><span class="track"><span class="fill" style="width:42%"></span></span><span class="val">10</span></div>
+      <div class="row"><span class="name">Invictus</span><span class="track"><span class="fill" style="width:21%"></span></span><span class="val">5</span></div>
+      <div class="row"><span class="name">Gren</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="val">0</span></div>
+    </div>
+    <p class="figure-note">Jetten stood between the mob and the tree for three rounds and took the Farmhands' only real volley. Gren took nothing: <em>Shield</em> turned the one cabbage that would have landed.</p>
+  </figure>
+  </div>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Character</th><th class="num">Dealt</th><th class="num">Taken</th><th class="num">Healed others</th><th class="num">Nat 20s</th><th class="num">Nat 1s</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Morgash the Gravemaker</td><td class="num">35</td><td class="num">10</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Gren Greenmantle</td><td class="num">3</td><td class="num">0</td><td class="num">8 temp</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Jetten Elisedil</td><td class="num">1</td><td class="num">24</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Invictus</td><td class="num">0</td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>2 &middot; The heart knot &mdash; Town Square, 5 rounds</h2>
+  <p>Initiative: Gren 22, Jetten 14, The Whole Street 8, Invictus 8, Morgash 8, Farmhands 2, Torchbearers 1. <strong>The heart clock:</strong> Duskheart placed R1, absorbed R2 &middot; Graveheart R2&rarr;R3 &middot; Tideheart R3&rarr;R4 (Gren delayed to take the slot) &middot; Thornheart R4&rarr;R5, from the saddle of a celestial steed, Athletics 26 vs DC 15.</p>
+  </div>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Combatant</th><th class="num">Dealt</th><th class="num">Per round</th><th>Accuracy</th><th class="num">Taken</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Morgash the Gravemaker</td><td class="num">35</td><td class="num">7.0</td><td>2/2 &middot; 100% (both Ripostes)</td><td class="num">10</td></tr>
+      <tr><td>Gren Greenmantle</td><td class="num">3</td><td class="num">0.6</td><td>1/1 &middot; 100% (nonlethal staff)</td><td class="num">0</td></tr>
+      <tr><td>Jetten Elisedil</td><td class="num">1</td><td class="num">0.2</td><td>caltrops</td><td class="num">24</td></tr>
+      <tr><td>Invictus</td><td class="num">0</td><td class="num">0</td><td>&mdash;</td><td class="num">5</td></tr>
+      <tr><td>Greenrest Mob &mdash; Farmhands</td><td class="num">24</td><td class="num">4.8</td><td>4/17 &middot; 24%</td><td class="num">4</td></tr>
+      <tr><td>Greenrest Mob &mdash; Torchbearers</td><td class="num">15</td><td class="num">3.0</td><td>4/10 &middot; 40%</td><td class="num">35</td></tr>
+      <tr><td>Greenrest Mob &mdash; The Whole Street</td><td class="num">0</td><td class="num">0</td><td>never acted (hypnotized)</td><td class="num">0</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout flag">
+    <p><strong>Mildly cold mob dice, not a balance problem.</strong> The mobs attack at +6. Their 27 attacks hit 8 times (30%) against party ACs of 15&ndash;22; against the targets they actually chose, about 40% was the expectation, and three Farmhand swings went into Invictus's AC 22. One natural 1. The fight was cheap because one mob never acted and a second spent three rounds pinned, not because of the dice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>3 &middot; What the buffs and features actually bought</h2>
+  <p>Every spell, maneuver and feature that touched a number, and what it produced. Ranked by how much it moved the fight.</p>
+  </div>
+  <div class="keep">
+  <h3>The big three</h3>
+  <figure>
+    <figcaption>Damage prevented or added, by effect</figcaption>
+    <div class="bars">
+      <div class="row"><span class="name">Hypnotic Pattern</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">~36 prevented</span></div>
+      <div class="row"><span class="name">Riposte &times;2</span><span class="track"><span class="fill" style="width:97%"></span></span><span class="val">35 added</span></div>
+      <div class="row"><span class="name">Shield</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="val">9 prevented</span></div>
+      <div class="row"><span class="name">Heavy Armor Master</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="val">9 prevented</span></div>
+    </div>
+  </figure>
+  </div>
+  <ul>
+    <li><strong>Hypnotic Pattern was the fight.</strong> The Whole Street failed its save on a 12 and stood slack for all five rounds: about 25 attacks never made. At the night's mob rate (39 damage from 27 attacks, 1.44 per attack) that is roughly 36 damage prevented, and one of three crowds that could never reach the knot.</li>
+    <li><strong>Riposte was the party's damage.</strong> 20 and 15 off two missed pitchforks: 35 of the party's 39. The pike's Push mastery rode both and did nothing to a restrained crowd.</li>
+    <li><strong>Entangle bought three rounds of distance.</strong> The Torchbearers were restrained R2&ndash;R4 and failed three escape checks. It held two concentration saves (12, 14) and broke on the third (5, then Heroic Inspiration 7, vs DC 10). The R5 recast was shrugged off (16, 18) and also caught Gren and Jetten in its template.</li>
+  </ul>
+  <div class="keep">
+  <h3>Maneuvers and features</h3>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Effect</th><th class="num">Uses</th><th>What it produced</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Riposte (Morgash)</td><td class="num">2</td><td>35 damage, both hits</td></tr>
+      <tr><td>Tactical Mind (Morgash)</td><td class="num">1</td><td>Intimidation 15 + 4 = 19 vs DC 17 &mdash; the Torchbearers paused R1 (~5 attacks not rolled)</td></tr>
+      <tr><td>Heavy Armor Master (Morgash)</td><td class="num">3</td><td>9 damage prevented</td></tr>
+      <tr><td>Find Steed (Invictus)</td><td class="num">1</td><td>A 60-ft mount to the knot; two Athletics checks to stay seated, 26 and 24</td></tr>
+      <tr><td>Push mastery (Morgash)</td><td class="num">2</td><td>Nothing &mdash; the target was restrained</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <div class="keep">
+  <h3>Buffs, and what they were worth</h3>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Buff</th><th>Cost</th><th>Return</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Hypnotic Pattern</strong></td><td>3rd-level slot + Innate Sorcery</td><td>A whole mob out of the fight, ~36 damage prevented</td></tr>
+      <tr><td><strong>Entangle</strong></td><td>1st-level slot &times;2</td><td>Torchbearers pinned three rounds; the recast did nothing but restrain Gren</td></tr>
+      <tr><td><strong>Shield</strong></td><td>1st-level slot, reaction</td><td>9 damage prevented</td></tr>
+      <tr><td><strong>Thaumaturgy</strong> (advantage on Intimidation)</td><td>cantrip</td><td>20 vs DC 17 &mdash; the Farmhands paused R1. 15 vs DC 25 &mdash; nothing.</td></tr>
+      <tr><td><strong>Spellfire Burst &mdash; Bolstering Flames</strong></td><td>sorcery point</td><td>8 temp HP; no hit on its recipient shows in the ledger</td></tr>
+      <tr><td><strong>Heroic Inspiration</strong> &times;2</td><td>both charges</td><td><strong>Changed nothing.</strong> Gren 8 &rarr; 8; Jetten 5 &rarr; 7 vs DC 10</td></tr>
+      <tr><td><strong>Aura of Protection</strong></td><td>always on</td><td><strong>Zero.</strong> No party save was rolled inside it</td></tr>
+      <tr><td>Scorching Ray, Elementalism, three failed Intimidations, caltrops, a nonlethal staff</td><td>&mdash;</td><td>Warning shots and flavour: 4 damage, no outcome changed</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <div class="keep">
+  <h3>Healing that mattered</h3>
+  <p>None was needed. Nobody dropped; Jetten finished lowest, at 22 of 46.</p>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>4 &middot; Combat flow &mdash; decision speed</h2>
+  <p>The timing stamps, averaged per player across timed decision moments.</p>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Character</th><th class="num">Avg decision</th><th class="num">Timed moments</th><th>Slowest call</th></tr></thead>
+    <tbody>
+      <tr class="lead-row"><td>Jetten</td><td class="num">18.6s</td><td class="num">4</td><td>24.1s &mdash; concentration</td></tr>
+      <tr><td>Morgash</td><td class="num">17.5s</td><td class="num">4</td><td>24.0s &mdash; the Tactical Mind fold</td></tr>
+      <tr><td>Invictus</td><td class="num">15.0s</td><td class="num">4</td><td>24.0s &mdash; a d20 fold</td></tr>
+      <tr><td>Gren</td><td class="num">7.2s</td><td class="num">2</td><td>9.3s &mdash; hold</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <p>Decisions were quick. The slow minutes were rulings and targeting (the Hypnotic Pattern opening and the Entangle recast), covered in the mechanics notes.</p>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>5 &middot; Economy and flavour</h2>
+  <h3>Resources left at the wrap</h3>
+  <ul>
+    <li><strong>Gren</strong> &mdash; slots 1st 3/4, 2nd 2/3, 3rd 1/3; Innate Sorcery 1/2; Heroic Inspiration spent.</li>
+    <li><strong>Jetten</strong> &mdash; slots 1st 1/4, 2nd 2/2; Heroic Inspiration spent; HP 22/46.</li>
+    <li><strong>Morgash</strong> &mdash; Second Wind 2/3, Superiority 2/4; Action Surge and Adrenaline Rush untouched; HP 68/70.</li>
+    <li><strong>Invictus</strong> &mdash; every slot, Lay on Hands 30/30 and both Channel Divinity untouched; HP 48/53.</li>
+  </ul>
+  </div>
+  <div class="keep">
+  <h3>The night's dice</h3>
+  <ul>
+    <li><strong>Buff-die flips:</strong> none (no Bless tonight).</li>
+    <li><strong>Natural 20s:</strong> none.</li>
+    <li><strong>Natural 1s:</strong> the Farmhands, once.</li>
+    <li><strong>Advantage rolled:</strong> Invictus &times;2 (Thaumaturgy Intimidation) &mdash; disadvantage: the Farmhands &times;2 (thrown vegetables at range).</li>
+    <li><strong>Death saves:</strong> none.</li>
+  </ul>
+  <footer>
+    Generated from the Battle Flow ledger via <code>analyze-combat</code> &mdash; read-only scan, reverted applications subtracted &mdash; and the session transcript.
+  </footer>
+  </div>
+</section>
+
+</div>
+</div>
+</body>
+</html>

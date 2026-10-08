@@ -45,7 +45,8 @@ https://github.com/Txpple/<repo>/releases/latest/download/module.json
 Each README states its own Foundry and system requirements, and
 [docs/integration-map.md](docs/integration-map.md), regenerated from the manifests, is the table to
 trust for versions and compatibility. The servers are set up from their own READMEs and run under
-Claude Code.
+Claude Code. Two complete session records the scribe produced, recap, combat report and GM notes
+with the illustrations, are in [docs/examples/session-scribe](docs/examples/session-scribe).
 
 ## How they fit together
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 9 — GM Notes · Story · The Heart Knot</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+  ul,ol{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:6px}
+  .check{list-style:none;padding-left:4px}
+  .check li{padding-left:26px;position:relative}
+  .check li::before{content:"\2610";position:absolute;left:0;top:0;color:var(--muted)}
+  .check li.done::before{content:"\2611";color:var(--accent)}
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+  table.data tr:last-child td{border-bottom:none}
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+  blockquote{margin:0 0 14px;padding:8px 16px;border-left:3px solid var(--rule);font-size:15px;line-height:1.6}
+  blockquote p{margin:0}
+  blockquote .who{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings travel with what they introduce (the .keep
+     groups), pages numbered. Look at every page of the PDF before shipping. */
+  /* flow-root matters: as a plain block the keep is split when the heading fits at the
+     page foot and its block does not (measured on session 8's combat log, 2026-09-24). */
+  .keep{display:flow-root;break-inside:avoid;page-break-inside:avoid}
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 9 \00B7  GM Notes \00B7  Story \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3{page-break-after:avoid;break-after:avoid}
+    p,li,tr,.callout,blockquote,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ ul),p:has(+ ol){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 9 &mdash; GM Notes &middot; Story</p>
+  <h1>The Heart Knot</h1>
+  <p class="sub">Tuesday, 29 September 2026 &middot; plot: what changed, what is canon, promises, threads, quotes</p>
+</header>
+
+<section>
+  <div class="keep">
+  <p class="lead">Plot: what changed in the world, what is now canon, what was promised, what is left hanging. This was the last session — so this is also the campaign's end state.</p>
+  <div class="callout flag"><p><strong>Act on this first:</strong> the campaign is complete. The party <strong>freed the Dreamer</strong>; the four hearts are gone with her, <strong>Midnight is buried</strong> on the Wyrmwood lakeshore, <strong>Thomas has his name back</strong>, and you narrated each character's epilogue at the table. The plot doc and world-state want a final "how it ended" entry; everything below is the raw material for it.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>1 &middot; What changed</h2>
+  <ul style="margin-bottom:6px"><li><strong>The Dreamer is free.</strong> Four hearts into the heart knot, one per round — Duskheart (Jetten), Graveheart (Morgash), Tideheart (Gren), Thornheart (Invictus). On the fourth the knot opened, she stepped out with the whole heart, it turned to flesh, she took it back, the tree went into full bloom, and she was gone. Her last words, fading: <em>"Thank you. Thank you so much. I can never repay you."</em> No reward, no bargain — she left.</li></ul>
+  </div>
+  <ul><li><strong>Invictus refused Shar.</strong> The Duskheart possessed Jetten and read Shar's last offer. The party argued him out of it; he prayed to Lathander on the lakeshore at dawn; <strong>the Dawnfather appeared in the fog</strong>: <em>"You are not completely lost, my child, but the sword you wield must be left here. Bury it. First Light is gone."</em> Midnight is buried; the sword calls to him from the ground, "screaming". After the passing he said <strong>"Thomas. My name is Thomas."</strong> — Shar's price undone.</li><li><strong>Pudgy lives.</strong> Raised by the Thornheart before the long rest (its one and only use). Honeysuckle and Pinenut are buried under an acorn tree near the drowned temple. Pudgy is Gren's companion for good.</li><li><strong>Greenrest.</strong> The whole town shared the fourth dream — clear this time, no mist. Oswin begged the party in the road, then <strong>Pip</strong> turned him (<em>"They need to do what they need to do"</em>) and he said he'd stand the guards down — but three mobs came anyway. After the passing: the mist rolls back in; commoners won't speak to them; the elders understand and cannot forgive; Oswin: <em>"Please, please just go."</em></li><li><strong>Chauntea answers.</strong> In the epilogue, Enid's prayer at a sick child's bedside is answered for the first time in Greenrest's history — the Earthmother has forgiven the town. Harvests smaller but real; a healer of their own. (The plot doc's §3.4 silence is ended.)</li></ul>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>2 &middot; Now canon — said out loud, on tape</h2>
+  <ul style="margin-bottom:6px"><li><strong>Shar's offer, as read:</strong> Midnight into the heart knot drains the tree <strong>and the shards</strong>; each shard is a resurrection and "the heart of the tree" a fifth; the shards die, Midnight holds the five. <em>"I will win. My will shall be done. Think carefully, Invictus. This is my last offer."</em> It was refused — it was her last offer.</li></ul>
+  </div>
+  <ul><li><strong>The Dreamer's plea</strong> (dream 4): she forgives Corin (<em>"he was right"</em>) and herself; <em>"Bring the hearts to my tree. Find the heart knot. Place them in it, one by one, and I will absorb them. On the fourth, I shall be free."</em> She looked at Invictus as she faded and smiled a little.</li><li><strong>The heart rule</strong> you ruled: one at a time; a full turn of concentration at the knot; interrupted means start over; absorbed at the placer's next turn.</li><li><strong>The passing:</strong> <em>"It's stone. It has been stone in your hands for so long, warm and hard, and now it beats inside of me again."</em> — the LINE, delivered.</li><li><strong>Epilogue fates (your narration):</strong><ul><li><strong>Morgash</strong> — retires on the gems; accepts Warin's offer to hold the gate at Hedgewatch; stays because he "feels responsible"; forgiven in time; free breakfast and dinner from Oswin forever; a permanent room at the Full Larder.</li><li><strong>Jetten</strong> — the moonstone glows green one last time; a real dream of his sister sent by the Dreamer; he says goodbye; the stone is milky white. Keeps wandering; stays Thomas's friend.</li><li><strong>Thomas</strong> — a month later in Daggerford: reconciles with the temple of Lathander, visits the five graves, reads every name aloud and then his own, stays until dark; the grief ends. A paladin again; goes adventuring with Jetten for a few years ("Fafhrd and the Grey Mouser").</li><li><strong>Gren</strong> — Gren the Mighty who freed the Green Lady; the warren sends for him; a feast. Plants the Everseed Acorn in the square beside the old tree; stays in Greenrest; the squirrel cult, Pudgy as prophet; the oak drops its leaves every autumn.</li><li><strong>The Three Amigos</strong> — Gren, Morgash and Pudgy. Gren's old debt to Morgash is paid in acorns at the bedside every morning; Morgash steps on them half the time.</li><li><strong>Greenrest</strong> — leaves fall in the square for the first time; Oswin on the Mayor's Tower steps; a few families go south for the winter.</li></ul></li></ul>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>3 &middot; Promises and their status</h2>
+  <div class="scroll"><table class="data"><thead><tr><th>Who</th><th>Promised</th><th>Status</th></tr></thead><tbody><tr><td>Gren → Pudgy</td><td>Bury Honeysuckle and Pinenut outside</td><td><strong>Kept</strong> — under the acorn tree</td></tr><tr><td>Pudgy → Invictus</td><td>Never reveal where Midnight is buried</td><td><strong>Kept</strong> (<em>"What is? I don't know anything."</em>)</td></tr><tr><td>Pudgy</td><td>Tell the forest their deeds, then come to town</td><td><strong>Kept</strong> — arrived just after the passing</td></tr><tr><td>Oswin</td><td>Key to the city, a home, free meals — if they didn't do it</td><td><strong>Withdrawn</strong>; they did it</td></tr><tr><td>Oswin</td><td>Stand the guards down</td><td><strong>Kept in word</strong> — the mobs came regardless</td></tr><tr><td>The Dreamer</td><td>"I can never repay you"</td><td>Left without a reward (see table feedback in the mechanics notes)</td></tr><tr><td>Warin → Morgash</td><td>Hold the gate at Hedgewatch</td><td><strong>Accepted</strong> in the epilogue</td></tr><tr><td>Oswin → Morgash</td><td>Free breakfast and dinner, a room at the Full Larder</td><td>Epilogue canon</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>4 &middot; Threads left in the ground (for any return to this world)</h2>
+  <ol style="margin-bottom:6px"><li><strong>Midnight</strong>, buried on the Wyrmwood lakeshore, still calling. Only the party and Pudgy know where. Shar's order knows a Dark Justiciar walked out of their temple — and that he walked away from her.</li></ol>
+  </div>
+  <ol start="2"><li><strong>Shar</strong> made her <em>last</em> offer and was refused. "Somebody is always above a high priest."</li><li><strong>The Iris</strong> — never opened.</li><li><strong>The geased druid</strong> — his fate was never narrated; with Bramblemaw dead, he is free and a witness.</li><li><strong>Tess in Daggerford</strong> — Marn's letter was never delivered.</li><li><strong>The will-o'-wisp</strong> that escaped in the Misty Forest.</li><li><strong>Lae'zel</strong> — Anthony said out of the moment that Morgash would "try to find Lae'zel and live my life," then chose Hedgewatch when you offered it. The Lae'zel door is still open.</li><li><strong>The stash</strong>: Staff of Withering, Decanter of Endless Water, Driftglobe, the Rival Coin (Tiamat side up), ~10,700 gp in gems (Morgash's retirement).</li></ol>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>5 &middot; Loot with story weight</h2>
+  <ul style="margin-bottom:6px"><li><strong>The four hearts</strong> — gone into the Dreamer.</li></ul>
+  </div>
+  <ul><li><strong>Midnight</strong> — buried. <strong>A plain Scimitar</strong> (Jetten's, via the stash) now hangs at Thomas's side.</li><li><strong>The Everseed Acorn</strong> — planted in the square; a young oak.</li><li><strong>Jetten's moonstone</strong> — milky white now; its green glow is finally explained.</li><li><strong>Thomas's name</strong> — returned.</li></ul>
+</section>
+
+<section>
+  <div class="keep">
+  <h2>6 &middot; Quotes of the night</h2>
+  <blockquote><p><em>"What happened? Oh, my goodness. Oh. Did we kill the dragon? Did we beat him?"</em><span class="who">&mdash; Pudgy, freshly raised.</span></p></blockquote>
+  </div>
+  <blockquote><p><em>"It sounds like a trap, Invictus. Like a bargain with the devil."</em><span class="who">&mdash; Jetten, having just been made to offer it.</span></p></blockquote>
+  <blockquote><p><em>"It's not the same sword. Don't lie to yourself."</em><span class="who">&mdash; Morgash.</span></p></blockquote>
+  <blockquote><p><em>"You lost your bearings when you killed that guy."</em><span class="who">&mdash; Morgash.</span></p></blockquote>
+  <blockquote><p><em>"You haven't done anything wrong… you don't need redemption, but if you do this you will need redemption."</em><span class="who">&mdash; Gren.</span></p></blockquote>
+  <blockquote><p><em>"I think that's what Shar does for her acolytes… Takes the pain away from you."</em><span class="who">&mdash; Invictus.</span></p></blockquote>
+  <blockquote><p><em>"You are not completely lost, my child, but the sword you wield must be left here. Bury it. First Light is gone."</em><span class="who">&mdash; Lathander, in the fog.</span></p></blockquote>
+  <blockquote><p><em>"What is? I don't know anything. Yes, sir."</em><span class="who">&mdash; Pudgy.</span></p></blockquote>
+  <blockquote><p><em>"I think he's right, Mayor. They need to do what they need to do."</em><span class="who">&mdash; Pip.</span></p></blockquote>
+  <blockquote><p><em>"Don't do this evil thing, townspeople. Stay back."</em><span class="who">&mdash; Invictus, booming.</span></p></blockquote>
+  <blockquote><p><em>"This is for you, and blot out all my iniquities, Lathander."</em><span class="who">&mdash; Invictus, leaning from the saddle with the Thornheart.</span></p></blockquote>
+  <blockquote><p><em>"Thank you. Thank you so much. I can never repay you."</em> / <em>"Yes, you can. Wait."</em><span class="who">&mdash; the Dreamer; Morgash.</span></p></blockquote>
+  <div class="keep">
+  <blockquote><p><em>"Thomas. My name is Thomas."</em><span class="who">&mdash; Thomas.</span></p></blockquote>
+  <footer>GM-only. Compiled from the transcript, the chat log and the live sheets by the session scribe.</footer>
+  </div>
+</section>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 8 — GM Notes · Mechanics · The Wyrmwood</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+  ul,ol{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:6px}
+  .check{list-style:none;padding-left:4px}
+  .check li{padding-left:26px;position:relative}
+  .check li::before{content:"\2610";position:absolute;left:0;top:0;color:var(--muted)}
+  .check li.done::before{content:"\2611";color:var(--accent)}
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+  table.data tr:last-child td{border-bottom:none}
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+  blockquote{margin:0 0 14px;padding:8px 16px;border-left:3px solid var(--rule);font-size:15px;line-height:1.6}
+  blockquote p{margin:0}
+  blockquote .who{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings and intro lines travel with what they
+     introduce, pages numbered. Look at every page of the PDF before shipping. */
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 8 \00B7  GM Notes \00B7  Mechanics \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3{page-break-after:avoid;break-after:avoid}
+    p,li,tr,.callout,blockquote,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ ul),p:has(+ ol){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 8 &mdash; GM Notes &middot; Mechanics</p>
+  <h1>The Wyrmwood</h1>
+  <p class="sub">22 September 2026 &middot; bookkeeping, automation, rulings and the table</p>
+</header>
+
+<section>
+  <p class="lead">The system, the sheets, and the table: bookkeeping to apply, automation that cost time, rulings to keep consistent, and player-side observations. Plot is in <code>gm-notes-story.md</code>; the combat numbers are in <code>combat-stats.md</code>.</p>
+  <div class="callout flag"><p><strong>Act on this first.</strong> Hunter's Mark added <strong>zero</strong> damage all night &mdash; no force damage on any of Jetten's seven marked hits, where session 7 logged 37. It fails silently, so nobody at the table noticed. Check it before the finale.</p></div>
+</section>
+
+<section>
+  <h2>1 &middot; Bookkeeping to apply before the finale</h2>
+  <ul class="check">
+    <li><strong>Invictus is attuned to four items</strong> (limit 3): Cloak of Protection, Gauntlets of Ogre Power, Midnight, <strong>the Thornheart</strong>. One has to come off. The Gauntlets are what give him STR 19 for Shield Master; the Cloak is +1 AC and saves.</li>
+    <li><strong>The hoard's coin.</strong> The hoard card describes <em>"coins lie in drifts under a skin of lake-silt"</em>, but only gems and items reached the stash (party purse: 3 pp &middot; 451 gp &middot; 35 sp). Name a figure or leave it as flavour.</li>
+    <li><strong>Unclaimed in the stash:</strong> Staff of Withering (rare, attunement), Decanter of Endless Water, a second Driftglobe, Rival Coin, 13 gems (~10,700 gp), 1 Potion of Poison Resistance.</li>
+    <li><strong>Potions of Fire Breath:</strong> Morgash drank his (0 uses left, still on the sheet); Invictus shows &times;2 at 0/1 after drinking one; Jetten's is unused. Tidy, or leave: the effect lasts an hour and allows three exhales, so the drunk ones are spent either way.</li>
+    <li><strong>Veck's signet ring and finger.</strong> Morgash offered it to Selma and she dropped it. The item is still on Morgash's sheet. Did she keep it?</li>
+    <li><strong>Lingering effects:</strong> Invictus still shows <em>Death Armor</em> and a <em>"Damaged: &minus;2 AC"</em> (the Miasma) after the fight; Gren has Mage Armor, Death Ward, Poison Resistance, Antitoxin, Innate Sorcery and Bestial Communication still up. Clear them at the long rest.</li>
+    <li><strong>Gren's duplicate spell entries:</strong> <em>Counterspell</em> &times;2, <em>Dispel Magic</em> &times;2, <em>Magic Missile</em> &times;2.</li>
+    <li><strong>Squirrel tokens</strong> (Pudgy, Honeysuckle, Pinenut) are still on Bramblemaw's Lair at 0. If the party raises Pudgy, restore his HP.</li>
+    <li class="done"><strong>Heroic Inspiration for Morgash</strong> &mdash; paid at the top of the session and spent in the dragon fight.</li>
+    <li class="done"><strong>Party snapshot</strong> written: <code>party-snapshots/2026-09-22.md</code> plus the four JSON exports.</li>
+  </ul>
+</section>
+<section>
+  <h2>2 &middot; Automation that cost time &mdash; fix before the finale</h2>
+  <p>Ranked by how much it cost. Much of this looks like fallout from the forced update (<em>"the chat cards look a little different because of the update that was forced on us"</em>; <em>"it broke everything in automations"</em>).</p>
+  <ol>
+    <li><strong>Hunter's Mark bonus damage never applied.</strong> It was marked and moved twice, and all seven hits came through as <code>1d8 + 2 + 4</code> piercing with no d6 force. That's about 28 damage lost (the crit included), and nobody noticed because nothing errors. It worked in session 7.</li>
+    <li><strong>The Loot Shelf / merchant broke mid-shop.</strong> Selma's inventory showed empty (<em>"the upgrade equipped everything on her"</em>), players couldn't pick items up, you dropped the poison potions into the stash by hand, and later the Thornheart couldn't be picked up until you re-placed it. That's most of why shopping ran about 25 minutes.</li>
+    <li><strong>Careful Spell on <em>Slow</em> still prompted Invictus for a save.</strong> Invictus got slowed and you reverted it. Gren said the Careful pop-up never appeared. On the final Fireball he worked around it by aiming so only the dragon was inside. This is the session-7 Fireball/Careful issue in a new form.</li>
+    <li><strong>Magic Missile targeted Invictus</strong> when Gren had the dragon marked. Your view showed Invictus as the target. You reverted and Gren recast.</li>
+    <li><strong>Shield Master offered a bash on a thrown javelin.</strong> It needs a melee hit within 5 ft. Invictus noticed it himself: <em>"that can't be right"</em>.</li>
+    <li><strong>Concentration prompt on Gren with no visible concentration</strong> (<em>"I'm not concentrating on anything"</em>). It was <em>Slow</em>, but the UI wasn't showing it to him.</li>
+    <li><strong>Scene and token setup.</strong> The party was placed on the wrong map at the start, Morgash couldn't see his token, and Invictus was stuck, "prone somehow", mid-shopping.</li>
+    <li><strong>Two d20-fold prompts timed out on Morgash at 24 s</strong> (the Bless / Heroic Inspiration offer). Same timer note as session 7.</li>
+  </ol>
+</section>
+<section>
+  <h2>3 &middot; Rulings made &mdash; keep consistent</h2>
+  <ul>
+    <li><strong>Action Surge was used twice in the dragon fight.</strong> Round 3 came off the sheet; round 4 was on your call, <em>"You have two Action Surges"</em>. RAW at Fighter 6 it's <strong>one use per short or long rest</strong>, and two uses start at level 17. The second surge supplied 29 damage, and the dragon died with 3 HP of overkill. Not a retcon. Decide whether it was a house allowance before Morgash asks again in the finale.</li>
+    <li><strong>Divine Smite needs the bonus action</strong>, so it can't be combined with <em>Misty Step</em>. Ruled correctly, and it's why Invictus's big turn had no smite.</li>
+    <li><strong>Shield Master's bash has no size limit.</strong> A Huge dragon can be knocked prone. Ruled yes; that matches 2024.</li>
+    <li><strong>Counterspell (2024) is a Con save</strong> against the caster's DC, which is 18 for Gren with the Vesper Staff. You read it off the new rules at the table.</li>
+    <li><strong>Spike Growth:</strong> no damage for standing still, and 2d4 per 5 ft moved.</li>
+    <li><strong>Prone target, attacker at 10 ft reach:</strong> disadvantage, not advantage. You checked it and ruled correctly against the Pike.</li>
+    <li><strong>Grappled by the crocodile = Restrained:</strong> his attacks at disadvantage, attacks against him at advantage.</li>
+    <li><strong>Death Armor: once per day.</strong></li>
+    <li><strong>Spellfire Burst needs a Metamagic spend</strong> that turn.</li>
+    <li><strong>Damage at 0 HP:</strong> you said the second breath <em>"would have auto-crit him"</em> had Invictus still been down. RAW, damage from a save effect at 0 HP is <strong>one</strong> death-save failure. A crit (two failures) only comes from an attack within 5 ft. Massive damage kills only if the leftover damage is at least his HP max (53).</li>
+    <li><strong>Thornheart <em>raise dead</em>:</strong> the card says ten days. At the table it came out as <em>"two days or 10 days"</em>, so go with ten.</li>
+    <li><strong>Mundane arrows aren't tracked</strong> (restated to Morgash).</li>
+  </ul>
+</section>
+<section>
+  <h2>4 &middot; Player and table observations</h2>
+  <ul>
+    <li><strong>Robert (Invictus)</strong> nearly halved his decision time (14.1 s &rarr; 8.6 s), and the Misty Step into a shield bash was the best-built turn of the fight. But <strong>no Divine Smite and no Vow of Enmity against the dragon</strong>, despite three reminders from you (<em>"look at all of your plethora of abilities"</em>, <em>"that's your last reminder"</em>). Four 1st-level slots and a 2nd were still unspent at the end. Putting Smite and Vow on his hotbar would pay off in the finale.</li>
+    <li><strong>Drew (Jetten)</strong> was the fastest seat again (3.1 s). He drank <strong>Antitoxin instead of his resistance potion</strong> before the doors. The unresisted first breath (32) set up his first down. Resistance first would have left him at about 9 after the Mind Spike.</li>
+    <li><strong>Anthony (Morgash)</strong> carried the dragon fight (107 damage, 4-for-4 topples) and had the best RP beat of the shopping trip (the finger for Selma). He's slower on prompts (15.2 s), with two 24 s timeouts.</li>
+    <li><strong>Tom (Gren)</strong> ran the squirrel cult and got the kill. Said <em>"I'm gonna ask Claude"</em> for a rules check mid-fight. Careful Spell UI confusion again.</li>
+    <li><strong>Pacing:</strong> 2h59m. First combat at 1h18m. The dragon took about 50 minutes for 4 rounds (~12.5 min a round). The dream and breakfast ran ~30 minutes, shopping ~25.</li>
+    <li><strong>Your audio dropped for the table briefly</strong> during the dream narration (<em>"Oh, now we can hear you"</em>). The story beats all made it onto the recording.</li>
+    <li><strong>End of night, off the record:</strong> you showed the table the AI-generated scene art and explained the pipeline, and the players asked about the portraits. The finale was announced.</li>
+  </ul>
+</section>
+<section>
+  <h2>5 &middot; Combat observations &mdash; pointer</h2>
+  <p>Full report in <code>combat-stats.md</code> / <code>combat-log.html</code>. The things to carry into the finale:</p>
+  <ul>
+    <li><strong>3 HP of margin on the dragon.</strong> Topple's advantage (65), the second Action Surge (29) and the wand's Magic Missile (22) were each individually decisive.</li>
+    <li><strong>Poison Resistance was the best 800 gp the party has spent</strong> (~75 prevented). <strong>Fire Breath was the worst 600 gp</strong> (8 damage).</li>
+    <li><strong>Sap and Aura of Protection changed no outcome.</strong> Hunter's Mark added nothing (see §2.1).</li>
+  </ul>
+</section>
+
+<footer>
+  GM-only. Compiled from the transcript, the chat log and the live sheets by the session scribe.
+</footer>
+
+</div>
+</div>
+</body>
+</html>

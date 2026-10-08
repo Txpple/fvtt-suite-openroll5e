@@ -57,7 +57,11 @@ function familySection(self) {
       ...mods.map(line),
     );
   }
-  out.push("", `How they fit together is mapped in ${suiteLink}.`);
+  out.push(
+    "",
+    "Issues are welcome on every repo in the family; pull requests are not accepted, since each is one",
+    `author's design for one table, shared because it might suit yours. How they fit together is mapped in ${suiteLink}.`,
+  );
   return out.join("\n");
 }
 

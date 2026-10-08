@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 8 — GM Notes · Story · The Wyrmwood</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --surface:#fffdf8; --rule:#e2d9c8; --edge:#d8cfc0;
+    --ink:#3d3225; --ink2:#4a3f30; --muted:#8a7a5c; --head:#6b5535;
+    --accent:#9c5442; --accent-soft:#f2ead9; --band:#b3a284;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);font-family:var(--serif);color:var(--ink2);
+       -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 8px}
+  .sheet{background:var(--surface);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+  header{padding:28px 32px 18px;border-bottom:3px double var(--band)}
+  .eyebrow{margin:0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  h1{margin:6px 0 4px;font-size:27px;line-height:1.2;color:var(--ink)}
+  .sub{margin:0;font-size:13px;color:var(--muted)}
+  section{padding:6px 32px}
+  h2{margin:22px 0 8px;font-size:18px;color:var(--head);
+     border-bottom:1px solid var(--rule);padding-bottom:5px}
+  h3{margin:18px 0 6px;font-size:15px;color:var(--head);letter-spacing:.3px}
+  p{margin:0 0 12px;font-size:15px;line-height:1.65}
+  .lead{font-style:italic}
+  strong{color:var(--ink)}
+  ul,ol{margin:0 0 14px;padding-left:22px;font-size:15px;line-height:1.65}
+  li{margin-bottom:6px}
+  .check{list-style:none;padding-left:4px}
+  .check li{padding-left:26px;position:relative}
+  .check li::before{content:"\2610";position:absolute;left:0;top:0;color:var(--muted)}
+  .check li.done::before{content:"\2611";color:var(--accent)}
+  .scroll{overflow-x:auto;margin:0 0 16px}
+  table.data{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+  table.data th{text-align:left;color:var(--head);font-size:12px;letter-spacing:.6px;
+    text-transform:uppercase;border-bottom:1.5px solid var(--rule);padding:7px 10px 6px;white-space:nowrap}
+  table.data td{padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+  table.data tr:last-child td{border-bottom:none}
+  .callout{background:var(--accent-soft);border-left:4px solid var(--band);border-radius:4px;
+    padding:13px 17px;margin:0 0 16px}
+  .callout p{margin:0;font-size:14px;line-height:1.6;color:#5d4e38}
+  .callout p + p{margin-top:9px}
+  .flag{border-left-color:var(--accent)}
+  blockquote{margin:0 0 14px;padding:8px 16px;border-left:3px solid var(--rule);font-size:15px;line-height:1.6}
+  blockquote p{margin:0}
+  blockquote .who{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+  footer{padding:14px 32px 22px;border-top:1px solid var(--rule);font-size:12px;color:#9c8f78}
+  /* Print: nothing splits across a page, headings and intro lines travel with what they
+     introduce, pages numbered. Look at every page of the PDF before shipping. */
+  @page{margin:0.6in 0.6in 0.7in;
+    @bottom-center{content:"Session 8 \00B7  GM Notes \00B7  Story \00B7  " counter(page);
+      font-family:Georgia,serif;font-size:8pt;color:#9c8f78}}
+  @page :first{@bottom-center{content:none}}
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0}
+    .sheet{border:none;border-radius:0}
+    section,header{padding-left:0;padding-right:0}
+    .scroll{overflow:visible}
+    h2,h3{page-break-after:avoid;break-after:avoid}
+    p,li,tr,.callout,blockquote,table.data,.scroll{page-break-inside:avoid;break-inside:avoid}
+    h2 + p,h3 + p,p:has(+ .scroll),p:has(+ ul),p:has(+ ol){page-break-after:avoid;break-after:avoid}
+    p{orphans:3;widows:3}
+  }
+  @media (max-width:560px){
+    section,header,footer{padding-left:18px;padding-right:18px}
+    h1{font-size:23px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">The Broken Heart of Greenrest &mdash; Session 8 &mdash; GM Notes &middot; Story</p>
+  <h1>The Wyrmwood</h1>
+  <p class="sub">22 September 2026 &middot; plot, canon, promises and open threads</p>
+</header>
+
+<section>
+  <p class="lead">Plot: what changed in the world tonight, what was promised, what is now canon, and what is left hanging. Nothing here about the system or the table &mdash; that is <code>gm-notes-mechanics.md</code>.</p>
+  <div class="callout flag"><p><strong>Act on this first.</strong> All four hearts are in the party's hands, you told the table the next session is the last, and Invictus announced on tape that <em>"this sword has been whispering to me"</em> and he already knows the answer. The finale's choice is live and at least one PC has pre-committed.</p></div>
+</section>
+
+<section>
+  <h2>1 &middot; What changed tonight</h2>
+  <ul>
+    <li><strong>All four hearts.</strong> Graveheart (Morgash), Tideheart (Gren), Duskheart (Jetten), and now <strong>the Thornheart (Invictus)</strong>, taken from Bramblemaw's lair. Gren's Arcana (16 vs DC 15) gave them the method in outline: <em>put them together at the source</em> &mdash; the tree.</li>
+    <li><strong>Greenrest dreamed.</strong> Dream 3 was shared by the whole town &mdash; the four PCs saw other hazy figures in the mist, and Oswin, the waitress, Ambrose, Pip and Selma all confirmed it the next morning. <strong>Selma's tonic has failed</strong>; she is trying double doses.</li>
+    <li><strong>Bramblemaw is dead</strong> &mdash; Gren's Careful Fireball. The lair is open; at least two giant crocodiles remain in the lake, freed of his hold.</li>
+    <li><strong>Pudgy, Honeysuckle and Pinenut are dead</strong>, killed by the dragon's first breath in the great hall. Their bodies are in the lair. Pudgy was wearing Longshadow's peryton feather.</li>
+    <li><strong>The geased druid is down</strong>, not narrated as dead. With Bramblemaw dead, his compulsion (<em>"Must serve the master"</em>) should be broken.</li>
+    <li><strong>Invictus has turned.</strong> At breakfast he argued the town prospers on the dryad's captivity and she may deserve it &mdash; <em>"I just don't seem to have my same moral compass anymore."</em> At the end: <em>"I already know the answer, because this sword has been whispering to me."</em></li>
+    <li><strong>Oswin knows more.</strong> The Temple of Shar exists and opposed freeing the dryad; the body-part trader is dead (he has seen the finger); the party went after a green dragon. He does <strong>not</strong> know about the hearts by name. The elders are meeting.</li>
+    <li><strong>Selma has seen the finger</strong> and rewarded it &mdash; a Potion of Superior Healing on the house. Morgash told her Veck was already dead and <em>he</em> did not kill him (true, as far as it goes).</li>
+  </ul>
+</section>
+<section>
+  <h2>2 &middot; Now canon &mdash; said out loud, on tape</h2>
+  <ul>
+    <li><strong>Dream 3, verbatim beats.</strong> Her: <em>"Stay &mdash; stay, and I'll make it summer for you forever. Be as I am. Never end."</em> Him: <em>"If you take the ending out of me &mdash; if you take away my mortality &mdash; there's nothing left that you love. A life isn't for keeping, my dear. It's for spending. Let me go and spend mine."</em> She follows only to a line she cannot cross; seasons pass (real autumns, light winters, brief snow on the orchard); she gives up, tears her heart into four &mdash; <strong>red, blue, green, blackish purple</strong> &mdash; the shock blows the mist off the valley in a ring, and she folds into a tree.</li>
+    <li><strong>The colours in town:</strong> Pip's berry-juice wedges are red, blue, purple, green; the children's game <strong>The Breaking</strong> uses shirts of red, green, blue, purple.</li>
+    <li><strong>Oswin's own conclusion:</strong> <em>"She was offering him eternal summer, eternal life, and he refused. It seems we might be the beneficiaries of that."</em></li>
+    <li><strong>The combined heart = four true resurrections</strong> (restated by you when Invictus asked which heart could restore his family): <em>"That's when it's combined."</em> And: <em>"Which you can do now. You have all four. You just don't know how."</em></li>
+    <li><strong>The Thornheart:</strong> advantage on Dex saves; once between dawns, pressed to a body dead no more than ten days, it casts <em>raise dead</em>. Its vision &mdash; the green woman weeping, the heart bursting, the ring of mist driven back, the grey leafless tree, one heartbeat. <em>"It is the exact green of the dragon that hoards it, which is either a coincidence or isn't."</em></li>
+    <li><strong>Gren's standing in the Wyrmwood:</strong> <em>"the mighty warlord of the wood &mdash; all of the squirrels throughout the entire forest know of the great Gren."</em></li>
+    <li><strong>Invictus told Oswin that Jetten is a devotee of Selûne</strong>, and the Shar–Selûne enmity was restated at breakfast (the dryad is a demigoddess and Selûne's ally).</li>
+    <li><strong>The hoard was rolled, not placed</strong> (you, on tape): the DMG tables, nothing handpicked.</li>
+  </ul>
+</section>
+<section>
+  <h2>3 &middot; Promises and arrangements</h2>
+  <div class="scroll">
+  <table class="data">
+    <thead><tr><th>Who</th><th>Promised what</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Oswin</strong></td><td>A meeting of the elders "later today"</td><td><strong>Live</strong> &mdash; the town's position walks into the finale</td></tr>
+      <tr><td><strong>The squirrels</strong></td><td>To go in first and guard Gren</td><td>Kept. All three died doing it</td></tr>
+      <tr><td><strong>Gren &rarr; Pudgy</strong></td><td><em>"Let's go raise Pudgy!"</em></td><td><strong>Undecided.</strong> The Thornheart can; nobody committed</td></tr>
+      <tr><td><strong>Invictus &rarr; the table</strong></td><td><em>"I already know the answer"</em></td><td>Declared. The sword is on Shar's side</td></tr>
+      <tr><td><strong>Jetten &rarr; Invictus</strong></td><td><em>"It's not right to let her remain enslaved"</em></td><td>Standing opposition, on tape</td></tr>
+      <tr><td><strong>Morgash &rarr; Selma</strong></td><td>Veck <em>"is not coming back"</em></td><td>Delivered, with the finger</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<section>
+  <h2>4 &middot; Threads left open</h2>
+  <ol>
+    <li><strong>The choice at the tree.</strong> Harrow's terms (session 7): Shar wants the heart never made whole and offered Thomas's family back through Shar's magic as the price. Joined, it is four true resurrections and the dryad wakes. Invictus is leaning Shar (<em>the sword whispers</em>); Jetten is on record for freeing her; Gren and Morgash have not declared. This is the finale.</li>
+    <li><strong>Pudgy.</strong> The Thornheart raises one body per dawn within ten days, and the three squirrels lie in the lair. Gren wants his head priest back. You said on tape you were <em>"very disappointed"</em> they were not raising Pudgy &mdash; which reads as permission to put the option in front of them again. A short return trip, one dawn spent, a feather recovered.</li>
+    <li><strong>Oswin's elders.</strong> He has the shape of it (the dryad, the refusal, the prosperity, Shar) and not the arithmetic (the hearts). The plan held his plea for the last session; it is ready.</li>
+    <li><strong>The geased druid.</strong> Down in the lair, fate unnarrated, compulsion presumably broken with the dragon dead. Alive, he is a witness to what Bramblemaw was and did in the Wyrmwood.</li>
+    <li><strong>The town has no tonic.</strong> Every night from now on, Greenrest dreams. What does the tree look like tonight &mdash; the last session saw buds and one blossom.</li>
+    <li><strong>Prepared but not played</strong> (still available for the finale): Enid's belief that the Earthmother sent the vision, and her vigil at the tree; Warin's fifty men waking at the same moment, and his double guard on the tree; someone in town calling Invictus <em>Thomas</em> and him not answering; Enid noticing the sword is black.</li>
+    <li><strong>The lair is not finished.</strong> Crocodiles in the lake, rooms to the north unexplored, the thralls' quarters with old druidic gear. Pudgy's body wears Longshadow's feather.</li>
+  </ol>
+</section>
+<section>
+  <h2>5 &middot; Loot with story weight</h2>
+  <ul>
+    <li><strong>The Thornheart</strong> &mdash; Invictus, and an attunement problem (mechanics notes). The only heart that can raise the dead on its own.</li>
+    <li><strong>Staff of Withering</strong> &mdash; <em>"black bramble-wood, thorns filed smooth at the grip. It lay in the undercroft junk, not on the hoard. Whoever carried it into the Wyrmwood never carried it out."</em> A dead adventurer's staff; a hook if you want one.</li>
+    <li><strong>Rival Coin</strong> &mdash; Tiamat on heads, Bahamut on tails, found alone on its own pile <strong>Tiamat side up</strong>.</li>
+    <li><strong>Black opals</strong> "in Bramblemaw's own colours, kept closest to where the dragon slept"; an aquamarine "the exact colour of the flooded hall".</li>
+    <li><strong>Selma's Potion of Superior Healing</strong> &mdash; the finger's price. Morgash poured it into Invictus at 0 HP in round 4. The object lesson of the night: Greenrest's gratitude kept a PC alive.</li>
+    <li><strong>Longshadow's peryton feather</strong> &mdash; on Pudgy's body in the great hall.</li>
+  </ul>
+</section>
+<section>
+  <h2>6 &middot; Quotes of the night</h2>
+  <blockquote><p><em>"A life isn't for keeping, my dear. It's for spending. Let me go and spend mine."</em><span class="who">&mdash; the raven-haired man, dream 3.</span></p></blockquote>
+  <blockquote><p><em>"I just don't seem to have my same moral compass anymore&hellip; Maybe she deserves to be there."</em><span class="who">&mdash; Invictus, at breakfast.</span></p></blockquote>
+  <blockquote><p><em>"It's not right to let her remain enslaved, Invictus."</em><span class="who">&mdash; Jetten, straight back.</span></p></blockquote>
+  <blockquote><p><em>"She was offering him eternal summer, eternal life, and he refused. It seems we might be the beneficiaries of that."</em><span class="who">&mdash; Oswin Applewhite, getting there on his own.</span></p></blockquote>
+  <blockquote><p><em>"Sir, there's children here."</em><span class="who">&mdash; Oswin, to the finger on the breakfast table.</span></p></blockquote>
+  <blockquote><p><em>"That's his finger? Is he still alive?"</em> / <em>"He was already dead. I didn't kill him."</em><span class="who">&mdash; Selma, and Morgash, technically truthful.</span></p></blockquote>
+  <blockquote><p><em>"Oh, it's the mighty warlord of the wood!"</em><span class="who">&mdash; Pudgy.</span></p></blockquote>
+  <blockquote><p><em>"First, you must supplicate yourself and pay proper obeisance to me."</em><span class="who">&mdash; Gren, to three squirrels.</span></p></blockquote>
+  <blockquote><p><em>"There's a hallway on the other side. You are a mighty Gren. How did you know?"</em><span class="who">&mdash; Pudgy, back through the rubble.</span></p></blockquote>
+  <blockquote><p><em>"Come for my treasure, eh? You'll die instead."</em><span class="who">&mdash; Bramblemaw.</span></p></blockquote>
+  <blockquote><p><em>"This is for Honeysuckle, Pinenut and Pudgy, you son of a&mdash;"</em><span class="who">&mdash; Gren, with the Fireball that killed the dragon.</span></p></blockquote>
+  <blockquote><p><em>"Let's go raise Pudgy! &hellip; Pudgy's my only worshipper. He's like the head priest."</em><span class="who">&mdash; Gren, holding nothing, looking at Invictus holding the Thornheart.</span></p></blockquote>
+  <blockquote><p><em>"I already know the answer, because this sword has been whispering to me."</em><span class="who">&mdash; Invictus, on the heart.</span></p></blockquote>
+</section>
+
+<footer>
+  GM-only. Compiled from the transcript, the chat log and the live sheets by the session scribe.
+</footer>
+
+</div>
+</div>
+</body>
+</html>
