@@ -16,12 +16,13 @@ This repo is the thin layer over them:
   the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
 - `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
-  concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here because campaign
-  repos are private; the public example of what the scribe makes. Transcripts and chat logs stay out.
+  concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here when campaign
+  repos were private; the whole of that campaign is now public in `fvtt-campaign-greenrest`.
 - this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
 
 This repo is public (since 2026-10-08), like the modules and the servers; its README is the public
-front door of the family. The campaigns and the audio library stay private.
+front door of the family. The current campaign and the audio library stay private; the concluded
+Greenrest campaign is public as the worked example (`fvtt-campaign-greenrest`).
 
 **Not a monorepo.** Nothing builds here, no code is shared through here, and the sibling repos
 are not submodules. They are ordinary clones that happen to live in this folder, ignored by this
@@ -100,11 +101,12 @@ the manifests; the table there is the one to trust.
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
 - `fvtt-mod-soundscape-sfx` (private): the audio library Soundscape ships from. Not a module.
 
-**Campaigns** (private, next to the suite in the parent folder, `"parent": true` in `repos.json`):
+**Campaigns** (next to the suite in the parent folder, `"parent": true` in `repos.json`):
 `fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded 2026-09-27 as
 `fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks, which the dnd5e MCP
-repo's session hooks also call). Concluded campaigns are not part of the suite and are not listed
-in `repos.json`.
+repo's session hooks also call); it is private. `fvtt-campaign-greenrest` is concluded and public
+(since 2026-10-08) as the worked example of a campaign repo; its clone is a reference, nothing syncs
+it.
 
 **Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
 `fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is
