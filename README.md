@@ -70,7 +70,7 @@ cross repo lines.
 
 ```
 repos.json                 the manifest: every repo, its kind, visibility, status and one-line blurb
-sync.ps1                   clones missing siblings into this folder and fast-forwards clean ones
+sync.ps1                   clones the missing repos into this folder and fast-forwards clean ones
 tools/integration-map.mjs  writes docs/integration-map.md from the clones
 tools/suite-sections.mjs   writes the "Part of Open Roll 5e" section of every README from repos.json
 tools/migrate-layout.ps1   the one-time move from the flat layout used until 2026-10-08
@@ -78,7 +78,7 @@ docs/integration-map.md    the generated map
 CLAUDE.md                  working notes for sessions that span the family
 ```
 
-The sibling clones sit inside this folder and are gitignored (`fvtt-*/`), so one working directory
+The clones sit inside this folder and are gitignored (`fvtt-*/`), so one working directory
 sees the whole family while every repo keeps its own git:
 
 ```
