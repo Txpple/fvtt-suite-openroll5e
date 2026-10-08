@@ -281,5 +281,5 @@ Say "  ~\.claude.json: $left old-style path(s) left (campaign paths are expected
 Say ""
 Say "Done. Next:"
 Say "  1. Start the Claude desktop app and open a session at $Suite"
-Say "  2. In it, run .\sync.ps1 -Status and check the MCP tools (foundry-*, artificer, scribe) come up"
+Say "  2. In it, run .\sync.ps1 -Status and check the MCP tools (foundry-*, imagegen, scribe) come up"
 Say "  3. Delete the *.bak-migrate files once happy"

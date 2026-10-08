@@ -98,7 +98,7 @@ the manifests; the table there is the one to trust.
 
 - `fvtt-mcp-dnd5e` (public): the DM-assistant MCP server; drives any live Foundry world (Molten
   Hosting, a local install, a URL) through Claude Code. Formerly `fvtt-mcp-molten5e`.
-- `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `artificer`. Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
+- `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
 - `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `scribe`; home of
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
 - `fvtt-mod-soundscape-sfx` (private): the audio library Soundscape ships from. Not a module.
