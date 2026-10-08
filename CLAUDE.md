@@ -92,9 +92,9 @@ The full picture is `docs/integration-map.md`. The shape of it:
   session record.
 - **Loot Shelf knows Party Stash** (receipt settings line up when both are present).
 - **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
-  flag and `src/page/soundscape.ts` authors Soundscape's per-scene sound sets (flags only). Its
-  `scratch/siblings-census.mjs` lists every module id. When a module is renamed or retired, those
-  need the same edit.
+  flag and `src/page/soundscape.ts` authors Soundscape's per-scene sound sets (flags only). When
+  Open Server or Soundscape is renamed or retired, those need the same edit. Its local (gitignored)
+  `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
   every listener tolerate the hook never firing.
@@ -128,7 +128,6 @@ The full picture is `docs/integration-map.md`. The shape of it:
 
 ## Loose ends (2026-10-08)
 
-- The MCP's siblings census still names `fvtt-mod-miscpatches`.
 - The local Foundry install on desktop-ny still carries pre-rename copies of the modules and
   `fvtt-mod-vendorfixes`; update or remove next time in Foundry.
 - `fvtt-mod-miscpatches` is still cloned on desktop-ny with no remote to push to; delete when sure.
