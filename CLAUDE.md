@@ -127,7 +127,7 @@ The full picture is `docs/integration-map.md`. The shape of it:
   data.
 
 ## Loose ends (2026-10-08)
-  successor and the setting keys moved with it.
+
 - The MCP's siblings census still names `fvtt-mod-miscpatches`.
 - The local Foundry install on desktop-ny still carries pre-rename copies of the modules and
   `fvtt-mod-vendorfixes`; update or remove next time in Foundry.
