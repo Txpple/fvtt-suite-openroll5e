@@ -126,7 +126,7 @@
       "status": "active",
       "sync": true,
       "description": "Craig recording + Foundry chat log to session record (transcript, recap, combat report). MCP server key `scribe`; home of the session-scribe skill. Formerly fvtt-app-sessionscribe (renamed 2026-10-08).",
-      "blurb": "turns a session's Discord recording and Foundry chat log into its record: a speaker-labelled transcript, a player recap, a combat report and GM notes."
+      "blurb": "turns a session's Discord recording and Foundry chat log into its record. Its end-to-end `session-scribe` skill drives the server from the Craig link to a speaker-labelled transcript, a fully illustrated player recap, combat statistics, GM notes and a party snapshot."
     },
     {
       "name": "fvtt-campaign-echoesofhalruaa",
