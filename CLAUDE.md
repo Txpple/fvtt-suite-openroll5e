@@ -38,25 +38,27 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
 ## Where it lives
 
 ```
-D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hold unrelated repos
+<repo parent>\                           the machine's FVTT repo parent; may hold unrelated repos
   fvtt-suite-openroll5e\                 this repo
     fvtt-mod-*\  fvtt-mcp-*\             the siblings, each its own clone, gitignored here
   fvtt-campaign-echoesofhalruaa\         campaigns stay above
 ```
 
-- **desktop-ny:** `D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e`. Until 2026-10-08 the clones sat
-  flat in `D:\Workbench\FVTT\Repos` and that folder was the suite repo; `tools\migrate-layout.ps1`
-  moved them (and repaired the Battle Flow and Errata worktrees, patched `~\.claude.json` and the
-  per-repo local config, and renamed the `~\.claude\projects` folders so session history followed). The first run stopped after four siblings on a locked folder; the script resumes when the suite folder already exists, and the second run finished the move the same day.
-  The MCP servers in `~\.claude.json` run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist` and
-  `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
-  patching those again.
+- **History.** Until 2026-10-08 the clones sat flat in the repo parent and that folder was the
+  suite repo; `tools\migrate-layout.ps1` moved them (and repaired the Battle Flow and Errata
+  worktrees, patched the Claude Code user config and the per-repo local config, and renamed the
+  per-project Claude folders so session history followed). The first run stopped after four
+  siblings on a locked folder; the script resumes when the suite folder already exists, and the
+  second run finished the move the same day.
+  The MCP servers registered with Claude Code run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist`
+  and `fvtt-mcp-sessionscribe/dist` under the suite path. Renaming or moving the suite folder means
+  patching those registrations again.
 - **Relative paths across the boundary.** `../fvtt-mcp-dnd5e` from a sibling still resolves (they
   moved together); the campaign repos are `../../fvtt-campaign-*` from a sibling; anything outside the
-  family (`D:\Workbench\FVTT\vendor-snapshots`, `D:\Workbench\FVTT\fxstudio-assets`) is three
-  levels up from a sibling, not two. Errata's snapshot default was corrected on 2026-10-08.
-- **Other machines:** clone this repo into that machine's FVTT repo parent (the machine's `local-*`
-  CLAUDE.md says where), `cd` into it, run `.\sync.ps1`, and clone the campaign repos next to it.
+  family (vendor snapshots, FX Studio's asset drops, kept next to the repo parent) is three levels
+  up from a sibling, not two. Errata's snapshot default was corrected on 2026-10-08.
+- **Setting up a machine:** clone this repo into that machine's FVTT repo parent, `cd` into it,
+  run `.\sync.ps1`, and clone the campaign repos next to it.
 
 ## Working here
 
@@ -158,19 +160,19 @@ The full picture is `docs/integration-map.md`. The shape of it:
   `blurb` from `repos.json`. `node tools/suite-sections.mjs` rewrites them all (`--check` to verify);
   never edit the section by hand. The sections replaced the "Sister modules" sections on 2026-10-08.
 - **Foundry compatibility.** All verified on 14; minimums range 11 to 14 (Battle Flow and FX Studio
-  are 14-only). The system, where declared, is dnd5e. The local reference checkout of dnd5e source
-  on desktop-ny is `D:\Workbench\LOCAL\Repos\dnd5e-release-5.3.3`.
+  are 14-only). The system, where declared, is dnd5e. A local checkout of the dnd5e system source
+  (the 5.x release line) is the reference when a question needs the system's own code.
 - **Tooling tiers.** Battle Flow, the MCP and both apps have Biome + TypeScript config + Vitest;
   Errata has its register check; FX Studio, Loot Shelf, Party Stash and Soundscape have a
   package.json with tools but no linter or tests; Autoexplore, Combat Plus and Open Server are a
   `module.json` plus `scripts/`. When a small module grows tooling, copy Battle Flow's Biome config
   rather than inventing a new one.
-- **Testing host.** desktop-ny runs the local Foundry (14.368.0, dnd5e 6.0.5); the worlds in play
-  are on Molten Hosting and reached through the MCP. Prefer the MCP over raw file edits for world
-  data.
+- **Testing host.** The development machine runs a local Foundry (14.368.0, dnd5e 6.0.5); the
+  worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
+  file edits for world data.
 
 ## Keep this file current
 
-Same rule as the machine repos: when something changes that spans modules (a new sibling, a
+When something changes that spans modules (a new sibling, a
 rename, a shared hook, a release convention), record it here or in `repos.json` in the same
 session. Regenerate the map rather than editing it.

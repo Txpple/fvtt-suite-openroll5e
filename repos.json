@@ -117,7 +117,7 @@
       "status": "active",
       "sync": true,
       "description": "Gemini image generation for Foundry art (icons, tokens, portraits, illustrations). MCP server key `artificer`. Formerly fvtt-app-artificer (renamed 2026-10-08) and before that fvtt-mcp-artificer.",
-      "blurb": "makes the art with Google's Gemini image models: icons, tokens, props, portraits, illustrations and battlemap restyles, grounded in what the world already shows."
+      "blurb": "makes the art with Google's Gemini image models: icons, tokens, props, portraits and illustrations, token redresses and restyles, battlemap and overland-map repaints, and the illustrated session records, all grounded in what the world already shows."
     },
     {
       "name": "fvtt-mcp-sessionscribe",

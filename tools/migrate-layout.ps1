@@ -4,14 +4,15 @@
 # processes rooted in these folders (Windows refuses to rename a folder a process lives in) and it
 # rewrites ~\.claude.json on its own, which would clobber the path edits below.
 #
-#   powershell -NoProfile -ExecutionPolicy Bypass -File "D:\Workbench\FVTT\Repos\tools\migrate-layout.ps1" -DryRun
-#   powershell -NoProfile -ExecutionPolicy Bypass -File "D:\Workbench\FVTT\Repos\tools\migrate-layout.ps1"
-# (after a run that stopped partway the suite files have already moved, so the script is at
-#  D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e\tools\migrate-layout.ps1; run it from there and it resumes)
+#   powershell -NoProfile -ExecutionPolicy Bypass -File "<repos>\tools\migrate-layout.ps1" -Repos <repos> -DryRun
+#   powershell -NoProfile -ExecutionPolicy Bypass -File "<repos>\tools\migrate-layout.ps1" -Repos <repos>
+# where <repos> is the folder the fvtt-* clones sit in. (After a run that stopped partway the suite
+# files have already moved, so the script is at <repos>\fvtt-suite-openroll5e\tools\migrate-layout.ps1;
+# run it from there and it resumes.)
 #
-# Before:  D:\Workbench\FVTT\Repos\{suite files, fvtt-mod-*, fvtt-mcp-*, fvtt-app-*, fvtt-campaign-*}
-# After:   D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e\{suite files, fvtt-mod-*, fvtt-mcp-*}
-#          D:\Workbench\FVTT\Repos\fvtt-campaign-*                      (campaigns stay above)
+# Before:  <repos>\{suite files, fvtt-mod-*, fvtt-mcp-*, fvtt-app-*, fvtt-campaign-*}
+# After:   <repos>\fvtt-suite-openroll5e\{suite files, fvtt-mod-*, fvtt-mcp-*}
+#          <repos>\fvtt-campaign-*                      (campaigns stay above)
 # and two renames on the way in (already renamed on GitHub 2026-10-08):
 #          fvtt-app-artificer     -> fvtt-mcp-imagegen
 #          fvtt-app-sessionscribe -> fvtt-mcp-sessionscribe
@@ -34,12 +35,13 @@
 # Everything is a rename or a string replace; nothing is deleted. Backups: <file>.bak-migrate.
 [CmdletBinding()]
 param(
+    [Parameter(Mandatory = $true)][string]$Repos,
     [switch]$DryRun,
     [switch]$Force
 )
 $ErrorActionPreference = 'Stop'
 
-$Repos     = 'D:\Workbench\FVTT\Repos'
+$Repos     = (Resolve-Path -LiteralPath $Repos).Path.TrimEnd('\')
 $SuiteName = 'fvtt-suite-openroll5e'
 $Suite     = Join-Path $Repos $SuiteName
 $SuiteFiles = @('.git', '.gitignore', 'CLAUDE.md', 'README.md', 'repos.json', 'sync.ps1', 'tools', 'docs')
@@ -181,7 +183,7 @@ if ($WorktreeRepairs.Count) {
 }
 
 # ---- 5. patch absolute paths ------------------------------------------------------------------
-# Three spellings occur in the wild: D:\Workbench\FVTT\Repos\x, D:\\Workbench\\FVTT\\Repos\\x (JSON), D:/Workbench/FVTT/Repos/x
+# Three spellings occur in the wild: <repos>\x, <repos>\\x with doubled backslashes (JSON), <repos>/x with forward slashes
 function Patch-File([string]$file) {
     if (-not (Test-Path $file)) { return }
     $text = Get-Content -LiteralPath $file -Raw
