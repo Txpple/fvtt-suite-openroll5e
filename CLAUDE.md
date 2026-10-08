@@ -15,9 +15,9 @@ This repo is the thin layer over them:
 - `tools/suite-sections.mjs`: writes the "Part of Open Roll 5e" section of every sibling README and
   the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
-- `docs/examples/session-scribe/`: two complete session records Session Scribe produced for the
-  Greenrest campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here because the campaign
-  repo is private; the public example of what the scribe makes. Transcripts and chat logs stay out.
+- `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
+  concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here because campaign
+  repos are private; the public example of what the scribe makes. Transcripts and chat logs stay out.
 - this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
 
 This repo is public (since 2026-10-08), like the modules and the servers; its README is the public
@@ -41,7 +41,6 @@ D:\Workbench\FVTT\Repos\                 the machine's FVTT repo parent; may hol
   fvtt-suite-openroll5e\                 this repo
     fvtt-mod-*\  fvtt-mcp-*\             the siblings, each its own clone, gitignored here
   fvtt-campaign-echoesofhalruaa\         campaigns stay above
-  fvtt-campaign-greenrest\
 ```
 
 - **desktop-ny:** `D:\Workbench\FVTT\Repos\fvtt-suite-openroll5e`. Until 2026-10-08 the clones sat
@@ -104,8 +103,8 @@ the manifests; the table there is the one to trust.
 **Campaigns** (private, next to the suite in the parent folder, `"parent": true` in `repos.json`):
 `fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded 2026-09-27 as
 `fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks, which the dnd5e MCP
-repo's session hooks also call). `fvtt-campaign-greenrest` is concluded and archived read-only on
-GitHub (2026-10-01).
+repo's session hooks also call). Concluded campaigns are not part of the suite and are not listed
+in `repos.json`.
 
 **Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
 `fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is

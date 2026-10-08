@@ -138,15 +138,6 @@
       "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Lives ABOVE the suite, next to it: content, not code, with its own committing sync.ps1 on session hooks. This repo's sync only fast-forwards it."
     },
     {
-      "name": "fvtt-campaign-greenrest",
-      "kind": "campaign",
-      "visibility": "private",
-      "status": "archived",
-      "sync": false,
-      "parent": true,
-      "description": "The Broken Heart of Greenrest, concluded. GitHub repo archived read-only 2026-10-01; the clone, above the suite, is a reference."
-    },
-    {
       "name": "fvtt-mod-miscpatches",
       "kind": "mod",
       "title": "Misc Patches",
