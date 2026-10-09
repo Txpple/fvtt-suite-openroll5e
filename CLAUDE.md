@@ -168,7 +168,7 @@ The full picture is `docs/integration-map.md`. The shape of it:
   package.json with tools but no linter or tests; Autoexplore, Combat Plus and Open Server are a
   `module.json` plus `scripts/`. When a small module grows tooling, copy Battle Flow's Biome config
   rather than inventing a new one.
-- **Testing host.** The development machine runs a local Foundry (14.368.0, dnd5e 6.0.5); the
+- **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
 
