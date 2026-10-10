@@ -34,7 +34,7 @@ are not submodules. They are ordinary clones that happen to live in this folder,
 repo's `.gitignore` (`fvtt-*/`). The point is one working directory that sees the whole family.
 
 **What is in and what is out.** Inside: anything whose code reaches into another family member's
-data or hooks (the modules, the three MCP servers, the Soundscape audio library). Next to it, in the
+data or hooks (the modules, the three MCP servers, the Area Sounds audio library). Next to it, in the
 parent folder: the campaign repos. They are content, not code, nothing references them by relative
 path (the scribe finds its campaign through `SCRIBE_CAMPAIGN_REPO`, the dnd5e server through its
 `.env.*` files), and they have their own committing `sync.ps1` on session hooks. `repos.json` marks
@@ -99,7 +99,7 @@ the manifests; the table there is the one to trust.
 | `fvtt-mod-lootshelf` | Loot Shelf | Loot chests and merchant shelves players use without owning them; chat receipts |
 | `fvtt-mod-openserver` | Open Server | Hosted worlds: clears the startup pause, per-user landing scenes |
 | `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
-| `fvtt-mod-soundscape` | Soundscape | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat |
+| `fvtt-mod-areasounds` | Area Sounds | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat (Soundscape until 2.0.0, 2026-10-10) |
 
 **MCP servers and assets:**
 
@@ -108,7 +108,8 @@ the manifests; the table there is the one to trust.
 - `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
 - `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `sessionscribe` (was `scribe` to 2026-10-10); home of
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
-- `fvtt-mod-soundscape-sfx` (private): the audio library Soundscape ships from. Not a module.
+- `fvtt-mod-areasounds-sfx` (private): the audio library Area Sounds ships from, published to
+  `Data/areasounds-sfx/`. Not a module. Formerly `fvtt-mod-soundscape-sfx` (to 2026-10-10).
 
 **Campaigns** (next to the suite in the parent folder, `"parent": true` in `repos.json`):
 `fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded 2026-09-27 as
@@ -136,8 +137,8 @@ The full picture is `docs/integration-map.md`. The shape of it:
   session record.
 - **Loot Shelf knows Party Stash** (receipt settings line up when both are present).
 - **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
-  flag and `src/page/soundscape.ts` authors Soundscape's per-scene sound sets (flags only). When
-  Open Server or Soundscape is renamed or retired, those need the same edit. Its local (gitignored)
+  flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only). When
+  Open Server or Area Sounds is renamed or retired, those need the same edit. Its local (gitignored)
   `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
@@ -170,7 +171,10 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   name part has no hyphens; `app` was tried for the two smaller servers and dropped 2026-10-08, since each is one stdio MCP server like the dnd5e one. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
   2026-10-02 rename round is complete, Battle Flow included (its manifest and all nine README
   sections say `Open Roll 5e: Battle Flow`). "Sister" and "sibling" are not used in public text; a
-  module is "part of Open Roll 5e" and two that pair up are "companions".
+  module is "part of Open Roll 5e" and two that pair up are "companions". Before naming a
+  module, check the Foundry package list for a title that clashes: Soundscape clashed and became
+  Area Sounds (2.0.0, 2026-10-10). A rename changes the flag scope, so the module carries a
+  read fallback and a GM-load migration from the old scope (Area Sounds' `scripts/store.js`).
 - **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.
 - **Contributions.** Every public repo accepts issues and does not accept pull requests (the user,
   2026-10-08). The generated README section says so, and each repo carries
@@ -191,7 +195,7 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   are 14-only). The system, where declared, is dnd5e. A local checkout of the dnd5e system source
   (the 5.x release line) is the reference when a question needs the system's own code.
 - **Tooling tiers.** Battle Flow, the MCP and both apps have Biome + TypeScript config + Vitest;
-  Errata has its register check; FX Studio, Loot Shelf, Party Stash and Soundscape have a
+  Errata has its register check; FX Studio, Loot Shelf, Party Stash and Area Sounds have a
   package.json with tools but no linter or tests; Autoexplore, Combat Plus and Open Server are a
   `module.json` plus `scripts/`. When a small module grows tooling, copy Battle Flow's Biome config
   rather than inventing a new one.

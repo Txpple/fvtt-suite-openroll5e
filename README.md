@@ -53,7 +53,7 @@ history, releases and CI.
 | [Open Roll 5e: Loot Shelf](https://github.com/Txpple/fvtt-mod-lootshelf) | Loot chests and merchant shelves that players can take from, buy from and sell to without owning them, with a receipt for every trade. |
 | [Open Roll 5e: Open Server](https://github.com/Txpple/fvtt-mod-openserver) | For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own. |
 | [Open Roll 5e: Party Stash](https://github.com/Txpple/fvtt-mod-partystash) | Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt. |
-| [Open Roll 5e: Soundscape](https://github.com/Txpple/fvtt-mod-soundscape) | Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat. |
+| [Open Roll 5e: Area Sounds](https://github.com/Txpple/fvtt-mod-areasounds) | Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat. |
 
 ## The MCP servers
 
@@ -86,7 +86,7 @@ with the illustrations, are in [docs/examples/session-scribe](docs/examples/sess
 - **Loot Shelf and Party Stash are companions.** One owns loot on the ground and goods for sale,
   the other the party's shared inventory, and their receipt settings line up when both are present.
 - **The dnd5e server writes into two modules' data:** Open Server's landing-scene flag and
-  Soundscape's per-scene sound sets, flags only.
+  Area Sounds' per-scene sound sets, flags only.
 - **A hook is named after its module.** `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. New hooks are added in the emitting module, and every listener tolerates the
   hook never firing.
@@ -130,7 +130,7 @@ cd fvtt-suite-openroll5e
 pushes, stashes or switches branches: a clone that is dirty, on another branch or ahead of origin
 is named and left alone, and a repo you cannot reach is reported and left for later. `-Status`
 only reports and `-NoClone` skips the clone step. A few entries in `repos.json` are private (the
-audio library Soundscape ships from, and the campaign repos, which live next to the suite rather
+audio library Area Sounds ships from, and the campaign repos, which live next to the suite rather
 than in it); without access they simply fail to clone.
 
 After adding, renaming or retiring a repo: edit `repos.json`, run `node tools/suite-sections.mjs`

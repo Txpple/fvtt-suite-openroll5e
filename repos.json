@@ -84,22 +84,22 @@
       "blurb": "makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt."
     },
     {
-      "name": "fvtt-mod-soundscape",
+      "name": "fvtt-mod-areasounds",
       "kind": "mod",
-      "title": "Open Roll 5e: Soundscape",
+      "title": "Open Roll 5e: Area Sounds",
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, quiet during combat.",
+      "description": "Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, quiet during combat. Formerly fvtt-mod-soundscape (Open Roll 5e: Soundscape), renamed 2026-10-10 in 2.0.0 because another Foundry package has that name.",
       "blurb": "background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat."
     },
     {
-      "name": "fvtt-mod-soundscape-sfx",
+      "name": "fvtt-mod-areasounds-sfx",
       "kind": "assets",
       "visibility": "private",
       "status": "active",
       "sync": true,
-      "description": "Private audio library for Soundscape (interval sound sets, ambient loop beds). Not a Foundry module."
+      "description": "Private audio library for Area Sounds (interval sound sets, ambient loop beds), published to Data/areasounds-sfx. Not a Foundry module. Formerly fvtt-mod-soundscape-sfx (renamed 2026-10-10)."
     },
     {
       "name": "fvtt-mcp-dnd5e",

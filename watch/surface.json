@@ -256,7 +256,7 @@
       ],
       "routes": []
     },
-    "fvtt-mod-soundscape": {
+    "fvtt-mod-areasounds": {
       "dnd5eHooks": [],
       "coreHooks": [
         "canvasReady",
