@@ -93,7 +93,7 @@ the manifests; the table there is the one to trust.
 |---|---|---|
 | `fvtt-mod-autoexplore` | Autoexplore | Scene starts fully explored; tokens still need line of sight; no fog data written |
 | `fvtt-mod-battleflow` | Battle Flow | Combat automation for dnd5e 2024: auto damage on hit, reaction holds, auto saves, concentration |
-| `fvtt-mod-combatplus` | Combat Plus | Fight chores: combat music, initiative gate, out-of-turn movement block, defeated marking, turn alerts |
+| `fvtt-mod-combatplus` | Combat Plus | Fight chores: combat music, initiative gate, out-of-turn movement block, defeated marking, turn alerts; GM Vision (ported from dev7355608, MIT, 1.6.0) |
 | `fvtt-mod-errata5e` | Errata | In-memory stopgap fixes for vendor bugs (premium 2024 books, dnd5e, Foundry); the vendor-bug register |
 | `fvtt-mod-fxstudio` | FX Studio | Visual and sound FX from what happened at the table, via Sequencer + JB2A + PSFX; requires `sequencer` |
 | `fvtt-mod-lootshelf` | Loot Shelf | Loot chests and merchant shelves players use without owning them; chat receipts |
@@ -136,6 +136,11 @@ The full picture is `docs/integration-map.md`. The shape of it:
   and emits `fxstudio.rebuilt`. Session Scribe reads Battle Flow's chat cards when building a
   session record.
 - **Loot Shelf knows Party Stash** (receipt settings line up when both are present).
+- **Two modules touch Foundry's Token class at `setup`.** Combat Plus's GM Vision (behind its switch,
+  GM clients only) wraps `CONFIG.Token.objectClass` with an `isVisible` override, and Loot Shelf
+  patches `_canView` on whatever class is there. Either order works; a module that replaced the class
+  after `setup` would drop both. Combat Plus leaves the job to the upstream `gm-vision` module when
+  that is active, so the class is never wrapped twice.
 - **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
   flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only). When
   Open Server or Area Sounds is renamed or retired, those need the same edit. Its local (gitignored)

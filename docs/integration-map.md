@@ -9,7 +9,7 @@ Generated 2026-10-10 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.1 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
 | fvtt-mod-battleflow | fvtt-mod-battleflow | Open Roll 5e: Battle Flow | 2.16.2 | 14–14 | dnd5e | none |
-| fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.5.1 | 13–14 | any | none |
+| fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.6.0 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.1 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.8.0 | 14–14 | dnd5e | sequencer |
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
