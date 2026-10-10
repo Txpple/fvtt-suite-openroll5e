@@ -10,6 +10,10 @@
 //   <!-- openroll5e:catalogue --> ...   <!-- /openroll5e:catalogue -->  in this repo's README
 // A repo counts when it is active, public and has a "blurb" in repos.json. Run this after adding,
 // renaming or retiring a repo, then commit each README in its own repo.
+//
+// Line endings are not content. A README is up to date when it matches with CRLF read as LF, and a
+// rewrite renders the section in the ending the file already uses (a Windows checkout under
+// core.autocrlf holds CRLF), so neither mode ever touches a tree over endings alone.
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -79,10 +83,22 @@ function catalogue() {
   ].join("\n");
 }
 
-function replaceBlock(text, tag, body) {
+const toLF = (text) => text.replace(/\r\n/g, "\n");
+
+// The line ending a file mostly uses; a tie, or a file with no newline, counts as LF.
+function eolOf(text) {
+  const crlf = (text.match(/\r\n/g) || []).length;
+  const lf = (text.match(/\n/g) || []).length - crlf;
+  return crlf > lf ? "\r\n" : "\n";
+}
+
+// The section rendered in `eol`, in place of whatever sits between the markers; null when the
+// README carries no markers for `tag`.
+function replaceBlock(text, tag, body, eol) {
   const re = new RegExp(`<!-- openroll5e:${tag} -->[\\s\\S]*?<!-- /openroll5e:${tag} -->`);
   if (!re.test(text)) return null;
-  return text.replace(re, () => `<!-- openroll5e:${tag} -->\n${body}\n<!-- /openroll5e:${tag} -->`);
+  const block = [`<!-- openroll5e:${tag} -->`, body, `<!-- /openroll5e:${tag} -->`].join("\n");
+  return text.replace(re, () => block.replace(/\n/g, eol));
 }
 
 const targets = [
@@ -97,12 +113,12 @@ for (const t of targets) {
     continue;
   }
   const before = readFileSync(t.file, "utf8");
-  const after = replaceBlock(before, t.tag, t.body);
+  const after = replaceBlock(before, t.tag, t.body, eolOf(before));
   if (after === null) {
     console.log(`${t.name.padEnd(26)} README has no openroll5e:${t.tag} markers; skipped`);
     continue;
   }
-  if (after === before) {
+  if (toLF(after) === toLF(before)) {
     console.log(`${t.name.padEnd(26)} up to date`);
     continue;
   }
