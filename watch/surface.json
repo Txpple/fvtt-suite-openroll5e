@@ -20,6 +20,7 @@
     },
     "fvtt-mod-battleflow": {
       "dnd5eHooks": [
+        "dnd5e.advancementManagerComplete",
         "dnd5e.applyDamage",
         "dnd5e.damageActor",
         "dnd5e.displayCard",
@@ -59,11 +60,13 @@
         "deleteCombat",
         "deleteRegion",
         "deleteToken",
+        "getHeaderControlsGroupActorSheet",
         "highlightObjects",
         "hoverToken",
         "preCreateActiveEffect",
         "preCreateChatMessage",
         "preCreateRegionBehavior",
+        "ready",
         "renderActivityUsageDialog",
         "renderRollConfigurationDialog",
         "renderSceneNavigation",
