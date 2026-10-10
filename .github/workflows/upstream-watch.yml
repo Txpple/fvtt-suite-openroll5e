@@ -1,0 +1,41 @@
+# The family's daily watch on Foundry and dnd5e releases (tools/upstream-watch.mjs). It writes
+# VERSIONS.md and watch/ and commits them; --notify keeps one open "upgrade review" issue per
+# package with a review due, and closes it once VERSIONS.md's Reviewed has caught up. It needs only
+# Node and the workflow's own token. The leads come from watch/surface.json, which is generated
+# from the clones on a machine (tools/upstream-surface.mjs), never here.
+name: upstream watch
+on:
+  schedule:
+    - cron: "30 6 * * *"   # daily, 06:30 UTC (Errata's watch runs at 06:00)
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency: upstream-watch
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Watch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The summary goes to its own file: stdout is a log, and mixing the two is how Errata's
+        # watch lost a commit on every run that touched an issue.
+        run: node tools/upstream-watch.mjs --notify --summary "$RUNNER_TEMP/watch-summary.json"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add VERSIONS.md watch
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          msg=$(node -e '
+            const s = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
+            const v = s.newVersions.length ? `new: ${s.newVersions.join(", ")}` : "no new versions";
+            console.log(`chore: upstream watch ${s.date} - ${v}; reviews due: ${s.due.join(", ") || "none"}`);
+          ' "$RUNNER_TEMP/watch-summary.json")
+          git commit -m "$msg"
+          git push

@@ -14,6 +14,11 @@ This repo is the thin layer over them:
 - `tools/integration-map.mjs`: writes `docs/integration-map.md` from the clones.
 - `tools/suite-sections.mjs`: writes the "Part of Open Roll 5e" section of every sibling README and
   the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
+- `tools/upstream-watch.mjs` (daily, `.github/workflows/upstream-watch.yml`): the watch on Foundry and
+  dnd5e releases; `VERSIONS.md`, `watch/`, and one `upgrade review` issue per release. See
+  [Upstream upgrades](#upstream-upgrades).
+- `tools/upstream-surface.mjs`: writes `watch/surface.json` (the Foundry and dnd5e names each public
+  repo's shipped code uses) from the clones, for the watch's leads (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
 - `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
   concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here when campaign
@@ -73,8 +78,9 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
   `fvtt-mod-battleflow/.claude/worktrees/` may hold more. `sync.ps1` and the map generator skip
   worktrees.
 - After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
-  (the "Part of Open Roll 5e" README sections, below) and `node tools/integration-map.mjs`, commit
-  the rewritten READMEs in their own repos, and commit the result here.
+  (the "Part of Open Roll 5e" README sections, below), `node tools/integration-map.mjs` and
+  `node tools/upstream-surface.mjs`, commit the rewritten READMEs in their own repos, and commit the
+  result here. Rerun `upstream-surface` too when a module starts or stops using a hook.
 
 ## The family
 
@@ -136,6 +142,27 @@ The full picture is `docs/integration-map.md`. The shape of it:
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
   every listener tolerate the hook never firing.
+
+## Upstream upgrades
+
+A Foundry or dnd5e release can break a module or bring something worth adopting; Foundry 14.367
+and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The watch:
+
+- **Daily Action** runs `tools/upstream-watch.mjs --notify`. Foundry: every channel is read, only
+  Stable asks for a review (a newer Testing/Development build shows as VERSIONS.md's Newest
+  pre-release). dnd5e: published GitHub releases. Premium books stay with Errata's own watch.
+- **On a release newer than Reviewed** it writes `watch/<package>/<version>.md` (the releases
+  covered; dnd5e's notes verbatim, MIT, and its tag diff; Foundry's notes are linked, not copied,
+  and only the lines a lead matched are quoted) and opens one `upgrade review` issue here with a
+  row per public repo and that repo's leads (its `watch/surface.json` names matched against the
+  notes and the dnd5e diff, sharpest first). Leads are places to look, not verdicts.
+- **The review** is a Claude Code session in this folder: read the notes file, judge each row
+  (`no impact`, `breaks: …`, `adopt: …`, linking the sibling issue when there is work) and tick it.
+  The fvtt-mcp-dnd5e row is done only with the new build's `/join` fixture in its tests (Foundry
+  releases) and an `npm run smoke:bridge` line from the updated sandbox; the Errata row is Errata's
+  own version review. Then set Reviewed and Reviewed on in `VERSIONS.md` and commit; the next watch
+  run closes the issue (dispatch the workflow to close it now).
+- The watch's stdout is a log; its summary goes only to `--summary <file>`.
 
 ## Conventions
 
