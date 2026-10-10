@@ -1,12 +1,39 @@
 # Open Roll 5e
 
-Open Roll 5e is a family of [Foundry VTT](https://foundryvtt.com) modules and
-[Claude Code](https://claude.com/claude-code) tooling for a D&D 5e table on the 2024 rules, built
-for one table and shared. Nine modules cover the table from the fog of war to the loot: combat
-automation, visual effects, background sound, loot and the party's stash, fixes for vendor bugs,
-and the chores of a hosted world. Three MCP servers let Claude Code build content in a live world,
-make the art and write the session record. Every module installs and works on its own and none
-needs another.
+Run D&D 2024 on [Foundry VTT](https://foundryvtt.com) with one automation module instead of a
+stack. If you want one, add an assistant that was there last session.
+
+**One module instead of a stack.** [Battle Flow](https://github.com/Txpple/fvtt-mod-battleflow)
+automates combat under the 2024 rules: a hit rolls and applies its own damage, saves resolve
+themselves, reactions hold, concentration is tracked. It is one module with no dependencies beyond
+the dnd5e system, every feature is always on, and it covers the official 2024 books, the premium
+ones included, because [Errata](https://github.com/Txpple/fvtt-mod-errata5e) holds each vendor bug
+until the vendor ships its own fix. Eight more modules cover the rest of the table, from the fog of
+war to the loot, and every one installs and works on its own.
+
+| | Open Roll 5e | the midi-qol stack |
+| --- | --- | --- |
+| Install | one module | midi + DAE + premades + their dependencies |
+| Settings | ten | hundreds |
+| Coverage | the official 2024 books | nearly everything, if you set it up |
+| Surviving a dnd5e update | public hooks only, nothing patched | waits for each module to catch up |
+
+**An assistant that was there last session, if you want one.** The modules contain no AI and need
+none. The three MCP servers are a separate, optional layer that puts Claude at the DM's side,
+working only on your own world and your own sessions. One builds content in a live world, a stat
+block becoming a complete NPC and a map image a walled and lit scene, with nothing installed in the
+world, so it reaches a hosted box as easily as a local one. One,
+[Session Scribe](https://github.com/Txpple/fvtt-mcp-sessionscribe), turns the session's recording
+and chat log into its record: a player recap, the combat report, GM notes and a party snapshot. The
+record goes into the campaign's own repository, and the next session's prep reads it. The third
+makes art for your own table. Two complete records are in
+[docs/examples/session-scribe](docs/examples/session-scribe); the campaign they came from is public
+at [fvtt-campaign-greenrest](https://github.com/Txpple/fvtt-campaign-greenrest).
+
+**Everything it does, you can see and revert.** Every automatic action in combat, every trade at a
+shelf and every transfer from the stash posts a receipt with a one-click revert.
+
+Built for one table and shared.
 
 This repository is the umbrella. It holds the manifest of the family, the map of how its members
 fit together, and a script that lays the clones out in one working directory. Nothing builds here
