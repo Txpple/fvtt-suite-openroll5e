@@ -161,7 +161,7 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   The fvtt-mcp-dnd5e row is done only with the new build's `/join` fixture in its tests (Foundry
   releases) and an `npm run smoke:bridge` line from the updated sandbox; the Errata row is Errata's
   own version review. Then set Reviewed and Reviewed on in `VERSIONS.md` and commit; the next watch
-  run closes the issue (dispatch the workflow to close it now).
+  run closes the issue, and only once no row is left unticked (dispatch the workflow to close it now).
 - The watch's stdout is a log; its summary goes only to `--summary <file>`.
 
 ## Conventions

@@ -309,6 +309,9 @@ async function notify(due, reviews, rows) {
       await sleep(3000);
     } else {
       for (const i of mine) {
+        // Reviewed moved, but the issue closes only with every repo judged.
+        const open = (i.body?.match(/^- \[ \] /gm) ?? []).length;
+        if (open) { log.push(`kept #${i.number} open: Reviewed is ${r.Reviewed} but ${open} row(s) have no verdict`); continue; }
         await api(`repos/${OURS}/issues/${i.number}/comments`, { method: "POST", body: { body: `Reviewed: VERSIONS.md now says ${r.Reviewed} (${today}).` } });
         await api(`repos/${OURS}/issues/${i.number}`, { method: "PATCH", body: { state: "closed", state_reason: "completed" } });
         log.push(`closed #${i.number}: ${r.Name} reviewed at ${r.Reviewed}`);
