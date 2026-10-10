@@ -317,6 +317,7 @@
       ],
       "routes": [
         "/api/status",
+        "/auth",
         "/join",
         "/setup"
       ]
@@ -335,7 +336,9 @@
       "documents": [],
       "dnd5eConfig": [],
       "api": [],
-      "routes": []
+      "routes": [
+        "/api/status"
+      ]
     }
   }
 }
