@@ -74,6 +74,11 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
 - Git is per sibling: `git -C fvtt-mod-fxstudio status`, and so on. Commits in this repo are for
   the files this repo tracks. If a `fvtt-*` path ever appears in `git status` here, the ignore is
   broken; fix that before committing.
+- **"Open issues" means this suite's, minus Errata** (the user, 2026-10-10). Query this repo and
+  each `"status": "active"` repo in `repos.json` one by one (`gh issue list -R Txpple/<repo> --state open`),
+  skipping `fvtt-mod-errata5e`. Never an owner-wide `gh search issues`: it pulls in repos outside the
+  family, the retired `fvtt-mod-vendorfixes` copies of Errata's register, and its result cap lets
+  Errata's hundreds of issues crowd the rest out. Errata's issues only when asked for by name.
 - `fvtt-mod-battleflow-cover` is a worktree of Battle Flow on `feat/cover-hover`, not a clone.
   `fvtt-mod-battleflow/.claude/worktrees/` may hold more. `sync.ps1` and the map generator skip
   worktrees.
