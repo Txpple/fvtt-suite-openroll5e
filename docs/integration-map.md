@@ -1,13 +1,13 @@
 # Integration map
 
-Generated 2026-10-08 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-10-10 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
 | Repo | Package id | Foundry title | Version | Foundry | System | Requires |
 |---|---|---|---|---|---|---|
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.1 | 13–14 | any | none |
-| fvtt-mod-battleflow | fvtt-mod-battleflow | Open Roll 5e: Battle Flow | 2.15.0 | 14–14 | dnd5e | none |
+| fvtt-mod-battleflow | fvtt-mod-battleflow | Open Roll 5e: Battle Flow | 2.16.1 | 14–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.5.1 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.1 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.7.0 | 14–14 | dnd5e | sequencer |
