@@ -168,6 +168,7 @@
         "createChatMessage",
         "createRegion",
         "getHeaderControlsItemSheet5e",
+        "getSceneControlButtons",
         "init",
         "ready",
         "renderItemSheet5e",
