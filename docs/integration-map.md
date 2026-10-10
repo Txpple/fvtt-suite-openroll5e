@@ -6,8 +6,8 @@ Generated 2026-10-10 by `tools/integration-map.mjs` from the clones next to this
 
 | Repo | Package id | Foundry title | Version | Foundry | System | Requires |
 |---|---|---|---|---|---|---|
-| fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.0 | 13–14 | any | none |
-| fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.1 | 13–14 | any | none |
+| fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.1 | 13–14 | any | none |
+| fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
 | fvtt-mod-battleflow | fvtt-mod-battleflow | Open Roll 5e: Battle Flow | 2.16.2 | 14–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.5.1 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.1 | 13–14 | dnd5e | none |
