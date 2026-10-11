@@ -213,6 +213,11 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
+  A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
+  or a parallel session's (the app keeps every open session's MCP servers alive; stop the `chrome-headless-shell` under
+  that session's dnd5e server pid; `fvtt-mcp-dnd5e` issue #12 asks the bridge to name its holder). Foundry 14.369 is
+  faster than 14.367: a Battle Flow battery went red on polling and on a popup's close window with the module
+  unchanged (Battle Flow issue #8, `tools/README.md` *A faster platform turns a poll into a lie*).
 
 ## Keep this file current
 
