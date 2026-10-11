@@ -328,9 +328,9 @@
       "api": [
         "TextEditor",
         "deepClone",
-        "filterObject",
         "getRoute",
         "isNewerVersion",
+        "operators",
         "parseUuid",
         "randomID",
         "setProperty"

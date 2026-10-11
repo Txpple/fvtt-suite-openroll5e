@@ -109,7 +109,12 @@ the manifests; the table there is the one to trust.
 **MCP servers and assets:**
 
 - `fvtt-mcp-dnd5e` (public): the DM-assistant MCP server; drives any live Foundry world (Molten
-  Hosting, a local install, a URL) through Claude Code. Formerly `fvtt-mcp-molten5e`.
+  Hosting, a local install, a URL) through Claude Code. Formerly `fvtt-mcp-molten5e`. The 2026-10-11
+  pass (its record: `docs/history/handoff-2026-10-11.md` there) made it shareable: every write
+  answers with a receipt and `run-script { undo }` reverses it, `FOUNDRY_TOOLSETS=readonly` is a
+  safe first registration, `npm run init` writes the `.env` and the registration and runs the
+  doctor, and `get-world-info` reports the bridge (renderer, the family modules active, warnings).
+  Its tracker is empty; the release is the maintainer's to cut.
 - `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
 - `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `sessionscribe` (was `scribe` to 2026-10-10); home of
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
@@ -147,9 +152,11 @@ The full picture is `docs/integration-map.md`. The shape of it:
   after `setup` would drop both. Combat Plus leaves the job to the upstream `gm-vision` module when
   that is active, so the class is never wrapped twice.
 - **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
-  flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only). When
-  Open Server or Area Sounds is renamed or retired, those need the same edit. Its local (gitignored)
-  `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
+  flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only), and
+  `src/page/world.ts` names Battle Flow, Area Sounds and Open Server by package id so
+  `get-world-info`'s `bridge` block can report them active (with versions) and warn when a tool's
+  module is missing. When one of those three is renamed or retired, all of that needs the same
+  edit. Its local (gitignored) `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
   every listener tolerate the hook never firing.
@@ -214,8 +221,11 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
-  or a parallel session's (the app keeps every open session's MCP servers alive; stop the `chrome-headless-shell` under
-  that session's dnd5e server pid; `fvtt-mcp-dnd5e` issue #12 asks the bridge to name its holder). Foundry 14.369 is
+  or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
+  names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
+  it cannot settle; since 2026-10-11 the bridge also caps a hung page op and rejoins on the next call). Every MCP
+  write leaves a receipt under the OS temp dir (`fvtt-mcp-dnd5e/receipts/`, keyed by server and world); the lock
+  behind it is per page, so two sessions on one bridge user still interleave at the server. Foundry 14.369 is
   faster than 14.367: a Battle Flow battery went red on polling and on a popup's close window with the module
   unchanged (Battle Flow issue #8, `tools/README.md` *A faster platform turns a poll into a lie*).
 

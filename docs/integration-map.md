@@ -22,10 +22,10 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 
 | From | To | Hits | First seen in |
 |---|---|---|---|
-| fvtt-mcp-dnd5e | fvtt-mod-areasounds | 8 | fvtt-mcp-dnd5e/scripts/verify-areasounds-tooling.mjs |
-| fvtt-mcp-dnd5e | fvtt-mod-openserver | 6 | fvtt-mcp-dnd5e/scripts/verify-landing-scene.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-areasounds | 9 | fvtt-mcp-dnd5e/scripts/verify-areasounds-tooling.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-openserver | 7 | fvtt-mcp-dnd5e/scripts/verify-landing-scene.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-battleflow | 4 | fvtt-mcp-dnd5e/src/page/world.ts |
 | fvtt-mcp-dnd5e | fvtt-mod-autoexplore | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
-| fvtt-mcp-dnd5e | fvtt-mod-battleflow | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-combatplus | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-fxstudio | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-lootshelf | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
