@@ -27,6 +27,7 @@
         "dnd5e.postDamageRollConfiguration",
         "dnd5e.postRollConfiguration",
         "dnd5e.postUseActivity",
+        "dnd5e.preActivityConsumption",
         "dnd5e.preApplyDamage",
         "dnd5e.preCalculateDamage",
         "dnd5e.preCreateUsageMessage",
@@ -327,6 +328,7 @@
       "api": [
         "TextEditor",
         "deepClone",
+        "filterObject",
         "getRoute",
         "isNewerVersion",
         "parseUuid",

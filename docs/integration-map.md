@@ -1,6 +1,6 @@
 # Integration map
 
-Generated 2026-10-10 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-10-11 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
