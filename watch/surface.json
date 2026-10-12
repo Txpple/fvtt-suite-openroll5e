@@ -69,6 +69,7 @@
         "preCreateActiveEffect",
         "preCreateChatMessage",
         "preCreateRegionBehavior",
+        "preDeleteActiveEffect",
         "ready",
         "renderActivityChoiceDialog",
         "renderActivityUsageDialog",
@@ -115,6 +116,7 @@
         "Die",
         "FormDataExtended",
         "PreciseText",
+        "confirm",
         "deepClone",
         "enrichHTML",
         "escapeHTML",
@@ -124,6 +126,7 @@
         "isEmpty",
         "mergeObject",
         "objectsEqual",
+        "randomID",
         "setProperty"
       ],
       "routes": []
