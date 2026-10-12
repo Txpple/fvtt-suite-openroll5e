@@ -8,7 +8,7 @@
 # branch other than main, or ahead of origin is named and left exactly as it is. The campaign
 # repos have their own sync.ps1 that commits via session hooks; this one only fast-forwards them.
 #
-# Worktrees (a .git *file* rather than a directory, e.g. fvtt-mod-battleflow-cover) are reported
+# Worktrees (a .git *file* rather than a directory, e.g. a feature worktree beside its clone) are reported
 # and skipped. Folders matching fvtt-* that are not in repos.json are reported as strays.
 #
 # Best-effort: offline just means "sync later". Exit code is 0 unless repos.json is unreadable.

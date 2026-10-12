@@ -9,8 +9,8 @@ log. Session 8 came from the same `session-scribe` skill the day before it moved
 `fvtt-mcp-dnd5e` into its own server, and is the session the scribe then replayed end to end as its
 proof. The illustrations were rendered by
 [fvtt-mcp-imagegen](https://github.com/Txpple/fvtt-mcp-imagegen) from the party's portraits, and the
-combat numbers were read from [Open Roll 5e: Battle Flow](https://github.com/Txpple/fvtt-mod-battleflow)'s
-chat cards.
+combat numbers were read from the chat cards of Open Roll 5e: Battle Flow, now
+[Open Roll 5e: By the Books](https://github.com/Txpple/fvtt-mod-bythebooks).
 
 | Session | Recap | Combat report | GM notes, story | GM notes, mechanics |
 | --- | --- | --- | --- | --- |

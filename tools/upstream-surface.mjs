@@ -52,7 +52,7 @@ for (const r of tracked) {
   const sets = { dnd5eHooks: new Set(), coreHooks: new Set(), documents: new Set(), dnd5eConfig: new Set(), api: new Set(), routes: new Set() };
   for (const f of walk(dir)) {
     const s = readFileSync(f, "utf8");
-    // Hooks.on/once, and Battle Flow's listen(name, tag, fn) wrapper.
+    // Hooks.on/once, and By the Books' listen(name, tag, fn) wrapper.
     for (const m of s.matchAll(/\b(?:Hooks\.(?:on|once)|listen)\(\s*["'`]([\w.]+)["'`]/g)) {
       const h = m[1];
       if (h.startsWith("dnd5e.")) sets.dnd5eHooks.add(h);

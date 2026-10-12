@@ -18,7 +18,7 @@
       ],
       "routes": []
     },
-    "fvtt-mod-battleflow": {
+    "fvtt-mod-bythebooks": {
       "dnd5eHooks": [
         "dnd5e.advancementManagerComplete",
         "dnd5e.applyDamage",

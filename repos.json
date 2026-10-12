@@ -13,15 +13,14 @@
       "blurb": "lets a scene start fully explored, so the whole map shows through the fog of war while tokens still need line of sight."
     },
     {
-      "name": "fvtt-mod-battleflow",
+      "name": "fvtt-mod-bythebooks",
       "kind": "mod",
-      "title": "Open Roll 5e: Battle Flow",
+      "title": "Open Roll 5e: By the Books",
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Combat automation for dnd5e 2024 rules: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, concentration is tracked.",
-      "note": "fvtt-mod-battleflow-cover next to it is a git worktree of this repo on feat/cover-hover, not a separate clone; sync.ps1 leaves worktrees alone.",
-      "blurb": "combat automation for dnd5e 2024 rules: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, and concentration is tracked. Every rule that touches a fight in the 2024 core books, Heroes of Faerûn, Arcana Unleashed and Ravenloft: The Horrors Within."
+      "description": "The 2024 D&D rules played from the sheet: every rule in the six books that rides a use or an effect runs itself, a hit's damage, saves, reactions and concentration through rests, senses, sizes and lights, each step with a receipt and a revert. Formerly fvtt-mod-battleflow (Open Roll 5e: Battle Flow), renamed in 3.0.0 on 2026-10-11; the GitHub repo was renamed in place, so the old URL redirects.",
+      "blurb": "the 2024 rules played from the sheet: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, concentration is tracked, and rests, senses, sizes and lights follow the book. Every rule that rides a use or an effect in the 2024 core books, Heroes of Faerûn, Arcana Unleashed and Ravenloft: The Horrors Within, each step with a receipt and a revert; offered, never enforced."
     },
     {
       "name": "fvtt-mod-combatplus",
@@ -136,6 +135,15 @@
       "sync": true,
       "parent": true,
       "description": "The current campaign (working title Echoes of Halruaa; scaffolded 2026-09-27 as fvtt-campaign-next). Lives ABOVE the suite, next to it: content, not code, with its own committing sync.ps1 on session hooks. This repo's sync only fast-forwards it. Its Molten box is the foundry-halruaa5e MCP bridge."
+    },
+    {
+      "name": "fvtt-mod-battleflow",
+      "kind": "mod",
+      "title": "Open Roll 5e: Battle Flow",
+      "visibility": "none",
+      "status": "retired",
+      "sync": false,
+      "description": "Renamed to fvtt-mod-bythebooks (Open Roll 5e: By the Books) in 3.0.0 on 2026-10-11. GitHub renamed the repo in place, so this name redirects there; no clone is kept under it. 3.0.0 still emits the battleflow.* hooks for one release and reads this id's flag scope on old chat cards for good."
     },
     {
       "name": "fvtt-mod-miscpatches",

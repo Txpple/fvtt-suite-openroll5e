@@ -3,9 +3,10 @@
 Run D&D 2024 on [Foundry VTT](https://foundryvtt.com) with one automation module instead of a
 stack. If you want one, add an assistant that was there last session.
 
-**One module instead of a stack.** [Battle Flow](https://github.com/Txpple/fvtt-mod-battleflow)
-automates combat under the 2024 rules: a hit rolls and applies its own damage, saves resolve
-themselves, reactions hold, concentration is tracked. It is one module with no dependencies beyond
+**One module instead of a stack.** [By the Books](https://github.com/Txpple/fvtt-mod-bythebooks)
+plays the 2024 rules from the sheet: a hit rolls and applies its own damage, saves resolve
+themselves, reactions hold, concentration is tracked, and rests, senses, sizes and lights follow
+the book, each step with a receipt and a revert. It is one module with no dependencies beyond
 the dnd5e system, every feature is always on, and it covers the official 2024 books, the premium
 ones included, because [Errata](https://github.com/Txpple/fvtt-mod-errata5e) holds each vendor bug
 until the vendor ships its own fix. Eight more modules cover the rest of the table, from the fog of
@@ -46,7 +47,7 @@ history, releases and CI.
 | Module | Does |
 | --- | --- |
 | [Open Roll 5e: Autoexplore](https://github.com/Txpple/fvtt-mod-autoexplore) | Lets a scene start fully explored, so the whole map shows through the fog of war while tokens still need line of sight. |
-| [Open Roll 5e: Battle Flow](https://github.com/Txpple/fvtt-mod-battleflow) | Combat automation for dnd5e 2024 rules: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, and concentration is tracked. Every rule that touches a fight in the 2024 core books, Heroes of Faerûn, Arcana Unleashed and Ravenloft: The Horrors Within. |
+| [Open Roll 5e: By the Books](https://github.com/Txpple/fvtt-mod-bythebooks) | The 2024 rules played from the sheet: a hit rolls and applies its own damage, saves resolve themselves, reactions hold, concentration is tracked, and rests, senses, sizes and lights follow the book. Every rule that rides a use or an effect in the 2024 core books, Heroes of Faerûn, Arcana Unleashed and Ravenloft: The Horrors Within, each step with a receipt and a revert; offered, never enforced. |
 | [Open Roll 5e: Combat Plus](https://github.com/Txpple/fvtt-mod-combatplus) | Automates the chores of running a fight: combat music, an initiative gate, an out-of-turn movement block, defeated marking at 0 HP and turn alerts. |
 | [Open Roll 5e: Errata](https://github.com/Txpple/fvtt-mod-errata5e) | Corrects, in memory, bugs in the premium D&D 2024 books, the dnd5e system and Foundry itself, each fix held until the vendor ships its own. |
 | [Open Roll 5e: FX Studio](https://github.com/Txpple/fvtt-mod-fxstudio) | Visual and sound effects for dnd5e, played from what actually happened at the table, with about a thousand stock FX and a window for authoring your own. |
@@ -80,9 +81,10 @@ with the illustrations, are in [docs/examples/session-scribe](docs/examples/sess
 - **Every module works alone.** Cross-module behaviour is detection, `game.modules.get(id)?.active`,
   never a `requires` relationship. The only hard dependency in the family is FX Studio on the
   third-party Sequencer module.
-- **Battle Flow is the hub.** It emits `battleflow.moment` and a handful of narrower hooks. FX
-  Studio listens to them to play effects from what happened, and Session Scribe reads Battle Flow's
-  chat cards for the combat report.
+- **By the Books is the rules engine and the hub.** It emits `bythebooks.moment` and a handful of
+  narrower hooks. FX Studio listens to them to play effects from what happened, and Session Scribe
+  reads By the Books' chat cards for the combat report. (By the Books was Battle Flow until 3.0.0;
+  it still emits the old `battleflow.*` names for one release.)
 - **Loot Shelf and Party Stash are companions.** One owns loot on the ground and goods for sale,
   the other the party's shared inventory, and their receipt settings line up when both are present.
 - **The dnd5e server writes into two modules' data:** Open Server's landing-scene flag and
@@ -112,7 +114,7 @@ sees the whole family while every repo keeps its own git:
 ```
 <your repos folder>/
   fvtt-suite-openroll5e/        this repo
-    fvtt-mod-battleflow/        its own clone, ignored here
+    fvtt-mod-bythebooks/        its own clone, ignored here
     fvtt-mod-fxstudio/          ...
     fvtt-mcp-dnd5e/
     ...

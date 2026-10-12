@@ -60,10 +60,13 @@ for (const name of siblings) {
     recommends: ids("recommends"),
   });
 }
-// Retired ids still referenced in source are worth catching.
-for (const id of ["fvtt-mod-vendorfixes", "fvtt-mod-miscpatches"]) packageIds.add(id);
+// Retired ids still referenced in source are worth catching, a renamed module's old hooks among them
+// (By the Books 3.0.0 still emits battleflow.* for one release). The list is the manifest's retired rows.
+for (const r of JSON.parse(readFileSync(join(ROOT, "repos.json"), "utf8")).repos) {
+  if (r.status === "retired" && r.kind === "mod") packageIds.add(r.name);
+}
 
-// Hook prefixes: "battleflow.moment", "fxstudio.rebuilt", or "fvtt-mod-x.y".
+// Hook prefixes: "bythebooks.moment", "fxstudio.rebuilt", or "fvtt-mod-x.y".
 const hookPrefixes = [...packageIds].map((id) => id.replace(/^fvtt-mod-/, ""));
 const isSuiteHook = (h) => hookPrefixes.some((p) => h.startsWith(`${p}.`) || h.startsWith(`fvtt-mod-${p}.`));
 
@@ -83,8 +86,18 @@ for (const name of siblings) {
   const emits = new Map();
   const listens = new Map();
   const where = new Map(); // id -> first file
-  for (const f of files) {
-    const s = readFileSync(f, "utf8");
+  const texts = files.map((f) => [f, readFileSync(f, "utf8")]);
+  // A hook helper: By the Books publishes its hooks through core.js `publish(name, ...)`, which fires
+  // `<prefix>.<name>` for each prefix its body names (in 3.0.x its own and the old `battleflow`).
+  // A literal `publish("x")` counts as an emit under every prefix, a variable one as
+  // `<prefix>.${var}`, and the helper's own template literals are not rows of their own.
+  const helperPrefixes = new Set();
+  for (const [, s] of texts) {
+    const def = s.match(/export function publish\(name[^)]*\)\s*\{([\s\S]*?)\n\}/);
+    if (!def) continue;
+    for (const m of def[1].matchAll(/Hooks\.(?:call|callAll)\(\s*`([\w-]+)\.\$\{name\}`/g)) helperPrefixes.add(m[1]);
+  }
+  for (const [f, s] of texts) {
     for (const id of packageIds) {
       if (id === name) continue;
       const n = (s.match(new RegExp(`["'\`]${id}["'\`.]`, "g")) ?? []).length;
@@ -94,7 +107,14 @@ for (const name of siblings) {
       }
     }
     for (const m of s.matchAll(/Hooks\.(call|callAll)\(\s*["'`]([^"'`]+)["'`]/g)) {
+      if (helperPrefixes.size && /^[\w-]+\.\$\{name\}$/.test(m[2])) continue;
       if (isSuiteHook(m[2])) emits.set(m[2], (emits.get(m[2]) ?? 0) + 1);
+    }
+    for (const m of s.matchAll(/(?<!function\s*)\bpublish\(\s*(?:["'`]([\w.-]+)["'`]|([A-Za-z_$][\w$]*))\s*[,)]/g)) {
+      for (const p of helperPrefixes) {
+        const h = m[1] ? `${p}.${m[1]}` : `${p}.\${${m[2]}}`;
+        if (isSuiteHook(h)) emits.set(h, (emits.get(h) ?? 0) + 1);
+      }
     }
     for (const m of s.matchAll(/Hooks\.(on|once)\(\s*["'`]([^"'`]+)["'`]/g)) {
       if (isSuiteHook(m[2])) listens.set(m[2], (listens.get(m[2]) ?? 0) + 1);
@@ -130,7 +150,7 @@ for (const r of rows) {
 lines.push("");
 lines.push("## Custom hooks");
 lines.push("");
-lines.push("Hooks named after a suite module (`battleflow.*`, `fxstudio.*`, ...). Emitters call them; listeners subscribe. Anything listed under both is the real cross-module contract.");
+lines.push("Hooks named after a suite module (`bythebooks.*`, `fxstudio.*`, ...). Emitters call them; listeners subscribe. Anything listed under both is the real cross-module contract.");
 lines.push("");
 lines.push("| Repo | Emits | Listens |");
 lines.push("|---|---|---|");

@@ -79,9 +79,9 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
   skipping `fvtt-mod-errata5e`. Never an owner-wide `gh search issues`: it pulls in repos outside the
   family, the retired `fvtt-mod-vendorfixes` copies of Errata's register, and its result cap lets
   Errata's hundreds of issues crowd the rest out. Errata's issues only when asked for by name.
-- `fvtt-mod-battleflow-cover` is a worktree of Battle Flow on `feat/cover-hover`, not a clone.
-  `fvtt-mod-battleflow/.claude/worktrees/` may hold more. `sync.ps1` and the map generator skip
-  worktrees.
+- A feature worktree may sit beside its clone (By the Books' `feat/cover-hover` had one until
+  2026-10-11; the branch is on GitHub). `fvtt-mod-bythebooks/.claude/worktrees/` may hold Claude
+  worktrees. `sync.ps1` and the map generator skip worktrees.
 - After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
   (the "Part of Open Roll 5e" README sections, below), `node tools/integration-map.mjs` and
   `node tools/upstream-surface.mjs`, commit the rewritten READMEs in their own repos, and commit the
@@ -97,7 +97,7 @@ the manifests; the table there is the one to trust.
 | Repo | Title | Does |
 |---|---|---|
 | `fvtt-mod-autoexplore` | Autoexplore | Scene starts fully explored; tokens still need line of sight; no fog data written |
-| `fvtt-mod-battleflow` | Battle Flow | Combat automation for dnd5e 2024: auto damage on hit, reaction holds, auto saves, concentration |
+| `fvtt-mod-bythebooks` | By the Books | The 2024 rules played from the sheet: auto damage on hit, reaction holds, auto saves, concentration, rests, senses, sizes, lights; a receipt and a revert for each step (Battle Flow until 3.0.0, 2026-10-11) |
 | `fvtt-mod-combatplus` | Combat Plus | Fight chores: combat music, initiative gate, out-of-turn movement block, defeated marking, turn alerts; GM Vision (ported from dev7355608, MIT, 1.6.0) |
 | `fvtt-mod-errata5e` | Errata | In-memory stopgap fixes for vendor bugs (premium 2024 books, dnd5e, Foundry); the vendor-bug register |
 | `fvtt-mod-fxstudio` | FX Studio | Visual and sound FX from what happened at the table, via Sequencer + JB2A + PSFX; requires `sequencer` |
@@ -128,7 +128,10 @@ repo's session hooks also call); it is private. `fvtt-campaign-greenrest` is con
 (since 2026-10-08) as the worked example of a campaign repo; its clone is a reference, nothing syncs
 it, and it has no MCP bridge (`foundry-greenrest5e` was retired 2026-10-08; its Molten box is still up).
 
-**Retired:** `fvtt-mod-vendorfixes` (replaced by Errata; archived, private, not cloned here) and
+**Retired:** `fvtt-mod-battleflow` (renamed to `fvtt-mod-bythebooks` in 3.0.0, 2026-10-11, issue
+#6 of that repo; GitHub redirects the old name, and Foundry refuses the new manifest as an update
+to the old id, so a 2.x world sees an update error, never a wrong install), `fvtt-mod-vendorfixes`
+(replaced by Errata; archived, private, not cloned here) and
 `fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is
 kept; the Open Roll 5e README sections stopped listing it).
 
@@ -140,11 +143,13 @@ The full picture is `docs/integration-map.md`. The shape of it:
   that ("each installs and works on its own and none needs another"). Cross-module behaviour is
   detection, `game.modules.get(id)?.active`, never a `requires` relationship. The only hard
   dependency in the family is FX Studio on the third-party `sequencer`.
-- **Battle Flow is the hub.** It emits `battleflow.moment` (plus `armorBlock`, `styleDice`,
-  `holdOpened`, `castReleased`, `areaAskAnswered`, `deferredUsageCard`). FX Studio listens to
-  `battleflow.moment` through `scripts/readers/battleflow.js` to play effects from what happened,
-  and emits `fxstudio.rebuilt`. Session Scribe reads Battle Flow's chat cards when building a
-  session record.
+- **By the Books is the rules engine and the hub.** It emits `bythebooks.moment` (plus `armorBlock`,
+  `styleDice`, `holdOpened`, `castReleased`, `areaAskAnswered`, `deferredUsageCard`); 3.0.x emits
+  each a second time under its old `battleflow.*` name, and the old emit goes in the next minor. FX
+  Studio listens to both names through `scripts/readers/bythebooks.js` (one play per `momentId`)
+  to play effects from what happened, and emits `fxstudio.rebuilt`. Session Scribe reads By the
+  Books' chat cards when building a session record: the `fvtt-mod-bythebooks` flag scope, falling
+  back per card to `fvtt-mod-battleflow` (cards posted before 3.0.0 keep it for good).
 - **Loot Shelf knows Party Stash** (receipt settings line up when both are present).
 - **Two modules touch Foundry's Token class at `setup`.** Combat Plus's GM Vision (behind its switch,
   GM clients only) wraps `CONFIG.Token.objectClass` with an `isVisible` override, and Loot Shelf
@@ -153,7 +158,7 @@ The full picture is `docs/integration-map.md`. The shape of it:
   that is active, so the class is never wrapped twice.
 - **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
   flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only), and
-  `src/page/world.ts` names Battle Flow, Area Sounds and Open Server by package id so
+  `src/page/world.ts` names By the Books (and its old id, reported as legacy), Area Sounds and Open Server by package id so
   `get-world-info`'s `bridge` block can report them active (with versions) and warn when a tool's
   module is missing. When one of those three is renamed or retired, all of that needs the same
   edit. Its local (gitignored) `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
@@ -186,12 +191,15 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
 
 - **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `campaign`, `suite`; the
   name part has no hyphens; `app` was tried for the two smaller servers and dropped 2026-10-08, since each is one stdio MCP server like the dnd5e one. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
-  2026-10-02 rename round is complete, Battle Flow included (its manifest and all nine README
-  sections say `Open Roll 5e: Battle Flow`). "Sister" and "sibling" are not used in public text; a
+  2026-10-02 rename round is complete. Battle Flow became By the Books on 2026-10-11 (3.0.0, the
+  module's issue #6), the second rename after Area Sounds. "Sister" and "sibling" are not used in public text; a
   module is "part of Open Roll 5e" and two that pair up are "companions". Before naming a
   module, check the Foundry package list for a title that clashes: Soundscape clashed and became
-  Area Sounds (2.0.0, 2026-10-10). A rename changes the flag scope, so the module carries a
-  read fallback and a GM-load migration from the old scope (Area Sounds' `scripts/store.js`).
+  Area Sounds (2.0.0, 2026-10-10). The definitive list is the one a setup screen installs from (a
+  `getPackages` post to `/setup` with no world active); the website's search only ranks text. A
+  rename changes the flag scope, so the module carries a read fallback and a GM-load migration
+  from the old scope (Area Sounds' `scripts/store.js`; By the Books' `scripts/migrate.js`, which
+  also refuses to run beside the old package, since two copies would act twice).
 - **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.
 - **Contributions.** Every public repo accepts issues and does not accept pull requests (the user,
   2026-10-08). The generated README section says so, and each repo carries
@@ -201,20 +209,20 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   file. Errata, FX Studio and Session Scribe follow it since 2026-10-08.
 - **Releases.** One GitHub release per module version. The manifest URL every world installs from
   is `https://github.com/Txpple/<repo>/releases/latest/download/module.json` and the download is
-  `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. Battle Flow
-  has `release.yml` + `verify.yml`; Errata has `check.yml` + `upstream-watch.yml`; the MCP and
+  `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. By the
+  Books has `release.yml` + `verify.yml`; Errata has `check.yml` + `upstream-watch.yml`; the MCP and
   Session Scribe have `ci.yml`. The other modules release by hand.
 - **"Part of Open Roll 5e" README sections.** All nine module READMEs and the three server READMEs
   carry one, between `<!-- openroll5e:family -->` markers, listing the rest of the family with the
   `blurb` from `repos.json`. `node tools/suite-sections.mjs` rewrites them all (`--check` to verify);
   never edit the section by hand. The sections replaced the "Sister modules" sections on 2026-10-08.
-- **Foundry compatibility.** All verified on 14; minimums range 11 to 14 (Battle Flow and FX Studio
-  are 14-only). The system, where declared, is dnd5e. A local checkout of the dnd5e system source
+- **Foundry compatibility.** All verified on 14; minimums range 11 to 14 (By the Books and FX
+  Studio are 14-only). The system, where declared, is dnd5e. A local checkout of the dnd5e system source
   (the 5.x release line) is the reference when a question needs the system's own code.
-- **Tooling tiers.** Battle Flow, the MCP and both apps have Biome + TypeScript config + Vitest;
+- **Tooling tiers.** By the Books, the MCP and both apps have Biome + TypeScript config + Vitest;
   Errata has its register check; FX Studio, Loot Shelf, Party Stash and Area Sounds have a
   package.json with tools but no linter or tests; Autoexplore, Combat Plus and Open Server are a
-  `module.json` plus `scripts/`. When a small module grows tooling, copy Battle Flow's Biome config
+  `module.json` plus `scripts/`. When a small module grows tooling, copy By the Books' Biome config
   rather than inventing a new one.
 - **Reaching prod.** Prod (Echoes of Halruaa on Molten) is reached through a gitignored `fvtt-mcp-dnd5e/.env.halruaa` (`FOUNDRY_HOST=molten`, the box URL, the bridge user, the WebDAV password); a new machine recreates it from `.env.example`. Deploy with `FOUNDRY_HOST=molten FVTT_MCP_ENV=.env.halruaa node scripts/deploy-house-module.mjs <repo> [--check]` from the MCP repo; `FOUNDRY_HOST` must be in the process env too. The deploy refreshes the served files (live on the next world reload), but `game.modules` is built when the Foundry process boots, so the version string keeps showing the old release. The Molten panel's Restart is UI-only; the lever that refreshes the live package cache is Foundry's own installer, driven by `FOUNDRY_HOST=molten FVTT_MCP_ENV=.env.halruaa node scripts/register-module.mjs --id <repo> --manifest https://github.com/Txpple/<repo>/releases/latest/download/module.json` from the MCP repo: it returns the world to setup, reinstalls the module from its GitHub release and relaunches the world (Area Sounds 2.0.1 and Autoexplore 1.1.2, 2026-10-10). It disconnects everyone, so check `list-users` first, and the release must already be published since it installs from the manifest, not the clone. The `sessionscribe` registration carries the same `FVTT_MCP_ENV` (since 2026-10-10) and joins as the bridge user, Assistant DM (no separate scribe user, the user's ruling 2026-10-10). The `foundry-local5e` server is a local copy, never prod. Battle Flow issue #5 (one dnd5e key per GM load) was traced to slow sequential writes and fixed in v2.16.2 (2026-10-10).
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
