@@ -6,3 +6,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | --- | --- | --- | --- |
 | 2026-10-10 | none | none | closed #2: Foundry VTT reviewed at 14.369; closed #3: dnd5e system reviewed at 6.0.6 |
 | 2026-10-11 | none | none | — |
+| 2026-10-12 | none | none | — |
