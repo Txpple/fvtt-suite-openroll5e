@@ -114,7 +114,8 @@ the manifests; the table there is the one to trust.
   answers with a receipt and `run-script { undo }` reverses it, `FOUNDRY_TOOLSETS=readonly` is a
   safe first registration, `npm run init` writes the `.env` and the registration and runs the
   doctor, and `get-world-info` reports the bridge (renderer, the family modules active, warnings).
-  Its tracker is empty; the release is the maintainer's to cut.
+  4.6.0 (2026-10-12) is the latest release. Open: #18, `tools/list` is 13 chars under its 205,000
+  ceiling in `src/measure.test.ts`, so the next tool field fails `npm test` until that is decided.
 - `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
 - `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `sessionscribe` (was `scribe` to 2026-10-10); home of
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
