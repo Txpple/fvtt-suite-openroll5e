@@ -158,6 +158,7 @@
         "ApplicationV2",
         "CanvasDarknessEffects",
         "CanvasVisibility",
+        "ImagePopout",
         "SceneControl",
         "SceneControls",
         "SceneControlsRenderOptions",
