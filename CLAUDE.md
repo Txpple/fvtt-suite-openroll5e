@@ -154,7 +154,9 @@ The full picture is `docs/integration-map.md`. The shape of it:
   play per `momentId`) to play effects from what happened, and emits `fxstudio.rebuilt`. Session Scribe reads By the
   Books' chat cards when building a session record: the `fvtt-mod-bythebooks` flag scope, falling
   back per card to `fvtt-mod-battleflow` (cards posted before 3.0.0 keep it for good).
-- **Loot Shelf knows Party Stash** (receipt settings line up when both are present).
+- **Loot Shelf knows Party Stash** (receipt settings line up when both are present), and **By the Books knows Loot
+  Shelf**: a companion (Find Familiar) that leaves the table drops what it carried as an ephemeral Loot Shelf chest
+  (`api.createLootContainer`) when Loot Shelf is active, else the gear is lost.
 - **Two modules touch Foundry's Token class at `setup`.** Combat Plus's GM Vision (behind its switch,
   GM clients only) wraps `CONFIG.Token.objectClass` with an `isVisible` override; Loot Shelf patches
   `_canView` on whatever class is there (shop and chest tokens); and Combat Plus's Portrait View
