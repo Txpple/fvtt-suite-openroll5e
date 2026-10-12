@@ -83,8 +83,7 @@ with the illustrations, are in [docs/examples/session-scribe](docs/examples/sess
   third-party Sequencer module.
 - **By the Books is the rules engine and the hub.** It emits `bythebooks.moment` and a handful of
   narrower hooks. FX Studio listens to them to play effects from what happened, and Session Scribe
-  reads By the Books' chat cards for the combat report. (By the Books was Battle Flow until 3.0.0;
-  it still emits the old `battleflow.*` names for one release.)
+  reads By the Books' chat cards for the combat report. (By the Books was Battle Flow until 3.0.0.)
 - **Loot Shelf and Party Stash are companions.** One owns loot on the ground and goods for sale,
   the other the party's shared inventory, and their receipt settings line up when both are present.
 - **The dnd5e server writes into two modules' data:** Open Server's landing-scene flag and
