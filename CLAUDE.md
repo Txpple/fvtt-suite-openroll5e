@@ -79,9 +79,12 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
   skipping `fvtt-mod-errata5e`. Never an owner-wide `gh search issues`: it pulls in repos outside the
   family, the retired `fvtt-mod-vendorfixes` copies of Errata's register, and its result cap lets
   Errata's hundreds of issues crowd the rest out. Errata's issues only when asked for by name.
-- A feature worktree may sit beside its clone (By the Books' `feat/cover-hover` had one until
-  2026-10-11; the branch is on GitHub). `fvtt-mod-bythebooks/.claude/worktrees/` may hold Claude
-  worktrees. `sync.ps1` and the map generator skip worktrees.
+- A feature worktree may sit beside its clone, and a sibling's `.claude/worktrees/` may hold
+  Claude worktrees. `sync.ps1` and the map generator skip worktrees. As of 2026-10-12 none exist
+  and every clone has only `main`, locally and on GitHub; the merged leftovers (By the Books' six
+  local branches, its `feat/cover-hover` and `claude/bold-einstein-9faddc` on GitHub, an Errata
+  Claude worktree) were deleted that day. Greenrest's local-only `private-history` (its history
+  from before it went public) is kept on purpose.
 - After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
   (the "Part of Open Roll 5e" README sections, below), `node tools/integration-map.mjs` and
   `node tools/upstream-surface.mjs`, commit the rewritten READMEs in their own repos, and commit the
@@ -201,7 +204,8 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   rename changes the flag scope, so the module carries a read fallback and a GM-load migration
   from the old scope (Area Sounds' `scripts/store.js`; By the Books' `scripts/migrate.js`, which
   also refuses to run beside the old package, since two copies would act twice).
-- **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree.
+- **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree;
+  delete it, locally and on GitHub, once it is merged.
 - **Contributions.** Every public repo accepts issues and does not accept pull requests (the user,
   2026-10-08). The generated README section says so, and each repo carries
   `.github/PULL_REQUEST_TEMPLATE.md` saying it again to anyone who opens one.
