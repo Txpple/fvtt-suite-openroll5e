@@ -83,8 +83,8 @@ them `"parent": true` so `sync.ps1 -Status` still reports them.
   Claude worktrees. `sync.ps1` and the map generator skip worktrees. As of 2026-10-12 none exist
   and every clone has only `main`, locally and on GitHub; the merged leftovers (By the Books' six
   local branches, its `feat/cover-hover` and `claude/bold-einstein-9faddc` on GitHub, an Errata
-  Claude worktree) were deleted that day. Greenrest's local-only `private-history` (its history
-  from before it went public) is kept on purpose.
+  Claude worktree, and Greenrest's local-only `private-history`, its history from before it went
+  public) were deleted that day.
 - After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
   (the "Part of Open Roll 5e" README sections, below), `node tools/integration-map.mjs` and
   `node tools/upstream-surface.mjs`, commit the rewritten READMEs in their own repos, and commit the
