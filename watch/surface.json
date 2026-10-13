@@ -182,7 +182,10 @@
       ],
       "documents": [],
       "dnd5eConfig": [],
-      "api": [],
+      "api": [
+        "getProperty",
+        "setProperty"
+      ],
       "routes": []
     },
     "fvtt-mod-fxstudio": {
