@@ -8,7 +8,7 @@ Generated 2026-10-13 by `tools/integration-map.mjs` from the clones next to this
 |---|---|---|---|---|---|---|
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.1 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
-| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.1 | 14–14 | dnd5e | none |
+| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.2 | 14–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.0 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.1 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.0 | 14–14 | dnd5e | sequencer |
@@ -22,7 +22,7 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 
 | From | To | Hits | First seen in |
 |---|---|---|---|
-| fvtt-mcp-dnd5e | fvtt-mod-bythebooks | 14 | fvtt-mcp-dnd5e/src/page/world.ts |
+| fvtt-mcp-dnd5e | fvtt-mod-bythebooks | 20 | fvtt-mcp-dnd5e/src/page/world.ts |
 | fvtt-mcp-dnd5e | fvtt-mod-areasounds | 9 | fvtt-mcp-dnd5e/scripts/verify-areasounds-tooling.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-openserver | 7 | fvtt-mcp-dnd5e/scripts/verify-landing-scene.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-battleflow | 6 | fvtt-mcp-dnd5e/src/utils/bridge-facts.ts |
