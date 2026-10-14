@@ -1,6 +1,6 @@
 # Integration map
 
-Generated 2026-10-13 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-10-14 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
@@ -11,7 +11,7 @@ Generated 2026-10-13 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.4 | 14–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.0 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
-| fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.1 | 14–14 | dnd5e | sequencer |
+| fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.2 | 14–14 | dnd5e | sequencer |
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.2 | 13–14 | dnd5e | none |
