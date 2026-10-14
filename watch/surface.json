@@ -43,7 +43,8 @@
         "dnd5e.rollAttack",
         "dnd5e.rollDamage",
         "dnd5e.rollDeathSave",
-        "dnd5e.rollInitiative"
+        "dnd5e.rollInitiative",
+        "dnd5e.rollSavingThrow"
       ],
       "coreHooks": [
         "canvasReady",
@@ -121,6 +122,7 @@
         "enrichHTML",
         "escapeHTML",
         "expandObject",
+        "flattenObject",
         "getProperty",
         "hasProperty",
         "isEmpty",

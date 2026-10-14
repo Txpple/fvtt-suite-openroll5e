@@ -245,7 +245,24 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   `game` off and no tool writes a module setting), dnd5e *Apply Downed Conditions* **all** (`configure-dnd5e-settings`),
   and Tom's Owl to 3/3 HP; the sandbox had both settings on already. Errata issue #792 names the pack's inert Fortified
   Familiar enchantment (no fix: the rule is the module's).
-- **Battle Familiar (2026-10-14), built on By the Books `main`, unreleased.** Arcana Unleashed's spell, the spell alone
+- **Portent widened (2026-10-14), shipped in By the Books 3.4.6 the same day.** The analysis
+  found Portent's own-roll ticks sound on checks (the missing tick on the user's seat was not reproduced; a skipped dialog is the
+  one per-seat cause) and the bystander offers narrow by the 2026-09-29 ruling, unchanged since v2.10.0. Built as the plan
+  recommended (`audits/plans/portent-widened.md`; RULINGS *Portent widened*): a check or a requested save whose roll carries a
+  DC (dnd5e's `options.target`) asks the diviner like a demanded save and the card says SUCCESS or FAILURE; a bare check still
+  asks nobody; ordinary hits stay the quiet card row (the meter re-run: 8–9 popups a fight against 1–3). And the rest's Portent
+  dice are the bearer's to roll (the user, "way more fun"): the rest card asks with a Roll button, the dice land as the
+  player's own roll, the timer rolls when it runs out. `smoke-classes` §41, §52, §82 (amended) and §126 (new) green on the
+  sandbox 2026-10-14. Released as **3.4.6** that evening with Battle Familiar, on the user's word and **without a battery** (the
+  third owed), and onto prod through the installer with no one connected; the sandbox carries the same bytes (`--local`). The
+  user keeps working on Portent in the next version: `audits/plans/portent-test-handoff.md` is the table walk, the plan's W2
+  and W3 the open questions. The same walk found three more, in 3.4.6 too: the ways-to-pay line re-ticked the slot box once the free cast was spent (the
+  user could not clear it; RULINGS *Summons* call 57); **Fortified Familiar counted twice** — dnd5e's feat grant copies the
+  feat's enchantment onto the granted spell, so the system's own landing already adds 2 × level and the module's boon added
+  it again (a Crab at 33), and Tychon's sheet carries the enchantment twice from a doubled grant at session zero (prod and
+  the sandbox; one copy to delete), so Errata #792's premise is wrong (call 58); an empowered familiar wore the form's token
+  ring (call 59).
+- **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
   (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
   at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
   the table, the familiar empowered in place through dnd5e's own transform (the familiar keeps its name, art, type and Hit
@@ -253,8 +270,8 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   ⟨name⟩" effect goes; a familiar in its pocket refuses the cast). The plan and the sandbox measures: the module's
   `audits/plans/battle-familiar.md`; the rulings: its RULINGS *Summons* calls 48–55. Live: `smoke-familiar` §9–§13,
   `smoke-summons` §9, `smoke-companions` (a familiar's whole life: one companion effect, one token, one record after
-  every step; the landing sweeps orphaned companion effects, the pocket's way to a double), all green 2026-10-14. The
-  release (a patch, 3.4.6) is the user's word; prod still runs 3.4.5. **Two GM clients at once** (the DM's window beside
+  every step; the landing sweeps orphaned companion effects, the pocket's way to a double), all green 2026-10-14. Released
+  in 3.4.6 the same evening and on prod through the installer. **Two GM clients at once** (the DM's window beside
   the bridge, later a co-DM): the impact analysis and the work it implies are issue #8 here.
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
