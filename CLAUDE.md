@@ -245,6 +245,14 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   `game` off and no tool writes a module setting), dnd5e *Apply Downed Conditions* **all** (`configure-dnd5e-settings`),
   and Tom's Owl to 3/3 HP; the sandbox had both settings on already. Errata issue #792 names the pack's inert Fortified
   Familiar enchantment (no fix: the rule is the module's).
+- **Battle Familiar (2026-10-14), built on By the Books `main`, unreleased.** Arcana Unleashed's spell, the spell alone
+  (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
+  at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
+  the table, the familiar empowered in place through dnd5e's own transform (the familiar keeps its name, art, type and Hit
+  Points; the form's Hit Points as temp HP; reverts when they run out, the hour passes, or the caster's "Battle Familiar:
+  ⟨name⟩" effect goes; a familiar in its pocket refuses the cast). The plan and the sandbox measures: the module's
+  `audits/plans/battle-familiar.md`; the rulings: its RULINGS *Summons* calls 48–55. Live: `smoke-familiar` §9–§13,
+  `smoke-summons` §9, green 2026-10-14. The release (a patch, 3.4.6) is the user's word; prod still runs 3.4.5.
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
