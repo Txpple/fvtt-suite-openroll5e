@@ -252,7 +252,10 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   Points; the form's Hit Points as temp HP; reverts when they run out, the hour passes, or the caster's "Battle Familiar:
   ⟨name⟩" effect goes; a familiar in its pocket refuses the cast). The plan and the sandbox measures: the module's
   `audits/plans/battle-familiar.md`; the rulings: its RULINGS *Summons* calls 48–55. Live: `smoke-familiar` §9–§13,
-  `smoke-summons` §9, green 2026-10-14. The release (a patch, 3.4.6) is the user's word; prod still runs 3.4.5.
+  `smoke-summons` §9, `smoke-companions` (a familiar's whole life: one companion effect, one token, one record after
+  every step; the landing sweeps orphaned companion effects, the pocket's way to a double), all green 2026-10-14. The
+  release (a patch, 3.4.6) is the user's word; prod still runs 3.4.5. **Two GM clients at once** (the DM's window beside
+  the bridge, later a co-DM): the impact analysis and the work it implies are issue #8 here.
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
