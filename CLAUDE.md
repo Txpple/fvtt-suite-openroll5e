@@ -279,7 +279,12 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   `smoke-classes` §2, §3, §6, §41g–h rewritten, §127 new — §1–6, §41, §126, §127 and `smoke-guards` §5–6 (Interception beside
   the new guard) green on the sandbox 2026-10-14, `npm run verify` green (1513 tests); the table walk is §8 of
   `audits/plans/portent-test-handoff.md`. Committed in By the Books as `72b35fb` (2026-10-14, after the Portent table walk);
-  Cutting Words' table walk is owed (`audits/plans/cutting-words-test-handoff.md`). The release (a patch, 3.4.7) is the user's word.
+  Cutting Words' table walk that evening (`audits/plans/cutting-words-test-handoff.md`; Cecil Edmunds given the PHB Cutting
+  Words on the sandbox, he had none) found the one-ask-per-hit rule hid the damage half: with a +4 attack on AC 18 every hit sat
+  inside the d8, the roll half always asked first, and only the down guard got through. Both halves ask now (a pass at the roll
+  is "not at the roll"), and every bystander popup says the face the die needs in bold ("You need a **3** or higher on the d8");
+  committed in By the Books, deployed to the sandbox. Saving throws are not Cutting Words' by the book (attack rolls, checks,
+  damage), so the dummy's save against Lysandra's Mind Sliver asks nobody. The release (a patch, 3.4.7) is the user's word.
 - **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
   (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
   at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
