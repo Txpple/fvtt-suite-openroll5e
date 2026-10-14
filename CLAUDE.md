@@ -262,6 +262,24 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   it again (a Crab at 33), and Tychon's sheet carries the enchantment twice from a doubled grant at session zero (prod and
   the sandbox; one copy to delete), so Errata #792's premise is wrong (call 58); an empowered familiar wore the form's token
   ring (call 59).
+- **The asks widened (2026-10-14), built on By the Books `main` after 3.4.6, unreleased, deployed to the sandbox (`--local`).**
+  The user's second round of rulings that day (RULINGS *The asks widened*), after a plain-words account of the dice changers'
+  three shapes and of what the 2026-09-29 noise gate had left of Cutting Words' damage half (reachable only on a hit that held
+  for someone else). Built inside the machines that exist: **Cutting Words' damage half** is a guard of the damage hold beside
+  Interception (`damage-holds.js` `cuttersFor`, asked once the damage is known: "⟨attacker⟩ hits ⟨target⟩ for N — cut the
+  damage?"); **the mutes** are one chip with a scope ("Not until my turn", swept at the bearer's turn; "Not this combat";
+  out of combat "Not until the next combat") on every bystander popup and card row; **the down guard** (`reductionKeepsUp`)
+  always asks a reduction that can keep the target above 0 HP, mutes ignored, "You can keep ⟨name⟩ from hitting 0 Hit
+  Points."; **Portent** asks on every other creature's roll a face turns (`ask: "crit"` dropped; the 8–9 popups a fight
+  accepted with the mutes as the brake); **the bend banner** ("⟨diviner⟩'s Portent bends reality! … the d20 14 becomes the
+  3 — 19 → 8 · MISS") on every screen when a face replaces another creature's d20; the quiet road retired. From the table walk
+  the same evening: the popups as radios with one Apply button and "Pass just this time" checked; a damage card rolled after a
+  turned miss says "Not applied — …" (`notApplied`); the once-per-turn stamp keyed to the bearer's own combat (an unlinked
+  combat on the sandbox had stamped a diviner outside it). The suites:
+  `smoke-classes` §2, §3, §6, §41g–h rewritten, §127 new — §1–6, §41, §126, §127 and `smoke-guards` §5–6 (Interception beside
+  the new guard) green on the sandbox 2026-10-14, `npm run verify` green (1513 tests); the table walk is §8 of
+  `audits/plans/portent-test-handoff.md`. Committed in By the Books as `72b35fb` (2026-10-14, after the Portent table walk);
+  Cutting Words' table walk is owed (`audits/plans/cutting-words-test-handoff.md`). The release (a patch, 3.4.7) is the user's word.
 - **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
   (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
   at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
