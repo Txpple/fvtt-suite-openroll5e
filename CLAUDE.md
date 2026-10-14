@@ -246,6 +246,12 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   behind it is per page, so two sessions on one bridge user still interleave at the server. Foundry 14.369 is
   faster than 14.367: a Battle Flow battery went red on polling and on a popup's close window with the module
   unchanged (Battle Flow issue #8, `tools/README.md` *A faster platform turns a poll into a lie*).
+- **Client settings don't mirror.** Client-scope settings live in each browser per site address, so
+  prod and the sandbox can look different with identical world data, and every new browser or
+  machine starts from defaults. The one that bit (2026-10-14): chat cards dark on prod, light on the
+  sandbox, with core Color Scheme Dark/Dark on both. The lever is dnd5e's **Chat Log Theme**
+  (Configure Settings → Dungeons & Dragons Fifth Edition; `dnd5e.chatLogTheme`, client). Blank
+  follows the Applications theme; the user's choice is **Light**. Each player sets it for themselves.
 
 ## Keep this file current
 
