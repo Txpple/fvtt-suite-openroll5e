@@ -284,7 +284,13 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   inside the d8, the roll half always asked first, and only the down guard got through. Both halves ask now (a pass at the roll
   is "not at the roll"), and every bystander popup says the face the die needs in bold ("You need a **3** or higher on the d8");
   committed in By the Books, deployed to the sandbox. Saving throws are not Cutting Words' by the book (attack rolls, checks,
-  damage), so the dummy's save against Lysandra's Mind Sliver asks nobody. The release (a patch, 3.4.7) is the user's word.
+  damage), so the dummy's save against Lysandra's Mind Sliver asks nobody. The same walk settled **where the dice rise**
+  (RULINGS *The dice that rise*, "Where they rise"): over the one whose number changed, nowhere else — a bent attack or check
+  over the roller (the hold's drawer had put a bent attack's chips over the creature hit since September), a damage cut over
+  the one who takes the damage with nothing over the bard and nothing in flight; two cards, the modifier or the new face
+  first, then a beat later the old value turning over to the new; the closing card says what landed ("by 3 — 5 → 2").
+  All of it is By the Books `72b35fb..47318b7` (2026-10-14), verify green on its real exit code (two earlier commits had been
+  called green off a piped run), the sandbox byte-identical. The release (a patch, 3.4.7) is the user's word.
 - **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
   (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
   at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
