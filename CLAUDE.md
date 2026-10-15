@@ -192,6 +192,14 @@ The full picture is `docs/integration-map.md`. The shape of it:
   `(tokenDoc, { from, to, look })` on every client; nothing listens yet (FX Studio could). Its
   flags (`base`, `look`, `subject`) live on the token only; the MCP's audit does not yet count a
   `-<look>` file beside a referenced base as referenced (a small MCP follow-up).
+- **The contracts across repos** (Pass 3, 2026-10-15): an emitter owns `contracts/<name>.json` with a version; By the
+  Books publishes `contracts/moment.json` (the `bythebooks.*` hook payloads) and `contracts/card-flags.json` (the
+  card flag keys), both recorded by its battery and checked in its verify; Area Sounds publishes `contracts/sets.json`,
+  held to its engine. FX Studio, Session Scribe and the MCP test against the emitter's file from the sibling clone and
+  skip when it is absent, each naming the version it last passed against in its own `contracts/consumes.json`;
+  `node tools/contracts.mjs --check` here reports every consumer's version against its emitter's. The three writers on
+  Dead (dnd5e, By the Books, Combat Plus) and its two readers (Token Art, By the Books' summons) are one rule in
+  `contracts/dead.md`, which each writer's README points at; its open contradiction waits for a ruling (HANDOFF §7).
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
   every listener tolerate the hook never firing.

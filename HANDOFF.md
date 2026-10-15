@@ -312,3 +312,16 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
    forever with nothing landed (the behaviour before). ARCHITECTURE's accepted trade-offs record it; the
    other claims (`dismissing`, `companion.acting`, `changing`, `resolving`) still use plain `true` and are
    a follow-up in the same shape.
+8. **Dead: two writers contradict each other (4f; a ruling).** With Combat Plus's defaults (both Auto-Defeated
+   switches on) and dnd5e's *Apply Downed Conditions* at *npcs* or *all*, a player character at 0 Hit Points
+   wears dnd5e's (or By the Books') Unconscious and Combat Plus's Dead at once, and an important NPC the same;
+   By the Books reads Dead on a caster as the caster's death, so a dying caster's summons that end at its death
+   are dismissed and its empowered companion reverts. Nothing was changed; `contracts/dead.md` lays out the
+   choices: Combat Plus defers to dnd5e when its setting is on (marks defeated, writes no status), or reads
+   dnd5e's mapping (`important`, the death saves), or its PCs switch defaults to off; and whether Token Art's
+   dead look follows the Dead status alone rather than 0 Hit Points. Until then: dnd5e at *all* with
+   Combat Plus's *Auto-Defeated: PCs* off is the book.
+9. **FX Studio plays differently once released** (4f, inside Pass 3): a resolve that came to nothing (a held
+   roll passed, a fold passed, a Riposte declined) plays nothing, and Parry's maneuver now plays (one picture
+   per word, not per moment). FX Studio, Session Scribe, the MCP and Area Sounds all carry unreleased work on
+   `main`; the releases are yours (patch bumps).
