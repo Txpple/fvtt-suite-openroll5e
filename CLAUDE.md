@@ -23,6 +23,9 @@ This repo is the thin layer over them:
 - `docs/reviews/`: dated software-engineering reviews of the whole family. The first
   (2026-10-15) covers what held and what bent after the first passes over the six books, with the
   MCP's tool-surface ceiling (its issue #18) as a companion analysis; its §8 is the path forward.
+- `HANDOFF.md`: the pick-up point after the 2026-10-15 review: where the work stands, the complete plan
+  with each pass's status, the decisions only the user can make, and a brief per piece of work ready to
+  hand to a session. Retired when the passes are delivered or the plan is replaced.
 - `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
   concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here when campaign
   repos were private; the whole of that campaign is now public in `fvtt-campaign-greenrest`.
