@@ -111,7 +111,7 @@ the manifests; the table there is the one to trust.
 | `fvtt-mod-openserver` | Open Server | Hosted worlds: clears the startup pause, per-user landing scenes |
 | `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
 | `fvtt-mod-areasounds` | Area Sounds | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat (Soundscape until 2.0.0, 2026-10-10) |
-| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; unreleased) |
+| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; 1.0.0 released and on prod the same day) |
 
 **MCP servers and assets:**
 
@@ -346,6 +346,9 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   disabled through the bridge runs once more on that page before the bounce; Token Art's Restore All pauses the
   whole world for that reason. Token Art's walk finished once the battery ended (all twelve steps green, the module
   enabled on the sandbox); it left nine PNGs under `assets/tokenart-walk/` there for trying the module, nothing else.
+  **Token Art 1.0.0 went onto prod through the installer on 2026-10-15** (a new module: `register-module.mjs` with the
+  GitHub manifest, then `configure-modules.mjs --enable` and a second installer run as the bounce, the pattern above),
+  with the DM's own window the one connection dropped; prod and the sandbox run the same bytes.
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
   or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
   names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
