@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, "docs", "integration-map.md");
-const SKIP_DIRS = new Set(["node_modules", "dist", ".git", ".claude", "prototypes", "shelved", "audits"]);
+const SKIP_DIRS = new Set(["node_modules", "dist", ".git", ".claude", "prototypes", "shelved", "audits", "scratch"]);
 const SOURCE = /\.(m?js|ts)$/;
 
 // A sibling is a directory whose .git is a directory (a worktree's .git is a file; skip those so a
