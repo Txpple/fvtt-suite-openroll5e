@@ -95,7 +95,8 @@ grow further; whether to split is a decision for when a session is felt to pay f
 
 ## 3. Decisions only the user can make
 
-1. **Push By the Books and whether 3.4.8 is cut** for rows 1–2 (above).
+1. ~~**Push By the Books and whether 3.4.8 is cut**~~ **Decided 2026-10-15:** pushed; no 3.4.8.
+   Rows 1–2 go out with the next release, the first to name its battery run (Pass 0).
 2. ~~**The public promises**~~ (review §9). **Decided 2026-10-15:** the suite README's sentence now
    promises the revert for combat only (shelf and stash: a receipt); the shelf/stash revert waits for
    Pass 4's `receipt.js`; the MCP README's "every write tool answers with a receipt" is fixed with
