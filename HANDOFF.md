@@ -285,3 +285,10 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
    server in Claude Desktop with the `mcpServers` block `npm run init` prints, open a chat, note whether the
    schemas load eagerly or deferred and whether a union's `anyOf` is shown or merged, then add one note to
    the MCP's `docs/contracts.md`. Until then the eager ceiling stands for the clients not measured.
+5. **Two readings 4d took, yours to overturn** (By the Books, rows 5–7): the review said "owner-exported
+   readers", and for the machine-owned keys a service or the spine reads (`hold`, `saves`, `d20fold`,
+   `metamagic`, `fightingStyle`, `attackFor`, `attackHoldPending`) a reader inside the machine would be an
+   import `check-layers` forbids, so those readers sit in `shared.js` ("shared readers go down, never
+   sideways", ARCHITECTURE §7) and `sourceUuid`'s in `core.js`; the rest sit with their writers. And the
+   eleven hand-written pick inputs moved onto the one input builder but kept their own labels and layouts;
+   putting every pick on `tickRowsHTML`'s one row look is a visible change left to you.
