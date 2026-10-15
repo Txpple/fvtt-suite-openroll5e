@@ -15,7 +15,7 @@ Generated 2026-10-15 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.2 | 13–14 | dnd5e | none |
-| fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.0 | 13–14 | dnd5e | none |
+| fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.1 | 13–14 | dnd5e | none |
 
 ## Who references whom
 
@@ -33,6 +33,7 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mcp-dnd5e | fvtt-mod-lootshelf | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-partystash | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
 | fvtt-mcp-dnd5e | fvtt-mod-miscpatches | 2 | fvtt-mcp-dnd5e/docs/history/review-2026-09/scripts/siblings-census.mjs |
+| fvtt-mcp-dnd5e | fvtt-mod-tokenart | 1 | fvtt-mcp-dnd5e/scratch/tokenart-101-checks.mjs |
 | fvtt-mcp-sessionscribe | fvtt-mod-bythebooks | 17 | fvtt-mcp-sessionscribe/src/page/combat-stats.ts |
 | fvtt-mcp-sessionscribe | fvtt-mod-battleflow | 13 | fvtt-mcp-sessionscribe/src/foundry/protocol.ts |
 | fvtt-mod-areasounds-sfx | fvtt-mod-areasounds | 1 | fvtt-mod-areasounds-sfx/tools/remap-areasounds-scene-paths.mjs |

@@ -114,7 +114,7 @@ the manifests; the table there is the one to trust.
 | `fvtt-mod-openserver` | Open Server | Hosted worlds: clears the startup pause, per-user landing scenes |
 | `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
 | `fvtt-mod-areasounds` | Area Sounds | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat (Soundscape until 2.0.0, 2026-10-10) |
-| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; 1.0.0 released and on prod the same day) |
+| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; 1.0.0 released and on prod the same day; 1.0.1 the same evening after a fresh-eyes review, fifteen fixes, its `audits/review-2026-10-15.md`) |
 
 **MCP servers and assets:**
 
@@ -356,6 +356,18 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   **Token Art 1.0.0 went onto prod through the installer on 2026-10-15** (a new module: `register-module.mjs` with the
   GitHub manifest, then `configure-modules.mjs --enable` and a second installer run as the bounce, the pattern above),
   with the DM's own window the one connection dropped; prod and the sandbox run the same bytes.
+  **Token Art 1.0.1 (2026-10-15, evening)**: a fresh-eyes review of 1.0.0 by a session that did not build it, with an
+  Opus read beside it, found fifteen things and fixed them all (the module's `audits/review-2026-10-15.md`; the design
+  points it left are its issues #1–#4): among them the wildcard filter keeping a look whose base the wildcard never
+  matched, a separator change adopting a worn look as a base, Restore All and Rescan racing a reconcile, a stale plan
+  overwriting a Token Config edit, and every `-=` deletion key logging a Foundry 14 compatibility warning on every
+  write (now `ForcedDeletion` operators; 13 keeps the keys). Nine were reproduced on the 1.0.0 scripts through a
+  stub-Foundry bench; three live checks ran green on the sandbox through a GM page script in `configure-modules.mjs`'s
+  pattern with the console captured (a back-to-base swap, Restore All then Rescan, the wildcard with an unmatched base;
+  zero deletion-key warnings), the way to walk a module when a browser login would mean typing the bridge user's real
+  password. Released as 1.0.1 with both assets; the sandbox carries the 1.0.1 bytes (`--local`). The installer run on
+  prod waits for the gate (nobody but bridge seats connected): the DM's own window was connected when the release was
+  ready, so prod is on 1.0.0 until `register-module.mjs` is run with no one connected.
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
   or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
   names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
