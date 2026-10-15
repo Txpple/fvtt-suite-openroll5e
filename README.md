@@ -80,13 +80,14 @@ with the illustrations, are in [docs/examples/session-scribe](docs/examples/sess
 ## How they fit together
 
 - **Every module works alone.** Cross-module behaviour is detection, `game.modules.get(id)?.active`,
-  never a `requires` relationship. The only hard dependency in the family is FX Studio on the
-  third-party Sequencer module.
+  never a `requires` relationship. The only hard dependency among the modules is FX Studio's on
+  the third-party Sequencer module (of the servers, Session Scribe builds on the dnd5e server).
 - **By the Books is the rules engine and the hub.** It emits `bythebooks.moment` and a handful of
-  narrower hooks. FX Studio listens to them to play effects from what happened, and Session Scribe
+  narrower hooks. FX Studio listens to the moment to play effects from what happened, and Session Scribe
   reads By the Books' chat cards for the combat report. (By the Books was Battle Flow until 3.0.0.)
 - **Loot Shelf and Party Stash are companions.** One owns loot on the ground and goods for sale,
-  the other the party's shared inventory, and their receipt settings line up when both are present.
+  the other the party's shared inventory, and both offer the same receipt choices, each set in its
+  own module.
 - **The dnd5e server writes into two modules' data:** Open Server's landing-scene flag and
   Area Sounds' per-scene sound sets, flags only.
 - **A hook is named after its module.** `<short>.<event>` belongs to the module whose id is
@@ -99,12 +100,21 @@ cross repo lines.
 ## This repository
 
 ```
-repos.json                 the manifest: every repo, its kind, visibility, status and one-line blurb
+repos.json                 the manifest: every repo it syncs, its kind, visibility, status and blurb
 sync.ps1                   clones the missing repos into this folder and fast-forwards clean ones
 tools/integration-map.mjs  writes docs/integration-map.md from the clones
 tools/suite-sections.mjs   writes the "Part of Open Roll 5e" section of every README from repos.json
+tools/upstream-watch.mjs   the daily watch on Foundry and dnd5e releases (VERSIONS.md, watch/)
+tools/upstream-surface.mjs writes watch/surface.json, the upstream names each repo's code uses
+tools/kit-sync.mjs         keeps the kit (templates/kit/) byte-identical in every module that holds it
+tools/build-module-zip.mjs builds a module's release zip for the reusable release workflow
+tools/contracts.mjs        checks each consumer's contract version against its emitter's
+tools/check-docs.mjs       checks that no CLAUDE.md carries a date outside its State block
 tools/migrate-layout.ps1   the one-time move from the flat layout used until 2026-10-08
+templates/                 the family kit and the module template
+contracts/                 the rules several modules write (dead.md)
 docs/integration-map.md    the generated map
+docs/log/                  the suite's dated journal, one file a month
 CLAUDE.md                  working notes for sessions that span the family
 ```
 
@@ -132,12 +142,12 @@ cd fvtt-suite-openroll5e
 pushes, stashes or switches branches: a clone that is dirty, on another branch or ahead of origin
 is named and left alone, and a repo you cannot reach is reported and left for later. `-Status`
 only reports and `-NoClone` skips the clone step. A few entries in `repos.json` are private (the
-audio library Area Sounds ships from, and the campaign repos, which live next to the suite rather
-than in it); without access they simply fail to clone.
+audio library Area Sounds ships from, and the current campaign's repo, which lives next to the
+suite rather than in it); without access they simply fail to clone.
 
-After adding, renaming or retiring a repo: edit `repos.json`, run `node tools/suite-sections.mjs`
-and `node tools/integration-map.mjs`, and commit the READMEs the first one rewrote in their own
-repos.
+After adding, renaming or retiring a repo: edit `repos.json`, run `node tools/suite-sections.mjs`,
+`node tools/integration-map.mjs` and `node tools/upstream-surface.mjs`, and commit the READMEs the
+first one rewrote in their own repos.
 
 ## Conventions
 

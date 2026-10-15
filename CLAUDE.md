@@ -1,399 +1,170 @@
 # Open Roll 5e suite (`fvtt-suite-openroll5e`)
 
-## What this is
+The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, three MCP servers and a private audio
+library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
+this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, three MCP servers
-(the dnd5e DM assistant, image generation, the session scribe) and a private asset library. Every
-one of those is its own GitHub repo with its own history, releases and CI, and that stays true.
-This repo is the thin layer over them:
+**State (2026-10-15).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.7, FX Studio 0.10.2, Errata 1.2.2,
+Combat Plus 1.7.0, Token Art 1.0.1, Area Sounds 2.0.1, Autoexplore 1.1.2, Loot Shelf 1.3.1, Open Server 1.3.1, Party
+Stash 1.8.2; the servers' latest releases are the MCP 4.6.0, imagegen 1.3.1, Session Scribe 1.3.0. The sandbox (local
+Foundry 14.369, dnd5e 6.0.6) runs the same plus By the Books' unreleased `main` (`--local`) and any `main` a module's
+live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the Books, FX Studio, Session
+Scribe, the MCP, Area Sounds, Loot Shelf and Party Stash. The plan from `docs/reviews/2026-10-15-suite-review.md`
+runs from `HANDOFF.md` until it retires.
 
-- `repos.json`: the manifest. Every sibling, its kind, visibility, status and, for the public ones,
-  the one-line `blurb` every README uses for it.
-- `sync.ps1`: clones missing siblings into this folder and fast-forwards clean ones on `main`.
-  `-Status` only reports. It never commits, pushes, stashes or switches branches.
-- `tools/integration-map.mjs`: writes `docs/integration-map.md` from the clones.
-- `tools/suite-sections.mjs`: writes the "Part of Open Roll 5e" section of every sibling README and
-  the catalogue in this repo's README from the blurbs in `repos.json` (`--check` only reports).
-- `tools/upstream-watch.mjs` (daily, `.github/workflows/upstream-watch.yml`): the watch on Foundry and
-  dnd5e releases; `VERSIONS.md`, `watch/`, and one `upgrade review` issue per release. See
-  [Upstream upgrades](#upstream-upgrades).
-- `tools/upstream-surface.mjs`: writes `watch/surface.json` (the Foundry and dnd5e names each public
-  repo's shipped code uses) from the clones, for the watch's leads (`--check` only reports).
-- `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
-- `docs/reviews/`: dated software-engineering reviews of the whole family. The first
-  (2026-10-15) covers what held and what bent after the first passes over the six books, with the
-  MCP's tool-surface ceiling (its issue #18) as a companion analysis; its §8 is the path forward.
-- `HANDOFF.md`: the pick-up point after the 2026-10-15 review: where the work stands, the complete plan
-  with each pass's status, the decisions only the user can make, and a brief per piece of work ready to
-  hand to a session. Retired when the passes are delivered or the plan is replaced.
-- `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
-  concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here when campaign
-  repos were private; the whole of that campaign is now public in `fvtt-campaign-greenrest`.
-- this file: what spans repos. Each sibling's own CLAUDE.md is authoritative inside it.
+## This repo and where it lives
 
-This repo is public (since 2026-10-08), like the modules and the servers; its README is the public
-front door of the family. The current campaign and the audio library stay private; the concluded
-Greenrest campaign is public as the worked example (`fvtt-campaign-greenrest`).
+- `repos.json`: the manifest (kind, visibility, status, `"kit"`, a public repo's `blurb`).
+- `sync.ps1`: clones missing siblings, fast-forwards clean ones on `main`; never commits, pushes, stashes or switches.
+- `tools/integration-map.mjs`: writes `docs/integration-map.md` (versions, references, hooks; the table to trust).
+- `tools/suite-sections.mjs`: writes every "Part of Open Roll 5e" README section and this README's catalogue.
+- `tools/upstream-watch.mjs`: the daily watch on Foundry and dnd5e releases (below).
+- `tools/upstream-surface.mjs`: writes `watch/surface.json`, the upstream names and `patched` methods each repo ships.
+- `tools/kit-sync.mjs`: keeps the kit's copies byte-identical with `templates/kit/`.
+- `tools/build-module-zip.mjs`: builds and reads back a module's release zip (by hand, a dry run).
+- `.github/workflows/release-module.yml`: the reusable release each module's `release.yml` calls.
+- `tools/contracts.mjs`: each consumer's contract version against its emitter's.
+- `tools/check-docs.mjs`: no date in a CLAUDE.md outside its State block (`--list` prints each).
+- `tools/migrate-layout.ps1`: the old one-time move from the flat layout, kept for the record.
+- Also `templates/` (below), `contracts/` (rules several modules write), `docs/reviews/` (dated family reviews),
+  `docs/examples/session-scribe/` (two records from the public Greenrest campaign).
 
-**Not a monorepo.** Nothing builds here, no code is shared through here, and the sibling repos
-are not submodules. They are ordinary clones that happen to live in this folder, ignored by this
-repo's `.gitignore` (`fvtt-*/`). The point is one working directory that sees the whole family.
-
-**What is in and what is out.** Inside: anything whose code reaches into another family member's
-data or hooks (the modules, the three MCP servers, the Area Sounds audio library). Next to it, in the
-parent folder: the campaign repos. They are content, not code, nothing references them by relative
-path (the scribe finds its campaign through `SCRIBE_CAMPAIGN_REPO`, the dnd5e server through its
-`.env.*` files), and they have their own committing `sync.ps1` on session hooks. `repos.json` marks
-them `"parent": true` so `sync.ps1 -Status` still reports them.
-
-## Where it lives
-
-```
-<repo parent>\                           the machine's FVTT repo parent; may hold unrelated repos
-  fvtt-suite-openroll5e\                 this repo
-    fvtt-mod-*\  fvtt-mcp-*\             the siblings, each its own clone, gitignored here
-  fvtt-campaign-echoesofhalruaa\         campaigns stay above
-```
-
-- **History.** Until 2026-10-08 the clones sat flat in the repo parent and that folder was the
-  suite repo; `tools\migrate-layout.ps1` moved them (and repaired the Battle Flow and Errata
-  worktrees, patched the Claude Code user config and the per-repo local config, and renamed the
-  per-project Claude folders so session history followed). The first run stopped after four
-  siblings on a locked folder; the script resumes when the suite folder already exists, and the
-  second run finished the move the same day.
-  The MCP servers registered with Claude Code run from `fvtt-mcp-dnd5e/dist`, `fvtt-mcp-imagegen/dist`
-  and `fvtt-mcp-sessionscribe/dist` under the suite path. The dnd5e server is registered twice:
-  `foundry-halruaa5e` (the current campaign's Molten box, PROD) and `foundry-local5e` (the sandbox).
-  Renaming or moving the suite folder means patching those registrations again.
-- **Relative paths across the boundary.** `../fvtt-mcp-dnd5e` from a sibling still resolves (they
-  moved together); the campaign repos are `../../fvtt-campaign-*` from a sibling; anything outside the
-  family (vendor snapshots, FX Studio's asset drops, kept next to the repo parent) is three levels
-  up from a sibling, not two. Errata's snapshot default was corrected on 2026-10-08.
-- **Setting up a machine:** clone this repo into that machine's FVTT repo parent, `cd` into it,
-  run `.\sync.ps1`, and clone the campaign repos next to it.
+Generators and checks take `--check` (report, exit 1); `contracts` and `check-docs` take `--prefer <suffix>` to read
+a worktree. **Not a monorepo:** the siblings are plain clones inside this folder, gitignored (`fvtt-*/`); nothing
+builds or is shared here. The campaigns sit beside it in the FVTT repo parent (own committing `sync.ps1`, never
+referenced by relative path). From a sibling: `../fvtt-mcp-dnd5e`, `../../fvtt-campaign-*`, and anything outside
+the family (vendor snapshots, FX Studio's asset drops) three levels up. The servers run from each `fvtt-mcp-*/dist`
+here, the dnd5e one registered twice (`foundry-halruaa5e`, PROD; `foundry-local5e`, the sandbox): moving this
+folder means re-registering. A new machine: clone this repo into its FVTT repo parent, run `.\sync.ps1`, clone the
+campaigns.
 
 ## Working here
 
-- Open the Claude Code session with **this folder** as the working directory when the work crosses
-  modules (a rename, a shared hook, a sister-modules README sweep, a release round). Open the
-  sibling itself for work inside one module; its CLAUDE.md, tests and tools are written for that.
-- Git is per sibling: `git -C fvtt-mod-fxstudio status`, and so on. Commits in this repo are for
-  the files this repo tracks. If a `fvtt-*` path ever appears in `git status` here, the ignore is
-  broken; fix that before committing.
-- **"Open issues" means this suite's, minus Errata** (the user, 2026-10-10). Query this repo and
-  each `"status": "active"` repo in `repos.json` one by one (`gh issue list -R Txpple/<repo> --state open`),
-  skipping `fvtt-mod-errata5e`. Never an owner-wide `gh search issues`: it pulls in repos outside the
-  family, the retired `fvtt-mod-vendorfixes` copies of Errata's register, and its result cap lets
-  Errata's hundreds of issues crowd the rest out. Errata's issues only when asked for by name.
-- A feature worktree may sit beside its clone, and a sibling's `.claude/worktrees/` may hold
-  Claude worktrees. `sync.ps1` and the map generator skip worktrees. As of 2026-10-12 none exist
-  and every clone has only `main`, locally and on GitHub; the merged leftovers (By the Books' six
-  local branches, its `feat/cover-hover` and `claude/bold-einstein-9faddc` on GitHub, an Errata
-  Claude worktree, and Greenrest's local-only `private-history`, its history from before it went
-  public) were deleted that day.
-- After adding, renaming or retiring a module: update `repos.json`, run `node tools/suite-sections.mjs`
-  (the "Part of Open Roll 5e" README sections, below), `node tools/integration-map.mjs` and
-  `node tools/upstream-surface.mjs`, commit the rewritten READMEs in their own repos, and commit the
-  result here. Rerun `upstream-surface` too when a module starts or stops using a hook.
+- Open the session in **this folder** for work across modules (a rename, a shared hook, a README sweep, a release
+  round), in the sibling for work inside one. Git is per sibling (`git -C <repo> status`); a `fvtt-*` path in
+  this repo's own `git status` means its ignore is broken.
+- **"Open issues"** means this suite's minus Errata: `gh issue list -R Txpple/<repo> --state open` for this repo and
+  each active repo in turn, never an owner-wide `gh search issues`; Errata's only when asked for by name.
+- **Worktrees beside the clones:** `git -C <repo> worktree add -b <branch> ../<repo>.<suffix> main`; the clone stays
+  on `main`, the generators skip worktrees, and a merged branch goes, locally and on GitHub, with its worktree.
+- **After a change that spans repos** (a module added, renamed or retired, a hook started or stopped, a kit or
+  contract change): update `repos.json`; run `suite-sections`, `integration-map`, `upstream-surface`, `kit-sync`;
+  commit what they rewrote in each repo, then here. **Green** is `suite-sections`, `upstream-surface`, `kit-sync`,
+  `contracts` and `check-docs`, each with `--check`.
 
 ## The family
 
-Snapshot 2026-10-08. Versions and compatibility are in `docs/integration-map.md`, regenerated from
-the manifests; the table there is the one to trust.
+| Module (`Open Roll 5e: <Name>`, id = repo) | Does |
+|---|---|
+| `fvtt-mod-autoexplore` | a scene starts explored; tokens still need line of sight; no fog data written |
+| `fvtt-mod-bythebooks` | the 2024 rules played from the sheet, each step with a receipt and a revert |
+| `fvtt-mod-combatplus` | fight chores: music, initiative gate, defeated marking, alerts; GM Vision, Portrait View |
+| `fvtt-mod-errata5e` | in-memory stopgap fixes for vendor bugs; the vendor-bug register |
+| `fvtt-mod-fxstudio` | FX from what happened, through Sequencer, JB2A and PSFX; requires `sequencer` |
+| `fvtt-mod-lootshelf` | loot chests and merchant shelves players use without owning them; receipts |
+| `fvtt-mod-openserver` | hosted worlds: clears the startup pause; per-user landing scenes |
+| `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
+| `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
+| `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, prone, dead), a file beside its base art |
 
-**Modules** (public, Foundry title `Open Roll 5e: <Name>`, package id = repo name):
-
-| Repo | Title | Does |
-|---|---|---|
-| `fvtt-mod-autoexplore` | Autoexplore | Scene starts fully explored; tokens still need line of sight; no fog data written |
-| `fvtt-mod-bythebooks` | By the Books | The 2024 rules played from the sheet: auto damage on hit, reaction holds, auto saves, concentration, rests, senses, sizes, lights; a receipt and a revert for each step (Battle Flow until 3.0.0, 2026-10-11) |
-| `fvtt-mod-combatplus` | Combat Plus | Fight chores: combat music, initiative gate, out-of-turn movement block, defeated marking, turn alerts; GM Vision (ported from dev7355608, MIT, 1.6.0) |
-| `fvtt-mod-errata5e` | Errata | In-memory stopgap fixes for vendor bugs (premium 2024 books, dnd5e, Foundry); the vendor-bug register |
-| `fvtt-mod-fxstudio` | FX Studio | Visual and sound FX from what happened at the table, via Sequencer + JB2A + PSFX; requires `sequencer` |
-| `fvtt-mod-lootshelf` | Loot Shelf | Loot chests and merchant shelves players use without owning them; chat receipts |
-| `fvtt-mod-openserver` | Open Server | Hosted worlds: clears the startup pause, per-user landing scenes |
-| `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
-| `fvtt-mod-areasounds` | Area Sounds | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat (Soundscape until 2.0.0, 2026-10-10) |
-| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; 1.0.0 released and on prod the same day; 1.0.1 the same evening after a fresh-eyes review, fifteen fixes, its `audits/review-2026-10-15.md`) |
-
-**MCP servers and assets:**
-
-- `fvtt-mcp-dnd5e` (public): the DM-assistant MCP server; drives any live Foundry world (Molten
-  Hosting, a local install, a URL) through Claude Code. Formerly `fvtt-mcp-molten5e`. The 2026-10-11
-  pass (its record: `docs/history/handoff-2026-10-11.md` there) made it shareable: every write
-  answers with a receipt and `run-script { undo }` reverses it, `FOUNDRY_TOOLSETS=readonly` is a
-  safe first registration, `npm run init` writes the `.env` and the registration and runs the
-  doctor, and `get-world-info` reports the bridge (renderer, the family modules active, warnings).
-  4.6.0 (2026-10-12) is the latest release. #18 (the `tools/list` ceiling) closed 2026-10-15 on `main`,
-  unreleased: `src/measure.test.ts` prints three budgets with the client that pays each (per prompt,
-  per fetch with no lossy union keys, the eager list per toolset at today's numbers plus a 220,000
-  total), and `manage-placeables` carries each kind's entries on its own key so a deferred client
-  sees every kind; the analysis is `docs/reviews/2026-10-15-mcp-tool-surface.md`. Owed before the
-  next release: one sandbox run of `verify-placeables-tooling`, `verify-receipts`, `verify-delete-veto`.
-- `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
-- `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `sessionscribe` (was `scribe` to 2026-10-10); home of
-  the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).
-- `fvtt-mod-areasounds-sfx` (private): the audio library Area Sounds ships from, published to
-  `Data/areasounds-sfx/`. Not a module. Formerly `fvtt-mod-soundscape-sfx` (to 2026-10-10).
-
-**Campaigns** (next to the suite in the parent folder, `"parent": true` in `repos.json`):
-`fvtt-campaign-echoesofhalruaa` is the current campaign (scaffolded 2026-09-27 as
-`fvtt-campaign-next`; it has its own committing `sync.ps1` on session hooks, which the dnd5e MCP
-repo's session hooks also call); it is private. `fvtt-campaign-greenrest` is concluded and public
-(since 2026-10-08) as the worked example of a campaign repo; its clone is a reference, nothing syncs
-it, and it has no MCP bridge (`foundry-greenrest5e` was retired 2026-10-08; its Molten box is still up).
-
-**Retired:** `fvtt-mod-battleflow` (renamed to `fvtt-mod-bythebooks` in 3.0.0, 2026-10-11, issue
-#6 of that repo; uninstalled from prod and the sandbox 2026-10-12; GitHub redirects the old name, and Foundry refuses the new manifest as an update
-to the old id, so a 2.x world sees an update error, never a wrong install), `fvtt-mod-vendorfixes`
-(replaced by Errata; archived, private, not cloned here) and
-`fvtt-mod-miscpatches` (retired 2026-09-25; the GitHub repo no longer resolves and no clone is
-kept; the Open Roll 5e README sections stopped listing it).
+- `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
+- `fvtt-mcp-imagegen` (public, key `imagegen`): Gemini art for Foundry.
+- `fvtt-mcp-sessionscribe` (public, key `sessionscribe`): a Craig recording and the chat log to the session record.
+- `fvtt-mod-areasounds-sfx` (private): the audio library Area Sounds ships from; not a module.
+- Campaigns: `fvtt-campaign-echoesofhalruaa` (current, private, `"parent": true`); `fvtt-campaign-greenrest`
+  (concluded, public, a reference clone outside `repos.json`). Retired: `fvtt-mod-battleflow` (now By the Books),
+  `fvtt-mod-vendorfixes` (now Errata), `fvtt-mod-miscpatches`.
 
 ## How they fit together
 
-The full picture is `docs/integration-map.md`. The shape of it:
-
-- **Every module installs and works alone.** The "Part of Open Roll 5e" section in each README promises
-  that ("each installs and works on its own and none needs another"). Cross-module behaviour is
-  detection, `game.modules.get(id)?.active`, never a `requires` relationship. The only hard
-  dependency in the family is FX Studio on the third-party `sequencer`.
-- **By the Books is the rules engine and the hub.** It emits `bythebooks.moment` (plus `armorBlock`,
-  `styleDice`, `holdOpened`, `castReleased`, `areaAskAnswered`, `deferredUsageCard`); 3.0.x also
-  fired each under its old `battleflow.*` name, and 3.1.0 (2026-10-12) stopped. FX Studio listens
-  through `scripts/readers/bythebooks.js` (`battleflow.moment` too, for a table still on 2.x; one
-  play per `momentId`) to play effects from what happened, and emits `fxstudio.rebuilt`. Session Scribe reads By the
-  Books' chat cards when building a session record: the `fvtt-mod-bythebooks` flag scope, falling
-  back per card to `fvtt-mod-battleflow` (cards posted before 3.0.0 keep it for good).
-- **Loot Shelf knows Party Stash** (receipt settings line up when both are present), and **By the Books knows Loot
-  Shelf**: a companion (Find Familiar) that leaves the table drops what it carried as an ephemeral Loot Shelf chest
-  (`api.createLootContainer`) when Loot Shelf is active, else the gear is lost.
-- **Two modules touch Foundry's Token class at `setup`.** Combat Plus's GM Vision (behind its switch,
-  GM clients only) wraps `CONFIG.Token.objectClass` with an `isVisible` override; Loot Shelf patches
-  `_canView` on whatever class is there (shop and chest tokens); and Combat Plus's Portrait View
-  (1.7.0, on by default) patches `_canView` and `_onClickLeft2` the same way, so a player's
-  double-click on a token they can't view opens its portrait. Portrait View steps aside for Loot
-  Shelf's flagged tokens while Loot Shelf is active. Every patch defers to the one beneath it, so
-  any order works; a module that replaced the class after `setup` would drop them all. Combat Plus leaves the job to the upstream `gm-vision` module when
-  that is active, so the class is never wrapped twice.
-- **The MCP writes into two modules' data.** `src/page/scenes.ts` sets Open Server's landing-scene
-  flag and `src/page/areasounds.ts` authors Area Sounds' per-scene sound sets (flags only), and
-  `src/page/world.ts` names By the Books (and its old id, reported as legacy), Area Sounds and Open Server by package id so
-  `get-world-info`'s `bridge` block can report them active (with versions) and warn when a tool's
-  module is missing. When one of those three is renamed or retired, all of that needs the same
-  edit. Its local (gitignored) `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
-- **Token Art reads the signals the others write and needs none of them.** It swaps `texture.src`
-  on the active GM's client from dnd5e's hit points, the core `prone` and `dead` statuses and the
-  combat tracker; Combat Plus's defeated marking and its skull overlay stand beside it (a table
-  with dead art turns the overlay off in Combat Plus's settings). Any other image write (By the
-  Books' Summon Art, Wild Shape Art and Battle Familiar transforms, the MCP's `set-actor-art`, a
-  Token Config edit) is adopted as the token's base and its looks re-derived, except one that lands
-  on a look path of the current base, recognised as that look. It emits `tokenart.changed`
-  `(tokenDoc, { from, to, look })` on every client; nothing listens yet (FX Studio could). Its
-  flags (`base`, `look`, `subject`) live on the token only; the MCP's audit does not yet count a
-  `-<look>` file beside a referenced base as referenced (a small MCP follow-up).
-- **The contracts across repos** (Pass 3, 2026-10-15): an emitter owns `contracts/<name>.json` with a version; By the
-  Books publishes `contracts/moment.json` (the `bythebooks.*` hook payloads) and `contracts/card-flags.json` (the
-  card flag keys), both recorded by its battery and checked in its verify; Area Sounds publishes `contracts/sets.json`,
-  held to its engine. FX Studio, Session Scribe and the MCP test against the emitter's file from the sibling clone and
-  skip when it is absent, each naming the version it last passed against in its own `contracts/consumes.json`;
-  `node tools/contracts.mjs --check` here reports every consumer's version against its emitter's. The three writers on
-  Dead (dnd5e, By the Books, Combat Plus) and its two readers (Token Art, By the Books' summons) are one rule in
-  `contracts/dead.md`, which each writer's README points at; its open contradiction waits for a ruling (HANDOFF §7).
-- **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
-  `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
-  every listener tolerate the hook never firing.
+- **Every module installs and works alone:** cross-module behaviour is detection, `game.modules.get(id)?.active`,
+  never `requires`; the modules' one hard dependency is FX Studio's on `sequencer`.
+- **One client acts:** a consequence every client hears lands on the elect (Foundry's active GM; the kit's `elect.js`
+  adds the leading window). A table may run several GM clients, Gamemaster or Assistant (suite issue #8).
+- **By the Books is the hub:** it emits `bythebooks.moment` and six narrower hooks (the map lists them). FX Studio
+  plays the moment (once per `momentId` and word; a 2.x table's `battleflow.moment` too) and emits
+  `fxstudio.rebuilt`. Session Scribe reads its cards (scope `fvtt-mod-bythebooks`, per card falling back to
+  `fvtt-mod-battleflow`). A companion leaving the table drops its gear as a Loot Shelf chest when Loot Shelf is on.
+- **Loot Shelf and Party Stash pair through the kit, not detection:** both carry `receipt.js` (the same three receipt
+  modes, set in each); Party Stash posts nothing for a change with the kit's echo marker, which every Loot Shelf
+  write carries; Loot Shelf offers any dnd5e Group the actor belongs to for loot and sale coin.
+- **Token class patches at `setup`:** Combat Plus's GM Vision (its switch, GM clients, not beside the upstream
+  `gm-vision`) wraps `CONFIG.Token.objectClass`; Loot Shelf patches `_canView`; Combat Plus's Portrait View patches
+  `_canView` and `_onClickLeft2`, stepping aside for Loot Shelf's tokens. Each defers to the one beneath (any
+  order works); a class replaced after `setup` drops them all.
+- **The MCP writes two modules' data**, Open Server's landing-scene flag and Area Sounds' sets, and `get-world-info`
+  names By the Books (and its old id), Area Sounds and Open Server (`src/page/`): a rename needs the same edit there.
+- **Token Art reads the others' signals and needs none** (hit points, the `prone` and `dead` statuses, the combat
+  tracker); another image write (By the Books' transforms, the MCP's `set-actor-art`) becomes the token's base. It
+  emits `tokenart.changed`; nothing listens yet.
+- **Contracts:** an emitter owns `contracts/<name>.json` with a version (By the Books' `moment.json` and
+  `card-flags.json`, Area Sounds' `sets.json`); a consumer tests against it from the clone beside it, skips when
+  absent, and names the version in its `contracts/consumes.json`. A rule several modules write is one file here
+  (`contracts/dead.md`). **Hooks:** `<short>.<event>` belongs to `fvtt-mod-<short>`; the emitter documents it in its
+  README and contract, and every listener tolerates it never firing.
 
 ## Upstream upgrades
 
-A Foundry or dnd5e release can break a module or bring something worth adopting; Foundry 14.367
-and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The watch:
-
-- **Daily Action** runs `tools/upstream-watch.mjs --notify`. Foundry: every channel is read, only
-  Stable asks for a review (a newer Testing/Development build shows as VERSIONS.md's Newest
-  pre-release). dnd5e: published GitHub releases. Premium books stay with Errata's own watch.
-- **On a release newer than Reviewed** it writes `watch/<package>/<version>.md` (the releases
-  covered; dnd5e's notes verbatim, MIT, and its tag diff; Foundry's notes are linked, not copied,
-  and only the lines a lead matched are quoted) and opens one `upgrade review` issue here with a
-  row per public repo and that repo's leads (its `watch/surface.json` names matched against the
-  notes and the dnd5e diff, sharpest first). Leads are places to look, not verdicts.
-- **The review** is a Claude Code session in this folder: read the notes file, judge each row
-  (`no impact`, `breaks: …`, `adopt: …`, linking the sibling issue when there is work) and tick it.
-  The fvtt-mcp-dnd5e row is done only with the new build's `/join` fixture in its tests (Foundry
-  releases) and an `npm run smoke:bridge` line from the updated sandbox; the Errata row is Errata's
-  own version review. Then set Reviewed and Reviewed on in `VERSIONS.md` and commit; the next watch
-  run closes the issue, and only once no row is left unticked (dispatch the workflow to close it now).
-- The watch's stdout is a log; its summary goes only to `--summary <file>`.
+A Foundry or dnd5e release can break a module (14.367 and 14.369 each reshaped `/join` and hung the bridge). The daily
+`upstream-watch.mjs --notify` opens an `upgrade review` issue per release newer than `VERSIONS.md`'s Reviewed, a row
+per public repo with its leads (places to look, not verdicts).
+**The review** is a session here: judge each row (`no impact`, `breaks: …`, `adopt: …`, linking the sibling issue)
+and tick it; the MCP's row needs the new build's `/join` fixture in its tests and an `npm run smoke:bridge` line
+from the updated sandbox, Errata's is its own version review. Then set Reviewed and Reviewed on and commit; the next
+run closes the issue once every row is ticked.
 
 ## Conventions
 
-- **Names.** Repo `fvtt-<kind>-<name>` with kind `mod`, `mcp`, `campaign`, `suite`; the
-  name part has no hyphens; `app` was tried for the two smaller servers and dropped 2026-10-08, since each is one stdio MCP server like the dnd5e one. Package id = repo name. Foundry title `Open Roll 5e: <Name>`. The
-  2026-10-02 rename round is complete. Battle Flow became By the Books on 2026-10-11 (3.0.0, the
-  module's issue #6), the second rename after Area Sounds. "Sister" and "sibling" are not used in public text; a
-  module is "part of Open Roll 5e" and two that pair up are "companions". Before naming a
-  module, check the Foundry package list for a title that clashes: Soundscape clashed and became
-  Area Sounds (2.0.0, 2026-10-10). The definitive list is the one a setup screen installs from (a
-  `getPackages` post to `/setup` with no world active); the website's search only ranks text. A
-  rename changes the flag scope, so the module carries a read fallback and a GM-load migration
-  from the old scope (Area Sounds' `scripts/store.js`; By the Books' `scripts/migrate.js`, which
-  also refuses to run beside the old package, since two copies would act twice).
-- **Branches.** `main` everywhere, nothing else long-lived. Feature work in a branch or worktree;
-  delete it, locally and on GitHub, once it is merged.
-- **Contributions.** Every public repo accepts issues and does not accept pull requests (the user,
-  2026-10-08). The generated README section says so, and each repo carries
-  `.github/PULL_REQUEST_TEMPLATE.md` saying it again to anyone who opens one.
-- **State blocks.** A sibling CLAUDE.md carries at most one dated `**State (YYYY-MM-DD).**` block,
-  near the top, rewritten in place when the facts change; dated status lives nowhere else in that
-  file. Errata, FX Studio and Session Scribe follow it since 2026-10-08.
-- **Releases.** One GitHub release per module version. The manifest URL every world installs from
-  is `https://github.com/Txpple/<repo>/releases/latest/download/module.json` and the download is
-  `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. By the
-  Books has `release.yml` + `verify.yml`; Errata has `check.yml` + `upstream-watch.yml`; the MCP and
-  Session Scribe have `ci.yml`. The other modules release by hand.
-- **"Part of Open Roll 5e" README sections.** All ten module READMEs and the three server READMEs
-  carry one, between `<!-- openroll5e:family -->` markers, listing the rest of the family with the
-  `blurb` from `repos.json`. `node tools/suite-sections.mjs` rewrites them all (`--check` to verify);
-  never edit the section by hand. The sections replaced the "Sister modules" sections on 2026-10-08.
-- **Foundry compatibility.** All verified on 14; minimums range 11 to 14 (By the Books and FX
-  Studio are 14-only). The system, where declared, is dnd5e. A local checkout of the dnd5e system source
-  (the 5.x release line) is the reference when a question needs the system's own code.
-- **Tooling tiers.** By the Books, the MCP and both apps have Biome + TypeScript config + Vitest;
-  Errata has its register check; FX Studio, Loot Shelf, Party Stash and Area Sounds have a
-  package.json with tools but no linter or tests; Autoexplore, Combat Plus and Open Server are a
-  `module.json` plus `scripts/`. When a small module grows tooling, copy By the Books' Biome config
-  rather than inventing a new one.
-- **Reaching prod.** Prod (Echoes of Halruaa on Molten) is reached through a gitignored `fvtt-mcp-dnd5e/.env.halruaa` (`FOUNDRY_HOST=molten`, the box URL, the bridge user, the WebDAV password); a new machine recreates it from `.env.example`. Deploy with `FOUNDRY_HOST=molten FVTT_MCP_ENV=.env.halruaa node scripts/deploy-house-module.mjs <repo> [--check]` from the MCP repo; `FOUNDRY_HOST` must be in the process env too. The deploy refreshes the served files (live on the next world reload), but `game.modules` is built when the Foundry process boots, so the version string keeps showing the old release. The Molten panel's Restart is UI-only; the lever that refreshes the live package cache is Foundry's own installer, driven by `FOUNDRY_HOST=molten FVTT_MCP_ENV=.env.halruaa node scripts/register-module.mjs --id <repo> --manifest https://github.com/Txpple/<repo>/releases/latest/download/module.json` from the MCP repo: it returns the world to setup, reinstalls the module from its GitHub release and relaunches the world (Area Sounds 2.0.1 and Autoexplore 1.1.2, 2026-10-10). It disconnects everyone, so check `list-users` first, and the release must already be published since it installs from the manifest, not the clone. By the Books 3.0.0 reached prod that way on 2026-10-11, then `scripts/configure-modules.mjs --enable fvtt-mod-bythebooks --disable fvtt-mod-battleflow` and a second register-module run as the bounce; the first run's launchWorld answered "The request could not be processed" although the world came back up, so read `/api/status` before a retry bounces it again. On 2026-10-12 Battle Flow was uninstalled from prod (`scripts/uninstall-modules.mjs`, after it was disabled) and from the sandbox (the next `pull-prod-to-local.mjs` mirror deleted its folder), and By the Books 3.1.0 and FX Studio 0.9.1 went in through the installer; FX Studio's House in the repo is prod's own, so its reinstall changed none of prod's FX. Combat Plus 1.7.0 (Portrait View, its issue #2) went in through the installer on 2026-10-12 too. By the Books 3.2.0 (gear lights, its issue #7: a Candle, Torch, Lamp or Lantern toggles a coloured, flickering light on the bearer) went in the same way on prod and the sandbox later on 2026-10-12, and the third-party `torch` module it replaces was disabled (`configure-modules.mjs --disable torch`) and uninstalled (`uninstall-modules.mjs --ids torch`) on both. By the Books 3.3.0 (summons placed like Misty Step, one creature picker, Find Familiar as a companion, one leading window per GM; its issue #1) and FX Studio 0.10.0 (the summon and unsummon moments) were released on 2026-10-12 without a battery run and went onto the sandbox and, the same day, prod through the installer (`register-module.mjs`, prod's House byte-identical to the repo first, so no FX changed). By the Books 3.4.0 (Summon Art: a settings button opening a window of token and portrait overrides per summoned creature, Find Familiar first; its issue #1) went onto prod through the installer on 2026-10-12, with 54 familiar art files in prod's `worlds/echoes-of-halruaa/assets/familiars/` and prod's `summonArt` table loaded with all 27 Find Familiar names; the sandbox was then re-mirrored from prod. By the Books 3.4.1 (summons straight to its menu, light spells on a token or an object, rests end the short effects, Summon Art for all 18 summon spells; a patch, the user's versioning rule) went onto prod through the installer on 2026-10-12 with no one connected; Its generated summon art (41 files, `worlds/echoes-of-halruaa/assets/summons/`) and the Summon Art table entries for the 18 spells were copied to prod the same night, Find Familiar's own entries kept. By the Books 3.4.2 (2026-10-13: dnd5e's Cast Spell dialog before the summon menu, one button per summon spell, Spiritual Weapon's and Conjure Animals' picks, the pack's emanations, Wild Companion as Find Familiar, Wild Shape's known forms only, a Wild Shape Art window, every module effect drawn on its token) went onto prod through the installer with no one connected; the new art (`assets/summons/`, `assets/wildshape/`) went up over WebDAV and the sandbox's Summon Art and Wild Shape Art tables were merged into prod's, then the sandbox was re-mirrored from prod. The full battery after it found two real bugs, fixed in 3.4.3 the same day (a recast of the same concentration spell past the dialog asked about ending itself, since 3.4.1; a summon's own `@mod` dropped from its dice line, 3.4.2) and suites behind the day's rulings, brought up to date; the re-run was green but for one Metamagic timing flake (9z) that passes alone. 3.4.3 went onto prod through the installer and the sandbox was re-mirrored again. The warlock pass (2026-10-13): By the Books 3.4.4 (Hex as an ability pick with Cast/Move and the slot's longer Concentration, the Vestige Companion and Pact of the Chain's forms as familiar-style companions, summons that turn to face their movement, every rule under its closed tick with `tools/check-rule-folds.mjs` in verify, rescues offered only when they can win), FX Studio 0.10.1 (Magical Cunning a short burst) and Errata 1.2.2 (E-005 the PHB creatures' Dexterity attacks, E-006 the Celestial vestige) went onto prod through the installer after a full battery (46 suites green, 6 brought to the day's rulings and re-run green); the Pact of the Chain and Vestige art (22 files under `assets/familiars/` and `assets/summons/`) went up over WebDAV and the sandbox's Summon Art table was merged into prod's. FX Studio 0.10.2 (Fiendish Vigor a buff on the warlock: the PHB invocation is its own heal activity, so it reaches FX Studio as `feature:fiendish-vigor`, not the spell) and By the Books 3.4.5 (below) went onto prod through the installer on 2026-10-14 with no one connected, prod's House byte-identical before and after. The sandbox was re-mirrored from prod on 2026-10-14 (after session zero), at the user's ask; that replaced its test characters on Party Camp (BTB Test Warlock, Mage, Bard, Party Fighter), whose old world DB was kept only as a scratch backup; and again that evening once By the Books 3.4.5 and FX Studio 0.10.2 were on prod (`FVTT_MCP_ENV=.env.halruaa node scripts/pull-prod-to-local.mjs` from the MCP repo, both bridges disconnected first since each counts as a connected user; 616 files down, the By the Books Test Range scene and 22 test actors gone, the art tables already identical), so the sandbox runs the releases, not dev copies. The `sessionscribe` registration carries the same `FVTT_MCP_ENV` (since 2026-10-10) and joins as the bridge user, Assistant DM (no separate scribe user, the user's ruling 2026-10-10). The `foundry-local5e` server is a local copy, never prod. Battle Flow issue #5 (one dnd5e key per GM load) was traced to slow sequential writes and fixed in v2.16.2 (2026-10-10).
-- **Session zero's combat notes, shipped (2026-10-14).** By the Books 3.4.5 (Familiar Friend from Arcana Unleashed: the
-  free cast as a Consumption line, Fortified Familiar's HP landed by the elect, Helpful Friend as a greyed-or-offered buy
-  within 5 ft; Sleep as a repeat-save row; the thirteenth setting *Going Down Costs a Level of Exhaustion*, off by
-  default, the campaign's house rule; the downed conditions applied out of combat; the rescue window's "Accept the
-  roll") was released on the user's word **without a battery** (walked by hand on the sandbox; `npm run verify` green;
-  the two owed battery runs stay owed) and went onto prod through the installer with no one connected. Prod was then
-  set: *Going Down* **on** (through a bridge script in `configure-modules.mjs`'s pattern, since `run-script` fences
-  `game` off and no tool writes a module setting), dnd5e *Apply Downed Conditions* **all** (`configure-dnd5e-settings`),
-  and Tom's Owl to 3/3 HP; the sandbox had both settings on already. Errata issue #792 names the pack's inert Fortified
-  Familiar enchantment (no fix: the rule is the module's).
-- **Portent widened (2026-10-14), shipped in By the Books 3.4.6 the same day.** The analysis
-  found Portent's own-roll ticks sound on checks (the missing tick on the user's seat was not reproduced; a skipped dialog is the
-  one per-seat cause) and the bystander offers narrow by the 2026-09-29 ruling, unchanged since v2.10.0. Built as the plan
-  recommended (`audits/plans/portent-widened.md`; RULINGS *Portent widened*): a check or a requested save whose roll carries a
-  DC (dnd5e's `options.target`) asks the diviner like a demanded save and the card says SUCCESS or FAILURE; a bare check still
-  asks nobody; ordinary hits stay the quiet card row (the meter re-run: 8–9 popups a fight against 1–3). And the rest's Portent
-  dice are the bearer's to roll (the user, "way more fun"): the rest card asks with a Roll button, the dice land as the
-  player's own roll, the timer rolls when it runs out. `smoke-classes` §41, §52, §82 (amended) and §126 (new) green on the
-  sandbox 2026-10-14. Released as **3.4.6** that evening with Battle Familiar, on the user's word and **without a battery** (the
-  third owed), and onto prod through the installer with no one connected; the sandbox carries the same bytes (`--local`). The
-  user keeps working on Portent in the next version: `audits/plans/portent-test-handoff.md` is the table walk, the plan's W2
-  and W3 the open questions. The same walk found three more, in 3.4.6 too: the ways-to-pay line re-ticked the slot box once the free cast was spent (the
-  user could not clear it; RULINGS *Summons* call 57); **Fortified Familiar counted twice** — dnd5e's feat grant copies the
-  feat's enchantment onto the granted spell, so the system's own landing already adds 2 × level and the module's boon added
-  it again (a Crab at 33), and Tychon's sheet carries the enchantment twice from a doubled grant at session zero (prod and
-  the sandbox; one copy to delete), so Errata #792's premise is wrong (call 58); an empowered familiar wore the form's token
-  ring (call 59).
-- **The asks widened (2026-10-14), built on By the Books `main` after 3.4.6, unreleased, deployed to the sandbox (`--local`).**
-  The user's second round of rulings that day (RULINGS *The asks widened*), after a plain-words account of the dice changers'
-  three shapes and of what the 2026-09-29 noise gate had left of Cutting Words' damage half (reachable only on a hit that held
-  for someone else). Built inside the machines that exist: **Cutting Words' damage half** is a guard of the damage hold beside
-  Interception (`damage-holds.js` `cuttersFor`, asked once the damage is known: "⟨attacker⟩ hits ⟨target⟩ for N — cut the
-  damage?"); **the mutes** are one chip with a scope ("Not until my turn", swept at the bearer's turn; "Not this combat";
-  out of combat "Not until the next combat") on every bystander popup and card row; **the down guard** (`reductionKeepsUp`)
-  always asks a reduction that can keep the target above 0 HP, mutes ignored, "You can keep ⟨name⟩ from hitting 0 Hit
-  Points."; **Portent** asks on every other creature's roll a face turns (`ask: "crit"` dropped; the 8–9 popups a fight
-  accepted with the mutes as the brake); **the bend banner** ("⟨diviner⟩'s Portent bends reality! … the d20 14 becomes the
-  3 — 19 → 8 · MISS") on every screen when a face replaces another creature's d20; the quiet road retired. From the table walk
-  the same evening: the popups as radios with one Apply button and "Pass just this time" checked; a damage card rolled after a
-  turned miss says "Not applied — …" (`notApplied`); the once-per-turn stamp keyed to the bearer's own combat (an unlinked
-  combat on the sandbox had stamped a diviner outside it). The suites:
-  `smoke-classes` §2, §3, §6, §41g–h rewritten, §127 new — §1–6, §41, §126, §127 and `smoke-guards` §5–6 (Interception beside
-  the new guard) green on the sandbox 2026-10-14, `npm run verify` green (1513 tests); the table walk is §8 of
-  `audits/plans/portent-test-handoff.md`. Committed in By the Books as `72b35fb` (2026-10-14, after the Portent table walk);
-  Cutting Words' table walk that evening (`audits/plans/cutting-words-test-handoff.md`; Cecil Edmunds given the PHB Cutting
-  Words on the sandbox, he had none) found the one-ask-per-hit rule hid the damage half: with a +4 attack on AC 18 every hit sat
-  inside the d8, the roll half always asked first, and only the down guard got through. Both halves ask now (a pass at the roll
-  is "not at the roll"), and every bystander popup says the face the die needs in bold ("You need a **3** or higher on the d8");
-  committed in By the Books, deployed to the sandbox. Saving throws are not Cutting Words' by the book (attack rolls, checks,
-  damage), so the dummy's save against Lysandra's Mind Sliver asks nobody. The same walk settled **where the dice rise**
-  (RULINGS *The dice that rise*, "Where they rise"): over the one whose number changed, nowhere else — a bent attack or check
-  over the roller (the hold's drawer had put a bent attack's chips over the creature hit since September), a damage cut over
-  the one who takes the damage with nothing over the bard and nothing in flight; two cards, the modifier or the new face
-  first, then a beat later the old value turning over to the new; the closing card says what landed ("by 3 — 5 → 2").
-  All of it is By the Books `72b35fb..47318b7` (2026-10-14), verify green on its real exit code (two earlier commits had been
-  called green off a piped run), the sandbox byte-identical. **Shipped as 3.4.7 (2026-10-14, late)** after the first full
-  battery since 3.4.5 (below), and onto prod through the installer with no one connected (prod byte-identical, the bridge
-  reporting 3.4.7); the sandbox carries the same bytes (`--local`).
-- **The owed batteries, run (2026-10-14, late).** Three releases had gone out on hand walks (3.4.5, 3.4.6 and the asks
-  widened). The battery before 3.4.7 took three full runs and a partial one (the output under By the Books' `dist/battery/`,
-  the last one 55/55 green, settings clean) and found **three module bugs of 3.4.5**, fixed in 3.4.7: a kill reverted out of
-  combat raced dnd5e's own removal of the downed condition (the Dead mark now clears before the Hit Points are written); the
-  out-of-combat downed condition could land twice (once per drop now); and a Sleep locked by its failed repeat no longer
-  ended on damage nor lifted the Unconscious it had pressed (a locked effect still ends on its `endsOn` cause and still
-  lifts). **Battery hygiene** that cost a dozen suites: the sandbox table walk's combat left running (unlinked, round 26)
-  stamped every receipt and expired every Reaction chip spent out of combat (the preflight now refuses a started combat none
-  of the fixtures stand in); the Going Down house rule, on since the prod mirror, walked the fixtures to Exhaustion 6 (the
-  battery pins the house rules off after its settings snapshot and puts them back); the downed conditions' Prone rider
-  outliving the heal left fixtures Prone for the next suite (every suite's connect sweeps the downed leftovers off the BTB
-  Test actors); gear chests a fallen Battle Familiar leaves stood on the reused range (`reset-fixture-state` and
-  `fixture-suite` sweep foreign tokens; `smoke-summons` takes its own). And `smoke-spells` §10 (the 2024 Sleep) had never
-  run in a battery: the cast carried its sphere template and dnd5e's placement waited for a canvas click for the watchdog's
-  whole 600 s, skipping the teardown and leaving the Decision Timer at 0 for every suite after it — the harness heartbeat
-  now reports a stage the suite sets, which is how it was traced (By the Books `tools/README.md`). One never-fired hook
-  stands unexplained: `dnd5e.advancementManagerComplete` (mastery-record.js), rare by nature — no battery levels a PC.
-- **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
-  (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
-  at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
-  the table, the familiar empowered in place through dnd5e's own transform (the familiar keeps its name, art, type and Hit
-  Points; the form's Hit Points as temp HP; reverts when they run out, the hour passes, or the caster's "Battle Familiar:
-  ⟨name⟩" effect goes; a familiar in its pocket refuses the cast). The plan and the sandbox measures: the module's
-  `audits/plans/battle-familiar.md`; the rulings: its RULINGS *Summons* calls 48–55. Live: `smoke-familiar` §9–§13,
-  `smoke-summons` §9, `smoke-companions` (a familiar's whole life: one companion effect, one token, one record after
-  every step; the landing sweeps orphaned companion effects, the pocket's way to a double), all green 2026-10-14. Released
-  in 3.4.6 the same evening and on prod through the installer. **Two GM clients at once** (the DM's window beside
-  the bridge, later a co-DM): the impact analysis and the work it implies are issue #8 here.
-- **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
-  worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
-  file edits for world data.
-  **The sandbox is shared between sessions** (2026-10-15: Token Art's build session restarted the local Foundry
-  three times and walked its module on the bridge while a By the Books battery ran there, and the battery's sole-GM
-  preflight failed twice): before a `local-foundry.mjs restart`, a `register-module.mjs` run or a long bridge walk,
-  check the linked sessions for one on `foundry-local5e` and ask it for a pause. And every page an MCP script opens
-  (`configure-modules.mjs`, the bridge itself) is a GM client that loads and runs every active module, so a module
-  disabled through the bridge runs once more on that page before the bounce; Token Art's Restore All pauses the
-  whole world for that reason. Token Art's walk finished once the battery ended (all twelve steps green, the module
-  enabled on the sandbox); it left nine PNGs under `assets/tokenart-walk/` there for trying the module, nothing else.
-  **Token Art 1.0.0 went onto prod through the installer on 2026-10-15** (a new module: `register-module.mjs` with the
-  GitHub manifest, then `configure-modules.mjs --enable` and a second installer run as the bounce, the pattern above),
-  with the DM's own window the one connection dropped; prod and the sandbox run the same bytes.
-  **Token Art 1.0.1 (2026-10-15, evening)**: a fresh-eyes review of 1.0.0 by a session that did not build it, with an
-  Opus read beside it, found fifteen things and fixed them all (the module's `audits/review-2026-10-15.md`; the design
-  points it left are its issues #1–#4): among them the wildcard filter keeping a look whose base the wildcard never
-  matched, a separator change adopting a worn look as a base, Restore All and Rescan racing a reconcile, a stale plan
-  overwriting a Token Config edit, and every `-=` deletion key logging a Foundry 14 compatibility warning on every
-  write (now `ForcedDeletion` operators; 13 keeps the keys). Nine were reproduced on the 1.0.0 scripts through a
-  stub-Foundry bench; three live checks ran green on the sandbox through a GM page script in `configure-modules.mjs`'s
-  pattern with the console captured (a back-to-base swap, Restore All then Rescan, the wildcard with an unmatched base;
-  zero deletion-key warnings), the way to walk a module when a browser login would mean typing the bridge user's real
-  password. Released as 1.0.1 with both assets (the zip built from the tag with LF endings, so a byte-identical check
-  against the repo holds) and installed on prod through the installer the same evening: the DM's own window was the
-  one non-bridge connection, dropped on the user's word, and `configure-modules.mjs --enable fvtt-mod-tokenart
-  --dry-run` read back `installed v1.0.1 (active=true)`; the sandbox carries the same bytes (`--local`).
-  A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
-  or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
-  names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
-  it cannot settle; since 2026-10-11 the bridge also caps a hung page op and rejoins on the next call). Every MCP
-  write leaves a receipt under the OS temp dir (`fvtt-mcp-dnd5e/receipts/`, keyed by server and world); the lock
-  behind it is per page, so two sessions on one bridge user still interleave at the server. Foundry 14.369 is
-  faster than 14.367: a Battle Flow battery went red on polling and on a popup's close window with the module
-  unchanged (Battle Flow issue #8, `tools/README.md` *A faster platform turns a poll into a lie*).
-- **Client settings don't mirror.** Client-scope settings live in each browser per site address, so
-  prod and the sandbox can look different with identical world data, and every new browser or
-  machine starts from defaults. The one that bit (2026-10-14): chat cards dark on prod, light on the
-  sandbox, with core Color Scheme Dark/Dark on both. The lever is dnd5e's **Chat Log Theme**
-  (Configure Settings → Dungeons & Dragons Fifth Edition; `dnd5e.chatLogTheme`, client). Blank
-  follows the Applications theme; the user's choice is **Light**. Each player sets it for themselves.
+- **Names:** `fvtt-<kind>-<name>` (`mod`, `mcp`, `campaign`, `suite`; no hyphen in the name). Public text says "part
+  of Open Roll 5e" and "companions", never "sister" or "sibling". Check a new title against the list a setup screen
+  installs from (a `getPackages` post to `/setup`). A rename moves the flag scope: the module carries a read fallback
+  and a GM-load migration (Area Sounds' `store.js`, By the Books' `migrate.js`).
+- **Branches:** `main` everywhere, nothing else long-lived. **Contributions:** issues, never pull requests. **State
+  blocks and the log** (the last section) hold for every sibling's CLAUDE.md too.
+- **Releases:** only on the user's word; a patch by default, a minor when the user names one. One GitHub release per
+  version, with the zip and a bare `module.json` (worlds install from `releases/latest/download/module.json`). Loot
+  Shelf, Party Stash, Autoexplore and Open Server release from an annotated tag through `release-module.yml` (a
+  pre-release suffix is never latest; a dispatch is a dry run). By the Books' own `release.yml` wants its tag body to
+  name its battery (`Battery: <run> — n/n suites, n/n checks, GREEN`, from `battery-status.mjs --line`) or say
+  `Battery: none (pre-release)`. Errata and FX Studio run `build-release.ps1`; the rest release by hand.
+- **README sections:** "Part of Open Roll 5e", between `<!-- openroll5e:family -->` markers, is never hand-edited.
+- **Compatibility:** verified on Foundry 14, minimums 11 to 14; the system, where declared, dnd5e (a local source
+  checkout answers its questions). **Tooling:** Biome and Vitest in By the Books, Token Art, Loot Shelf,
+  Party Stash and the servers; Errata's register check, FX Studio's `check-*.mjs`, Area Sounds' `test`, plain
+  `scripts/` elsewhere; a module growing tooling takes the template's.
+- **The kit** (small, pulled by need): `templates/kit/` (`elect.js`, `receipt.js`, `log.js`, their tests) is the
+  source, copied to `scripts/kit/` and `tests/kit/` in each `"kit": true` repo and `templates/module/`; never edit a
+  copy. **The template** (`templates/module/`): Biome, Vitest, `verify.yml`, a `release.yml` on the reusable
+  workflow, the kit and `lang/en.json`. No language but English is planned: a module moves its strings to
+  `lang/en.json` when it adopts the template (By the Books never).
+
+## The sandbox and prod
+
+- **The sandbox** (`foundry-local5e`) is the development machine's local Foundry, a copy of prod, never prod; the
+  hosted worlds are reached through the MCP, never raw file edits. **One GM seat, shared between sessions:** before
+  a `local-foundry.mjs restart`, a `register-module.mjs` run or a long bridge walk, ask any linked session on
+  `foundry-local5e` to pause. A seat blocking a suite is a bridge, never a person (`disconnect-bridge`;
+  `{ "all": true }` for other sessions' recorded browsers).
+- **Every MCP page is a GM client** running every active module, so a module disabled through the bridge runs once
+  more there; a GM page script in `configure-modules.mjs`'s pattern, console captured, walks a module without a
+  browser login. Each write leaves a receipt under the OS temp dir (`fvtt-mcp-dnd5e/receipts/`); the lock is per
+  page, so two sessions on one bridge user interleave. `sessionscribe` joins as the bridge user.
+- **Poll for a state, never sleep a beat.** A mirror (`pull-prod-to-local.mjs`, both bridges off) replaces the
+  sandbox's world and dev copies: redeploy after. **Client settings don't mirror:** each browser keeps its own (chat
+  cards follow dnd5e's Chat Log Theme; the user's choice is Light).
+- **Prod**, only on the user's word, from the MCP repo with the gitignored `.env.halruaa` and `FOUNDRY_HOST=molten
+  FVTT_MCP_ENV=.env.halruaa` in the process env. `deploy-house-module.mjs <repo>` serves new files (live on reload;
+  the version shown changes when the process boots). The installer, `register-module.mjs --id <repo> --manifest <the
+  release's module.json>`, returns the world to setup, installs the published release and relaunches, disconnecting
+  everyone (`list-users` first); never a pre-release. A new module: the installer, `configure-modules.mjs --enable`,
+  the installer again as the bounce. A launch answering "could not be processed" may be up: read `/api/status`
+  before a retry. Retiring: `--disable`, then `uninstall-modules.mjs`. A module setting is written by a bridge
+  script in `configure-modules.mjs`'s pattern (`run-script` fences `game` off). Never `game.shutDown()` via the bridge.
 
 ## Keep this file current
 
-When something changes that spans modules (a new sibling, a
-rename, a shared hook, a release convention), record it here or in `repos.json` in the same
-session. Regenerate the map rather than editing it.
+A CLAUDE.md keeps its rules and at most one `**State (YYYY-MM-DD).**` block, opening in its first 30 lines and
+running to the first blank line, rewritten in place when its facts change; no other date appears in it. When
+something that spans modules changes (a sibling, a rename, a shared hook, a release convention), write the rule here
+or in `repos.json` in the same session and put what happened under its date in `docs/log/YYYY-MM.md`; release detail
+goes to the repo's CHANGELOG or release notes. Regenerate generated files rather than editing them.
