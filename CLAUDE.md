@@ -20,6 +20,9 @@ This repo is the thin layer over them:
 - `tools/upstream-surface.mjs`: writes `watch/surface.json` (the Foundry and dnd5e names each public
   repo's shipped code uses) from the clones, for the watch's leads (`--check` only reports).
 - `tools/migrate-layout.ps1`: the one-time move from the pre-2026-10-08 flat layout (below).
+- `docs/reviews/`: dated software-engineering reviews of the whole family. The first
+  (2026-10-15) covers what held and what bent after the first passes over the six books, with the
+  MCP's tool-surface ceiling (its issue #18) as a companion analysis; its §8 is the path forward.
 - `docs/examples/session-scribe/`: two complete session records Session Scribe produced for a
   concluded campaign (sessions 8 and 9, 2026-09-22 and 2026-09-29), copied here when campaign
   repos were private; the whole of that campaign is now public in `fvtt-campaign-greenrest`.
