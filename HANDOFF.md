@@ -263,4 +263,21 @@ one-paragraph summary at its top. Then this file is retired per its header.
 
 ## 7. Waiting for the user
 
-(empty; the autonomous run writes here)
+The autonomous run started 2026-10-15 after GO (an orchestrator with one Opus agent per brief, each in a
+worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP's
+`deploy-house-module.mjs --from <dir>` proves a worktree on the sandbox). What it could not do:
+
+1. **A Gamemaster test user on the sandbox** (4e). The suite identity is an Assistant GM (role 3), and
+   Foundry lets a user create only users of its own role or below, so the second Gamemaster the
+   mixed-role orderings of `tools/probe-multi-gm.mjs` need can only be made from your own Gamemaster
+   window on the sandbox: Configure Players → Create User, name `Gamemaster Tester`, role Gamemaster,
+   the password on the `FOUNDRY_GM2_PASSWORD` line the run appends to the MCP's `.env`. Then
+   `node tools/probe-multi-gm.mjs --orderings full-assistant,assistant-full` (about 10 minutes) fills
+   the note's mixed-role rows. The same-role orderings run without it.
+2. **Two presentation choices from 4c, each a one-line revert if you prefer the old look:** five card
+   bars that were drawn but never synced now drain (Commander's Strike, the bystander's held roll,
+   Tactical Mind's armed check, the sweep, Bait and Switch); and `area-ask.js` reopens its popup on
+   every render rather than once, kept as it was.
+3. **A wording in By the Books' release chain** (4a, `tools/README.md` step 5): an annotated tag the
+   builder refuses and that has not been pushed yet is rewritten in place (`git tag -a -f`); a pushed
+   tag still never moves. Say if you would rather it always be a new tag.
