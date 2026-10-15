@@ -1,6 +1,9 @@
 # Plan — Token Art, a new Open Roll 5e module
 
-Drafted 2026-10-15 from the brief ("a graphics token enhancer": one token image per state, found by file name, base as
+**BUILT AND RELEASED 2026-10-15** as `fvtt-mod-tokenart` 1.0.0 (tag `v1.0.0`, the zip and `module.json` on the release),
+walked on the sandbox (all twelve steps green) and installed on prod through the installer the same day. The walk changed
+four things, recorded in the module's CLAUDE.md: decisions read the stored image, Rescan rides a world setting, a stored look
+is recognised by its name, Restore All pauses the whole world. Drafted 2026-10-15 from the brief ("a graphics token enhancer": one token image per state, found by file name, base as
 the fallback) and the family as it stands: Combat Plus 1.7.0 (defeated marking at 0 HP on the active GM's client), By the
 Books 3.4.7 (Summon Art's `<stem>.<ext>` / `<stem>-portrait.<ext>` naming in `scripts/decide/summon-art.js`, the leading-window
 election in `scripts/core.js`, the dynamic-ring note), the dnd5e MCP's house token defaults (ring off, wildcard art off) and
