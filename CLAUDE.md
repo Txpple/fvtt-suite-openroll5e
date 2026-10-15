@@ -10,7 +10,7 @@ Stash 1.8.2; the servers' latest releases are the MCP 4.6.0, imagegen 1.3.1, Ses
 Foundry 14.369, dnd5e 6.0.6) runs the same plus By the Books' unreleased `main` (`--local`) and any `main` a module's
 live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the Books, FX Studio, Session
 Scribe, the MCP, Area Sounds, Loot Shelf and Party Stash. The plan from `docs/reviews/2026-10-15-suite-review.md`
-runs from `HANDOFF.md` until it retires.
+was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the queue for the user.
 
 ## This repo and where it lives
 
