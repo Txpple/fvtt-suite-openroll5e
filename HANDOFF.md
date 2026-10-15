@@ -38,7 +38,7 @@ name on update and an empty `pageId` on get or update. The page functions (`fvtt
 and the rest, reachable from `run-script`) keep `items`/`patches`/`ids` by design; no sibling or
 campaign repo names the old keys. CHANGELOG's Unreleased entry carries the numbers.
 
-**Owed.** The MCP's three re-pointed verify scripts on the sandbox before its next release. The
+**Owed.** Nothing from the MCP: its three re-pointed verify scripts ran green on the sandbox on 2026-10-15 (4i). The
 suite README's revert sentence was corrected the same evening (`a5fe159`; decision 2).
 
 **Every decision in §3 is made** (the user, 2026-10-15). The work runs from §6, *The autonomous
@@ -84,7 +84,7 @@ parallel, but every By the Books pass ends with a battery and the sandbox takes 
 | **3. Contracts across repos** | the emitter owns `contracts/<name>.json` (schema, version, payloads its battery recorded): By the Books publishes the moment payload and the card-flag keys; FX Studio and Session Scribe test against them from the sibling clone, skipping when absent; the MCP's Area Sounds mirror tested against `engine.js`; FX Studio de-duplicates on `momentId` plus `event` and reads `outcome`; the scribe reads the 26 keys it misses; the three writers on Dead become one rule; a suite `contracts --check` | not started | a renamed field in the hub fails a sibling's test before it ships |
 | **4. The family kit** (vendored, never shared) | five byte-identical files copied into each module and checked by a suite tool like `suite-sections.mjs`: `elect.js`, `wrap.js`, `receipt.js`, `log.js`, `settings.js`; a module template (Biome, Vitest, `verify.yml`, a generalized `release.yml`) and one reusable workflow in the suite so the hand-built zips and the two PowerShell release scripts retire; `upstream-surface.mjs` gains a `patched` set; Loot Shelf and Party Stash share one receipt and post one line per sale | not started; Token Art (built today from the plan in `docs/plans/tokenart.md`) is the first module that could start from the template | every module releases from a tag; the watch's next review issue lists a patched name |
 | **5. The docs recut** | CLAUDE.md carries rules, dated history moves to a log per repo; the State block on every sibling with a CLAUDE.md; the public claims corrected or built (§9 of the review); one suite check: no date in a CLAUDE.md outside its State block | not started; the suite CLAUDE.md grew again today (Token Art) | the suite file under a third of its size |
-| **6. The MCP** | the companion's steps 1–3 ✅; step 4 measure the other clients once; step 5 `$defs` left alone; step 6 design.md names the 4.x line; then the correctness edges in order: failures as `isError` (the assets family, the PC rollback, `rolled-back` thrown), a `noReceipt` tag with a "not undoable" line, the ambiguity refusal on fuzzy writes (#19), `run-script-api.mjs --check` in `npm test`, `scratch/` excluded from vitest, the `MOLTEN_` leak back inside `src/hosts` | steps 1–3 landed | the README's receipt sentence is true; design.md names 4.x |
+| **6. The MCP** | the companion's steps 1–3 ✅; step 4 measure the other clients once; step 5 `$defs` left alone; step 6 design.md names the 4.x line; then the correctness edges in order: failures as `isError` (the assets family, the PC rollback, `rolled-back` thrown), a `noReceipt` tag with a "not undoable" line, the ambiguity refusal on fuzzy writes (#19), `run-script-api.mjs --check` in `npm test`, `scratch/` excluded from vitest, the `MOLTEN_` leak back inside `src/hosts` | steps 1–3 and 6 landed, and every correctness edge, on MCP `main` 2026-10-15 (`959389f..37a185a`: design.md names the 4.x line and its gate, `scratch/` excluded, `run-script-api --check` in `npm test`, `MOLTEN_` back inside `src/hosts`, misses and refusals as coded errors, the `NO_RECEIPT` tag and the "not undoable" line, the fuzzy-write tie refusal and #19 fixed and closed); the three owed live scripts ran green on the sandbox, plus `verify-asset-plane` and `verify-ownership-inherit`; left: step 4, measuring what Claude Desktop loads (§7) | the README's receipt sentence is true; design.md names 4.x |
 
 **One trade made today, to be aware of.** Per-kind keys made `manage-placeables` lossless in Claude
 Code, and the flattened tool grew from 13k chars (one kind visible) to 36.8k (all eight visible),
@@ -281,3 +281,7 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
 3. **A wording in By the Books' release chain** (4a, `tools/README.md` step 5): an annotated tag the
    builder refuses and that has not been pushed yet is rewritten in place (`git tag -a -f`); a pushed
    tag still never moves. Say if you would rather it always be a new tag.
+4. **Measure what Claude Desktop loads** (the MCP companion's step 4; needs your own client). Register the
+   server in Claude Desktop with the `mcpServers` block `npm run init` prints, open a chat, note whether the
+   schemas load eagerly or deferred and whether a union's `anyOf` is shown or merged, then add one note to
+   the MCP's `docs/contracts.md`. Until then the eager ceiling stands for the clients not measured.
