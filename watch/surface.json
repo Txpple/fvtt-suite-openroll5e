@@ -16,7 +16,11 @@
       "api": [
         "hasProperty"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "FogManager#_handleReset",
+        "FogManager#save"
+      ]
     },
     "fvtt-mod-bythebooks": {
       "dnd5eHooks": [
@@ -131,7 +135,10 @@
         "randomID",
         "setProperty"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "SummonActivity#isHidden"
+      ]
     },
     "fvtt-mod-combatplus": {
       "dnd5eHooks": [],
@@ -174,7 +181,15 @@
         "getProperty",
         "play"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "Token#_canView",
+        "Token#_onClickLeft2",
+        "Token#isVisible",
+        "VisualEffectsMaskingFilter#defaultUniforms",
+        "VisualEffectsMaskingFilter#fragmentHeader",
+        "VisualEffectsMaskingFilter#fragmentPostProcess"
+      ]
     },
     "fvtt-mod-errata5e": {
       "dnd5eHooks": [],
@@ -188,7 +203,13 @@
         "getProperty",
         "setProperty"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "ActiveEffect#applyActivity",
+        "AttackActivity#prepareFinalData",
+        "NPCData#prepareBaseData",
+        "SpellData#prepareBaseData"
+      ]
     },
     "fvtt-mod-fxstudio": {
       "dnd5eHooks": [
@@ -220,7 +241,8 @@
         "readTextFromFile",
         "saveDataToFile"
       ],
-      "routes": []
+      "routes": [],
+      "patched": []
     },
     "fvtt-mod-lootshelf": {
       "dnd5eHooks": [
@@ -247,7 +269,15 @@
         "randomID",
         "wait"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "BaseActorSheet#_defaultDropBehavior",
+        "BaseActorSheet#_onDropCreateItems",
+        "BaseActorSheet#_onDropItemContainer",
+        "ContainerSheet#isVisible",
+        "ItemSheet5e#isVisible",
+        "Token#_canView"
+      ]
     },
     "fvtt-mod-openserver": {
       "dnd5eHooks": [],
@@ -257,7 +287,8 @@
       "documents": [],
       "dnd5eConfig": [],
       "api": [],
-      "routes": []
+      "routes": [],
+      "patched": []
     },
     "fvtt-mod-partystash": {
       "dnd5eHooks": [],
@@ -285,7 +316,13 @@
         "setProperty",
         "wait"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "BaseActorSheet#_defaultDropBehavior",
+        "BaseActorSheet#_onDropItem",
+        "CharacterActorSheet#_configureInventorySections",
+        "GroupActorSheet#_onDropItem"
+      ]
     },
     "fvtt-mod-areasounds": {
       "dnd5eHooks": [],
@@ -309,7 +346,8 @@
         "escapeHTML",
         "hasProperty"
       ],
-      "routes": []
+      "routes": [],
+      "patched": []
     },
     "fvtt-mod-tokenart": {
       "dnd5eHooks": [],
@@ -317,6 +355,7 @@
         "createActiveEffect",
         "createCombat",
         "createCombatant",
+        "createScene",
         "createToken",
         "deleteActiveEffect",
         "deleteCombat",
@@ -326,6 +365,7 @@
         "setup",
         "updateActiveEffect",
         "updateActor",
+        "updateCombatant",
         "updateToken",
         "userConnected"
       ],
@@ -334,6 +374,7 @@
         "Actor",
         "Combat",
         "Combatant",
+        "Scene",
         "Token"
       ],
       "dnd5eConfig": [],
@@ -343,7 +384,10 @@
         "hasProperty",
         "srcExists"
       ],
-      "routes": []
+      "routes": [],
+      "patched": [
+        "Actor#getTokenImages"
+      ]
     },
     "fvtt-mcp-dnd5e": {
       "dnd5eHooks": [],
@@ -386,7 +430,8 @@
         "/auth",
         "/join",
         "/setup"
-      ]
+      ],
+      "patched": []
     },
     "fvtt-mcp-imagegen": {
       "dnd5eHooks": [],
@@ -394,7 +439,8 @@
       "documents": [],
       "dnd5eConfig": [],
       "api": [],
-      "routes": []
+      "routes": [],
+      "patched": []
     },
     "fvtt-mcp-sessionscribe": {
       "dnd5eHooks": [],
@@ -404,7 +450,8 @@
       "api": [],
       "routes": [
         "/api/status"
-      ]
+      ],
+      "patched": []
     }
   }
 }

@@ -162,6 +162,14 @@ function termsFor(surface, pkg) {
   // "Token" matches half of any Foundry release.
   const t = [];
   for (const r of surface.routes) if (ROUTE_TERMS[r]) t.push({ kind: "route", term: r, re: ROUTE_TERMS[r] });
+  // A patched method is the sharpest lead: a rename breaks the wrap without a word. A private or
+  // camelCase name stands alone; a plain word (FogManager#save) needs its owner on the same line.
+  for (const p of surface.patched ?? []) {
+    const [owner, method] = p.includes("#") ? p.split("#") : [null, p];
+    const re = (/^_|[A-Z]/.test(method) || !owner) ? word(method)
+      : new RegExp(`\\b${owner}\\b.*(?<![\\w.])${method}(?![\\w])|(?<![\\w.])${method}(?![\\w]).*\\b${owner}\\b`);
+    t.push({ kind: "patched", term: p, re });
+  }
   if (pkg === "dnd5e") {
     for (const h of surface.dnd5eHooks) t.push({ kind: "dnd5e hook", term: h, re: word(h) });
     for (const k of surface.dnd5eConfig) t.push({ kind: "CONFIG.DND5E", term: k, re: new RegExp(`\\bDND5E\\.${k}\\b`) });

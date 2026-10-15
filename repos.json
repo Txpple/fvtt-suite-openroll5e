@@ -60,7 +60,8 @@
       "status": "active",
       "sync": true,
       "description": "Loot chests and merchant shelves players can take from, buy from and sell to without owning them, with a chat receipt for every trade.",
-      "blurb": "loot chests and merchant shelves that players can take from, buy from and sell to without owning them, with a receipt for every trade."
+      "blurb": "loot chests and merchant shelves that players can take from, buy from and sell to without owning them, with a receipt for every trade.",
+      "kit": true
     },
     {
       "name": "fvtt-mod-openserver",
@@ -80,7 +81,8 @@
       "status": "active",
       "sync": true,
       "description": "Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copy, coin moves through Deposit and Withdraw, stacks split, every transfer posts a receipt.",
-      "blurb": "makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt."
+      "blurb": "makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt.",
+      "kit": true
     },
     {
       "name": "fvtt-mod-areasounds",

@@ -1,0 +1,42 @@
+{
+  "id": "fvtt-mod-example",
+  "title": "Open Roll 5e: Example",
+  "description": "One sentence: what the module does at the table.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Matthew Sippel"
+    }
+  ],
+  "esmodules": [
+    "scripts/example.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.0",
+          "verified": "6.0.6"
+        }
+      }
+    ]
+  },
+  "url": "https://github.com/Txpple/fvtt-mod-example",
+  "manifest": "https://github.com/Txpple/fvtt-mod-example/releases/latest/download/module.json",
+  "download": "https://github.com/Txpple/fvtt-mod-example/releases/download/v0.1.0/fvtt-mod-example.zip",
+  "readme": "https://github.com/Txpple/fvtt-mod-example#readme",
+  "license": "MIT"
+}

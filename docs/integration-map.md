@@ -43,7 +43,7 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mod-combatplus | fvtt-mod-lootshelf | 1 | fvtt-mod-combatplus/scripts/combatplus.js |
 | fvtt-mod-fxstudio | fvtt-mod-bythebooks | 6 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
-| fvtt-mod-lootshelf | fvtt-mod-partystash | 4 | fvtt-mod-lootshelf/tools/verify-receipt-settings.mjs |
+| fvtt-mod-lootshelf | fvtt-mod-partystash | 5 | fvtt-mod-lootshelf/tools/live-check.mjs |
 
 ## Custom hooks
 
@@ -51,7 +51,7 @@ Hooks named after a suite module (`bythebooks.*`, `fxstudio.*`, ...). Emitters c
 
 | Repo | Emits | Listens |
 |---|---|---|
-| fvtt-mod-bythebooks | bythebooks.areaAskAnswered (1), bythebooks.armorBlock (1), bythebooks.styleDice (1), bythebooks.moment (1), bythebooks.${event} (1), bythebooks.holdOpened (1), bythebooks.castReleased (1), bythebooks.deferredUsageCard (1) | bythebooks.moment (11), bythebooks.styleDice (1), bythebooks.armorBlock (1), bythebooks.holdOpened (1) |
+| fvtt-mod-bythebooks | bythebooks.areaAskAnswered (1), bythebooks.armorBlock (1), bythebooks.styleDice (1), bythebooks.moment (1), bythebooks.${event} (1), bythebooks.holdOpened (1), bythebooks.castReleased (1), bythebooks.deferredUsageCard (1) | bythebooks.moment (12), bythebooks.styleDice (1), bythebooks.armorBlock (1), bythebooks.holdOpened (1) |
 | fvtt-mod-fxstudio | fxstudio.rebuilt (1) | bythebooks.moment (1), battleflow.moment (1), fxstudio.rebuilt (1) |
 | fvtt-mod-tokenart | tokenart.changed (1) | — |
 

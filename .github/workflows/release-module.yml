@@ -1,0 +1,127 @@
+# The release of one family module, called from that module's own release.yml:
+#
+#   on:
+#     push:
+#       tags: ["v*"]
+#     workflow_dispatch:
+#   permissions:
+#     contents: write
+#   jobs:
+#     release:
+#       uses: Txpple/fvtt-suite-openroll5e/.github/workflows/release-module.yml@main
+#
+# Generalized from By the Books' release.yml, which stays its own (its tag body carries the battery
+# line). On a pushed tag: the tag must be annotated, name module.json's version and sit on main,
+# with no release for it yet; the module's gate runs when its package.json has a verify script;
+# tools/build-module-zip.mjs from this repo builds the zip (module.json and the served folders) and
+# reads it back; then the release is published with the zip and a bare module.json, so the manifest
+# URL every world installs from (releases/latest/download/module.json) and the download
+# (releases/download/v<version>/<repo>.zip) both resolve. The tag's subject is the release title and
+# its body the notes. A version with a pre-release suffix (1.2.0-beta.1) is published as a GitHub
+# pre-release, which is never the repo's latest release, so no world installs it by the manifest.
+#
+# Run by hand (workflow_dispatch) it is the dry run: the same checks and the same build, the zip kept
+# as a workflow artifact, nothing published.
+name: release-module
+
+on:
+  workflow_call:
+    inputs:
+      suite-ref:
+        description: The ref of fvtt-suite-openroll5e whose builder builds the zip.
+        type: string
+        default: main
+      node-version:
+        description: The Node.js the gate and the builder run on.
+        type: string
+        default: "24"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: release-${{ github.repository }}-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ inputs.node-version }}
+      - name: The tag names an annotated tag on main, with no release yet
+        if: github.ref_type == 'tag'
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          git fetch --force origin "refs/tags/${tag}:refs/tags/${tag}"
+          if [ "$(git cat-file -t "${tag}")" != "tag" ]; then
+            echo "::error::${tag} is a lightweight tag; a release tag is annotated (its message is the notes)"; exit 1
+          fi
+          git fetch origin main
+          if ! git merge-base --is-ancestor "${GITHUB_SHA}" origin/main; then
+            echo "::error::${tag} is not on main"; exit 1
+          fi
+          if gh release view "${tag}" >/dev/null 2>&1; then
+            echo "::error::a release for ${tag} already exists"; exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      # Before the suite is checked out beside the module, so the module's linter sees only the module.
+      - name: The module's gate (npm run verify), when it has one
+        run: |
+          if [ -f package.json ] && node -e "process.exit(require('./package.json').scripts?.verify ? 0 : 1)"; then
+            if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+            npm run verify
+          else
+            echo "No verify script: the build's own checks are the gate."
+          fi
+      - uses: actions/checkout@v7
+        with:
+          repository: Txpple/fvtt-suite-openroll5e
+          ref: ${{ inputs.suite-ref }}
+          path: .release-suite
+          fetch-depth: 1
+      - name: Build (the manifest's checks, the zip, the read-back)
+        id: build
+        run: |
+          id="$(node -p "require('./module.json').id")"
+          if [ "${id}" != "${REPO}" ]; then
+            echo "::error::the repo is ${REPO} but module.json's id is ${id}; the package id is the repo name"; exit 1
+          fi
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            node .release-suite/tools/build-module-zip.mjs . --tag "${GITHUB_REF_NAME}" --out "dist/${REPO}.zip"
+          else
+            node .release-suite/tools/build-module-zip.mjs . --out "dist/${REPO}.zip"
+          fi
+        env:
+          REPO: ${{ github.event.repository.name }}
+      - name: Keep the zip (dry run)
+        if: github.ref_type != 'tag'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ github.event.repository.name }}
+          path: |
+            ${{ steps.build.outputs.zip }}
+            module.json
+      - name: Publish
+        if: github.ref_type == 'tag'
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          git tag -l --format='%(contents:body)' "${tag}" > "${RUNNER_TEMP}/notes.md"
+          title="$(git tag -l --format='%(contents:subject)' "${tag}")"
+          case "${PRERELEASE}" in
+            true) kind=(--prerelease --latest=false) ;;
+            false) kind=() ;;
+            *) echo "::error::the builder did not say whether ${tag} is a pre-release"; exit 1 ;;
+          esac
+          gh release create "${tag}" --verify-tag "${kind[@]}" --title "${title}" \
+            --notes-file "${RUNNER_TEMP}/notes.md" \
+            "${ZIP}" module.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRERELEASE: ${{ steps.build.outputs.prerelease }}
+          ZIP: ${{ steps.build.outputs.zip }}
