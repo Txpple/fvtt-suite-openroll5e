@@ -31,8 +31,8 @@ makes art for your own table. Two complete records are in
 [docs/examples/session-scribe](docs/examples/session-scribe); the campaign they came from is public
 at [fvtt-campaign-greenrest](https://github.com/Txpple/fvtt-campaign-greenrest).
 
-**Everything it does, you can see and revert.** Every automatic action in combat, every trade at a
-shelf and every transfer from the stash posts a receipt with a one-click revert.
+**Everything it does, you can see.** Every automatic action in combat posts a receipt with a
+one-click revert; every trade at a shelf and every transfer from the stash posts a receipt.
 
 Built for one table and shared.
 

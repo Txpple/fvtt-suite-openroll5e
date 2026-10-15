@@ -96,9 +96,11 @@ grow further; whether to split is a decision for when a session is felt to pay f
 ## 3. Decisions only the user can make
 
 1. **Push By the Books and whether 3.4.8 is cut** for rows 1–2 (above).
-2. **The public promises** (review §9): the suite README's one-click revert on shelf and stash
-   trades, which neither module has: build the revert or change the words. "Loot Shelf knows Party
-   Stash" in the suite CLAUDE.md. The MCP README's "every write tool answers with a receipt".
+2. ~~**The public promises**~~ (review §9). **Decided 2026-10-15:** the suite README's sentence now
+   promises the revert for combat only (shelf and stash: a receipt); the shelf/stash revert waits for
+   Pass 4's `receipt.js`; the MCP README's "every write tool answers with a receipt" is fixed with
+   Pass 6's no-receipt tag and "not undoable" line. "Loot Shelf knows Party Stash" in the suite
+   CLAUDE.md stays for Pass 5.
 3. **design.md's framing of the MCP**: "in maintenance since 3.0.0" against a 4.x feature line.
    Pass 6 step 6 needs the sentence.
 4. **The kit's scope** (Pass 4): how much vendored code the small modules carry, and whether Loot
