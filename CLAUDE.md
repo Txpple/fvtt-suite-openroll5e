@@ -338,6 +338,14 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
 - **Testing host.** The development machine runs a local Foundry (14.369, dnd5e 6.0.6; 14.369 renamed the /join user field to `userId`, which the bridge matches case-insensitively since 2026-10-09); the
   worlds in play are hosted (Molten Hosting) and reached through the MCP. Prefer the MCP over raw
   file edits for world data.
+  **The sandbox is shared between sessions** (2026-10-15: Token Art's build session restarted the local Foundry
+  three times and walked its module on the bridge while a By the Books battery ran there, and the battery's sole-GM
+  preflight failed twice): before a `local-foundry.mjs restart`, a `register-module.mjs` run or a long bridge walk,
+  check the linked sessions for one on `foundry-local5e` and ask it for a pause. And every page an MCP script opens
+  (`configure-modules.mjs`, the bridge itself) is a GM client that loads and runs every active module, so a module
+  disabled through the bridge runs once more on that page before the bounce; Token Art's Restore All pauses the
+  whole world for that reason. Token Art's walk left two scenes (`Token Art Walk A`, active, and `B`) and nine PNGs under
+  `assets/tokenart-walk/` on the sandbox, and step 12's "then disabled" re-run is owed, both waiting on that battery.
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
   or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
   names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
