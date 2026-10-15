@@ -365,9 +365,10 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   stub-Foundry bench; three live checks ran green on the sandbox through a GM page script in `configure-modules.mjs`'s
   pattern with the console captured (a back-to-base swap, Restore All then Rescan, the wildcard with an unmatched base;
   zero deletion-key warnings), the way to walk a module when a browser login would mean typing the bridge user's real
-  password. Released as 1.0.1 with both assets; the sandbox carries the 1.0.1 bytes (`--local`). The installer run on
-  prod waits for the gate (nobody but bridge seats connected): the DM's own window was connected when the release was
-  ready, so prod is on 1.0.0 until `register-module.mjs` is run with no one connected.
+  password. Released as 1.0.1 with both assets (the zip built from the tag with LF endings, so a byte-identical check
+  against the repo holds) and installed on prod through the installer the same evening: the DM's own window was the
+  one non-bridge connection, dropped on the user's word, and `configure-modules.mjs --enable fvtt-mod-tokenart
+  --dry-run` read back `installed v1.0.1 (active=true)`; the sandbox carries the same bytes (`--local`).
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
   or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
   names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
