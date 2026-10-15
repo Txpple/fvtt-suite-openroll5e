@@ -81,7 +81,7 @@ parallel, but every By the Books pass ends with a battery and the sandbox takes 
 | --- | --- | --- | --- |
 | **0. The release carries its proof** | a By the Books tag body names the battery run (`Battery: <run> — n/n suites, n/n checks, GREEN`) or says `Battery: none (pre-release)`; the build refuses a tag with neither; a pre-release never reaches prod through `register-module`; `battery-status.mjs --line` prints the line to paste. Then the battery made cheaper: `smoke-classes` split by class, the 1,001 bare waits replaced by one injected poll, the count pins retired, a static gate for `tools/` | proposed (two cards) | the next three releases name their run; a full battery is under 40 minutes |
 | **1. The presentation pass** (the hub) | the review's §5 helper table, rows 1–10, in order: the clock's owner ✅, the serializer ✅, the pending card row, `closePopup`, owner-exported flag readers with a flag-edge check, `postCard` with the whisper policy and the relay's sending side, one pick builder with `check-pickers` over every machine, `tokenDocOf`, `resolveUuid` everywhere, the logger; raw `DialogV2` allowed only in `ui.js` once `openMomentPopup` fires on dismiss and carries a buzzer | rows 1–2 landed; rows 3–4 proposed | the §5 counts read one file each; `npm run verify` fails on a new bypass |
-| **2. Two GM clients** (suite #8) | the two-GM harness mode and the connect-race measurement first; then the landing claim stamped with its user and re-driven when that user is gone; then the `isGM` audit, each site tagged presentation or consequence (the review's §5 has the hub's list; §6 Loot Shelf's); the family half is Pass 4's `elect.js` | not started; the measurement decides the rest | `smoke-companions` and `smoke-summons` each assert one landing per record with two GM clients |
+| **2. Several GM clients** (suite #8) | the multi-GM harness mode and the connect-race measurement first; then the landing claim stamped with its user and re-driven when that user is gone; then the `isGM` audit, each site tagged presentation or consequence, and each consequence checked against what an Assistant GM may write (the review's §5 has the hub's list; §6 Loot Shelf's); the family half is Pass 4's `elect.js` | measurement to run now (decision 7); it orders the rest | `smoke-companions` and `smoke-summons` each assert one landing per record with two GM clients, and again with a Gamemaster beside an Assistant GM |
 | **3. Contracts across repos** | the emitter owns `contracts/<name>.json` (schema, version, payloads its battery recorded): By the Books publishes the moment payload and the card-flag keys; FX Studio and Session Scribe test against them from the sibling clone, skipping when absent; the MCP's Area Sounds mirror tested against `engine.js`; FX Studio de-duplicates on `momentId` plus `event` and reads `outcome`; the scribe reads the 26 keys it misses; the three writers on Dead become one rule; a suite `contracts --check` | not started | a renamed field in the hub fails a sibling's test before it ships |
 | **4. The family kit** (vendored, never shared) | five byte-identical files copied into each module and checked by a suite tool like `suite-sections.mjs`: `elect.js`, `wrap.js`, `receipt.js`, `log.js`, `settings.js`; a module template (Biome, Vitest, `verify.yml`, a generalized `release.yml`) and one reusable workflow in the suite so the hand-built zips and the two PowerShell release scripts retire; `upstream-surface.mjs` gains a `patched` set; Loot Shelf and Party Stash share one receipt and post one line per sale | not started; Token Art (built today from the plan in `docs/plans/tokenart.md`) is the first module that could start from the template | every module releases from a tag; the watch's next review issue lists a patched name |
 | **5. The docs recut** | CLAUDE.md carries rules, dated history moves to a log per repo; the State block on every sibling with a CLAUDE.md; the public claims corrected or built (§9 of the review); one suite check: no date in a CLAUDE.md outside its State block | not started; the suite CLAUDE.md grew again today (Token Art) | the suite file under a third of its size |
@@ -102,13 +102,27 @@ grow further; whether to split is a decision for when a session is felt to pay f
    Pass 4's `receipt.js`; the MCP README's "every write tool answers with a receipt" is fixed with
    Pass 6's no-receipt tag and "not undoable" line. "Loot Shelf knows Party Stash" in the suite
    CLAUDE.md stays for Pass 5.
-3. **design.md's framing of the MCP**: "in maintenance since 3.0.0" against a 4.x feature line.
-   Pass 6 step 6 needs the sentence.
-4. **The kit's scope** (Pass 4): how much vendored code the small modules carry, and whether Loot
-   Shelf gains the revert the README promises while its receipt moves onto the kit.
-5. **The docs recut's cut line** (Pass 5): what leaves CLAUDE.md for a log, and where the log lives.
-6. **i18n**: nine public modules, zero `lang/` folders. Not scheduled; cheapest now.
-7. **Two GM clients**: whether the co-DM case is wanted soon enough to pull Pass 2 ahead of Pass 1.
+3. ~~**design.md's framing of the MCP**~~ **Decided 2026-10-15:** the feature line is open, with a
+   gate: a feature lands when it serves onboarding or the table, and is written into design.md
+   before it is built; no live in-session assistant stays. design.md §1 and §9 and CONTRIBUTING's
+   opening say so in Pass 6 step 6.
+4. ~~**The kit's scope**~~ **Decided 2026-10-15:** small, pulled by need. Three files first
+   (`elect.js`, `receipt.js`, `log.js`); `wrap.js` and `settings.js` when a second module needs
+   them. Loot Shelf and Party Stash adopt first and gain the one-click revert with the receipt
+   move (the promise the README dropped today comes back true). Autoexplore and Open Server take
+   only the release workflow.
+5. ~~**The docs recut's cut line**~~ **Decided 2026-10-15:** a CLAUDE.md keeps its rules and one
+   State block; the dated journal moves to `docs/log/YYYY-MM.md` in each repo; release detail goes
+   to the CHANGELOG or the GitHub release notes; the suite check forbids a date outside the State
+   block.
+6. ~~**i18n**~~ **Decided 2026-10-15:** no plans for non-English. Hooks for later are fine: the
+   module template ships a `lang/en.json` and a small module moves its strings when it adopts the
+   template; nothing is scheduled, By the Books not at all.
+7. ~~**Two GM clients**~~ **Decided 2026-10-15:** Pass 2's measurement (4e) runs now, beside Pass 1
+   (different files); the rest of Pass 2 is ordered from what it finds. The goal, in the user's
+   words: "ultimately, we need to support multiple gm clients, of varying or same privilege level
+   (full vs assistant)". So Pass 2 covers any number of GM-capable clients, Gamemaster and
+   Assistant GM alike, not just the pair.
 
 ## 4. The briefs, ready to hand to a session
 
@@ -157,8 +171,10 @@ the ten hand-written inputs, `check-pickers` over every machine. Also fix the ga
 misses a write through a variable (`spellDamage`, `migratedFrom`) and files `FORM_FLAG` under the
 wrong name.
 
-**4e. Pass 2, the measurement** (By the Books `tools/`, then `core.js`): a two-GM harness mode (a
-second GM identity in `target.mjs`, the preflight allowing exactly the pair); a probe that fires a
+**4e. Pass 2, the measurement** (By the Books `tools/`, then `core.js`; runs now, beside Pass 1): a
+multi-GM harness mode (extra GM identities in `target.mjs`, one a Gamemaster and one an Assistant
+GM, the preflight allowing exactly the named set); a note of which consequence writes an Assistant
+GM is refused (Foundry's permission table) and whether the elect can land on one; a probe that fires a
 landing as the second GM connects and counts what lands; then, if the race is real, the claim
 stamped with the claimant's user id and a re-drive when that user is no longer active. Suite #8
 has the full analysis and the proposed order.
