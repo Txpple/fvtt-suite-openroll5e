@@ -290,7 +290,26 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   the one who takes the damage with nothing over the bard and nothing in flight; two cards, the modifier or the new face
   first, then a beat later the old value turning over to the new; the closing card says what landed ("by 3 — 5 → 2").
   All of it is By the Books `72b35fb..47318b7` (2026-10-14), verify green on its real exit code (two earlier commits had been
-  called green off a piped run), the sandbox byte-identical. The release (a patch, 3.4.7) is the user's word.
+  called green off a piped run), the sandbox byte-identical. **Shipped as 3.4.7 (2026-10-14, late)** after the first full
+  battery since 3.4.5 (below), and onto prod through the installer with no one connected (prod byte-identical, the bridge
+  reporting 3.4.7); the sandbox carries the same bytes (`--local`).
+- **The owed batteries, run (2026-10-14, late).** Three releases had gone out on hand walks (3.4.5, 3.4.6 and the asks
+  widened). The battery before 3.4.7 took three full runs and a partial one (the output under By the Books' `dist/battery/`,
+  the last one 55/55 green, settings clean) and found **three module bugs of 3.4.5**, fixed in 3.4.7: a kill reverted out of
+  combat raced dnd5e's own removal of the downed condition (the Dead mark now clears before the Hit Points are written); the
+  out-of-combat downed condition could land twice (once per drop now); and a Sleep locked by its failed repeat no longer
+  ended on damage nor lifted the Unconscious it had pressed (a locked effect still ends on its `endsOn` cause and still
+  lifts). **Battery hygiene** that cost a dozen suites: the sandbox table walk's combat left running (unlinked, round 26)
+  stamped every receipt and expired every Reaction chip spent out of combat (the preflight now refuses a started combat none
+  of the fixtures stand in); the Going Down house rule, on since the prod mirror, walked the fixtures to Exhaustion 6 (the
+  battery pins the house rules off after its settings snapshot and puts them back); the downed conditions' Prone rider
+  outliving the heal left fixtures Prone for the next suite (every suite's connect sweeps the downed leftovers off the BTB
+  Test actors); gear chests a fallen Battle Familiar leaves stood on the reused range (`reset-fixture-state` and
+  `fixture-suite` sweep foreign tokens; `smoke-summons` takes its own). And `smoke-spells` §10 (the 2024 Sleep) had never
+  run in a battery: the cast carried its sphere template and dnd5e's placement waited for a canvas click for the watchdog's
+  whole 600 s, skipping the teardown and leaving the Decision Timer at 0 for every suite after it — the harness heartbeat
+  now reports a stage the suite sets, which is how it was traced (By the Books `tools/README.md`). One never-fired hook
+  stands unexplained: `dnd5e.advancementManagerComplete` (mastery-record.js), rare by nature — no battery levels a PC.
 - **Battle Familiar (2026-10-14), shipped in By the Books 3.4.6.** Arcana Unleashed's spell, the spell alone
   (Warlike Familiar's free cast and Intercept Attack parked as WAITS): conjured on the summon road (its own Initiative, one
   at a time, gone at 0 HP leaving its gear, gone at the caster's death, the last form pre-picked) or, with a Find Familiar on
