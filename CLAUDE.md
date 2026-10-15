@@ -2,7 +2,7 @@
 
 ## What this is
 
-The umbrella for the **Open Roll 5e** family: nine public Foundry VTT modules, three MCP servers
+The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, three MCP servers
 (the dnd5e DM assistant, image generation, the session scribe) and a private asset library. Every
 one of those is its own GitHub repo with its own history, releases and CI, and that stays true.
 This repo is the thin layer over them:
@@ -108,6 +108,7 @@ the manifests; the table there is the one to trust.
 | `fvtt-mod-openserver` | Open Server | Hosted worlds: clears the startup pause, per-user landing scenes |
 | `fvtt-mod-partystash` | Party Stash | A dnd5e Group actor's inventory as a working party stash: moves not copies, coin dialog, receipts |
 | `fvtt-mod-areasounds` | Area Sounds | Scene background sound: one-shots with silence, crossfaded loops, day/night gating, quiet in combat (Soundscape until 2.0.0, 2026-10-10) |
+| `fvtt-mod-tokenart` | Token Art | A token wears the look of its state (ready, combat, prone, dead), each a file named beside the base art (`goblin-dead.webp`); a missing look falls through, the base is the floor (created 2026-10-15 from `docs/plans/tokenart.md`; unreleased) |
 
 **MCP servers and assets:**
 
@@ -171,6 +172,16 @@ The full picture is `docs/integration-map.md`. The shape of it:
   `get-world-info`'s `bridge` block can report them active (with versions) and warn when a tool's
   module is missing. When one of those three is renamed or retired, all of that needs the same
   edit. Its local (gitignored) `scratch/siblings-census.mjs` reads the sibling list from `repos.json`.
+- **Token Art reads the signals the others write and needs none of them.** It swaps `texture.src`
+  on the active GM's client from dnd5e's hit points, the core `prone` and `dead` statuses and the
+  combat tracker; Combat Plus's defeated marking and its skull overlay stand beside it (a table
+  with dead art turns the overlay off in Combat Plus's settings). Any other image write (By the
+  Books' Summon Art, Wild Shape Art and Battle Familiar transforms, the MCP's `set-actor-art`, a
+  Token Config edit) is adopted as the token's base and its looks re-derived, except one that lands
+  on a look path of the current base, recognised as that look. It emits `tokenart.changed`
+  `(tokenDoc, { from, to, look })` on every client; nothing listens yet (FX Studio could). Its
+  flags (`base`, `look`, `subject`) live on the token only; the MCP's audit does not yet count a
+  `-<look>` file beside a referenced base as referenced (a small MCP follow-up).
 - **Hook naming is the contract:** a hook `<short>.<event>` belongs to the module whose id is
   `fvtt-mod-<short>`. Add new hooks in the emitting module, document them in its README, and make
   every listener tolerate the hook never firing.
@@ -222,7 +233,7 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   `.../releases/download/v<version>/<repo>.zip`, so a release must carry both assets. By the
   Books has `release.yml` + `verify.yml`; Errata has `check.yml` + `upstream-watch.yml`; the MCP and
   Session Scribe have `ci.yml`. The other modules release by hand.
-- **"Part of Open Roll 5e" README sections.** All nine module READMEs and the three server READMEs
+- **"Part of Open Roll 5e" README sections.** All ten module READMEs and the three server READMEs
   carry one, between `<!-- openroll5e:family -->` markers, listing the rest of the family with the
   `blurb` from `repos.json`. `node tools/suite-sections.mjs` rewrites them all (`--check` to verify);
   never edit the section by hand. The sections replaced the "Sister modules" sections on 2026-10-08.

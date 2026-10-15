@@ -311,6 +311,40 @@
       ],
       "routes": []
     },
+    "fvtt-mod-tokenart": {
+      "dnd5eHooks": [],
+      "coreHooks": [
+        "createActiveEffect",
+        "createCombat",
+        "createCombatant",
+        "createToken",
+        "deleteActiveEffect",
+        "deleteCombat",
+        "deleteCombatant",
+        "init",
+        "ready",
+        "setup",
+        "updateActiveEffect",
+        "updateActor",
+        "updateToken",
+        "userConnected"
+      ],
+      "documents": [
+        "ActiveEffect",
+        "Actor",
+        "Combat",
+        "Combatant",
+        "Token"
+      ],
+      "dnd5eConfig": [],
+      "api": [
+        "ApplicationV2",
+        "confirm",
+        "hasProperty",
+        "srcExists"
+      ],
+      "routes": []
+    },
     "fvtt-mcp-dnd5e": {
       "dnd5eHooks": [],
       "coreHooks": [],

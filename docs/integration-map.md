@@ -15,6 +15,7 @@ Generated 2026-10-15 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.2 | 13–14 | dnd5e | none |
+| fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.0 | 13–14 | dnd5e | none |
 
 ## Who references whom
 
@@ -52,4 +53,5 @@ Hooks named after a suite module (`bythebooks.*`, `fxstudio.*`, ...). Emitters c
 |---|---|---|
 | fvtt-mod-bythebooks | bythebooks.areaAskAnswered (1), bythebooks.armorBlock (1), bythebooks.styleDice (1), bythebooks.moment (1), bythebooks.${event} (1), bythebooks.holdOpened (1), bythebooks.castReleased (1), bythebooks.deferredUsageCard (1) | bythebooks.moment (11), bythebooks.styleDice (1), bythebooks.armorBlock (1), bythebooks.holdOpened (1) |
 | fvtt-mod-fxstudio | fxstudio.rebuilt (1) | bythebooks.moment (1), battleflow.moment (1), fxstudio.rebuilt (1) |
+| fvtt-mod-tokenart | tokenart.changed (1) | — |
 

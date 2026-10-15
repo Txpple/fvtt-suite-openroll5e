@@ -9,7 +9,7 @@ themselves, reactions hold, concentration is tracked, and rests, senses, sizes a
 the book, each step with a receipt and a revert. It is one module with no dependencies beyond
 the dnd5e system, every feature is always on, and it covers the official 2024 books, the premium
 ones included, because [Errata](https://github.com/Txpple/fvtt-mod-errata5e) holds each vendor bug
-until the vendor ships its own fix. Eight more modules cover the rest of the table, from the fog of
+until the vendor ships its own fix. Nine more modules cover the rest of the table, from the fog of
 war to the loot, and every one installs and works on its own.
 
 | | Open Roll 5e | the midi-qol stack |
@@ -55,6 +55,7 @@ history, releases and CI.
 | [Open Roll 5e: Open Server](https://github.com/Txpple/fvtt-mod-openserver) | For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own. |
 | [Open Roll 5e: Party Stash](https://github.com/Txpple/fvtt-mod-partystash) | Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt. |
 | [Open Roll 5e: Area Sounds](https://github.com/Txpple/fvtt-mod-areasounds) | Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat. |
+| [Open Roll 5e: Token Art](https://github.com/Txpple/fvtt-mod-tokenart) | Gives every token the look of its state, ready, in combat, prone or dead, each a file named beside the base art, with nothing to configure. |
 
 ## The MCP servers
 
@@ -64,7 +65,7 @@ history, releases and CI.
 <!-- /openroll5e:catalogue -->
 
 Install any module by pasting its manifest URL into Foundry's *Install Module* dialog; the pattern
-is the same for all nine:
+is the same for all ten:
 
 ```
 https://github.com/Txpple/<repo>/releases/latest/download/module.json
