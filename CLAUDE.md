@@ -344,8 +344,8 @@ and 14.369 each reshaped `/join` and hung the MCP bridge on every world. The wat
   check the linked sessions for one on `foundry-local5e` and ask it for a pause. And every page an MCP script opens
   (`configure-modules.mjs`, the bridge itself) is a GM client that loads and runs every active module, so a module
   disabled through the bridge runs once more on that page before the bounce; Token Art's Restore All pauses the
-  whole world for that reason. Token Art's walk left two scenes (`Token Art Walk A`, active, and `B`) and nine PNGs under
-  `assets/tokenart-walk/` on the sandbox, and step 12's "then disabled" re-run is owed, both waiting on that battery.
+  whole world for that reason. Token Art's walk finished once the battery ended (all twelve steps green, the module
+  enabled on the sandbox); it left nine PNGs under `assets/tokenart-walk/` there for trying the module, nothing else.
   A GM seat on the sandbox that blocks a suite is an MCP bridge, never a person: this session's (`disconnect-bridge`)
   or a parallel session's (the app keeps every open session's MCP servers alive; `disconnect-bridge { "all": true }`
   names every other holder and ends only the browser each recorded, by pid and executable path, keeping any record
