@@ -302,3 +302,13 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
    reaches into Combat Plus; and `settings.js`, since the receipt-mode radios are still drawn in each module.
    The release workflows' dry runs (`workflow_dispatch`, nothing published) were dispatched for the four
    modules; their results are on each repo's Actions page.
+7. **A design choice from Pass 2's re-drive (4j), yours to overturn.** A landing claim is now stamped
+   `{ by, window, at }`, and a claim whose user left (or older than 60 s with nothing landed) is re-driven
+   by the elect. A re-driven landing repeats what its dead claimant wrote before it went, except a summon's
+   (its tokens, resistance and effects carry their card and are removed first) and the writes judged at the
+   landing (a mastery or known-form list, Temporary Hit Points that keep the larger pool): a rest grant's
+   pool use, an initiative swap or a held share's damage could land twice if the claimant dies in the
+   milliseconds between its first world write and its record. The alternative is the record stuck claimed
+   forever with nothing landed (the behaviour before). ARCHITECTURE's accepted trade-offs record it; the
+   other claims (`dismissing`, `companion.acting`, `changing`, `resolving`) still use plain `true` and are
+   a follow-up in the same shape.
