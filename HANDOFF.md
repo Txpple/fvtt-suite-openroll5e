@@ -15,7 +15,7 @@
 | --- | --- | --- | --- |
 | fvtt-suite-openroll5e | the review and its MCP companion; CLAUDE.md's pointer to `docs/reviews/` | `a4563da` | yes |
 | fvtt-mcp-dnd5e | issue #18: three context budgets with named payers; `manage-placeables` entries on per-kind keys; one leaf per shared key (lossy keys 0) | `0bbe4ff`, `1a7bea5`, `5200c0e` | yes; #18 closed |
-| fvtt-mod-bythebooks | review rows 1–2: every decision clock names its owner (`armAskTimer` takes `owns`; the sixteen hand-written clocks and the hold's moved onto it; the offer's buzzer on `armDeadline`; `check-clocks` in verify); every read-modify-write through the serializer (ten sites; `check-serializer` in verify; the metamagic window recorded; D9 parked in the tool as in the prose) | `164485b`, `1f87944` | **no** (main is 2 ahead) |
+| fvtt-mod-bythebooks | review rows 1–2: every decision clock names its owner (`armAskTimer` takes `owns`; the sixteen hand-written clocks and the hold's moved onto it; the offer's buzzer on `armDeadline`; `check-clocks` in verify); every read-modify-write through the serializer (ten sites; `check-serializer` in verify; the metamagic window recorded; D9 parked in the tool as in the prose) | `164485b`, `1f87944` | yes (no release; decision 1) |
 | fvtt-mod-tokenart | a new module, built, walked and released 1.0.0 by another session the same day, on prod and the sandbox | `v1.0.0` | yes |
 
 Proof: By the Books `npm run verify` green (1,534 tests); the full battery green on the sandbox
@@ -38,12 +38,11 @@ name on update and an empty `pageId` on get or update. The page functions (`fvtt
 and the rest, reachable from `run-script`) keep `items`/`patches`/`ids` by design; no sibling or
 campaign repo names the old keys. CHANGELOG's Unreleased entry carries the numbers.
 
-**Open on the user's word.** Push By the Books main; cut 3.4.8 for rows 1–2 or fold them into the
-next release (if cut, name the battery run in the tag body: the first release under Pass 0's rule).
-The MCP's three re-pointed verify scripts on the sandbox before its next release.
+**Owed.** The MCP's three re-pointed verify scripts on the sandbox before its next release. The
+suite README's revert sentence was corrected the same evening (`a5fe159`; decision 2).
 
-**Proposed, not started** (cards in the review session; each brief is in §4 below): Pass 0's
-release rule; the harness prelude and the bare waits; review rows 3–4.
+**Every decision in §3 is made** (the user, 2026-10-15). The work runs from §6, *The autonomous
+run*.
 
 **What rows 1–2 left on purpose** (the hub session's own notes): the ten clocks that were already
 on `armAskTimer` stay on the elect (mastery, concentration, the saves' demand have a §3 driver row
@@ -212,3 +211,56 @@ the ambiguity refusal (#19); then one session measuring what Claude Desktop load
   comments), issue #18's closing comment.
 - Suite issue #8 (two GM clients); MCP issues #19 and #20; By the Books #13, #1, #2.
 - Token Art: `fvtt-mod-tokenart/CLAUDE.md` (its State block) and `docs/plans/tokenart.md`.
+
+## 6. The autonomous run
+
+For the session that runs the plan from here without the user at the keyboard. It needs no context
+beyond this file, the review, `CLAUDE.md` and the memory index; §3 holds every decision, made.
+
+**The shape.** This session is the orchestrator: it starts one session per brief (§4), fresh
+context, Opus 5.5, **each in its own worktree** (several briefs touch By the Books and parallel
+sessions in one checkout collide on commits), keeps the waves below, merges each finished branch
+to `main`, deletes the branch locally and on GitHub, and ticks the pass in §2 here. It does no
+pass's code itself. It checks a session's diff and gate output before calling a brief done.
+
+**The waves.** A wave's briefs run in parallel; a brief waits for the one it names.
+
+| Wave | Briefs | Waits for | Sandbox |
+| --- | --- | --- | --- |
+| 1 | **4a** Pass 0 tooling (By the Books `tools/build-release.mjs`, `battery-status.mjs`, `release.yml`, NOTES) | — | no |
+| 1 | **4c** rows 3–4 (`scripts/ui.js` and the machines) | — | `battery.mjs --changed` at the end |
+| 1 | **4e** the multi-GM measurement (`tools/target.mjs`, the preflight, a probe), with decision 7's Assistant GM | — | yes, the probe |
+| 1 | **4i** the MCP's remaining steps, design.md and CONTRIBUTING per decision 3, plus the owed live run of `verify-placeables-tooling`, `verify-receipts`, `verify-delete-veto` | — | yes, the three scripts |
+| 2 | **4b** the harness prelude and the bare waits, `smoke-classes` split | 4a | full battery |
+| 2 | **4d** rows 5–7 | 4c | `--changed` |
+| 2 | Pass 2's rest (the claim with its user, the re-drive, the `isGM` audit), ordered from 4e's findings | 4e | yes |
+| 3 | **4f** the contracts | 4d (the flag readers settle the keys) | the recording run |
+| 3 | **4g** the kit, decision 4's scope: Loot Shelf and Party Stash first, with the one-click revert | 4e (the elect learns the Assistant GM) | the modules' live checks |
+| 4 | **4h** the docs recut, decision 5's cut line, i18n's template hook per decision 6 | every other brief (each one writes to CLAUDE.md) | no |
+
+Rows 8–10 of Pass 1 (`tokenDocOf`, `resolveUuid`, the logger) and the raw `DialogV2` rule follow
+4d in wave 3 as their own brief, written from the review's §5 in the same form as §4.
+
+**The sandbox takes one at a time.** Before a session's battery, probe, `local-foundry.mjs
+restart` or long bridge walk, the orchestrator holds every other sandbox user; a session asks it
+for the seat and releases it when done. A GM seat that blocks is a bridge (`disconnect-bridge`),
+never a person.
+
+**What the run may do without asking.** Commit and push to `main` in any family repo once
+`npm run verify` (or the repo's own gate) is green on its real exit code and the brief's battery is
+green; open, comment on and close the family's GitHub issues for the work; regenerate the suite's
+generated files (`suite-sections`, `integration-map`, `upstream-surface`) and commit them; edit
+public README words to what decisions 2–6 already say.
+
+**What waits for the user.** Every release and tag (patch bumps by default when the user asks);
+anything on prod: `foundry-halruaa5e`, `.env.halruaa`, `register-module.mjs` or
+`deploy-house-module.mjs` without `--local`; a game-rules ruling (By the Books' RULINGS); a red
+battery the session cannot explain after one re-run; a change outside the decisions in §3. The run
+writes these into §7 below and carries on with the work that does not depend on them.
+
+**Done.** Every brief's "done when" met, §2 ticked, §7 holding only what waits for the user, a
+one-paragraph summary at its top. Then this file is retired per its header.
+
+## 7. Waiting for the user
+
+(empty; the autonomous run writes here)
