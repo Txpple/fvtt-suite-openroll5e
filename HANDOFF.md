@@ -25,17 +25,46 @@ per prompt 13,916 of 14,000; largest flattened tool 36,758 of 36,800 (`manage-pl
 eight kinds now visible); the eager list 205,873 of 220,000 with a per-toolset table. Nothing is
 released from By the Books for rows 1–2 and nothing is on prod from them.
 
+**What the MCP's #18 work left** (that session's own notes): the per-toolset rows are pinned at
+today's numbers (actors 74,911 of 75,000; scenes 62,394 of 62,500; the rest within 100 of their
+ceilings), so the next field in a family raises that family's row in its commit, by design. The
+placeables keys were re-pointed in four skills (`tom-cartos-import`, `token-cutout`,
+`plot-drift-check`, `_shared/authoring-policy`; skills-matrix 0 unresolved) and three verify
+scripts (`verify-placeables-tooling` §G, `verify-receipts`, `verify-delete-veto`); **none ran live:
+one sandbox run of those three is owed before the next MCP release.** Three contracts tightened in
+the same commit: `search-compendium` `limit` is 1–500 for every type (was 50 for "any");
+`manage-rolltables update` refuses an empty formula or results; `manage-journals` refuses an empty
+name on update and an empty `pageId` on get or update. The page functions (`fvtt.createSceneTiles`
+and the rest, reachable from `run-script`) keep `items`/`patches`/`ids` by design; no sibling or
+campaign repo names the old keys. CHANGELOG's Unreleased entry carries the numbers.
+
 **Open on the user's word.** Push By the Books main; cut 3.4.8 for rows 1–2 or fold them into the
 next release (if cut, name the battery run in the tag body: the first release under Pass 0's rule).
+The MCP's three re-pointed verify scripts on the sandbox before its next release.
 
 **Proposed, not started** (cards in the review session; each brief is in §4 below): Pass 0's
 release rule; the harness prelude and the bare waits; review rows 3–4.
 
+**What rows 1–2 left on purpose** (the hub session's own notes): the ten clocks that were already
+on `armAskTimer` stay on the elect (mastery, concentration, the saves' demand have a §3 driver row
+naming the subject, so with no GM those clocks never start); ARCHITECTURE §3 *The clocks* records
+it as the standing choice and a card proposes the ruling plus a `smoke-nogm` section.
+`stored-dice` and `volleys` stay on raw `armDeadline`, pinned in `check-clocks` with reasons. Of
+about 31 raw read-modify-writes on chat flags, 10 were routed through the serializer and 21
+one-writer ones stand pinned by file, function and flag in `check-serializer`'s ALLOW; the check
+sees same-file callers only when a parameter is spread into a write, so it fails until pinned.
+`hold` §7 and `saves` §10d failed once in the interrupted run and passed alone; neither suite was
+re-run in full after that. NOTES has no line yet on a stale CONNECTED suite seat after a Foundry
+restart (it does not block; the preflight counts other users only).
+
 **The sandbox** (`foundry-local5e`, the user's local Foundry 14.369 / dnd5e 6.0.6): runs the same
 bytes as the releases plus By the Books `main` at `1f87944` as a dev copy (`deploy-house-module.mjs
---local`), Token Art 1.0.0 enabled, Party Camp active, no combats, the battery's fixtures torn down,
-nine Token Art walk PNGs under `assets/tokenart-walk/`. It takes one GM-capable seat at a time and
-is shared between sessions: check the linked sessions before a restart, a `register-module.mjs` run
+--local`, byte-identical), Token Art 1.0.0 enabled, the battery's fixtures torn down (run 2's
+teardown exited 0, not re-checked by hand), the Going Down house rule restored to on, nine Token
+Art walk PNGs under `assets/tokenart-walk/`; the Token Art session's two "Token Art Walk" scenes
+(A active) were offered a cleanup and may or may not be gone. The hub session's bridge is
+disconnected; the Token Art session's may be back. It takes one GM-capable seat at a time and is
+shared between sessions: check the linked sessions before a restart, a `register-module.mjs` run
 or a bridge walk (CLAUDE.md, *Testing host*).
 
 **Prod** (Echoes of Halruaa on Molten): By the Books 3.4.7, FX Studio 0.10.2, Errata 1.2.2,

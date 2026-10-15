@@ -124,8 +124,12 @@ the manifests; the table there is the one to trust.
   answers with a receipt and `run-script { undo }` reverses it, `FOUNDRY_TOOLSETS=readonly` is a
   safe first registration, `npm run init` writes the `.env` and the registration and runs the
   doctor, and `get-world-info` reports the bridge (renderer, the family modules active, warnings).
-  4.6.0 (2026-10-12) is the latest release. Open: #18, `tools/list` is 13 chars under its 205,000
-  ceiling in `src/measure.test.ts`, so the next tool field fails `npm test` until that is decided.
+  4.6.0 (2026-10-12) is the latest release. #18 (the `tools/list` ceiling) closed 2026-10-15 on `main`,
+  unreleased: `src/measure.test.ts` prints three budgets with the client that pays each (per prompt,
+  per fetch with no lossy union keys, the eager list per toolset at today's numbers plus a 220,000
+  total), and `manage-placeables` carries each kind's entries on its own key so a deferred client
+  sees every kind; the analysis is `docs/reviews/2026-10-15-mcp-tool-surface.md`. Owed before the
+  next release: one sandbox run of `verify-placeables-tooling`, `verify-receipts`, `verify-delete-veto`.
 - `fvtt-mcp-imagegen` (public): Gemini image generation for Foundry art; server key `imagegen` (was `artificer` to 2026-10-08). Formerly `fvtt-app-artificer` (to 2026-10-08) and `fvtt-mcp-artificer` before that.
 - `fvtt-mcp-sessionscribe` (public): Craig recording + Foundry chat log to session record; server key `sessionscribe` (was `scribe` to 2026-10-10); home of
   the `session-scribe` skill. Formerly `fvtt-app-sessionscribe` (to 2026-10-08).

@@ -181,15 +181,18 @@ findings were re-read in the code before they went here.
   a long await, racing the queued `effectsApplied` claim and `picks[].pressed`; `ui.js`
   `acknowledgeMoment` deep-clones any machine's flag and sets it back, while its own relay path in
   the same function uses the queue. Off chat, the same shape on an effect's `recoiled` map, a
-  `rerollUsed` append, and two region lists in `emanations.js`. About 21 raw read-modify-writes
-  on chat messages in all; the other 100 raw `setFlag` sites on messages are birth stamps, which
-  the law allows.
+  `rerollUsed` append, and two region lists in `emanations.js`. About 31 raw read-modify-writes
+  on chat messages in all (the landing found three more racing the queue: the emanation's pick,
+  the rebuke's followed mark, the aura sweep's member-effect repair); the other raw `setFlag` sites
+  on messages are birth stamps, which the law allows. (Landed as row 2 the same day, `1f87944`:
+  ten routed, 21 one-writer sites pinned in `check-serializer`.)
 - **Who owns a decision clock is chosen five ways.** `armAskTimer` serves 10 timers and hard-codes
-  `isActiveGM()`, so those clocks never start with no GM (against presentation law 11); 15 machines
-  hand-write the same shape on `armDeadline` with `keepsMessage`, `drivesMomentFor` or
-  `isContinuingClient` instead; `auto-damage.js`'s offer buzzer is a relative `setTimeout` with no
-  `deadlineIsLive` and no re-arm on reload. Nine of these timer machines are missing from §3's
-  driver table.
+  `isActiveGM()`, so those clocks never start with no GM (against presentation law 11); 16
+  hand-written sites in 15 machines plus the hold's write the same shape on `armDeadline` with
+  `keepsMessage`, `drivesMomentFor` or `isContinuingClient` instead; `auto-damage.js`'s offer
+  buzzer is a relative `setTimeout` with no `deadlineIsLive` and no re-arm on reload. Fourteen of
+  these timer machines are missing from §3's driver table. (Landed as row 1 the same day,
+  `164485b`; the ten elect-owned clocks stay so by a recorded choice, see HANDOFF.)
 - **Fifteen copies of `try { void open.close(); } catch {}`** in eleven files: the `void` drops
   the promise, so the rejection the catch is there for escapes it anyway. `ui.js` has the right form
   once (`await open.close()`).
