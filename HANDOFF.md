@@ -337,3 +337,23 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
     behind the new `CONFIG.debug.bythebooks` switch; a uuid the platform throws on reads as "not here".
     Left for a later pass (the review's row 10 note): twelve world writes still swallowed by an empty
     `.catch(() => {})`, and four separate warn-once sets.
+11. **A red to pick up fresh: `smoke-class-cleric` 50e (2026-10-16).** The first batteries from the clone on
+    `main` (`ebd7ab5` + the suite fix `f8f7275`) were red on one check in two consecutive runs
+    (`2026-10-16T13-24-07`, 66/67, 2,265/2,266, and the solo re-run `2026-10-16T14-05-47`; both under the
+    clone's `dist/battery/`): 50e expects the Elemental Affinity (Fire) face effect on the BTB Test Sorcerer
+    (`flags.fvtt-mod-bythebooks.fightingStyle` keyed `elemental-affinity`, word `fire`) and finds no effect
+    (`face=null flag=null`), while 50c and 50d just before it pass (the +4 rides a Fire Bolt, not a Ray of
+    Frost). Ruled out: the module bytes, the suite file and the 12 snapshotted settings are those of the green
+    runs of the night before (`2026-10-15T20-40-45`, `22-24-03`, 50e PASS with
+    `{"key":"elemental-affinity","live":true,"word":"fire","detail":"Fire","feat":true}`); the PHB packs are
+    present (523 class items, "Elemental Affinity" indexed); no combat, no other GM seat, settings CLEAN. What
+    changed in between: the Foundry process was restarted (~12:11 UTC) and a hand walk cast Find Familiar
+    (Badger, Tychon Thorne, 12:19 UTC), whose standing record made `smoke-companions` red in the first run
+    (`2026-10-16T12-26-30`) until `f8f7275` scoped that suite's record count to its own caster (then 26/26).
+    Where to look: `scripts/damage-rules.js` `scheduleSync` → `syncFaces` (the create path and the delete of a
+    face whose row `heldRows` no longer finds; `typedCopies` on the feat renamed by `class-kit.mjs`'s `hgLend`
+    patch), and whether 50e now reads before the 150 ms sync lands (the prelude's `until` replaced the old
+    waits). A `--keep` solo run with a read of the sorcerer's effects and the page console would settle it.
+    Until it is green, the next By the Books release has no `Battery:` line to name. Also seen in both runs,
+    reported and not enforced: the contract check's 12 "NEW field initiativeGrantRead <message id>" problems,
+    an id-keyed map the shape algorithm reads as fields (`tools/contract-shapes.mjs`; a small follow-up).
