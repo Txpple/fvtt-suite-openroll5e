@@ -1,6 +1,6 @@
 # Integration map
 
-Generated 2026-10-15 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-10-16 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
@@ -15,7 +15,7 @@ Generated 2026-10-15 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.2 | 13–14 | dnd5e | none |
-| fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.1 | 13–14 | dnd5e | none |
+| fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.2 | 13–14 | dnd5e | none |
 
 ## Who references whom
 

@@ -4,11 +4,12 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-15).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.7, FX Studio 0.10.2, Errata 1.2.2,
-Combat Plus 1.7.0, Token Art 1.0.1, Area Sounds 2.0.1, Autoexplore 1.1.2, Loot Shelf 1.3.1, Open Server 1.3.1, Party
-Stash 1.8.2; the servers' latest releases are the MCP 4.6.0, imagegen 1.3.1, Session Scribe 1.3.0. The sandbox (local
-Foundry 14.369, dnd5e 6.0.6) runs the same plus By the Books' unreleased `main` (`--local`) and any `main` a module's
-live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the Books, FX Studio, Session
+**State (2026-10-16).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.7, FX Studio 0.10.2, Errata 1.2.2,
+Combat Plus 1.7.0, Token Art 1.0.1 (1.0.2 is released, the prone look off; the installer has not run), Area Sounds
+2.0.1, Autoexplore 1.1.2, Loot Shelf 1.3.1, Open Server 1.3.1, Party Stash 1.8.2; the servers' latest releases are the
+MCP 4.6.0, imagegen 1.3.1, Session Scribe 1.3.0. The sandbox (local Foundry 14.369, dnd5e 6.0.6) runs the same plus
+Token Art 1.0.2 and By the Books' unreleased `main` (`--local`) and any `main` a module's live checks left (a deploy
+`--check` tells). Unreleased work waits on `main` in By the Books, FX Studio, Session
 Scribe, the MCP, Area Sounds, Loot Shelf and Party Stash. The plan from `docs/reviews/2026-10-15-suite-review.md`
 was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the queue for the user.
 
@@ -65,7 +66,7 @@ campaigns.
 | `fvtt-mod-openserver` | hosted worlds: clears the startup pause; per-user landing scenes |
 | `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
-| `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, prone, dead), a file beside its base art |
+| `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
 - `fvtt-mcp-imagegen` (public, key `imagegen`): Gemini art for Foundry.
@@ -94,7 +95,7 @@ campaigns.
   order works); a class replaced after `setup` drops them all.
 - **The MCP writes two modules' data**, Open Server's landing-scene flag and Area Sounds' sets, and `get-world-info`
   names By the Books (and its old id), Area Sounds and Open Server (`src/page/`): a rename needs the same edit there.
-- **Token Art reads the others' signals and needs none** (hit points, the `prone` and `dead` statuses, the combat
+- **Token Art reads the others' signals and needs none** (hit points, the `dead` status, the combat
   tracker); another image write (By the Books' transforms, the MCP's `set-actor-art`) becomes the token's base. It
   emits `tokenart.changed`; nothing listens yet.
 - **Contracts:** an emitter owns `contracts/<name>.json` with a version (By the Books' `moment.json` and

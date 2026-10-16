@@ -101,8 +101,8 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Every token wears the look of its state, ready, in combat, prone or dead, each a file named beside the base art (goblin-dead.webp beside goblin.webp) with nothing to configure; a missing look falls through to the next that applies, and the base is the floor. Created 2026-10-15 from docs/plans/tokenart.md.",
-      "blurb": "gives every token the look of its state, ready, in combat, prone or dead, each a file named beside the base art, with nothing to configure."
+      "description": "Every token wears the look of its state, ready, in combat or dead, each a file named beside the base art (goblin-dead.webp beside goblin.webp) with nothing to configure; a missing look falls through to the next that applies, and the base is the floor. Created 2026-10-15 from docs/plans/tokenart.md.",
+      "blurb": "gives every token the look of its state, ready, in combat or dead, each a file named beside the base art, with nothing to configure."
     },
     {
       "name": "fvtt-mod-areasounds-sfx",
