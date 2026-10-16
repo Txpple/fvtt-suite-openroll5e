@@ -360,3 +360,6 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
     house rule was pinned off for the run) and `node tools/teardown-fixtures.mjs`; then run `node tools/battery.mjs`
     again with the sandbox to itself, every session's bridges included, and paste `battery-status.mjs --line`
     into the next release's tag body. If it finished green, that line is ready as it stands.
+    **It finished green before the restart:** `Battery: 2026-10-16T14-44-55 — 67/67 suites, 2266/2266 checks, GREEN`,
+    settings CLEAN, the house rule back on, no seat joined. That is the line for the next By the Books tag body;
+    nothing remains to run.
