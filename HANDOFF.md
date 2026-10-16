@@ -353,3 +353,10 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
     `Battery:` line the next By the Books release names.** Also seen, reported and not enforced: the contract
     check's 12 "NEW field initiativeGrantRead <message id>" problems, an id-keyed map the shape algorithm reads
     as fields (`tools/contract-shapes.mjs`; a small follow-up).
+12. **Paused mid-battery (2026-10-16, the user restarting Claude).** The clean full battery for the tag line was
+    running from the clone as `dist/battery/2026-10-16T14-44-55` (started 14:46 UTC, about 43 minutes). If the restart
+    killed it: `node tools/battery-status.mjs 2026-10-16T14-44-55` shows where it stopped; put the world back with
+    `node tools/verify-settings.mjs --against dist/battery/2026-10-16T14-44-55/settings-before.json --fix` (the Going Down
+    house rule was pinned off for the run) and `node tools/teardown-fixtures.mjs`; then run `node tools/battery.mjs`
+    again with the sandbox to itself, every session's bridges included, and paste `battery-status.mjs --line`
+    into the next release's tag body. If it finished green, that line is ready as it stands.
