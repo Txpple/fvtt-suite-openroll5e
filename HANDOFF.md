@@ -337,23 +337,19 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
     behind the new `CONFIG.debug.bythebooks` switch; a uuid the platform throws on reads as "not here".
     Left for a later pass (the review's row 10 note): twelve world writes still swallowed by an empty
     `.catch(() => {})`, and four separate warn-once sets.
-11. **A red to pick up fresh: `smoke-class-cleric` 50e (2026-10-16).** The first batteries from the clone on
-    `main` (`ebd7ab5` + the suite fix `f8f7275`) were red on one check in two consecutive runs
-    (`2026-10-16T13-24-07`, 66/67, 2,265/2,266, and the solo re-run `2026-10-16T14-05-47`; both under the
-    clone's `dist/battery/`): 50e expects the Elemental Affinity (Fire) face effect on the BTB Test Sorcerer
-    (`flags.fvtt-mod-bythebooks.fightingStyle` keyed `elemental-affinity`, word `fire`) and finds no effect
-    (`face=null flag=null`), while 50c and 50d just before it pass (the +4 rides a Fire Bolt, not a Ray of
-    Frost). Ruled out: the module bytes, the suite file and the 12 snapshotted settings are those of the green
-    runs of the night before (`2026-10-15T20-40-45`, `22-24-03`, 50e PASS with
-    `{"key":"elemental-affinity","live":true,"word":"fire","detail":"Fire","feat":true}`); the PHB packs are
-    present (523 class items, "Elemental Affinity" indexed); no combat, no other GM seat, settings CLEAN. What
-    changed in between: the Foundry process was restarted (~12:11 UTC) and a hand walk cast Find Familiar
-    (Badger, Tychon Thorne, 12:19 UTC), whose standing record made `smoke-companions` red in the first run
-    (`2026-10-16T12-26-30`) until `f8f7275` scoped that suite's record count to its own caster (then 26/26).
-    Where to look: `scripts/damage-rules.js` `scheduleSync` → `syncFaces` (the create path and the delete of a
-    face whose row `heldRows` no longer finds; `typedCopies` on the feat renamed by `class-kit.mjs`'s `hgLend`
-    patch), and whether 50e now reads before the 150 ms sync lands (the prelude's `until` replaced the old
-    waits). A `--keep` solo run with a read of the sorcerer's effects and the page console would settle it.
-    Until it is green, the next By the Books release has no `Battery:` line to name. Also seen in both runs,
-    reported and not enforced: the contract check's 12 "NEW field initiativeGrantRead <message id>" problems,
-    an id-keyed map the shape algorithm reads as fields (`tools/contract-shapes.mjs`; a small follow-up).
+11. **The cleric 50e red, resolved (2026-10-16): a second GM seat mid-run, not the module.** The first two
+    batteries from the clone on `main` were red on `smoke-class-cleric` 50e (no Elemental Affinity face on the
+    sorcerer while the +4 rode): runs `2026-10-16T13-24-07` and the solo `14-05-47`. Probes that lent the feat,
+    the spells and the rolls outside the suite kept every face; §50 alone, the whole suite alone and the battery's
+    own solo plan then passed (`14-36-32`, 27/27). The cause was reproduced on purpose: a bridge joining as
+    "Assistant DM" for a few seconds during §50 (`join-bridge`, a second seat the preflight sees only at a
+    suite's start) outranks the suite identity by id, the elect moves to it, and every elect-driven write of
+    that window lands nowhere (the face sync; in the reproduction, Radiant Soul's turn chit). A bridge from
+    another session (the one working in imagegen, joining lazily for its Foundry calls) was on the sandbox
+    during the morning's runs. Two harness changes landed: `smoke-companions` counts only its caster's records
+    (`f8f7275`; your Badger walk had made it red in `12-26-30`), and the seat watch (`db3e846`): a GM-capable
+    user joining mid-run ends the suite with a failing `seat:` line naming who and when. **What remains: one
+    full battery with the sandbox to itself for 45 minutes, every session's bridges included, for the
+    `Battery:` line the next By the Books release names.** Also seen, reported and not enforced: the contract
+    check's 12 "NEW field initiativeGrantRead <message id>" problems, an id-keyed map the shape algorithm reads
+    as fields (`tools/contract-shapes.mjs`; a small follow-up).
