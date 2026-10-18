@@ -4,12 +4,12 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-16).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.7, FX Studio 0.10.2, Errata 1.2.2,
+**State (2026-10-18).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.7, FX Studio 0.10.3, Errata 1.2.2,
 Combat Plus 1.7.0, Token Art 1.0.2, Area Sounds 2.0.1, Autoexplore 1.1.2, Loot Shelf 1.3.1, Open Server 1.3.1, Party
 Stash 1.8.2; the servers' latest releases are the MCP 4.6.0, imagegen 1.3.1, Session Scribe 1.3.0. The sandbox (local
 Foundry 14.369, dnd5e 6.0.6) runs the same plus By the Books' unreleased `main` (`--local`) and any `main` a module's
-live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the Books, FX Studio, Session
-Scribe, the MCP, Area Sounds, Loot Shelf and Party Stash. The plan from `docs/reviews/2026-10-15-suite-review.md`
+live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the Books, Session Scribe,
+the MCP, Area Sounds, Loot Shelf and Party Stash. The plan from `docs/reviews/2026-10-15-suite-review.md`
 was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the queue for the user.
 
 ## This repo and where it lives
