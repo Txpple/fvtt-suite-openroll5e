@@ -236,9 +236,7 @@
       "dnd5eConfig": [],
       "api": [
         "DialogV2",
-        "confirm",
         "getRoute",
-        "prompt",
         "readTextFromFile",
         "saveDataToFile"
       ],
