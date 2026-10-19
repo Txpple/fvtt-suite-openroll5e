@@ -1,20 +1,20 @@
 # Integration map
 
-Generated 2026-10-18 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-10-19 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
 | Repo | Package id | Foundry title | Version | Foundry | System | Requires |
 |---|---|---|---|---|---|---|
-| fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.1 | 13–14 | any | none |
+| fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.2 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
-| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.7 | 14–14 | dnd5e | none |
+| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.8 | 14–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.0 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.3 | 14–14 | dnd5e | sequencer |
-| fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.1 | 13–14 | dnd5e | none |
+| fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.2 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.3.1 | 11–14 | any | none |
-| fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.2 | 13–14 | dnd5e | none |
+| fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.3 | 13–14 | dnd5e | none |
 | fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.2 | 13–14 | dnd5e | none |
 
 ## Who references whom

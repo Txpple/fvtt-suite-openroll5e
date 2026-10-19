@@ -294,7 +294,7 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
    sideways", ARCHITECTURE §7) and `sourceUuid`'s in `core.js`; the rest sit with their writers. And the
    eleven hand-written pick inputs moved onto the one input builder but kept their own labels and layouts;
    putting every pick on `tickRowsHTML`'s one row look is a visible change left to you.
-6. **Loot Shelf and Party Stash releases** (patch bumps, on your word) carry the kit and the one-click
+6. **Loot Shelf and Party Stash releases** (done 2026-10-19: 1.3.2 and 1.8.3; patch bumps, on your word) carry the kit and the one-click
    revert; with them the suite README's sentence (lines 34–35) becomes: "**Everything it does, you can
    see.** Every automatic action in combat, every trade at a shelf and every transfer through the stash
    posts a receipt with a one-click revert." A third receipt mode, "Receipts to the DMs only", joins the
@@ -323,7 +323,7 @@ worktree beside its clone, `<repo>.<brief>` on branch `handoff/<brief>`; the MCP
    dnd5e's mapping (`important`, the death saves), or its PCs switch defaults to off; and whether Token Art's
    dead look follows the Dead status alone rather than 0 Hit Points. Until then: dnd5e at *all* with
    Combat Plus's *Auto-Defeated: PCs* off is the book.
-9. **FX Studio plays differently once released** (4f, inside Pass 3): a resolve that came to nothing (a held
+9. **FX Studio plays differently once released** (4f, inside Pass 3; the releases done 2026-10-19: Session Scribe 1.3.1, the MCP 4.6.1, Area Sounds 2.0.2, By the Books 3.4.8): a resolve that came to nothing (a held
    roll passed, a fold passed, a Riposte declined) plays nothing, and Parry's maneuver now plays (one picture
    per word, not per moment). FX Studio, Session Scribe, the MCP and Area Sounds all carry unreleased work on
    `main`; the releases are yours (patch bumps).
