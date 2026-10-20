@@ -4,11 +4,11 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-19).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.8, FX Studio 0.10.4, Errata 1.2.2,
+**State (2026-10-19).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.9, FX Studio 0.10.4, Errata 1.2.2,
 Combat Plus 1.7.0, Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2, Loot Shelf 1.3.2, Open Server 1.3.1, Party
-Stash 1.8.3, each the latest release (the round of 2026-10-19, installed the same day; FX Studio 0.10.4, every proposal made Stock, the same evening); the servers' latest releases are
+Stash 1.8.3, each the latest release (the round of 2026-10-19, installed the same day; FX Studio 0.10.4, every proposal made Stock, the same evening; By the Books 3.4.9, an Emanation leaves its caster out, that night); the servers' latest releases are
 the MCP 4.6.2, imagegen 1.3.1, Session Scribe 1.3.1. The sandbox (local
-Foundry 14.369, dnd5e 6.0.6) runs prod's versions plus By the Books' `main` (`--local`, the bytes of 3.4.8) and any
+Foundry 14.369, dnd5e 6.0.6) runs prod's versions plus By the Books' `main` (`--local`, the bytes of 3.4.9) and any
 `main` a module's live checks left (a deploy `--check` tells). Unreleased work waits on `main` only in imagegen. The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
