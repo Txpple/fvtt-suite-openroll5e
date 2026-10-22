@@ -4,14 +4,11 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-22).** Prod (Echoes of Halruaa on Molten) runs By the Books `main` (hot-deployed over 3.4.9 on
-the user's word, still labelled 3.4.9: Produce Flame's light, Sleep's proof, familiar sight and names, Musician's
-card, the death saves), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.1, Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each but By the Books the latest release; By the Books 3.4.10
-waits on a GREEN `--changed v3.4.9` battery. The servers' latest releases are the MCP 4.6.2, imagegen 1.3.1, Session
+**State (2026-10-22).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.10 (the death saves, Produce Flame's light, Sleep's
+proof, familiar sight and names, Musician's card; released on the two-run rule), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.1, Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
+Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.2, imagegen 1.3.1, Session
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod that morning) runs prod's versions
-and any `main` a module's live checks left (a deploy `--check` tells). Unreleased work waits on `main` in By the
-Books and imagegen. The
+and any `main` a module's live checks left (a deploy `--check` tells). Unreleased work waits on `main` in imagegen. The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
@@ -128,8 +125,9 @@ run closes the issue once every row is ticked.
   version, with the zip and a bare `module.json` (worlds install from `releases/latest/download/module.json`). Loot
   Shelf, Party Stash, Autoexplore and Open Server release from an annotated tag through `release-module.yml` (a
   pre-release suffix is never latest; a dispatch is a dry run). By the Books' own `release.yml` wants its tag body to
-  name its battery (`Battery: <run> — n/n suites, n/n checks, GREEN`, from `battery-status.mjs --line`) or say
-  `Battery: none (pre-release)`. Errata and FX Studio run `build-release.ps1`; the rest release by hand.
+  name its battery (`Battery: <run> — n/n suites, n/n checks, GREEN`, from `battery-status.mjs --line`; a full
+  run red by one to three suites is run again, and a second run red on different suites, each green alone, is the
+  two-run line, `--line <A> --and <B> --one-offs <C>`) or say `Battery: none (pre-release)`. Errata and FX Studio run `build-release.ps1`; the rest release by hand.
 - **README sections:** "Part of Open Roll 5e", between `<!-- openroll5e:family -->` markers, is never hand-edited.
 - **Compatibility:** verified on Foundry 14, minimums 11 to 14; the system, where declared, dnd5e (a local source
   checkout answers its questions). **Tooling:** Biome and Vitest in By the Books, Token Art, Loot Shelf,
