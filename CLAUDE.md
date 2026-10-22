@@ -4,9 +4,9 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-21).** Prod (Echoes of Halruaa on Molten) runs By the Books `main` (hot-deployed over 3.4.9 on
+**State (2026-10-22).** Prod (Echoes of Halruaa on Molten) runs By the Books `main` (hot-deployed over 3.4.9 on
 the user's word, still labelled 3.4.9: Produce Flame's light, Sleep's proof, familiar sight and names, Musician's
-card), FX Studio 0.10.6, Errata 1.2.2, Combat Plus 1.7.0, Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
+card, the death saves), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.1, Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each but By the Books the latest release; By the Books 3.4.10
 waits on a GREEN `--changed v3.4.9` battery. The servers' latest releases are the MCP 4.6.2, imagegen 1.3.1, Session
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod that morning) runs prod's versions
