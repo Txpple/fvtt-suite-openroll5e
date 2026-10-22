@@ -15,9 +15,9 @@ end waits for a ruling.
 | **By the Books**, a revert (`scripts/receipts.js` `revertTarget`, `decide/receipt.js` `revertPlan`) | a damage receipt is reverted to Hit Points above 0 | clears **Dead** first, while the Hit Points are still 0, then writes the Hit Points, then clears every combatant's **defeated** mark the way Combat Plus matches them (`clearDefeated`) | n/a | the reverting client |
 | **By the Books**, a kill: a save's failure that slays (`decide/registry.js` rows with `status: "dead"`, Nine Lives Stealer's Life Stealing) and a clock rider's `destroy` row (`scripts/clock-riders.js` `destroyAfterReceipt`: a creature left at or below the row's number) | the rule's own trigger | **Dead** first, then 0 Hit Points (a status after the Hit Points would race dnd5e's own) | the Hit Points coming back (dnd5e's removal does not touch it: it carries no `autoDowned` flag; Combat Plus's clear does) | the moment's driver |
 | **By the Books**, the death saves (`scripts/death-saves.js`) | a creature that makes death saves (a character, an important NPC) rolls its third success; damage at 0 Hit Points | the system's own **Stable** status (`CONFIG.DND5E.statusEffects.stable`, which dnd5e defines and never applies), flagged `dnd5e.autoDowned`; damage at 0 Hit Points clears it. A third failure **out of combat** (a roll's or the damage's): **Dead** under dnd5e's mapping and setting, with its flag, as the out-of-combat drop above | the Hit Points coming back (dnd5e's removal); the damage, for Stable | the rolling or applying client |
-| **Combat Plus**, *Auto-Defeated: NPCs* / *Auto-Defeated: PCs* (both on by default; `scripts/combatplus.js`, the `updateActor` hook) | any Hit Points change, in or out of combat | at 0 or below: **Dead** with the overlay (`toggleStatusEffect`) and **defeated** on every combatant for the actor; above 0: both cleared | the same hook, on the heal | the active GM |
+| **Combat Plus**, *Auto-Defeated: NPCs* (on by default; `scripts/combatplus.js`, the `updateActor` hook) | an NPC's Hit Points change, in or out of combat | at 0 or below: **Dead** with the overlay (`toggleStatusEffect`) and **defeated** on every combatant for the actor; above 0: both cleared. A player character is never touched (its *PCs* switch was removed: a character at 0 is dying, not dead) | the same hook, on the heal | the active GM |
 
-Three readers act on it. **By the Books' death saves** read the **Dead** and **Stable** statuses, never who wrote them: a creature wearing either is asked no Death Saving Throw at its turn start, so Combat Plus's *Auto-Defeated: PCs* must be off at a table that plays death saves. **Token Art** wears the `-dead` look at 0 Hit Points or under the **Dead**
+Three readers act on it. **By the Books' death saves** read the **Dead** and **Stable** statuses, never who wrote them: a creature wearing either is asked no Death Saving Throw at its turn start. **Token Art** wears the `-dead` look at 0 Hit Points or under the **Dead**
 status (its *Dead look* switch), for player characters too, and never writes a status. **By the
 Books' summons** (`scripts/summons.js`, on the active GM) read the **Dead** status landing on a
 caster as the caster's death, never 0 Hit Points alone (that is dying): a summon whose text ends at
@@ -41,25 +41,22 @@ the caster's death is dismissed, and a companion the caster empowered reverts.
 ## What agrees with the book, as configured today
 
 dnd5e's *Apply Downed Conditions* at **all** (the house worlds' setting) is the book: a player character
-at 0 Hit Points is Unconscious and dying, and Dead after three failed death saves. To keep Combat Plus
-from stamping Dead on a dying character, turn **Auto-Defeated: PCs** off in Combat Plus (its README
-says the same: "turning off PCs leaves player characters to their death saves"). Token Art's dead look
-at 0 Hit Points is a table's taste, documented in its README; its switch turns it off.
+at 0 Hit Points is Unconscious and dying, and Dead after three failed death saves; Combat Plus writes nothing on a
+character, so the skull comes from dnd5e alone, at the third failure, and By the Books' death saves run from the
+first turn down. Token Art's dead look at 0 Hit Points is a table's taste, documented in its README; its switch
+turns it off.
 
-## Open: two writers contradict each other (waits for a ruling)
+## Open: the NPC writers overlap (waits for a ruling)
 
-With Combat Plus's defaults (both switches on) and dnd5e at *npcs* or *all*:
+The player-character contradiction is closed: Combat Plus's *Auto-Defeated: PCs* switch, which stamped Dead on a
+character at 0 Hit Points, was removed on the user's word (marking a dying character dead was a mistake). Two NPC
+items remain, with Combat Plus's NPC switch on and dnd5e at *npcs* or *all*:
 
-- **A player character at 0 Hit Points** (dnd5e at *all*) wears dnd5e's (or By the Books')
-  **Unconscious** and Combat Plus's **Dead** at once, and is marked defeated. The book says dying, not dead, and the Dead status
-  has a consequence: By the Books reads it as the caster's death, so a dying caster's summons that
-  end at its death are dismissed and its empowered companion reverts.
 - **An important NPC at 0 Hit Points** (dnd5e's `traits.important`) wears **Unconscious** and **Dead**
   at once: Combat Plus has one NPC switch and does not read `important`.
 - **A non-important NPC at 0 Hit Points in combat** gets **Dead** from both dnd5e and Combat Plus; the
   second create is refused as a duplicate (rule 1), so the outcome agrees and the log carries an error.
 
-No behaviour was changed for this page. The choices, for the user: Combat Plus defers to dnd5e when
-*Apply Downed Conditions* is on (marks defeated, writes no status of its own), or reads dnd5e's mapping
-(`important`, death saves), or the PCs switch defaults to off; and whether Token Art's dead look follows
-the Dead status alone rather than 0 Hit Points.
+The choices, for the user: Combat Plus defers to dnd5e when *Apply Downed Conditions* is on (marks defeated,
+writes no status of its own), or reads dnd5e's mapping (`important`, death saves); and whether Token Art's dead
+look follows the Dead status alone rather than 0 Hit Points.

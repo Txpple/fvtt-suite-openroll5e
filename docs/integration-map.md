@@ -40,7 +40,6 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mod-bythebooks | fvtt-mod-fxstudio | 5 | fvtt-mod-bythebooks/tools/contracts.mjs |
 | fvtt-mod-bythebooks | fvtt-mod-lootshelf | 1 | fvtt-mod-bythebooks/scripts/summons.js |
 | fvtt-mod-bythebooks | fvtt-mod-errata5e | 1 | fvtt-mod-bythebooks/tools/smoke-aasimar.mjs |
-| fvtt-mod-bythebooks | fvtt-mod-combatplus | 1 | fvtt-mod-bythebooks/tools/smoke-drop.mjs |
 | fvtt-mod-combatplus | fvtt-mod-lootshelf | 1 | fvtt-mod-combatplus/scripts/combatplus.js |
 | fvtt-mod-fxstudio | fvtt-mod-bythebooks | 8 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
