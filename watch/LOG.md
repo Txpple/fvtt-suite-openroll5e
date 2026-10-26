@@ -20,3 +20,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | 2026-10-23 | none | none | — |
 | 2026-10-24 | none | none | — |
 | 2026-10-25 | none | none | — |
+| 2026-10-26 | none | none | — |
