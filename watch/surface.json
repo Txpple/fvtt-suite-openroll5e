@@ -389,6 +389,17 @@
         "Actor#getTokenImages"
       ]
     },
+    "fvtt-mod-clueboard": {
+      "dnd5eHooks": [],
+      "coreHooks": [
+        "init"
+      ],
+      "documents": [],
+      "dnd5eConfig": [],
+      "api": [],
+      "routes": [],
+      "patched": []
+    },
     "fvtt-mcp-dnd5e": {
       "dnd5eHooks": [],
       "coreHooks": [],

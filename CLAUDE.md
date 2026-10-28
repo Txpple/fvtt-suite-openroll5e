@@ -67,6 +67,7 @@ campaigns.
 | `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
+| `fvtt-mod-clueboard` | the party's case file from what they read; planned, `docs/plans/clueboard.md`, not built |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
 - `fvtt-mcp-imagegen` (public, key `imagegen`): Gemini art for Foundry.

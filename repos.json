@@ -105,6 +105,16 @@
       "blurb": "gives every token the look of its state, ready, in combat or dead, each a file named beside the base art, with nothing to configure."
     },
     {
+      "name": "fvtt-mod-clueboard",
+      "kind": "mod",
+      "title": "Open Roll 5e: Clue Board",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "The party's case file, built from what they read: an item the GM marks as a clue is gathered the first time a player reads it, stamped with reader, scene and date, and the card follows the item through the party stash and stays when it leaves. Phase 2 is the board. Created 2026-10-28 from docs/plans/clueboard.md; not built, not released, so no blurb yet (a blurb lists it in every README).",
+      "kit": true
+    },
+    {
       "name": "fvtt-mod-areasounds-sfx",
       "kind": "assets",
       "visibility": "private",
