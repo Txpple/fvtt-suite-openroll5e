@@ -4,14 +4,14 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-28).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.12 (familiars' one seat, the recall's floor and side, the hand-delete
-prompt; cover from Sight None and Limited walls; death-save folds on a failure only; a full battery green, installed
-through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
+**State (2026-10-28).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.13 (familiars' one seat, the recall's floor and side, the hand-delete
+prompt; cover from Sight None and Limited walls; death-save folds on a failure only, each fold exit
+writing the withheld save; 3.4.12 on a full battery green, 3.4.13 on its
+`--changed` run; installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.4 (4.6.3's token light, uuid copies and one search leaf; a `choices` entry nothing reads refused; `dist` built, live on a Claude Code restart), imagegen 1.3.1, Session
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). Unreleased
-work waits on `main` in imagegen and By the Books (a withheld death save resolved on every fold exit; on the
-sandbox); By the Books' familiar's-eyes switch on its own branch (`familiar-eyes`). The
+work waits on `main` in imagegen; By the Books' familiar's-eyes switch on its own branch (`familiar-eyes`). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
