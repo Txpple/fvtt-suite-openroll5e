@@ -6,11 +6,10 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 
 **State (2026-10-28).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.11 (the Help action: the item, the choice,
 Helped and Assisted; a full battery green, installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.2, imagegen 1.3.1, Session
+Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.3 (a token's own light, copies by uuid, one search leaf; `dist` built, live on a Claude Code restart), imagegen 1.3.1, Session
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). Unreleased
-work waits on `main` in imagegen and the MCP (token light, the import's container quantity, `search-compendium` any
-by `name`, `add-feature` items by uuid; offline gate and the sandbox walk green). The
+work waits on `main` in imagegen. The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
