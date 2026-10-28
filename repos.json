@@ -115,6 +115,16 @@
       "kit": true
     },
     {
+      "name": "fvtt-mod-houserules",
+      "kind": "mod",
+      "title": "Open Roll 5e: House Rules",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "One table's house rules as always-on overrides: each a world setting only a GM sees or changes, on by default, applied on every player's client by the client itself. First rule: the arrow keys move tokens, W A S D unbound, the numpad pans. Public but kept out of the catalogue on purpose (no blurb: it is written for one table). Created 2026-10-28 from suite issue #9.",
+      "kit": true
+    },
+    {
       "name": "fvtt-mod-areasounds-sfx",
       "kind": "assets",
       "visibility": "private",

@@ -76,6 +76,8 @@
         "preCreateChatMessage",
         "preCreateRegionBehavior",
         "preDeleteActiveEffect",
+        "preDeleteActor",
+        "preDeleteToken",
         "ready",
         "renderActivityChoiceDialog",
         "renderActivityUsageDialog",
@@ -129,6 +131,7 @@
         "escapeHTML",
         "expandObject",
         "flattenObject",
+        "fromUuidSync",
         "getProperty",
         "hasProperty",
         "isEmpty",
@@ -149,6 +152,7 @@
         "deleteCombat",
         "drawCanvasDarknessEffects",
         "drawCanvasVisibility",
+        "getCombatContextOptions",
         "getSceneControlButtons",
         "init",
         "preUpdateCombat",
@@ -282,7 +286,9 @@
     "fvtt-mod-openserver": {
       "dnd5eHooks": [],
       "coreHooks": [
-        "ready"
+        "canvasReady",
+        "ready",
+        "renderPlayers"
       ],
       "documents": [],
       "dnd5eConfig": [],
@@ -400,6 +406,19 @@
       "routes": [],
       "patched": []
     },
+    "fvtt-mod-houserules": {
+      "dnd5eHooks": [],
+      "coreHooks": [
+        "clientSettingChanged",
+        "init",
+        "ready"
+      ],
+      "documents": [],
+      "dnd5eConfig": [],
+      "api": [],
+      "routes": [],
+      "patched": []
+    },
     "fvtt-mcp-dnd5e": {
       "dnd5eHooks": [],
       "coreHooks": [],
@@ -431,6 +450,7 @@
         "deepClone",
         "getRoute",
         "isNewerVersion",
+        "mergeObject",
         "operators",
         "parseUuid",
         "randomID",

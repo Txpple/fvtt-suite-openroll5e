@@ -12,7 +12,8 @@ Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release.
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). By the Books'
 `main` carries the Find Familiar menu rework and the teleport fix (#16, `cbf32ab`) unreleased; its familiar's-eyes switch is on its own
-branch (`familiar-eyes`). The
+branch (`familiar-eyes`). House Rules 0.1.0 (suite #9: the arrow keys move tokens) is on its `main` unreleased, on
+the sandbox (registered, enabled, walked green through the GM page), not on prod. The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
@@ -71,6 +72,7 @@ campaigns.
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
 | `fvtt-mod-clueboard` | the party's case file from what they read; planned, `docs/plans/clueboard.md`, not built |
+| `fvtt-mod-houserules` | one table's always-on overrides, GM settings on by default, applied on every client; public, no blurb, so out of the catalogue |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
 - `fvtt-mcp-imagegen` (public, key `imagegen`): Gemini art for Foundry.
