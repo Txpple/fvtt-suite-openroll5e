@@ -8,11 +8,11 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 Dismiss: Forever asking; a familiar teleported to another scene keeps its record; the familiars' one seat, the recall's
 floor and side, the hand-delete prompt; cover from Sight None and Limited walls; death-save folds on a failure only;
 on a full battery green, 67/67, installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.4 (4.6.3's token light, uuid copies and one search leaf; a `choices` entry nothing reads refused; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
+Loot Shelf 1.3.2, Open Server 1.4.0 (the jump to one's character and creatures from the Players list; the landing scene removed), Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.4 (a `choices` entry nothing reads refused; 4.6.5, `set-landing-scene` retired with Open Server's landing scene, is on `main` with `dist` built, its live release set waiting for the sandbox seat), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code
-waits unreleased on any `main` but Open Server's (the jump to one's character, its own session); By the Books' familiar's-eyes
-switch is on its own branch (`familiar-eyes`), superseded by that jump. House Rules' sandbox copy is 1.0.0's code under a 0.1.0 manifest (redeploy after
+waits unreleased on any `main` but the MCP's 4.6.5; By the Books' familiar's-eyes
+switch is on its own branch (`familiar-eyes`), superseded by Open Server's jump. House Rules' sandbox copy is 1.0.0's code under a 0.1.0 manifest (redeploy after
 the battery). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
@@ -67,7 +67,7 @@ campaigns.
 | `fvtt-mod-errata5e` | in-memory stopgap fixes for vendor bugs; the vendor-bug register |
 | `fvtt-mod-fxstudio` | FX from what happened, through Sequencer, JB2A and PSFX; requires `sequencer` |
 | `fvtt-mod-lootshelf` | loot chests and merchant shelves players use without owning them; receipts |
-| `fvtt-mod-openserver` | hosted worlds: clears the startup pause; per-user landing scenes |
+| `fvtt-mod-openserver` | hosted worlds: clears the startup pause; a jump to one's character and creatures from the Players list |
 | `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
@@ -99,8 +99,9 @@ campaigns.
   `gm-vision`) wraps `CONFIG.Token.objectClass`; Loot Shelf patches `_canView`; Combat Plus's Portrait View patches
   `_canView` and `_onClickLeft2`, stepping aside for Loot Shelf's tokens. Each defers to the one beneath (any
   order works); a class replaced after `setup` drops them all.
-- **The MCP writes two modules' data**, Open Server's landing-scene flag and Area Sounds' sets, and `get-world-info`
-  names By the Books (and its old id), Area Sounds and Open Server (`src/page/`): a rename needs the same edit there.
+- **The MCP writes one module's data**, Area Sounds' sets (Open Server's landing-scene flag went with Open Server
+  1.4.0 and the MCP's `set-landing-scene`), and `get-world-info` names By the Books (and its old id), Area Sounds
+  and Open Server (`src/page/`): a rename needs the same edit there.
 - **Token Art reads the others' signals and needs none** (hit points, the `dead` status, the combat
   tracker); another image write (By the Books' transforms, the MCP's `set-actor-art`) becomes the token's base. It
   emits `tokenart.changed`; nothing listens yet.

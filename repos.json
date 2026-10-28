@@ -70,8 +70,8 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own.",
-      "blurb": "for hosted worlds: clears the startup pause so players can play before the GM arrives, and gives any user a landing scene of their own."
+      "description": "For hosted worlds: clears the startup pause so players can play before the GM arrives, and gives every user a one-click jump to their character's token, and their familiar's, from the Players list. The per-user landing scene of 1.x went in 1.4.0.",
+      "blurb": "for hosted worlds: clears the startup pause so players can play before the GM arrives, and gives every user a one-click jump to their character's token, and their familiar's, from the Players list."
     },
     {
       "name": "fvtt-mod-partystash",
@@ -138,7 +138,7 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e. Writes Open Server's landing-scene flag and Area Sounds' scene sound sets. Registered with Claude Code as foundry-halruaa5e (the current campaign's Molten box) and foundry-local5e (the sandbox); the Greenrest bridge was retired 2026-10-08 and the concluded campaign has none.",
+      "description": "The DM-assistant MCP server. Drives any live Foundry world (Molten Hosting, a local install, a URL) through Claude Code. Formerly fvtt-mcp-molten5e. Writes Area Sounds' scene sound sets (Open Server's landing-scene flag until 4.6.5). Registered with Claude Code as foundry-halruaa5e (the current campaign's Molten box) and foundry-local5e (the sandbox); the Greenrest bridge was retired 2026-10-08 and the concluded campaign has none.",
       "blurb": "builds D&D 5e content in a live Foundry world from Claude Code: a stat block becomes a complete NPC, a map image a walled and lit scene, an adventure its journals, tables and handouts."
     },
     {
