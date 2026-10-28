@@ -9,7 +9,8 @@ Helped and Assisted; a full battery green, installed through the installer, byte
 Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.3 (a token's own light, copies by uuid, one search leaf; `dist` built, live on a Claude Code restart), imagegen 1.3.1, Session
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). Unreleased
-work waits on `main` in imagegen. The
+work waits on `main` in imagegen and By the Books (familiars: one seat across the pocket, the recall's floor, the
+combat line's side, a hand delete asks; walked by hand on the sandbox, which runs it). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
