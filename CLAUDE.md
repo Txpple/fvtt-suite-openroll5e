@@ -10,7 +10,7 @@ Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release.
 Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). Unreleased
 work waits on `main` in imagegen and the MCP (token light, the import's container quantity, `search-compendium` any
-by `name`, `add-feature` items by uuid; offline gate green, the sandbox walk owed). The
+by `name`, `add-feature` items by uuid; offline gate and the sandbox walk green). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
