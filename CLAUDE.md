@@ -11,7 +11,7 @@ writing the withheld save; 3.4.12 on a full battery green, 3.4.13 on its
 Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.4 (4.6.3's token light, uuid copies and one search leaf; a `choices` entry nothing reads refused; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). By the Books'
-`main` carries the Find Familiar menu rework (#16, `8616028`) unreleased; its familiar's-eyes switch is on its own
+`main` carries the Find Familiar menu rework and the teleport fix (#16, `cbf32ab`) unreleased; its familiar's-eyes switch is on its own
 branch (`familiar-eyes`). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
