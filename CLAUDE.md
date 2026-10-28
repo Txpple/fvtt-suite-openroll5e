@@ -8,12 +8,12 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 prompt; cover from Sight None and Limited walls; death-save folds on a failure only, each fold exit
 writing the withheld save; 3.4.12 on a full battery green, 3.4.13 on its
 `--changed` run; installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, each the latest release. The servers' latest releases are the MCP 4.6.4 (4.6.3's token light, uuid copies and one search leaf; a `choices` entry nothing reads refused; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
+Loot Shelf 1.3.2, Open Server 1.3.1, Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.4 (4.6.3's token light, uuid copies and one search leaf; a `choices` entry nothing reads refused; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). By the Books'
 `main` carries the Find Familiar menu rework and the teleport fix (#16, `cbf32ab`) unreleased; its familiar's-eyes switch is on its own
-branch (`familiar-eyes`). House Rules 0.1.0 (suite #9: the arrow keys move tokens) is on its `main` unreleased, on
-the sandbox (registered, enabled, walked green through the GM page), not on prod. The
+branch (`familiar-eyes`). House Rules' sandbox copy is 1.0.0's code under a 0.1.0 manifest (redeploy after
+the battery). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
