@@ -8,7 +8,10 @@ ledger). The decisions below stand as written; what the build changed: the stamp
 with no calendar would stamp "0000-01-01"), and the Clue page type is registered whether or not the module is enabled.
 **Revised the next morning on the user's word** ("no sidebar panel, totally broke the ui"): the sidebar tab stuck the
 sidebar, so Mysteries is a window of its own opened centred from a scroll button on the strip after Journal, never a
-sidebar panel (D8 below, revised).
+sidebar panel (D8 below, revised). **And the same morning**: the journal underneath was "messy, and not
+encapsulated", so a party's record moved onto its Group actor, the module's own data behind its own schema, with
+no journal, folder or document type (D1 and D4 revised); and there are no GM secrets, in phase 1 or after: the DM's
+overlay is gone from phase 2.
 
 Drafted 2026-10-28 from the brief ("a clue board, in game, probably an optional module ... tie it to items ...
 connect / move items from party stash ... clues are gathered Call of Cthulhu style, read the items") and the case
@@ -137,11 +140,12 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
   party (handed to an NPC's sheet, deleted, sold through Loot Shelf) makes the holder **left the party**, with the
   last holder and the moment kept; the entry stays. Party Stash's receipts are unchanged and Party Stash never knows
   Clue Board exists.
-- **Where it lives.** One JournalEntry per party, *Mysteries: <group name>* (a world with no Group actor gets
-  *Mysteries*), in a *Clue Board* folder, created on the first gather with default ownership **Owner for every
-  player**, so the reader's own client writes the entry it gathered and the players can reread it with no GM online.
-  Each clue is a JournalEntryPage of the module's sub-type `fvtt-mod-clueboard.clue`. The sidebar tab is the only
-  door the players need; the journal is there for Foundry's own search, export and the Session Scribe.
+- **Where it lives.** On the party's own Group actor, in the module's flags, behind the module's own schema
+  (`MysteryEntry`, versioned): nothing in a directory or on a sheet, the window and the Reader the only doors.
+  The players own the party (Party Stash needs it too), so the reader's own client writes what it gathered and a
+  read lands with no GM online. Each write names the narrowest key, so two reads at once never collide. No party,
+  no record: Read lives in a Group's stash. (Built first as a journal per party with a page type; the user ruled it
+  out the next morning as messy and leaky in the UI.)
 - **Hooks**: `clueboard.gathered` (the entry and the reader) and `clueboard.changed` (a new reader, a holder move, a
   revision). Nothing listens yet. The emitter's rule holds: documented in the README and `contracts/case.json`,
   tolerated if it never fires.
@@ -150,7 +154,7 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| Enabled | on | Off leaves the group sheet, the sidebar and the journals as Foundry and the system have them. |
+| Enabled | on | Off leaves the group sheet and the sidebar as Foundry and the system have them. |
 | Show the mark to players | on | The bookmark on Clues' rows in the stash. |
 | Count the ungathered | on | Mysteries shows how many Clues nobody has read. |
 
@@ -161,9 +165,9 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
   a type; Party Stash, the system and the GM do that.
 - Touches no character sheet, item card or item sheet (phase 2).
 - Never patches a class. The loot type is a `CONFIG.DND5E` entry; the group sheet's column is injected through
-  `_configureInventorySections` as Party Stash does; the sidebar tab rides `CONFIG.ui`.
+  `_configureInventorySections` as Party Stash does; the button is a DOM addition on the sidebar's strip.
 
-## Phase 2: the board and the DM's side
+## Phase 2: the board
 
 - **Read everywhere**: character sheet rows (beside Party Stash's Stash and Give, its column template taking a
   `read` boolean), item chat cards (dnd5e's and By the Books', whose "read" posts today), and the item sheet's
@@ -175,22 +179,19 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
 - **The Sargas trial first.** Before building a board, install Sargas Investigation Board on the sandbox, drag
   session 02's nine documents onto a case, and let the table use it for a session or two. If it earns its place, keep
   it and let Clue Board **feed** it: a gathered clue pins itself to the Sargas case as the linked Item card (its data
-  model is a journal with sub-type pages, the same shape as ours). Build our own board only if the table wants the
+  model is a journal with sub-type pages). Build our own board only if the table wants the
   timeline, the read-stamps on the cards or the holder badge badly enough. Its license is MIT; a fork into the family
   would keep its attribution and its author's name in the README.
-- **The DM's overlay**: a second journal, *Mysteries: <group> (DM)*, default ownership None, with **pieces** (the
-  truths the clues add up to, each with how many clues it should take) and the plot's own rule made visible, **two of
-  three gathered and nothing put together, say it through an NPC**, with a *Said* tick. A clue's `pieces` field is
-  GM-only and stripped from anything a player's client renders. The Halruaa clue map seeds it: five pieces, `expect`
-  3, and the eleven heirlooms as Clues with their hidden job in a GM-only `hint` flag.
+- **No GM secrets** (the user, 2026-10-29): no DM overlay, no hidden pieces or hints. The DM's clue map stays in the
+  campaign repo.
 - **Testimony and observation**: clues that are not items, gathered by the GM by hand from an actor (*Gather
   testimony*), a Clue heirloom (*Gather observation*: "the chalk glows constantly here") or a chat message.
 - **Reveal on a roll**: a History DC 15 that lands attaches the Keeper's revealed line to the entry for all readers.
 - **The export**: *Documents Found* as Markdown from Mysteries (the title line, the found-in line, the snapshot as a
-  blockquote, the readers), to the clipboard and a GM whisper; the Session Scribe reads the same pages through the
+  blockquote, the readers), to the clipboard and a GM whisper; the Session Scribe reads the party's record through the
   bridge and builds the appendix (`STYLE.md`'s *Documents Found*), the Session Diary's readaloud blocks and a *Case
   so far* page. A contract, `contracts/case.json`, versioned here, consumed by `fvtt-mcp-sessionscribe`.
-- **The MCP's `manage-clues`**: list, set the Clue type in bulk, seed pieces from a plan's clue map, export the case.
+- **The MCP's `manage-clues`**: list, set the Clue type in bulk, export the case.
 
 ## How it fits the family
 
@@ -199,35 +200,37 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
   `take-column.hbs` takes a `read` boolean, the way its stash column took `give`; else its own column after it);
   without Party Stash, Clue Board's column stands alone. By the Books' item cards keep their own "read" until phase
   2 (its fix list, session 02 §16).
-- **One client acts** is not needed: every write is the reader's own, on a journal the players own, so a GM absent
-  loses nothing (Party Stash's lesson, 2026-09-30). The kit's `elect.js` is carried unused in phase 1.
+- **One client acts** is not needed: every write is the reader's own, on a party the players own, so a GM absent
+  loses nothing (Party Stash's lesson, 2026-09-30). The kit's `elect.js` is carried unused.
 - **Hooks**: `clueboard.gathered`, `clueboard.changed`. **Contract**: `contracts/case.json`, version 1, with no
   consumer until phase 2's export.
 - **The MCP** gets nothing in phase 1; `get-world-info` names Clue Board among the house modules when it is released.
 - **Tooling**: the template's (Biome pinned to the family's 2.5.15, Vitest, `verify.yml`, `release.yml`, the kit,
   `lang/en.json`). Pure modules under `scripts/decide/` for everything that needs no Foundry: the holder resolution,
-  the snapshot diff, the sidebar table rebuild; Foundry-facing code under `scripts/`.
+  the snapshot diff, the record as a list; Foundry-facing code under `scripts/`.
 
 ## The data
 
 ```
 CONFIG.DND5E.lootTypes.clue = { label: "Clue" }                  // at init; the signifier is system.type.value
-Item.flags["fvtt-mod-clueboard"].id                               // written at the first gather; phase 2 adds hint
+Item.flags["fvtt-mod-clueboard"].id                               // written at the first gather
 
-JournalEntry "Mysteries: <group>"  (folder "Clue Board", default ownership OWNER)
-  page type "fvtt-mod-clueboard.clue"
-    system: {
+Actor (type group).flags["fvtt-mod-clueboard"]                    // the party's record, MysteryEntry per clue
+  schema: 1
+  entries: {
+    <clueId>: {
       id,
-      source: { uuid },
+      source: { uuid, name },
       snapshot: { name, img, html, revision, at },
       foundIn: { sceneId, sceneName, calendarDate, realDate },
-      readers: [{ actorId, actorName, userId, at }],
-      holder: { actorId, actorName } | { left: true, lastHolder, at },
-      tags: [], notes: ""
+      readers: { <actorId>: { actorId, actorName, userId, at } },
+      holder: { actorId, actorName, left, lastHolder, at },
+      notes: ""
     }
+  }
 ```
 
-Phase 2 adds `kind` (document, testimony, observation), `pieces` (GM-only) and the DM journal's `piece` pages.
+Phase 2 adds `kind` (document, testimony, observation).
 
 ## Halruaa, worked
 
@@ -250,25 +253,25 @@ today; setting their type to Clue makes them clues (nine edits, or one `manage-i
 
 Taken here, open for the user to overturn:
 
-- **D1. Who writes.** The reader's own client, on a journal the players own (default ownership Owner), never the
-  elect. A GM absent loses nothing; a player can vandalise the record, which a table that trusts its players accepts.
-  *Open:* a *Players may edit* setting that drops the default to Observer and routes writes through the elect.
+- **D1. Who writes, and where.** The reader's own client, on the party's Group actor, which the players own;
+  never the elect. A GM absent loses nothing; a player could vandalise the record through the console, which a
+  table that trusts its players accepts. (Revised 2026-10-29: a journal per party was built first and ruled out.)
 - **D2. The signifier is the loot type** (C10): a `clue` entry in `CONFIG.DND5E.lootTypes`, set in the item's own
   type field, nothing of the module's on an unread item. **The identity is a flag**, a random id written at the first
   gather and carried by every copy; a uuid would break at the first stash move.
 - **D3. Read is for everything, gathering is for Clues.** A read-without-posting is useful on its own and the
   type keeps Mysteries from filling with rations.
-- **D4. One Mysteries per party** (Group actor), a world one when there is none. *Open:* a table with two groups.
+- **D4. One record per party** (Group actor), kept on it; no party, no record. A table with two groups has two.
 - **D5. Snapshot at gather, re-snapshot while held.** The entry shows what the party read, and what the DM later
   revealed on the same item, with the revision visible; a lost item freezes.
 - **D6. The names.** Clue Board, free on foundryvtt.com's package pages on this pass, the setup-screen check owed
   before the first release; Mysteries for the tab and the window (C9).
 - **D7. Phase 1 is three things** (C7, C8): the Clue type, Read in the stash, the Mysteries tab and window.
 - **D9. The stash's Read is the only trigger** (the user, 2026-10-29): no Read on character sheets, item cards or
-  the item sheet in phase 1; player inventories are untouched. The DM's side, testimony,
+  the item sheet in phase 1; player inventories are untouched. Testimony,
   observation, the export, the MCP tool and the board are phase 2; the Sargas trial comes before any board of ours.
 - **D8. A window off a button on the sidebar's strip, not a sidebar panel and not a journal sheet** (C8, revised
-  2026-10-29 on the user's word after the panel stuck the sidebar). The journal behind it is storage.
+  2026-10-29 on the user's word after the panel stuck the sidebar).
 
 ## Open questions for the user
 

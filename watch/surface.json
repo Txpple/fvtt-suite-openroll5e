@@ -398,7 +398,6 @@
     "fvtt-mod-clueboard": {
       "dnd5eHooks": [],
       "coreHooks": [
-        "createActor",
         "createItem",
         "deleteItem",
         "init",
@@ -406,6 +405,7 @@
         "renderGroupActorSheet",
         "renderSidebar",
         "setup",
+        "updateActor",
         "updateItem"
       ],
       "documents": [
@@ -416,11 +416,10 @@
         "lootTypes"
       ],
       "api": [
-        "JournalEntryPageHandlebarsSheet",
         "escapeHTML",
+        "hasProperty",
         "prompt",
-        "randomID",
-        "registerSheet"
+        "randomID"
       ],
       "routes": [],
       "patched": [
