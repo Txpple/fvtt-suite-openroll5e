@@ -115,7 +115,7 @@ non-invasive, self encapsulated"), documents first.
 
 ### Mysteries
 
-- **A scroll button on the sidebar's strip, directly after Journal, that opens Mysteries as a window in the middle
+- **A spy button (`fa-user-secret`, the user's pick) on the sidebar's strip, directly after Journal, that opens Mysteries as a window in the middle
   of the screen**, like FX Studio's. Built first as a sidebar tab (`Sidebar.TABS` and `CONFIG.ui`), whose panel
   stuck the sidebar on the sandbox; the user ruled it out the next morning. The button is not a tab: the sidebar
   never switches or expands for it, and nothing of the module's is drawn inside the sidebar.
@@ -253,5 +253,4 @@ Taken here, open for the user to overturn:
 
 ## Open questions for the user
 
-1. The strip button's icon: a sealed scroll, a magnifying glass, an eye?
-2. The Clue's default artwork: the sealed red-and-tan letter for now; a drawn icon of our own later?
+1. The Clue's default artwork: the sealed red-and-tan letter for now; a drawn icon of our own later?
