@@ -140,7 +140,7 @@ non-invasive, self encapsulated"), documents first.
   proposed (lanes, threads with tags, the corkboard with strings, questions and theories) the ruling was "threads
   all the way ... clues can go in each one multiple times".
 - **A thread** is a named question or line of inquiry with a colour, open or answered, and a short *Where we
-  stand*: the party's theory on it. It is a tab in Mysteries beside *All* and *Unsorted* (what no thread holds).
+  stand*: the party's theory on it. It is a tab in Mysteries beside *All* and *Unassigned* (what no thread holds).
 - **Pinning** is a drag of a card onto the tab; a clue may be in any number of threads and wears a dot per thread;
   inside a thread a card dragged onto another goes before it. Unpin is a button on the card in that thread.
 - **Anyone who owns the party organises**, the GM included; deleting a thread asks, unpins its clues and loses
