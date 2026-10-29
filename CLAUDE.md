@@ -8,10 +8,10 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 the elect deletes an unlinked copy nothing holds after every dismissal and on every GM load, a held one moved into the
 folder; 3.4.15 to 3.4.17 in one evening, each on a full battery green, 67/67, installed through the installer,
 byte-identical; the PCs folder on prod is the PCs' again), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.4.0 (the jump to one's character and creatures from the Players list; the landing scene removed), Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.4 (a `choices` entry nothing reads refused; 4.6.5, `set-landing-scene` retired with Open Server's landing scene, is on `main` with `dist` built, its live release set waiting for the sandbox seat), imagegen 1.3.2 (`dist` built, live on a
+Loot Shelf 1.3.2, Open Server 1.4.0 (the jump to one's character and creatures from the Players list; the landing scene removed), Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.5 (`set-landing-scene` retired with Open Server's landing scene; 4.6.4's `choices` refusal; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code
-waits unreleased on any `main` but the MCP's 4.6.5; By the Books' familiar's-eyes
+waits unreleased on any `main`; By the Books' familiar's-eyes
 switch is on its own branch (`familiar-eyes`), superseded by Open Server's jump. House Rules' sandbox copy is 1.0.0's code under a 0.1.0 manifest (redeploy after
 the battery). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
