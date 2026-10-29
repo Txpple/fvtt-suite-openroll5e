@@ -398,13 +398,11 @@
     "fvtt-mod-clueboard": {
       "dnd5eHooks": [],
       "coreHooks": [
-        "createItem",
-        "deleteItem",
+        "dropActorSheetData",
         "init",
+        "preCreateItem",
         "ready",
-        "renderGroupActorSheet",
         "renderSidebar",
-        "setup",
         "updateActor",
         "updateItem"
       ],
@@ -413,18 +411,18 @@
         "Item"
       ],
       "dnd5eConfig": [
-        "lootTypes"
+        "defaultArtwork"
       ],
       "api": [
+        "ForcedDeletion",
+        "ItemSheetV2",
         "escapeHTML",
         "hasProperty",
         "prompt",
-        "randomID"
+        "registerSheet"
       ],
       "routes": [],
-      "patched": [
-        "GroupActorSheet#_configureInventorySections"
-      ]
+      "patched": []
     },
     "fvtt-mod-houserules": {
       "dnd5eHooks": [],

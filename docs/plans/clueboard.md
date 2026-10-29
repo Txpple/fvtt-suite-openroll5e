@@ -11,7 +11,12 @@ sidebar, so Mysteries is a window of its own opened centred from a scroll button
 sidebar panel (D8 below, revised). **And the same morning**: the journal underneath was "messy, and not
 encapsulated", so a party's record moved onto its Group actor, the module's own data behind its own schema, with
 no journal, folder or document type (D1 and D4 revised); and there are no GM secrets, in phase 1 or after: the DM's
-overlay is gone from phase 2.
+overlay is gone from phase 2. **And then, the same day** (C12): the stash was going to be "wayyyy too busy ... confusing the
+party between loot they can sell and clues", so the Clue is an item type of the module's own that is never carried,
+collecting is the DM's act and fills Mysteries at once, and the read is marked when a player opens the card; the
+Read column, the loot subtype, held-by and the Party Stash logic are gone (D2, D3, D7, D9 revised, the phase 1
+section rewritten). The sandbox's ten Session 02 documents became Clues built from the world originals (the DM's
+prototypes, which carry the corrected found-at lines; the stash copies never did), their readers kept.
 
 Drafted 2026-10-28 from the brief ("a clue board, in game, probably an optional module ... tie it to items ...
 connect / move items from party stash ... clues are gathered Call of Cthulhu style, read the items") and the case
@@ -35,6 +40,7 @@ needs are at the end, the open ones marked.
 | C7 | "even more simple for phase 1: no DM screen, only the clue tags, read, and casefile" (2026-10-29) | phase 1 is the Clue type on an item, Read on rows and cards, and one window off a sidebar tab; the DM's overlay, the export, testimony and observation wait |
 | C10 | "add a new loot type called Clue and we'll use that as the signifier if a loot is a clue or not" (2026-10-29) | no flag, no tag UI: a `clue` entry in dnd5e's `CONFIG.DND5E.lootTypes`, set in the item sheet's own type field; a loot item of type Clue is a clue |
 | C11 | "the read button only when something is in party stash, I don't want to mess with player inventories yet ... that will be the only trigger to put something in the mystery box, for now" (2026-10-29) | Read on the group sheet's rows and nowhere else; the stash's Read is the one way into Mysteries; character sheets, cards and item sheets untouched |
+| C12 | "remove the Read button on party inventory; remove the clue loot subtype; a full new item subtype for clues, they should not appear in party stash inventory; a clue is marked Read when opened by a player in the Mysteries board; clues collected auto-populate the board" (2026-10-29) | a Clue item type of the module's own, never carried; the DM collects (a drop, a button) and Mysteries fills itself; the read is marked on opening; nothing in any inventory |
 | C8 | "a sidebar menu item placed directly after Journal that opens the case file screen" | a sidebar tab of the module's own, between Journal and Tables, that opens the window; not a journal sheet |
 | C9 | "a name that's fantasy, not Call of Cthulhu: Lore? mysteries? something thematic" | **Mysteries**: the tab, the window, and in phase 2 the threads the players name |
 
@@ -75,49 +81,37 @@ ours or Sargas's (phase 2).
 **A clue is a view onto a document the party has read.** The module never holds text the DM typed for the players'
 eyes; it holds what the players gathered, stamped. Everything else hangs off that record.
 
-## Phase 1: the Clue type, Read, Mysteries
+## Phase 1: the Clue, collecting, Mysteries
 
-Three things, nothing else. No DM window, no export, no testimony, no board.
+The third shape of 2026-10-29, on the user's rulings (C12): no Read in any inventory, no loot subtype, a Clue type
+of the module's own that never appears in a stash, collected clues in Mysteries at once, the read marked when a
+player opens the card. Proposal A of `prototypes/clue-management.html` ("code wise, A seems the most elegant and
+non-invasive, self encapsulated"), documents first.
 
-### The Clue type
+### The Clue
 
-- **A clue is a loot item whose type is Clue.** dnd5e's loot items carry a subtype in `system.type.value` (gear,
-  treasure, junk, material, resource, art, gem) from `CONFIG.DND5E.lootTypes`; at `init` the module adds
-  `clue: { label: "Clue" }`, and the item sheet's own type dropdown offers it. Nothing else marks a clue: no flag,
-  no tag button, no folder menu. The GM sets the type when building the item (the MCP's `manage-items` sets it in
-  bulk; the Halruaa `Session 02` folders are nine edits), and the test everywhere is one line, a loot item of type
-  `clue`. Changing the type back makes it an ordinary item and leaves any Mysteries entry as it is.
-- **The clue's identity** is written at the first gather: `flags.fvtt-mod-clueboard.id`, a random id, by the reading
-  client (it owns the item's actor: the stash is every member's, a character its player's). Flags travel with the
-  item through every copy the system makes, so a Party Stash move (a copy landed, then the source deleted) keeps it,
-  and so does a Give through the stash. A Clue nobody has read yet has no id and needs none.
-- A Clue shows a bookmark on inventory rows and item cards for everyone, so a player knows it is worth reading.
-  (Setting: *Show the mark to players*, on; off, gathering is silent.)
+- **An item type of the module's own**, `fvtt-mod-clueboard.clue`, declared in `module.json`. Foundry lists it in
+  the Create Item dialog as "Clue" beside dnd5e's types, with an icon from `CONFIG.DND5E.defaultArtwork.Item`.
+- Its data is ours: `kind` (document; testimony and observation are phase 2 values, the seam the user asked for),
+  `text` (HTML), `foundAt` (the DM's words, optional). No price, weight, quantity, rarity or activity.
+- Its sheet is ours: image, name, the kind, Found at, the text in the editor, and a footer with *Collected by
+  <party>, read by ...* and *Take back*, or *Collect for <party>* (one button per party).
+- **A Clue is never carried.** dnd5e refuses a non-physical item on a Group (`Item5e._preCreate`); the module turns a
+  Clue dropped on any actor's sheet into a collect (`dropActorSheetData`, returning false) and refuses one created
+  inside any actor by another path (`preCreateItem`). Nothing of the module's touches an inventory, a character
+  sheet or an item card.
 
-### Read, in the stash only
+### Collecting
 
-- **A Read button on every inventory row of a Group actor's sheet**, the party stash, and nowhere else in phase 1
-  (the user, 2026-10-29: "only when something is in party stash, I don't want to mess with player inventories yet";
-  character sheets, item cards and the item sheet are phase 2). It opens the **Reader**: the item's image and
-  description as a document, nothing else of the sheet (no price, no weight, no Use). **It never posts to chat.**
-  This is the fix session 02 asked for (the players clicked two cards eleven times to read them; every click posted).
-- Read is for every item in the stash; reading an item that is not a Clue is just reading, nothing is recorded.
-- **Gather on read, the one trigger.** The first time a user opens the Reader on a Clue in the stash, the clue is
-  gathered: the id is written on the item if it has none, an entry is created in Mysteries if none carries that id,
-  and the reader is appended. Nothing else puts anything in Mysteries. The reader is the user's assigned character;
-  a user with several picks (the picker Party Stash uses for Take). A GM's read gathers nothing.
-- So the table's rhythm is the stash's: loot found goes into the stash (Party Stash's Stash button, a drag, the
-  GM's drop), the players read it there, and what they take out they have already read. A Clue taken before anyone
-  read it is not in Mysteries until it comes back to the stash.
-- The gather stamps **found-in**: the scene the reader's token stands on (else the viewed scene), the calendar date
-  (`game.time`, through the system's calendar when there is one), the real date, and the holder at that moment.
-- The gather **snapshots** the item: name, image, the description's HTML, the item's uuid. The snapshot is what the
-  entry shows forever, so it survives the item being given away, sold, destroyed or deleted. While the party still
-  holds the item, a change to its description (the DM adding what a History check revealed) re-snapshots the entry
-  and notes the revision.
-- On the Group sheet the Read column sits beside Party Stash's Take when Party Stash is active (its order 1100,
-  priority 1000, so dnd5e hides the system's columns first); without Party Stash the column stands alone.
-  Detection, never `requires`.
+- The DM's act, five ways: a drop on the Party sheet, on a member's sheet (their party), or on the Mysteries window;
+  Collect on the Clue's sheet; Collect in the GM strip at the top of Mysteries, which lists every world Clue no
+  party has. A compendium Clue is imported into the world first (a "Clues" folder) so the entry has a master.
+- Collecting stamps **found-in** (the scene the table is viewing, the calendar date when the world has one, the
+  real date) and **snapshots** the Clue (name, image, text, found-at, kind, revision 1). The snapshot is what the
+  entry shows; an edit to the Clue re-snapshots every party's copy and marks the revision; a deleted Clue freezes it.
+- **Take back** (the sheet, or the x on a card, GM only) removes the entry; the Clue stays in the world.
+- The party: the group dropped on, else the group the member belongs to, else dnd5e's primary party, else the only
+  party, else the DM picks.
 
 ### Mysteries
 
@@ -125,47 +119,31 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
   of the screen**, like FX Studio's. Built first as a sidebar tab (`Sidebar.TABS` and `CONFIG.ui`), whose panel
   stuck the sidebar on the sandbox; the user ruled it out the next morning. The button is not a tab: the sidebar
   never switches or expands for it, and nothing of the module's is drawn inside the sidebar.
-- **The window** lists what the party has gathered: one entry per clue with its image, name, holder, readers and
-  found-in; a search box; filters by holder (the stash, a member, left the party) and reader (me, nobody yet); a
-  click opens the Reader on the snapshot; *Open the item* when the item still exists and the user can see it.
-  Players may write a **note** on an entry and give it **tags** (free words). That is all the authoring phase 1
-  gives them.
-- Entries the party has not read yet are not in the list; the window shows what is known and a count of what is
-  not (*4 of 9 clues gathered*, counting the Clue items on the party's actors), nothing more. (Setting: *Count the
-  ungathered*, on.)
-- **The holder follows the item.** On `createItem` and `deleteItem` for any Clue carrying an id, the module
-  finds the carrier among the party's actors (every Group actor's members and the groups themselves) and writes the
-  entry. This only watches the hooks; it writes nothing on a character and adds nothing to a character sheet. A Party Stash move is a create on the destination then a delete on the source, so the holder flips once;
-  a Give's marked stash row (`flags.fvtt-mod-partystash.giveTo`) is skipped until it lands. An item that leaves the
-  party (handed to an NPC's sheet, deleted, sold through Loot Shelf) makes the holder **left the party**, with the
-  last holder and the moment kept; the entry stays. Party Stash's receipts are unchanged and Party Stash never knows
-  Clue Board exists.
-- **Where it lives.** On the party's own Group actor, in the module's flags, behind the module's own schema
-  (`MysteryEntry`, versioned): nothing in a directory or on a sheet, the window and the Reader the only doors.
-  The players own the party (Party Stash needs it too), so the reader's own client writes what it gathered and a
-  read lands with no GM online. Each write names the narrowest key, so two reads at once never collide. No party,
-  no record: Read lives in a Group's stash. (Built first as a journal per party with a page type; the user ruled it
-  out the next morning as messy and leaky in the UI.)
-- **Hooks**: `clueboard.gathered` (the entry and the reader) and `clueboard.changed` (a new reader, a holder move, a
-  revision). Nothing listens yet. The emitter's rule holds: documented in the README and `contracts/case.json`,
-  tolerated if it never fires.
+- **The window** lists what the party has: one card per Clue with its image, name, an excerpt, the found-at line,
+  the scene, the readers; a search; the count of what the player has not read (the GM: what nobody has). For the
+  GM, the strip of uncollected Clues and a drop target. A click opens the **Reader**: the text as a document, the
+  stamp, the readers, the kind, the party's note (any owner writes it), *Open the Clue* when the user may see it.
+  **It never posts to chat.**
+- **Opening a card as a player marks the read** for their character (the user's own, else the one member they own,
+  else their pick), once; a GM's opening marks nothing. That is the one way a read gets marked.
+- **The record lives on the party's Group actor**, in the module's flags, behind the module's own schema
+  (`MysteryEntry`, versioned): nothing in a directory or on a sheet. The players own the party (Party Stash needs
+  it too), so a read lands with no GM online. Every write names the narrowest key, so two writes at once never
+  collide. No party, no record. (Built first as a journal per party with a page type; the user ruled it out as
+  messy and leaky in the UI.)
 
 ### Settings
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| Enabled | on | Off leaves the group sheet and the sidebar as Foundry and the system have them. |
-| Show the mark to players | on | The bookmark on Clues' rows in the stash. |
-| Count the ungathered | on | Mysteries shows how many Clues nobody has read. |
+| Enabled | on | Off leaves the sidebar as Foundry has it and collects nothing; the type, the Clues and the records stay. |
 
 ### What it never does
 
-- Writes nothing to chat on a Read. Posts no receipt of its own; a gather is not a transfer.
-- Changes no item beyond the id flag at the first gather: it never moves, copies or deletes an item, and never sets
-  a type; Party Stash, the system and the GM do that.
-- Touches no character sheet, item card or item sheet (phase 2).
-- Never patches a class. The loot type is a `CONFIG.DND5E` entry; the group sheet's column is injected through
-  `_configureInventorySections` as Party Stash does; the button is a DOM addition on the sidebar's strip.
+- Writes nothing to chat, ever. Posts no receipt; a collect is not a transfer.
+- Puts nothing in an inventory, and nothing on a character sheet, an item card or a dnd5e item sheet.
+- Never patches a class: the type is a declaration, the drops are hooks, the button is a DOM addition.
+- Hides nothing from the players: no GM secrets, in any phase.
 
 ## Phase 2: the board
 
@@ -256,26 +234,24 @@ Taken here, open for the user to overturn:
 - **D1. Who writes, and where.** The reader's own client, on the party's Group actor, which the players own;
   never the elect. A GM absent loses nothing; a player could vandalise the record through the console, which a
   table that trusts its players accepts. (Revised 2026-10-29: a journal per party was built first and ruled out.)
-- **D2. The signifier is the loot type** (C10): a `clue` entry in `CONFIG.DND5E.lootTypes`, set in the item's own
-  type field, nothing of the module's on an unread item. **The identity is a flag**, a random id written at the first
-  gather and carried by every copy; a uuid would break at the first stash move.
-- **D3. Read is for everything, gathering is for Clues.** A read-without-posting is useful on its own and the
-  type keeps Mysteries from filling with rations.
+- **D2. A Clue is an item type of the module's own** (C12, replacing C10's loot subtype): `fvtt-mod-clueboard.clue`,
+  with its own data, sheet and icon, never carried. **The identity is the world Clue's id**: the entry is keyed by
+  the item it was collected from, and the item is the DM's master the entry follows.
+- **D3. Collecting is the DM's act; reading is the player's mark** (C12). Nothing is read into Mysteries; the DM
+  puts a Clue there, and a player's opening of the card marks that they read it. Rations never come near it.
 - **D4. One record per party** (Group actor), kept on it; no party, no record. A table with two groups has two.
 - **D5. Snapshot at gather, re-snapshot while held.** The entry shows what the party read, and what the DM later
   revealed on the same item, with the revision visible; a lost item freezes.
 - **D6. The names.** Clue Board, free on foundryvtt.com's package pages on this pass, the setup-screen check owed
   before the first release; Mysteries for the tab and the window (C9).
-- **D7. Phase 1 is three things** (C7, C8): the Clue type, Read in the stash, the Mysteries tab and window.
-- **D9. The stash's Read is the only trigger** (the user, 2026-10-29): no Read on character sheets, item cards or
-  the item sheet in phase 1; player inventories are untouched. Testimony,
-  observation, the export, the MCP tool and the board are phase 2; the Sargas trial comes before any board of ours.
+- **D7. Phase 1 is three things** (C7, C8, C12): the Clue, collecting, the Mysteries window.
+- **D9. Nothing in any inventory** (C11 then C12): no Read column, no bookmark, no Clue in a stash or a bag;
+  character sheets, item cards and dnd5e item sheets untouched. Testimony, observation (as kinds of Clue), the
+  export, the MCP tool and the board are phase 2; the Sargas trial comes before any board of ours.
 - **D8. A window off a button on the sidebar's strip, not a sidebar panel and not a journal sheet** (C8, revised
   2026-10-29 on the user's word after the panel stuck the sidebar).
 
 ## Open questions for the user
 
-1. Does the player see the bookmark (a Clue advertises itself), or does the table prefer discovery?
-2. On the group sheet, Read in Take's cell needs Party Stash's `take-column.hbs` to take a `read` boolean (a small
-   1.8.x change); without it, Read is its own column after Take. Which?
-3. The strip button's icon: a sealed scroll, a magnifying glass, an eye?
+1. The strip button's icon: a sealed scroll, a magnifying glass, an eye?
+2. The Clue's default artwork: the sealed red-and-tan letter for now; a drawn icon of our own later?
