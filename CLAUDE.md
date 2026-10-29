@@ -4,9 +4,9 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-29).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.19 (an effect's bend row sets its
-tone, so Helped is a debuff; released with no battery on the user's order and promoted to latest by hand; 3.4.18 moved
-the Going Down house rule out to House Rules; installed through the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; released without the installer, prod serving its files under 0.10.7's `module.json`), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
+**State (2026-10-29).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.20 (Help's assist on the enemy is "Distracted (Help)", no longer "Helped"; 3.4.19 set an effect's
+tone by its bend row; both released with no battery on the user's order and promoted to latest by hand; installed through
+the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; released without the installer, prod serving its files under 0.10.7's `module.json`), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.2, Open Server 1.4.1 (the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), each the latest release. The servers' latest releases are the MCP 4.6.5 (`set-landing-scene` retired with Open Server's landing scene; 4.6.4's `choices` refusal; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 29th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code
