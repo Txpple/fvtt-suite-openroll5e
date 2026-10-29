@@ -411,11 +411,16 @@
       "coreHooks": [
         "clientSettingChanged",
         "init",
+        "preUpdateActor",
         "ready"
       ],
       "documents": [],
       "dnd5eConfig": [],
-      "api": [],
+      "api": [
+        "getProperty",
+        "hasProperty",
+        "setProperty"
+      ],
       "routes": [],
       "patched": []
     },
