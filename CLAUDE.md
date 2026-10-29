@@ -4,10 +4,10 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-28).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.14 (Find Familiar's menu reworked on the user's notes: three stacked buttons and Do Nothing,
-Dismiss: Forever asking; a familiar teleported to another scene keeps its record; the familiars' one seat, the recall's
-floor and side, the hand-delete prompt; cover from Sight None and Limited walls; death-save folds on a failure only;
-on a full battery green, 67/67, installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
+**State (2026-10-28).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.17 (a summoned creature's world copy lands in a top-level Summons folder, never the caster's, and
+the elect deletes an unlinked copy nothing holds after every dismissal and on every GM load, a held one moved into the
+folder; 3.4.15 to 3.4.17 in one evening, each on a full battery green, 67/67, installed through the installer,
+byte-identical; the PCs folder on prod is the PCs' again), FX Studio 0.10.7, Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.2, Open Server 1.4.0 (the jump to one's character and creatures from the Players list; the landing scene removed), Party Stash 1.8.3, House Rules 1.0.0 (the arrow keys move tokens), each the latest release. The servers' latest releases are the MCP 4.6.4 (a `choices` entry nothing reads refused; 4.6.5, `set-landing-scene` retired with Open Server's landing scene, is on `main` with `dist` built, its live release set waiting for the sandbox seat), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code
