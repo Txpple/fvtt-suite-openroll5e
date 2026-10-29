@@ -404,6 +404,7 @@
         "init",
         "ready",
         "renderGroupActorSheet",
+        "renderSidebar",
         "setup",
         "updateItem"
       ],
@@ -415,7 +416,6 @@
         "lootTypes"
       ],
       "api": [
-        "AbstractSidebarTab",
         "JournalEntryPageHandlebarsSheet",
         "escapeHTML",
         "prompt",

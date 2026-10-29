@@ -6,6 +6,9 @@ Clue type, the Read column, the gather with its stamp, the tab after Journal, th
 Session 02 documents are Clues, three of them gathered (Kartor read the letter and the key, Cecil the letter and the
 ledger). The decisions below stand as written; what the build changed: the stamp skips the stock calendar's date (a world
 with no calendar would stamp "0000-01-01"), and the Clue page type is registered whether or not the module is enabled.
+**Revised the next morning on the user's word** ("no sidebar panel, totally broke the ui"): the sidebar tab stuck the
+sidebar, so Mysteries is a window of its own opened centred from a scroll button on the strip after Journal, never a
+sidebar panel (D8 below, revised).
 
 Drafted 2026-10-28 from the brief ("a clue board, in game, probably an optional module ... tie it to items ...
 connect / move items from party stash ... clues are gathered Call of Cthulhu style, read the items") and the case
@@ -115,11 +118,10 @@ Three things, nothing else. No DM window, no export, no testimony, no board.
 
 ### Mysteries
 
-- **A sidebar tab of the module's own, directly after Journal.** Foundry 13's sidebar is an application with a
-  static tab table (`Sidebar.TABS`, each tab an `AbstractSidebarTab` subclass registered on `CONFIG.ui`); the module
-  registers `CONFIG.ui.mysteries` and rebuilds the table with its entry after `journal`, so the icon sits between
-  Journal and Rollable Tables. The tab's own panel is the window's content (the sidebar's tabs can pop out), and a
-  click on the icon opens **Mysteries** as a window the way Journal opens its directory. Icon: a sealed scroll.
+- **A scroll button on the sidebar's strip, directly after Journal, that opens Mysteries as a window in the middle
+  of the screen**, like FX Studio's. Built first as a sidebar tab (`Sidebar.TABS` and `CONFIG.ui`), whose panel
+  stuck the sidebar on the sandbox; the user ruled it out the next morning. The button is not a tab: the sidebar
+  never switches or expands for it, and nothing of the module's is drawn inside the sidebar.
 - **The window** lists what the party has gathered: one entry per clue with its image, name, holder, readers and
   found-in; a search box; filters by holder (the stash, a member, left the party) and reader (me, nobody yet); a
   click opens the Reader on the snapshot; *Open the item* when the item still exists and the user can see it.
@@ -265,11 +267,12 @@ Taken here, open for the user to overturn:
 - **D9. The stash's Read is the only trigger** (the user, 2026-10-29): no Read on character sheets, item cards or
   the item sheet in phase 1; player inventories are untouched. The DM's side, testimony,
   observation, the export, the MCP tool and the board are phase 2; the Sargas trial comes before any board of ours.
-- **D8. A sidebar tab, not a journal sheet** (C8). The journal behind it is storage, reached by the tab.
+- **D8. A window off a button on the sidebar's strip, not a sidebar panel and not a journal sheet** (C8, revised
+  2026-10-29 on the user's word after the panel stuck the sidebar). The journal behind it is storage.
 
 ## Open questions for the user
 
 1. Does the player see the bookmark (a Clue advertises itself), or does the table prefer discovery?
 2. On the group sheet, Read in Take's cell needs Party Stash's `take-column.hbs` to take a `read` boolean (a small
    1.8.x change); without it, Read is its own column after Take. Which?
-3. The sidebar tab's icon: a sealed scroll, a magnifying glass, an eye?
+3. The strip button's icon: a sealed scroll, a magnifying glass, an eye?
