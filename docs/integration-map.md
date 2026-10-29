@@ -55,7 +55,7 @@ Hooks named after a suite module (`bythebooks.*`, `fxstudio.*`, ...). Emitters c
 | Repo | Emits | Listens |
 |---|---|---|
 | fvtt-mod-bythebooks | bythebooks.areaAskAnswered (1), bythebooks.armorBlock (1), bythebooks.styleDice (1), bythebooks.moment (2), bythebooks.${event} (1), bythebooks.holdOpened (2), bythebooks.castReleased (1), bythebooks.deferredUsageCard (1) | bythebooks.moment (13), bythebooks.styleDice (1), bythebooks.armorBlock (1), bythebooks.holdOpened (1) |
-| fvtt-mod-clueboard | clueboard.collected (1), clueboard.changed (4) | — |
+| fvtt-mod-clueboard | clueboard.collected (1), clueboard.changed (6), clueboard.thread (5) | — |
 | fvtt-mod-fxstudio | fxstudio.rebuilt (2) | bythebooks.moment (1), battleflow.moment (1), fxstudio.rebuilt (1) |
 | fvtt-mod-tokenart | tokenart.changed (1) | — |
 

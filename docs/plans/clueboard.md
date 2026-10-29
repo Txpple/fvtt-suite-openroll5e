@@ -41,6 +41,7 @@ needs are at the end, the open ones marked.
 | C10 | "add a new loot type called Clue and we'll use that as the signifier if a loot is a clue or not" (2026-10-29) | no flag, no tag UI: a `clue` entry in dnd5e's `CONFIG.DND5E.lootTypes`, set in the item sheet's own type field; a loot item of type Clue is a clue |
 | C11 | "the read button only when something is in party stash, I don't want to mess with player inventories yet ... that will be the only trigger to put something in the mystery box, for now" (2026-10-29) | Read on the group sheet's rows and nowhere else; the stash's Read is the one way into Mysteries; character sheets, cards and item sheets untouched |
 | C12 | "remove the Read button on party inventory; remove the clue loot subtype; a full new item subtype for clues, they should not appear in party stash inventory; a clue is marked Read when opened by a player in the Mysteries board; clues collected auto-populate the board" (2026-10-29) | a Clue item type of the module's own, never carried; the DM collects (a drop, a button) and Mysteries fills itself; the read is marked on opening; nothing in any inventory |
+| C13 | "players are going to want to organize these clues ... tabs or kanban like things, where they can name, and then drag cards ... shared ... gm can also rearrange ... threads all the way ... clues can go in each one multiple times" (2026-10-29) | threads: a tab per named question, a clue pinnable to many, drag to pin and to order, a stand line per thread, any owner organises |
 | C8 | "a sidebar menu item placed directly after Journal that opens the case file screen" | a sidebar tab of the module's own, between Journal and Tables, that opens the window; not a journal sheet |
 | C9 | "a name that's fantasy, not Call of Cthulhu: Lore? mysteries? something thematic" | **Mysteries**: the tab, the window, and in phase 2 the threads the players name |
 
@@ -131,6 +132,22 @@ non-invasive, self encapsulated"), documents first.
   it too), so a read lands with no GM online. Every write names the narrowest key, so two writes at once never
   collide. No party, no record. (Built first as a journal per party with a page type; the user ruled it out as
   messy and leaky in the UI.)
+
+### Threads (C13)
+
+- The user, after the ten clues were on the board: "players are going to want to organize these clues ... tabs or
+  kanban like things, where they can name, and then drag cards"; shared, the GM may rearrange; of the four formats
+  proposed (lanes, threads with tags, the corkboard with strings, questions and theories) the ruling was "threads
+  all the way ... clues can go in each one multiple times".
+- **A thread** is a named question or line of inquiry with a colour, open or answered, and a short *Where we
+  stand*: the party's theory on it. It is a tab in Mysteries beside *All* and *Unsorted* (what no thread holds).
+- **Pinning** is a drag of a card onto the tab; a clue may be in any number of threads and wears a dot per thread;
+  inside a thread a card dragged onto another goes before it. Unpin is a button on the card in that thread.
+- **Anyone who owns the party organises**, the GM included; deleting a thread asks, unpins its clues and loses
+  nothing else. Threads live on the party beside its entries; pins live on the entry, so an entry gone takes its
+  pins with it.
+- Precedents: the GUMSHOE games' leads, *L.A. Noire*'s notebook, *Brindlewood Bay*'s Theorize for the stand line.
+  Phase 2's strings can run between cards inside a thread if the table wants the wall.
 
 ### Settings
 
