@@ -7,10 +7,11 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 **State (2026-10-29).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.20 (Help's assist on the enemy is "Distracted (Help)", no longer "Helped"; 3.4.19 set an effect's
 tone by its bend row; both released with no battery on the user's order and promoted to latest by hand; installed through
 the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; released without the installer, prod serving its files under 0.10.7's `module.json`), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.2, Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.2, Open Server 1.4.1 (the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), each the latest release. The servers' latest releases are the MCP 4.6.5 (`set-landing-scene` retired with Open Server's landing scene; 4.6.4's `choices` refusal; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
+Loot Shelf 1.3.2, Open Server 1.4.1 (the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), Clue Board 1.0.0 (the party's
+Mysteries; installed and enabled through the installer, the ten Session 02 documents migrated to Clues from their world
+originals, the stash copies removed, the originals kept for the user's audit), each the latest release. The servers' latest releases are the MCP 4.6.5 (`set-landing-scene` retired with Open Server's landing scene; 4.6.4's `choices` refusal; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 29th) runs prod's versions
-and any `main` a module's live checks left (a deploy `--check` tells). Clue Board's phase 1 waits unreleased on its
-`main` (0.1.0, the user's call); no other code waits on any `main`, and no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+and any `main` a module's live checks left (a deploy `--check` tells). No code waits unreleased on any `main`, and no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
@@ -69,7 +70,7 @@ campaigns.
 | `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
-| `fvtt-mod-clueboard` | the party's Mysteries: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read; phase 1 on `main`, unreleased (`docs/plans/clueboard.md`) |
+| `fvtt-mod-clueboard` | the party's Mysteries: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read, the party's own mysteries to pin clues to (`docs/plans/clueboard.md`) |
 | `fvtt-mod-houserules` | one table's always-on overrides, GM settings on by default, applied on every client; public, no blurb, so out of the catalogue |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
