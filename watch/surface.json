@@ -416,6 +416,7 @@
       "api": [
         "ForcedDeletion",
         "ItemSheetV2",
+        "confirm",
         "escapeHTML",
         "hasProperty",
         "prompt",
