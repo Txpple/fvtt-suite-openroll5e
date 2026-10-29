@@ -8,14 +8,14 @@ Generated 2026-10-29 by `tools/integration-map.mjs` from the clones next to this
 |---|---|---|---|---|---|---|
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.2 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
-| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.18 | 14–14 | dnd5e | none |
+| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.20 | 14–14 | dnd5e | none |
 | fvtt-mod-clueboard | fvtt-mod-clueboard | Open Roll 5e: Clue Board | 0.1.0 | 13–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.2 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
-| fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.7 | 14–14 | dnd5e | sequencer |
-| fvtt-mod-houserules | fvtt-mod-houserules | Open Roll 5e: House Rules | 1.1.0 | 13–14 | dnd5e | none |
+| fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.8 | 14–14 | dnd5e | sequencer |
+| fvtt-mod-houserules | fvtt-mod-houserules | Open Roll 5e: House Rules | 1.3.0 | 13–14 | dnd5e | none |
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.2 | 13–14 | dnd5e | none |
-| fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.4.0 | 11–14 | any | none |
+| fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.4.1 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.3 | 13–14 | dnd5e | none |
 | fvtt-mod-tokenart | fvtt-mod-tokenart | Open Roll 5e: Token Art | 1.0.2 | 13–14 | dnd5e | none |
 
@@ -43,6 +43,7 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mod-bythebooks | fvtt-mod-houserules | 3 | fvtt-mod-bythebooks/scripts/settings.js |
 | fvtt-mod-bythebooks | fvtt-mod-lootshelf | 1 | fvtt-mod-bythebooks/scripts/summons.js |
 | fvtt-mod-bythebooks | fvtt-mod-errata5e | 1 | fvtt-mod-bythebooks/tools/smoke-aasimar.mjs |
+| fvtt-mod-clueboard | fvtt-mod-partystash | 1 | fvtt-mod-clueboard/scripts/mysteries.js |
 | fvtt-mod-combatplus | fvtt-mod-lootshelf | 1 | fvtt-mod-combatplus/scripts/combatplus.js |
 | fvtt-mod-fxstudio | fvtt-mod-bythebooks | 8 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
@@ -55,6 +56,7 @@ Hooks named after a suite module (`bythebooks.*`, `fxstudio.*`, ...). Emitters c
 | Repo | Emits | Listens |
 |---|---|---|
 | fvtt-mod-bythebooks | bythebooks.areaAskAnswered (1), bythebooks.armorBlock (1), bythebooks.styleDice (1), bythebooks.moment (2), bythebooks.${event} (1), bythebooks.holdOpened (2), bythebooks.castReleased (1), bythebooks.deferredUsageCard (1) | bythebooks.moment (13), bythebooks.styleDice (1), bythebooks.armorBlock (1), bythebooks.holdOpened (1) |
+| fvtt-mod-clueboard | clueboard.gathered (1), clueboard.changed (4) | — |
 | fvtt-mod-fxstudio | fxstudio.rebuilt (2) | bythebooks.moment (1), battleflow.moment (1), fxstudio.rebuilt (1) |
 | fvtt-mod-tokenart | tokenart.changed (1) | — |
 

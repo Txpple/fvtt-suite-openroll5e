@@ -1,5 +1,12 @@
 # Plan — Clue Board, a new Open Roll 5e module
 
+**PHASE 1 BUILT 2026-10-29** as `fvtt-mod-clueboard` 0.1.0 on `main`, unreleased, deployed to the sandbox (mirrored from
+prod the same night) and walked there by its `tools/live-check.mjs` (a GM page and a temporary player page; GREEN: the
+Clue type, the Read column, the gather with its stamp, the tab after Journal, the holder following a move). The sandbox's
+Session 02 documents are Clues, three of them gathered (Kartor read the letter and the key, Cecil the letter and the
+ledger). The decisions below stand as written; what the build changed: the stamp skips the stock calendar's date (a world
+with no calendar would stamp "0000-01-01"), and the Clue page type is registered whether or not the module is enabled.
+
 Drafted 2026-10-28 from the brief ("a clue board, in game, probably an optional module ... tie it to items ...
 connect / move items from party stash ... clues are gathered Call of Cthulhu style, read the items") and the case
 that asked for it: *Echoes of Halruaa* after session 02, where the party read nine documents in one house and the
