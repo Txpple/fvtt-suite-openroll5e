@@ -11,8 +11,8 @@ installed through the installer, byte-identical), FX Studio 0.10.7, Errata 1.2.2
 Loot Shelf 1.3.2, Open Server 1.4.0 (the jump to one's character and creatures from the Players list; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), each the latest release. The servers' latest releases are the MCP 4.6.5 (`set-landing-scene` retired with Open Server's landing scene; 4.6.4's `choices` refusal; `dist` built, live on a Claude Code restart), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 28th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code
-waits unreleased on any `main`; By the Books' familiar's-eyes
-switch is on its own branch (`familiar-eyes`), superseded by Open Server's jump. The
+waits unreleased on any `main`, and no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
 
