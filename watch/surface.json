@@ -398,21 +398,46 @@
     "fvtt-mod-clueboard": {
       "dnd5eHooks": [],
       "coreHooks": [
-        "init"
+        "createActor",
+        "createItem",
+        "deleteItem",
+        "init",
+        "ready",
+        "renderGroupActorSheet",
+        "setup",
+        "updateItem"
       ],
-      "documents": [],
-      "dnd5eConfig": [],
-      "api": [],
+      "documents": [
+        "Actor",
+        "Item"
+      ],
+      "dnd5eConfig": [
+        "lootTypes"
+      ],
+      "api": [
+        "AbstractSidebarTab",
+        "JournalEntryPageHandlebarsSheet",
+        "escapeHTML",
+        "prompt",
+        "randomID",
+        "registerSheet"
+      ],
       "routes": [],
-      "patched": []
+      "patched": [
+        "GroupActorSheet#_configureInventorySections"
+      ]
     },
     "fvtt-mod-houserules": {
       "dnd5eHooks": [],
       "coreHooks": [
+        "changeSidebarTab",
         "clientSettingChanged",
         "init",
         "preUpdateActor",
-        "ready"
+        "ready",
+        "renderAbstractSidebarTab",
+        "renderSidebar",
+        "setup"
       ],
       "documents": [],
       "dnd5eConfig": [],
