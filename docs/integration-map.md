@@ -9,7 +9,7 @@ Generated 2026-10-29 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.2 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
 | fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.20 | 14–14 | dnd5e | none |
-| fvtt-mod-clueboard | fvtt-mod-clueboard | Open Roll 5e: Clue Board | 1.0.0 | 13–14 | dnd5e | none |
+| fvtt-mod-clueboard | fvtt-mod-clueboard | Open Roll 5e: Clue Board | 1.1.0 | 13–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.2 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.8 | 14–14 | dnd5e | sequencer |
