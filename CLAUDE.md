@@ -10,7 +10,7 @@ the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House 
 Loot Shelf 1.3.2, Open Server 1.4.1 (the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), Clue Board 1.1.0 (the rail beside the cards, the JSON export, solved/unsolved marks; 1.0.0 the party's
 Mysteries, installed and enabled through the installer, the ten Session 02 documents migrated to Clues from their world
 originals, the stash copies and the originals removed), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
-restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 29th, after Clue Board's prod work) runs prod's versions
+restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 30th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). No code waits unreleased on any `main`, and no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
