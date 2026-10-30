@@ -4,9 +4,9 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-29).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.20 (Help's assist on the enemy is "Distracted (Help)", no longer "Helped"; 3.4.19 set an effect's
-tone by its bend row; both released with no battery on the user's order and promoted to latest by hand; installed through
-the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; installed through the installer, byte-identical), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.3 (the five open issues; a world's art folders listed once, no 404 per look), Area Sounds 2.0.2, Autoexplore 1.1.2,
+**State (2026-10-30).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.21 (#20–#23: a change's kind read as v14's `type`; the landing
+ledger, so a step a dropped GM client left lands once; an arriving elect keeps the auras; battery 67/67 green;
+installed through the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; installed through the installer, byte-identical), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.3 (the five open issues; a world's art folders listed once, no 404 per look), Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.3 (dropped loot drawn small, a sack for a pile; the `isGM` check in verify), Open Server 1.4.2 (the jump menu's `jQuery: false`; the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), Clue Board 1.1.0 (the rail beside the cards, the JSON export, solved/unsolved marks; 1.0.0 the party's
 Mysteries, installed and enabled through the installer, the ten Session 02 documents migrated to Clues from their world
 originals, the stash copies and the originals removed), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
