@@ -9,14 +9,13 @@ Generated 2026-10-31 by `tools/integration-map.mjs` from the clones next to this
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.2 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
 | fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.21 | 14–14 | dnd5e | none |
-| fvtt-mod-cardcatalogue | fvtt-mod-cardcatalogue | Open Roll 5e: Card Catalogue | 1.0.4 | 14–14 | any | none |
+| fvtt-mod-cardcatalogue | fvtt-mod-cardcatalogue | Open Roll 5e: Card Catalogue | 1.0.5 | 14–14 | any | none |
 | fvtt-mod-clueboard | fvtt-mod-clueboard | Open Roll 5e: Clue Board | 1.2.2 | 13–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.2 | 13–14 | any | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.8 | 14–14 | dnd5e | sequencer |
 | fvtt-mod-houserules | fvtt-mod-houserules | Open Roll 5e: House Rules | 1.4.0 | 13–14 | dnd5e | none |
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.3 | 13–14 | dnd5e | none |
-| fvtt-mod-mapcase | fvtt-mod-mapcase | Open Roll 5e: Map Case | 0.1.0 | 14–14 | any | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.4.2 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.3 | 13–14 | dnd5e | none |
 | fvtt-mod-scrollcase | fvtt-mod-scrollcase | Open Roll 5e: Scroll Case | 1.0.4 | 14–14 | any | none |
@@ -49,7 +48,6 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mod-bythebooks | fvtt-mod-errata5e | 1 | fvtt-mod-bythebooks/tools/smoke-aasimar.mjs |
 | fvtt-mod-cardcatalogue | fvtt-mod-scrollcase | 10 | fvtt-mod-cardcatalogue/scripts/journal/journal.js |
 | fvtt-mod-cardcatalogue | fvtt-mod-houserules | 6 | fvtt-mod-cardcatalogue/scripts/shell/migrate.js |
-| fvtt-mod-cardcatalogue | fvtt-mod-mapcase | 1 | fvtt-mod-cardcatalogue/scripts/scenes/case.js |
 | fvtt-mod-combatplus | fvtt-mod-lootshelf | 1 | fvtt-mod-combatplus/scripts/combatplus.js |
 | fvtt-mod-fxstudio | fvtt-mod-bythebooks | 8 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
