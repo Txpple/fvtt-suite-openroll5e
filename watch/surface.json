@@ -475,6 +475,7 @@
       ],
       "dnd5eConfig": [],
       "api": [
+        "ContextMenu",
         "DocumentOwnershipConfig",
         "deepClone",
         "escapeHTML",

@@ -206,6 +206,11 @@ Taken here, open for the user to overturn:
   floor 14rem, Classic Mode its icon below 1250px); a page's chevron carries Copy link and Copy @ reference again (they
   went with the panel); New Folder in the scenes', actors' and items' rails, and empty folders in the GM's rail, so
   a card can be dragged into a new one.
+- **1.0.2 and 1.0.3, on the user's word**: the top level reads *Unfiled*; *+ Create New Folder* a gold pill as Clue
+  Board's New Thread; a right-click on a folder's row removes it (Foundry's own Remove Folder, its contents moved up);
+  the rail's folders collapse by a caret and the journal's headings collapse their journals; a click selects a card,
+  a double click does its one thing; 1.0.4 the caret its own button beside the row (in 1.0.3 a real click picked the
+  folder), on prod. The local Map Case folder deleted, folded in whole.
 - **Was open, now done**: the releases (Card Catalogue 0.1.0 or
   1.0.0, House Rules 1.4.0) and the prod cut-over; Scroll Case's repo archived or deleted after; Map Case's local
   folder (`fvtt-mod-mapcase`, disabled on the sandbox) deleted; the suite's rule that Clue Board copies Scroll Case's
