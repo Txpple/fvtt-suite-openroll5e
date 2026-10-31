@@ -1,7 +1,7 @@
 # Plan — Card Catalogue, a new Open Roll 5e module
 
-**BUILT 2026-10-31 as 0.1.0, a working draft on the sandbox**, local only (`fvtt-mod-cardcatalogue`, no repo; the
-user's rulings and *As built* at the end). The brief, from the user after Map Case 0.1.0 was walked on the sandbox: keep Clue Board
+**RELEASED 2026-10-31 as Card Catalogue 1.0.0 and on prod**, replacing Scroll Case (uninstalled, its repo archived);
+House Rules 1.4.0 released beside it. Built the same day as 0.1.0 (the user's rulings and *As built* at the end). The brief, from the user after Map Case 0.1.0 was walked on the sandbox: keep Clue Board
 separate, as it is ("it is not just a UI reskin"); make one new module that folds Scroll Case, the two sidebar-tab
 rules from House Rules, scenes (Map Case), items and actors into one; then retire Scroll Case and take the two rules
 out of House Rules. Earlier the same day: "id like to do similar with actors and items too. lets prototype with
@@ -191,11 +191,18 @@ Taken here, open for the user to overturn:
   the chevron and sits in the panel); the actors case sorts by type, then name; every panel has an × and Escape
   closes it first; Undo of an activation brings the GM's own canvas back too once it is idle (Foundry refuses a
   move mid-draw); a summoned creature (dnd5e's `isAutoImported` copy) is no card in a player's actors case, though
-  they own it (the Owl, Tychon's familiar, showed for Tom).
+  they own it (the Owl, Tychon's familiar, showed for Tom); then no pins and **no side panel anywhere** (the user:
+  "the actions i need are in that little yellow chevron"): a click does the case's one thing (the journal opens the
+  Reader, scenes view, actors and items open the sheet), the chevron the rest; the panel's per-player visibility
+  toggles, section picker and copy buttons went with it (Show, a drop on the rail and Foundry's sheet remain).
 - **The name is free** (D5): the setup screen's `getPackages`, 7,087 modules, has no "Card Catalogue", no
   `cardcatalog` and no "catalogue" at all.
 - **The repo**: `Txpple/fvtt-mod-cardcatalogue`, public, `verify` green; in `repos.json` without a blurb.
-- **Open**: the releases (Card Catalogue 0.1.0 or
+- **Released and on prod** (the user: "run all your tests, then wrap this up, commit/push, put on prod. remove scroll
+  case and archive it"): 1.0.0 and House Rules 1.4.0 tagged and published, the installer for each, Card Catalogue
+  enabled and Scroll Case disabled, then uninstalled; every released file served byte-identical; `repos.json` gives
+  Card Catalogue its blurb and retires Scroll Case, every README's catalogue regenerated; Scroll Case's repo archived.
+- **Was open, now done**: the releases (Card Catalogue 0.1.0 or
   1.0.0, House Rules 1.4.0) and the prod cut-over; Scroll Case's repo archived or deleted after; Map Case's local
   folder (`fvtt-mod-mapcase`, disabled on the sandbox) deleted; the suite's rule that Clue Board copies Scroll Case's
   look pointed here; the integration map and catalogue regenerated once it is in `repos.json`.

@@ -444,36 +444,6 @@
       "routes": [],
       "patched": []
     },
-    "fvtt-mod-scrollcase": {
-      "dnd5eHooks": [],
-      "coreHooks": [
-        "createUser",
-        "deleteJournalEntryPage",
-        "deleteUser",
-        "init",
-        "ready",
-        "renderJournalDirectory",
-        "renderSidebar",
-        "updateJournalEntry",
-        "updateJournalEntryPage",
-        "updateUser",
-        "userConnected"
-      ],
-      "documents": [
-        "JournalEntry",
-        "JournalEntryPage",
-        "User"
-      ],
-      "dnd5eConfig": [],
-      "api": [
-        "DialogV2",
-        "deepClone",
-        "escapeHTML",
-        "saveDataToFile"
-      ],
-      "routes": [],
-      "patched": []
-    },
     "fvtt-mod-cardcatalogue": {
       "dnd5eHooks": [],
       "coreHooks": [
@@ -505,7 +475,6 @@
       ],
       "dnd5eConfig": [],
       "api": [
-        "DialogV2",
         "DocumentOwnershipConfig",
         "deepClone",
         "escapeHTML",

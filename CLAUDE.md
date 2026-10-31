@@ -9,14 +9,15 @@ byte-identical copy (no change on Molten since), the MCP and Session Scribe repo
 both; this machine only, the other machines' registrations still name Molten). Prod runs By the Books 3.4.21 (#20–#23: a change's kind read as v14's `type`; the landing
 ledger, so a step a dropped GM client left lands once; an arriving elect keeps the auras; battery 67/67 green;
 installed through the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; installed through the installer, byte-identical), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.3 (the five open issues; a world's art folders listed once, no 404 per look), Area Sounds 2.0.2, Autoexplore 1.1.2,
-Loot Shelf 1.3.3 (dropped loot drawn small, a sack for a pile; the `isGM` check in verify), Open Server 1.4.2 (the jump menu's `jQuery: false`; the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.3.0 (players and GMs see only the sidebar tabs they use, each its own switch; the arrow keys move tokens; going down costs a level of Exhaustion), Clue Board 1.2.2 (*Clue Board* and *Threads* in every word a player reads, square cards as in Scroll Case; installed through the installer, byte-identical; 1.2.1 Scroll Case's look; 1.2.0 `collect` takes `stamp: false`, `tools/add-clues.mjs`; 1.1.0 the rail beside the cards, the JSON export, solved/unsolved marks; 1.0.0 the party's
+Loot Shelf 1.3.3 (dropped loot drawn small, a sack for a pile; the `isGM` check in verify), Open Server 1.4.2 (the jump menu's `jQuery: false`; the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.4.0 (the arrow keys move tokens; going down costs a level of Exhaustion; its two sidebar-tabs rules moved to Card Catalogue; installed through the installer, byte-identical), Clue Board 1.2.2 (*Clue Board* and *Threads* in every word a player reads, square cards as in Scroll Case; installed through the installer, byte-identical; 1.2.1 Scroll Case's look; 1.2.0 `collect` takes `stamp: false`, `tools/add-clues.mjs`; 1.1.0 the rail beside the cards, the JSON export, solved/unsolved marks; 1.0.0 the party's
 Mysteries, installed and enabled through the installer, the ten Session 02 documents migrated to Clues from their world
-originals, the stash copies and the originals removed), Scroll Case 1.0.4 (square cards, each picture framed by its shape; installed through the installer, byte-identical; 1.0.3 the rails shortened; 1.0.2 a page's web link, `/game?page=<uuid>`; 1.0.1 the JSON export of the cards in view; each installed through the installer, byte-identical; 1.0.0 new: the journal as a case of cards, the Journal
-button opening it, Show into a plain Reader on the players' screens; installed and enabled through the installer,
-byte-identical), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
+originals, the stash copies and the originals removed), Card Catalogue 1.0.0 (new: the journal, the scenes, the actors and
+the items as cases of cards in one window, each sidebar button opening its case, a click doing its one thing and the
+chevron the rest; the two sidebar-tabs rules; installed and enabled through the installer, byte-identical, every case
+opening with all its cards; it replaces Scroll Case, disabled and uninstalled, its repo archived), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.2 (the `generic` host; `dist` built, live on a restart). The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 30th) runs prod's versions
 and any `main` a module's live checks left (a deploy `--check` tells). Unreleased on a `main`: the MCP's `pull-prod-to-local.mjs
---from` (a script, no release needed); Card Catalogue 0.1.0 (`fvtt-mod-cardcatalogue`, a working draft on the sandbox, its public repo made and in `repos.json` without a blurb: the journal, scenes, actors and items as cases, the two sidebar-tabs rules; to replace Scroll Case, Map Case folded in) and House Rules 1.4.0 without those rules (uncommitted); no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+--from` (a script, no release needed); no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
@@ -75,7 +76,7 @@ campaigns.
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
 | `fvtt-mod-clueboard` | the party's Mysteries: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read, the party's own mysteries to pin clues to (`docs/plans/clueboard.md`) |
-| `fvtt-mod-scrollcase` | the journal as a case of cards: the Journal button opens it (Classic Mode puts the stock one back), search, one-click Show into a plain Reader on the players' screens; a skin, no data of its own (`docs/plans/scrollcase.md`) |
+| `fvtt-mod-cardcatalogue` | every directory the table uses as a case of cards (journal, scenes, actors, items), each sidebar button opening its case, Classic Mode per case and client; the sidebar shows only the tabs the table uses; a skin, no data of its own (`docs/plans/cardcatalogue.md`) |
 | `fvtt-mod-houserules` | one table's always-on overrides, GM settings on by default, applied on every client; public, no blurb, so out of the catalogue |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
@@ -84,7 +85,8 @@ campaigns.
 - `fvtt-mod-areasounds-sfx` (private): the audio library Area Sounds ships from; not a module.
 - Campaigns: `fvtt-campaign-echoesofhalruaa` (current, private, `"parent": true`); `fvtt-campaign-greenrest`
   (concluded, public, a reference clone outside `repos.json`). Retired: `fvtt-mod-battleflow` (now By the Books),
-  `fvtt-mod-vendorfixes` (now Errata), `fvtt-mod-miscpatches`.
+  `fvtt-mod-vendorfixes` (now Errata), `fvtt-mod-miscpatches`, `fvtt-mod-scrollcase` (now Card Catalogue's journal case;
+  repo archived).
 
 ## How they fit together
 
@@ -111,8 +113,8 @@ campaigns.
   Exhaustion itself); By the Books' damage receipt snapshots Exhaustion either side of `applyDamage`, shows the change
   and restores the recorded prior level on every Revert, so the revert is never charged. Neither detects the other; a
   table's house rule belongs in House Rules, never as a setting in a rules module.
-- **Clue Board wears Scroll Case's look** (palette, bar, rail, cards, buttons, Reader), a copy kept by hand in its
-  own classes: a change to either's look is made in both.
+- **Clue Board wears Card Catalogue's look** (Scroll Case's, carried over: palette, bar, rail, cards, buttons, Reader),
+  a copy kept by hand in its own classes: a change to either's look is made in both.
 - **Token Art reads the others' signals and needs none** (hit points, the `dead` status, the combat
   tracker); another image write (By the Books' transforms, the MCP's `set-actor-art`) becomes the token's base. It
   emits `tokenart.changed`; nothing listens yet.

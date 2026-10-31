@@ -130,11 +130,9 @@
       "kind": "mod",
       "title": "Open Roll 5e: Scroll Case",
       "visibility": "public",
-      "status": "active",
-      "sync": true,
-      "description": "The journal as a case of cards, a skin over Foundry's own with no data of its own: the Journal button opens it (Classic Mode per user puts the stock journal back), a search over names, text, sections, files and folders, one-click Show that opens in a plain Reader on the players' screens (Reveal with Undo), the pictures not in a journal, a keyboard finder. Built 2026-10-30 as Handouts from docs/plans/scrollcase.md; 1.0.0 the first release.",
-      "kit": true,
-      "blurb": "turns the journal into a case of cards: find any handout or picture in a keystroke, show it to the players in one click, and let them read it in a plain, quiet window."
+      "status": "retired",
+      "sync": false,
+      "description": "Replaced by fvtt-mod-cardcatalogue (Open Roll 5e: Card Catalogue, its journal case) on 2026-10-31; 1.0.4 was its last release. Uninstalled from prod; the GitHub repo archived, its README pointing to Card Catalogue."
     },
     {
       "name": "fvtt-mod-cardcatalogue",
@@ -143,8 +141,9 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "Every directory the table uses as a case of cards, a skin over Foundry's own: the journal (Scroll Case, carried over whole), the scenes (the Map Case prototype), the actors and the items, each opened by its own sidebar button and switched between in place; the sidebar's two tab rules (moved from House Rules). To replace Scroll Case; no blurb until it is released and Scroll Case retires. Created 2026-10-31 from docs/plans/cardcatalogue.md.",
-      "kit": true
+      "description": "Every directory the table uses as a case of cards, a skin over Foundry's own: the journal (Scroll Case, carried over whole), the scenes, the actors and the items, each opened by its own sidebar button and switched between in place, a click doing each case's one thing and the chevron the rest; the sidebar's two tab rules (moved from House Rules 1.4.0). Created 2026-10-31 from docs/plans/cardcatalogue.md; 1.0.0 the first release, on prod, replacing Scroll Case.",
+      "kit": true,
+      "blurb": "turns every directory the table uses into a case of cards: the journal, the scenes, the actors and the items, each found by any word with its main action a click away, and a sidebar that shows only the tabs the table uses."
     },
     {
       "name": "fvtt-mod-areasounds-sfx",
