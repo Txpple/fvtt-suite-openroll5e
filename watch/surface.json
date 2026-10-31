@@ -478,6 +478,7 @@
         "DocumentOwnershipConfig",
         "deepClone",
         "escapeHTML",
+        "prompt",
         "saveDataToFile"
       ],
       "routes": [],

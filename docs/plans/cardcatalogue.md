@@ -202,6 +202,10 @@ Taken here, open for the user to overturn:
   case and archive it"): 1.0.0 and House Rules 1.4.0 tagged and published, the installer for each, Card Catalogue
   enabled and Scroll Case disabled, then uninstalled; every released file served byte-identical; `repos.json` gives
   Card Catalogue its blurb and retires Scroll Case, every README's catalogue regenerated; Scroll Case's repo archived.
+- **1.0.1, on the user's word**: the journal's bar on one line at every width (an empty type is no pill, the search's
+  floor 14rem, Classic Mode its icon below 1250px); a page's chevron carries Copy link and Copy @ reference again (they
+  went with the panel); New Folder in the scenes', actors' and items' rails, and empty folders in the GM's rail, so
+  a card can be dragged into a new one.
 - **Was open, now done**: the releases (Card Catalogue 0.1.0 or
   1.0.0, House Rules 1.4.0) and the prod cut-over; Scroll Case's repo archived or deleted after; Map Case's local
   folder (`fvtt-mod-mapcase`, disabled on the sandbox) deleted; the suite's rule that Clue Board copies Scroll Case's
