@@ -202,6 +202,10 @@ The decisions above stand; what the build and its three review passes changed:
   it), *Add & show* (a picture not in a journal). A reveal leaves a strip at the top of the cards, "“Name” is now
   visible to all players. Undo": Undo puts the page's ownership back, and refuses when the page has changed since
   (another GM, the stock dialog). The revealed card stays in view until the DM moves on. A double click shows once.
+- **A Show opens in the Reader** (the user, after the Reader landed: "the show to players to have the same custom
+  ui"): a message on the module's own socket channel, which stores nothing; each player's client opens the page,
+  its picture or a picture not in a journal in the Reader, or Foundry's own view in Classic Mode or for a PDF. The
+  GM's own screen no longer opens the page. The Reader is also what a player's click on a card opens.
 - **Show the picture** (a text page with an image, such as a bestiary portrait): the picture alone as a popout; the
   page's ownership is never touched.
 - **Who can see it** writes only the players whose visibility changes; a page that already inherits what is wanted
