@@ -184,8 +184,8 @@ non-invasive, self encapsulated"), documents first.
 - **Reveal on a roll**: a History DC 15 that lands attaches the Keeper's revealed line to the entry for all readers.
 - **The export**: *Documents Found* as Markdown from Mysteries (the title line, the found-in line, the snapshot as a
   blockquote, the readers), to the clipboard and a GM whisper; the Session Scribe reads the party's record through the
-  bridge and builds the appendix (`STYLE.md`'s *Documents Found*), the Session Diary's readaloud blocks and a *Case
-  so far* page. A contract, `contracts/case.json`, versioned here, consumed by `fvtt-mcp-sessionscribe`.
+  bridge and builds a *Case so far* page. It copies no documents into the session record: the board is where found
+  documents live, and the recap and Session Diary carry no appendix of them (DM, 2026-10-30). A contract, `contracts/case.json`, versioned here, consumed by `fvtt-mcp-sessionscribe`.
 - **The MCP's `manage-clues`**: list, set the Clue type in bulk, export the case.
 
 ## How it fits the family
