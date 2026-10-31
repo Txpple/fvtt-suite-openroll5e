@@ -14,9 +14,9 @@ Mysteries, installed and enabled through the installer, the ten Session 02 docum
 originals, the stash copies and the originals removed), Scroll Case 1.0.2 (a page's web link, `/game?page=<uuid>`; 1.0.1 the JSON export of the cards in view; each installed through the installer, byte-identical; 1.0.0 new: the journal as a case of cards, the Journal
 button opening it, Show into a plain Reader on the players' screens; installed and enabled through the installer,
 byte-identical), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
-restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 30th) runs prod's versions
-and any `main` a module's live checks left (a deploy `--check` tells). Unreleased on a `main`: Session Scribe's
-`generic` host (its `dist` built) and the MCP's `pull-prod-to-local.mjs --from` (a script, no release needed); no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+restart), Session Scribe 1.3.2 (the `generic` host; `dist` built, live on a restart). The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 30th) runs prod's versions
+and any `main` a module's live checks left (a deploy `--check` tells). Unreleased on a `main`: the MCP's `pull-prod-to-local.mjs
+--from` (a script, no release needed); no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
