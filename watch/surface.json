@@ -429,14 +429,10 @@
     "fvtt-mod-houserules": {
       "dnd5eHooks": [],
       "coreHooks": [
-        "changeSidebarTab",
         "clientSettingChanged",
         "init",
         "preUpdateActor",
-        "ready",
-        "renderAbstractSidebarTab",
-        "renderSidebar",
-        "setup"
+        "ready"
       ],
       "documents": [],
       "dnd5eConfig": [],
@@ -471,6 +467,46 @@
       "dnd5eConfig": [],
       "api": [
         "DialogV2",
+        "deepClone",
+        "escapeHTML",
+        "saveDataToFile"
+      ],
+      "routes": [],
+      "patched": []
+    },
+    "fvtt-mod-cardcatalogue": {
+      "dnd5eHooks": [],
+      "coreHooks": [
+        "canvasReady",
+        "changeSidebarTab",
+        "createUser",
+        "deleteJournalEntryPage",
+        "deleteUser",
+        "init",
+        "ready",
+        "renderAbstractSidebarTab",
+        "renderActorDirectory",
+        "renderItemDirectory",
+        "renderJournalDirectory",
+        "renderSceneDirectory",
+        "renderSidebar",
+        "setup",
+        "updateJournalEntry",
+        "updateJournalEntryPage",
+        "updateScene",
+        "updateUser",
+        "userConnected"
+      ],
+      "documents": [
+        "JournalEntry",
+        "JournalEntryPage",
+        "Scene",
+        "User"
+      ],
+      "dnd5eConfig": [],
+      "api": [
+        "DialogV2",
+        "DocumentOwnershipConfig",
         "deepClone",
         "escapeHTML",
         "saveDataToFile"

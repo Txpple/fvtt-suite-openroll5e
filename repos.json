@@ -137,6 +137,16 @@
       "blurb": "turns the journal into a case of cards: find any handout or picture in a keystroke, show it to the players in one click, and let them read it in a plain, quiet window."
     },
     {
+      "name": "fvtt-mod-cardcatalogue",
+      "kind": "mod",
+      "title": "Open Roll 5e: Card Catalogue",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "Every directory the table uses as a case of cards, a skin over Foundry's own: the journal (Scroll Case, carried over whole), the scenes (the Map Case prototype), the actors and the items, each opened by its own sidebar button and switched between in place; the sidebar's two tab rules (moved from House Rules). To replace Scroll Case; no blurb until it is released and Scroll Case retires. Created 2026-10-31 from docs/plans/cardcatalogue.md.",
+      "kit": true
+    },
+    {
       "name": "fvtt-mod-areasounds-sfx",
       "kind": "assets",
       "visibility": "private",

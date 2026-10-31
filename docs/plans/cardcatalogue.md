@@ -187,7 +187,15 @@ Taken here, open for the user to overturn:
 - **Walked GREEN on the sandbox**: `journal-check.mjs --walk` 43 (Scroll Case's walk, ported unchanged in meaning),
   `scenes-check.mjs --walk` 27 (Map Case's), `docs-check.mjs` 25 (actors, items, the strip, a player, the
   carried-over settings, the tabs hidden by Card Catalogue once House Rules 1.4.0 runs).
-- **Open**: the setup screen's name check (D5); a GitHub repo and `repos.json`; the releases (Card Catalogue 0.1.0 or
+- **After the draft, on the user's word**: the scenes card's one button is **View**, not Activate (Activate heads
+  the chevron and sits in the panel); the actors case sorts by type, then name; every panel has an × and Escape
+  closes it first; Undo of an activation brings the GM's own canvas back too once it is idle (Foundry refuses a
+  move mid-draw); a summoned creature (dnd5e's `isAutoImported` copy) is no card in a player's actors case, though
+  they own it (the Owl, Tychon's familiar, showed for Tom).
+- **The name is free** (D5): the setup screen's `getPackages`, 7,087 modules, has no "Card Catalogue", no
+  `cardcatalog` and no "catalogue" at all.
+- **The repo**: `Txpple/fvtt-mod-cardcatalogue`, public, `verify` green; in `repos.json` without a blurb.
+- **Open**: the releases (Card Catalogue 0.1.0 or
   1.0.0, House Rules 1.4.0) and the prod cut-over; Scroll Case's repo archived or deleted after; Map Case's local
   folder (`fvtt-mod-mapcase`, disabled on the sandbox) deleted; the suite's rule that Clue Board copies Scroll Case's
   look pointed here; the integration map and catalogue regenerated once it is in `repos.json`.
