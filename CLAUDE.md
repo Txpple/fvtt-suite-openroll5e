@@ -15,7 +15,8 @@ originals, the stash copies and the originals removed), Scroll Case 1.0.2 (a pag
 button opening it, Show into a plain Reader on the players' screens; installed and enabled through the installer,
 byte-identical), each the latest release. The servers' latest releases are the MCP 4.7.1 (a key a scene placeable function does not take, `sceneId`, refused instead of read as the active scene; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.2 (`dist` built, live on a
 restart), Session Scribe 1.3.1. The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 30th) runs prod's versions
-and any `main` a module's live checks left (a deploy `--check` tells). No code waits unreleased on any `main`, and no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+and any `main` a module's live checks left (a deploy `--check` tells). Unreleased on a `main`: Session Scribe's
+`generic` host (its `dist` built) and the MCP's `pull-prod-to-local.mjs --from` (a script, no release needed); no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
@@ -167,11 +168,11 @@ run closes the issue once every row is ticked.
   more there; a GM page script in `configure-modules.mjs`'s pattern, console captured, walks a module without a
   browser login. Each write leaves a receipt under the OS temp dir (`fvtt-mcp-dnd5e/receipts/`); the lock is per
   page, so two sessions on one bridge user interleave. `sessionscribe` joins as the bridge user.
-- **Poll for a state, never sleep a beat.** A mirror replaces the sandbox's world and dev copies: redeploy after.
-  `pull-prod-to-local.mjs` reads Molten's WebDAV, so it no longer mirrors prod: until it learns the self-hosted box,
-  a mirror is by hand (the box's world returned to setup, its `Data` copied over SSH into the sandbox's, both
-  bridges off). **Client settings don't mirror:** each browser keeps its own (chat cards follow dnd5e's Chat Log
-  Theme; the user's choice is Light).
+- **Poll for a state, never sleep a beat.** A mirror (`pull-prod-to-local.mjs` with `FOUNDRY_HOST=generic
+  FVTT_MCP_ENV=.env.prod` and `--from <sshHost>:<the box's Data dir>`, both bridges off; the host and dir are in the
+  box's private record) replaces the sandbox's world and dev copies: redeploy after. It refuses while players are
+  connected to prod, as it should. **Client settings don't mirror:** each browser keeps its own (chat cards follow
+  dnd5e's Chat Log Theme; the user's choice is Light).
 - **Prod** is a self-hosted Foundry box: players at `https://foundry.openrollstudios.com` (a Cloudflare Tunnel), the
   MCP over Tailscale. The box's machine record, its config and how to change it live in the user's private
   per-machine repo, never here; it is a bare Foundry box (nothing of the suite installed on it). Molten is retired.
