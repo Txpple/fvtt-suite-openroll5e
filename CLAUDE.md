@@ -34,7 +34,6 @@ queue for the user.
 - `.github/workflows/release-module.yml`: the reusable release each module's `release.yml` calls.
 - `tools/contracts.mjs`: each consumer's contract version against its emitter's.
 - `tools/check-docs.mjs`: no date in a CLAUDE.md outside its State block (`--list` prints each).
-- `tools/migrate-layout.ps1`: the old one-time move from the flat layout, kept for the record.
 - Also `templates/` (below), `contracts/` (rules several modules write), `docs/reviews/` (dated family reviews),
   `docs/examples/session-scribe/` (two records from the public Greenrest campaign).
 
@@ -145,7 +144,7 @@ run closes the issue once every row is ticked.
   pre-release suffix is never latest; a dispatch is a dry run). By the Books' own `release.yml` wants its tag body to
   name its battery (`Battery: <run> — n/n suites, n/n checks, GREEN`, from `battery-status.mjs --line`; a full
   run red by one to three suites is run again, and a second run red on different suites, each green alone, is the
-  two-run line, `--line <A> --and <B> --one-offs <C>`) or say `Battery: none (pre-release)`. Errata and FX Studio run `build-release.ps1`; the rest release by hand.
+  two-run line, `--line <A> --and <B> --one-offs <C>`) or say `Battery: none (pre-release)`. Errata and FX Studio build their zips by hand with `tools/build-module-zip.mjs` (FX Studio through its `tools/build-release.mjs`, its gate first); the rest release by hand.
 - **README sections:** "Part of Open Roll 5e", between `<!-- openroll5e:family -->` markers, is never hand-edited.
 - **Compatibility:** verified on Foundry 14, minimums 11 to 14; the system, where declared, dnd5e (a local source
   checkout answers its questions). **Tooling:** Biome and Vitest in By the Books, Token Art, Loot Shelf,

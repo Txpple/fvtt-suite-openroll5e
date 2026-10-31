@@ -472,7 +472,8 @@
       "api": [
         "DialogV2",
         "deepClone",
-        "escapeHTML"
+        "escapeHTML",
+        "saveDataToFile"
       ],
       "routes": [],
       "patched": []
