@@ -1,6 +1,6 @@
-# Plan — Handouts, a new Open Roll 5e module
+# Plan — Scroll Case (built as Handouts), a new Open Roll 5e module
 
-**PHASE 1 BUILT 2026-10-30** as `fvtt-mod-handouts` 0.1.0, local only (no GitHub repo, nothing committed, not in
+**RELEASED 2026-10-30 as Scroll Case 1.0.0 and on prod** (`fvtt-mod-scrollcase`, renamed from Handouts on the user's word); phase 1 first built as 0.1.0, local only (not in
 `repos.json`), deployed to the sandbox and walked GREEN by its `tools/live-check.mjs --walk`, after two adversarial
 review passes and a third on Playwright screenshots (*As built*, at the end, says what the build changed). Drafted the
 same day from the brief, with the investigation (Foundry 14.369's journal
@@ -182,7 +182,7 @@ Taken here, open for the user to overturn:
 - **D4. The journal's own sorting** (C3, C6): folders, journals and sections; a drop on a section sets `category`;
   pins in the browser are the shortlist. Many-to-many tags were drawn first and dropped for C6: they need a flag.
 - **D5. Phase 1 includes the player's window and *Not on a page*** (C4: the picture may be a file no page holds yet).
-- **D6. The name**: `fvtt-mod-handouts`, *Open Roll 5e: Handouts*; the setup screen's `getPackages` check is owed
+- **D6. The name**: `fvtt-mod-scrollcase`, *Open Roll 5e: Handouts*; the setup screen's `getPackages` check is owed
   before the repo.
 
 ## Open questions for the user
