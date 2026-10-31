@@ -111,8 +111,9 @@
       "visibility": "public",
       "status": "active",
       "sync": true,
-      "description": "The party's Mysteries: a Clue item type of its own, never carried, collected by the DM onto the party's record (the Group actor), stamped with where it was found and who has read it, sorted into the party's own mysteries. 1.2.0 released and on prod; fvtt-mcp-dnd5e's manage-clues collects through its API. Created 2026-10-28 from docs/plans/clueboard.md; no blurb yet (a blurb lists it in every README).",
-      "kit": true
+      "description": "The party's Mysteries: a Clue item type of its own, never carried, collected by the DM onto the party's record (the Group actor), stamped with where it was found and who has read it, sorted into the party's own mysteries. 1.2.0 released and on prod; fvtt-mcp-dnd5e's manage-clues collects through its API. Created 2026-10-28 from docs/plans/clueboard.md.",
+      "kit": true,
+      "blurb": "keeps the party's Mysteries: every clue the GM hands them, stamped with where it was found and who has read it, sorted into the questions the party names."
     },
     {
       "name": "fvtt-mod-houserules",
@@ -123,6 +124,17 @@
       "sync": true,
       "description": "One table's house rules as always-on overrides: each a world setting only a GM sees or changes, on by default, applied on every player's client by the client itself. First rule: the arrow keys move tokens, W A S D unbound, the numpad pans. Public but kept out of the catalogue on purpose (no blurb: it is written for one table). Created 2026-10-28 from suite issue #9.",
       "kit": true
+    },
+    {
+      "name": "fvtt-mod-scrollcase",
+      "kind": "mod",
+      "title": "Open Roll 5e: Scroll Case",
+      "visibility": "public",
+      "status": "active",
+      "sync": true,
+      "description": "The journal as a case of cards, a skin over Foundry's own with no data of its own: the Journal button opens it (Classic Mode per user puts the stock journal back), a search over names, text, sections, files and folders, one-click Show that opens in a plain Reader on the players' screens (Reveal with Undo), the pictures not in a journal, a keyboard finder. Built 2026-10-30 as Handouts from docs/plans/scrollcase.md; 1.0.0 the first release.",
+      "kit": true,
+      "blurb": "turns the journal into a case of cards: find any handout or picture in a keystroke, show it to the players in one click, and let them read it in a plain, quiet window."
     },
     {
       "name": "fvtt-mod-areasounds-sfx",

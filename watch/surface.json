@@ -387,8 +387,7 @@
       "api": [
         "ApplicationV2",
         "confirm",
-        "hasProperty",
-        "srcExists"
+        "hasProperty"
       ],
       "routes": [],
       "patched": [
@@ -421,7 +420,8 @@
         "hasProperty",
         "prompt",
         "randomID",
-        "registerSheet"
+        "registerSheet",
+        "saveDataToFile"
       ],
       "routes": [],
       "patched": []
@@ -444,6 +444,35 @@
         "getProperty",
         "hasProperty",
         "setProperty"
+      ],
+      "routes": [],
+      "patched": []
+    },
+    "fvtt-mod-scrollcase": {
+      "dnd5eHooks": [],
+      "coreHooks": [
+        "createUser",
+        "deleteJournalEntryPage",
+        "deleteUser",
+        "init",
+        "ready",
+        "renderJournalDirectory",
+        "renderSidebar",
+        "updateJournalEntry",
+        "updateJournalEntryPage",
+        "updateUser",
+        "userConnected"
+      ],
+      "documents": [
+        "JournalEntry",
+        "JournalEntryPage",
+        "User"
+      ],
+      "dnd5eConfig": [],
+      "api": [
+        "DialogV2",
+        "deepClone",
+        "escapeHTML"
       ],
       "routes": [],
       "patched": []

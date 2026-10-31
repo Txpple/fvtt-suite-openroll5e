@@ -56,6 +56,8 @@ history, releases and CI.
 | [Open Roll 5e: Party Stash](https://github.com/Txpple/fvtt-mod-partystash) | Makes a dnd5e Group actor's inventory a working party stash: drags move instead of copying, coin moves through a dialog, and every transfer posts a receipt. |
 | [Open Roll 5e: Area Sounds](https://github.com/Txpple/fvtt-mod-areasounds) | Background sound for scenes: random one-shots with silence between them, seamless crossfaded loops, day and night gating, and quiet during combat. |
 | [Open Roll 5e: Token Art](https://github.com/Txpple/fvtt-mod-tokenart) | Gives every token the look of its state, ready, in combat or dead, each a file named beside the base art, with nothing to configure. |
+| [Open Roll 5e: Clue Board](https://github.com/Txpple/fvtt-mod-clueboard) | Keeps the party's Mysteries: every clue the GM hands them, stamped with where it was found and who has read it, sorted into the questions the party names. |
+| [Open Roll 5e: Scroll Case](https://github.com/Txpple/fvtt-mod-scrollcase) | Turns the journal into a case of cards: find any handout or picture in a keystroke, show it to the players in one click, and let them read it in a plain, quiet window. |
 
 ## The MCP servers
 
