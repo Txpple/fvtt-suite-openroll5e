@@ -1,5 +1,6 @@
 # Plan — Map Case, a new Open Roll 5e module
 
+**FOLDED into Card Catalogue the same day** (`docs/plans/cardcatalogue.md`, its scenes case); never released.
 **BUILT 2026-10-31 as 0.1.0, a prototype**, local only (`fvtt-mod-mapcase`, no repo, not in `repos.json`), deployed
 to the sandbox and walked GREEN by its `tools/live-check.mjs --walk` (*As built*, at the end, says what the build changed). The brief, from the user after Scroll Case had been in play: "scroll case has really been a game
 changer for ease of use as a gm. can we do something similar (use same UI, concepts, everything) to reskin a ui for
