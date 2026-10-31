@@ -4,7 +4,9 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-30).** Prod (Echoes of Halruaa on Molten) runs By the Books 3.4.21 (#20–#23: a change's kind read as v14's `type`; the landing
+**State (2026-10-31).** Prod (Echoes of Halruaa) moved on the 31st from Molten to the self-hosted box, a
+byte-identical copy (no change on Molten since), the MCP and Session Scribe repointed (`.env.prod`, doctor green on
+both; this machine only, the other machines' registrations still name Molten). Prod runs By the Books 3.4.21 (#20–#23: a change's kind read as v14's `type`; the landing
 ledger, so a step a dropped GM client left lands once; an arriving elect keeps the auras; battery 67/67 green;
 installed through the installer, byte-identical), FX Studio 0.10.8 (a familiar's Help's two House FX; installed through the installer, byte-identical), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.3 (the five open issues; a world's art folders listed once, no 404 per look), Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.3 (dropped loot drawn small, a sack for a pile; the `isGM` check in verify), Open Server 1.4.2 (the jump menu's `jQuery: false`; the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.1.0 (the arrow keys move tokens; going down costs a level of Exhaustion), Clue Board 1.1.0 (the rail beside the cards, the JSON export, solved/unsolved marks; 1.0.0 the party's
@@ -165,13 +167,20 @@ run closes the issue once every row is ticked.
   more there; a GM page script in `configure-modules.mjs`'s pattern, console captured, walks a module without a
   browser login. Each write leaves a receipt under the OS temp dir (`fvtt-mcp-dnd5e/receipts/`); the lock is per
   page, so two sessions on one bridge user interleave. `sessionscribe` joins as the bridge user.
-- **Poll for a state, never sleep a beat.** A mirror (`pull-prod-to-local.mjs`, both bridges off) replaces the
-  sandbox's world and dev copies: redeploy after. **Client settings don't mirror:** each browser keeps its own (chat
-  cards follow dnd5e's Chat Log Theme; the user's choice is Light).
-- **Prod**, only on the user's word, from the MCP repo with the gitignored `.env.halruaa` and `FOUNDRY_HOST=molten
-  FVTT_MCP_ENV=.env.halruaa` in the process env. `deploy-house-module.mjs <repo>` serves new files (live on reload;
-  the version shown changes when the process boots). The installer, `register-module.mjs --id <repo> --manifest <the
-  release's module.json>`, returns the world to setup, installs the published release and relaunches, disconnecting
+- **Poll for a state, never sleep a beat.** A mirror replaces the sandbox's world and dev copies: redeploy after.
+  `pull-prod-to-local.mjs` reads Molten's WebDAV, so it no longer mirrors prod: until it learns the self-hosted box,
+  a mirror is by hand (the box's world returned to setup, its `Data` copied over SSH into the sandbox's, both
+  bridges off). **Client settings don't mirror:** each browser keeps its own (chat cards follow dnd5e's Chat Log
+  Theme; the user's choice is Light).
+- **Prod** is a self-hosted Foundry box: players at `https://foundry.openrollstudios.com` (a Cloudflare Tunnel), the
+  MCP over Tailscale. The box's machine record, its config and how to change it live in the user's private
+  per-machine repo, never here; it is a bare Foundry box (nothing of the suite installed on it). Molten is retired.
+- **Working on prod**, only on the user's word, from the MCP repo with the gitignored `.env.prod` and
+  `FOUNDRY_HOST=generic FVTT_MCP_ENV=.env.prod` in the process env (the registrations `foundry-halruaa5e` and
+  `sessionscribe` carry the same pair). The box has no file plane for the MCP (no WebDAV, not this machine's disk), so
+  `deploy-house-module.mjs` can't serve unreleased files there: prod takes releases only. The installer,
+  `register-module.mjs --id <repo> --manifest <the release's module.json>`, needs `FOUNDRY_ADMIN_KEY` in `.env.prod`
+  (the user types it), returns the world to setup, installs the published release and relaunches, disconnecting
   everyone (`list-users` first); never a pre-release. A new module: the installer, `configure-modules.mjs --enable`,
   the installer again as the bounce. A launch answering "could not be processed" may be up: read `/api/status`
   before a retry. Retiring: `--disable`, then `uninstall-modules.mjs`. A module setting is written by a bridge
