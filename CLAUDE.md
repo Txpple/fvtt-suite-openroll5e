@@ -21,7 +21,7 @@ chevron the rest; the two sidebar-tabs rules; installed and enabled through the 
 opening with all its cards; it replaces Scroll Case, disabled and uninstalled, its repo archived), each the latest release. The servers' latest releases are the MCP 4.7.2 (`pull-prod-to-local.mjs --from`, mirroring a self-hosted instance over SSH; 4.7.1's refusal of a key a scene placeable function does not take; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.3 (the `illustration-builder` skill's map lessons; `dist` built, live on a
 restart), Session Scribe 1.3.2 (the `generic` host; `dist` built, live on a restart). The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 31st, again after the cut-over) runs prod's versions,
 checked identical module for module on the 31st (Scroll Case and Map Case uninstalled there), and any `main` a
-module's live checks left (a deploy `--check` tells). Unreleased on a `main`: nothing but docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+module's live checks left (a deploy `--check` tells). Unreleased on a `main`: the MCP's `manage-clues` listing *found* (the Clue's Found at) for the stamp's scene (`dist` built, live on a restart); else nothing but docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
