@@ -62,7 +62,7 @@ click does that case's main thing, and the sidebar shows only the buttons the ta
 
 Every behaviour of Scroll Case 1.0.4 (C1), its rules unchanged: the cards and their shapes, the search and where it
 matched, Show / Reveal / Add & show with the chevron's options, Undo of a reveal, the player's window (All, New, the
-Reader), no GM secret reaching a player, sections as the filing, *Not in a journal*, the export, the page links.
+Reader), no GM secret reaching a player, sections as the filing, the pictures on no page, the export, the page links.
 
 ### The scenes case (Map Case, whole)
 
@@ -211,6 +211,10 @@ Taken here, open for the user to overturn:
   the rail's folders collapse by a caret and the journal's headings collapse their journals; a click selects a card,
   a double click does its one thing; 1.0.4 the caret its own button beside the row (in 1.0.3 a real click picked the
   folder), on prod. The local Map Case folder deleted, folded in whole.
+- **1.0.6, on the user's word, on prod** (two marked-up screenshots: "remove these items"): the journal's GM rail loses
+  *Not in a journal*, the pictures on no page still coming up in All's search (the asset folders setting and Read the
+  asset folders again unchanged); the scenes' rail loses *On the players' bar* and *Off the bar*, the bar staying the
+  chevron's. Verify 137, the journal walk 45 and the scenes walk 28 GREEN on the sandbox.
 - **Was open, now done**: the releases (Card Catalogue 0.1.0 or
   1.0.0, House Rules 1.4.0) and the prod cut-over; Scroll Case's repo archived or deleted after; Map Case's local
   folder (`fvtt-mod-mapcase`, disabled on the sandbox) deleted; the suite's rule that Clue Board copies Scroll Case's
