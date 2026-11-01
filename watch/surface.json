@@ -413,6 +413,7 @@
         "defaultArtwork"
       ],
       "api": [
+        "ContextMenu",
         "ForcedDeletion",
         "ItemSheetV2",
         "confirm",
