@@ -500,17 +500,17 @@
       "coreHooks": [
         "init",
         "ready",
-        "renderApplication",
-        "renderApplicationV2",
         "renderSidebar"
       ],
       "documents": [],
       "dnd5eConfig": [],
       "api": [
-        "ApplicationV2",
+        "escapeHTML",
         "getRoute"
       ],
-      "routes": [],
+      "routes": [
+        "/join"
+      ],
       "patched": []
     },
     "fvtt-mcp-dnd5e": {
