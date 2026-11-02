@@ -17,8 +17,9 @@ player-observable on this world (ownership decides the lore). **The morning of t
 `seer/.env`, nine real calls on Opus from the DM's login and a player's (the DM's first wrote 90k tokens to the
 cache and each later one read it for about three cents; the player's first read the shared layers and wrote only
 his own 8k), then effort medium and instructions version 2 (the ball may make suggestions, grounded and marked as
-its own). **Owed:** the `getPackages` name check; the GitHub repo (then `sync` on in `repos.json` and
-`suite-sections`); the ownership of the Bestiary on prod if it is not meant to be read; prod itself.
+its own). The name checked free and the GitHub repo made the same
+morning (`sync` on, every family section carrying it). **Owed:** the ownership of the Bestiary on prod if it is
+not meant to be read; prod itself.
 
 Drafted 2026-11-01 from the brief ("a new module that works like clueboard, sort of ... a button in the side menu
 with a crystal ball icon, immediately after clueboard ... a chat box ... a window to talk to an API enabled claude

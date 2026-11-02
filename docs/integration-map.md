@@ -49,7 +49,7 @@ Occurrences of another suite package's id in source (`game.modules.get`, setting
 | fvtt-mod-cardcatalogue | fvtt-mod-scrollcase | 10 | fvtt-mod-cardcatalogue/scripts/journal/journal.js |
 | fvtt-mod-cardcatalogue | fvtt-mod-houserules | 6 | fvtt-mod-cardcatalogue/scripts/shell/migrate.js |
 | fvtt-mod-combatplus | fvtt-mod-lootshelf | 1 | fvtt-mod-combatplus/scripts/combatplus.js |
-| fvtt-mod-crystalball | fvtt-mod-clueboard | 4 | fvtt-mod-crystalball/seer/src/gaze.js |
+| fvtt-mod-crystalball | fvtt-mod-clueboard | 6 | fvtt-mod-crystalball/seer/src/gaze.js |
 | fvtt-mod-fxstudio | fvtt-mod-bythebooks | 8 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-fxstudio | fvtt-mod-battleflow | 5 | fvtt-mod-fxstudio/scripts/readers/bythebooks.js |
 | fvtt-mod-lootshelf | fvtt-mod-partystash | 5 | fvtt-mod-lootshelf/tools/live-check.mjs |

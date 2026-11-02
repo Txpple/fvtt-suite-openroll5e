@@ -151,8 +151,8 @@
       "title": "Open Roll 5e: Crystal Ball",
       "visibility": "public",
       "status": "active",
-      "sync": false,
-      "description": "A crystal ball on the sidebar, directly after Clue Board: a player asks a Claude model about the game as their character knows it (the journal pages they can read, their sheet, their party with its stash and Clue Board record), answered by the Seer, a Node service beside the Foundry server that holds the key, is logged in as a Player-role user of its own and builds each player's context from the live world under Foundry's ownership rule; nothing is ever called from a client. Created 2026-11-01 from docs/plans/crystalball.md; unreleased, not yet on GitHub (sync off until it is).",
+      "sync": true,
+      "description": "A crystal ball on the sidebar, directly after Clue Board: a player asks a Claude model about the game as their character knows it (the journal pages they can read, their sheet, their party with its stash and Clue Board record), answered by the Seer, a Node service beside the Foundry server that holds the key, is logged in as a Player-role user of its own and builds each player's context from the live world under Foundry's ownership rule; nothing is ever called from a client. Created 2026-11-01 from docs/plans/crystalball.md; on GitHub since 2026-11-02, unreleased.",
       "kit": true,
       "blurb": "a crystal ball on the sidebar: a player asks a Claude model about the game as their character knows it, the journal they can read, their sheet, their party and its clues, answered by a service beside the server, never from a client."
     },
