@@ -401,6 +401,8 @@
         "init",
         "preCreateItem",
         "ready",
+        "renderApplication",
+        "renderApplicationV2",
         "renderSidebar",
         "updateActor",
         "updateItem"
@@ -413,6 +415,7 @@
         "defaultArtwork"
       ],
       "api": [
+        "ApplicationV2",
         "ContextMenu",
         "ForcedDeletion",
         "ItemSheetV2",
@@ -480,6 +483,7 @@
       ],
       "dnd5eConfig": [],
       "api": [
+        "ApplicationV2",
         "ContextMenu",
         "DocumentOwnershipConfig",
         "deepClone",
