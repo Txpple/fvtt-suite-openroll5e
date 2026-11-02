@@ -418,6 +418,7 @@
         "ItemSheetV2",
         "confirm",
         "escapeHTML",
+        "getRoute",
         "hasProperty",
         "prompt",
         "randomID",
@@ -480,6 +481,7 @@
         "DocumentOwnershipConfig",
         "deepClone",
         "escapeHTML",
+        "getRoute",
         "prompt",
         "saveDataToFile"
       ],
