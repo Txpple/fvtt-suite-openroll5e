@@ -458,6 +458,8 @@
         "ready",
         "renderAbstractSidebarTab",
         "renderActorDirectory",
+        "renderApplication",
+        "renderApplicationV2",
         "renderCompendiumDirectory",
         "renderItemDirectory",
         "renderJournalDirectory",
