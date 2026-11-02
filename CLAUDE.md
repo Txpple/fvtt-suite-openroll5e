@@ -184,7 +184,7 @@ run closes the issue once every row is ticked.
   dnd5e's Chat Log Theme; the user's choice is Light).
 - **Prod** is a self-hosted Foundry box: players at `https://foundry.openrollstudios.com` (a Cloudflare Tunnel), the
   MCP over Tailscale. The box's machine record, its config and how to change it live in the user's private
-  per-machine repo, never here; it is a bare Foundry box (nothing of the suite installed on it). Molten is retired.
+  per-machine repo, never here; it is a bare Foundry box but for Crystal Ball's Seer, the one service of the suite that runs there (a systemd unit; the module's `seer/deploy/README.md` and the box's private record). Molten is retired.
 - **Working on prod**, only on the user's word, from the MCP repo with the gitignored `.env.prod` and
   `FOUNDRY_HOST=generic FVTT_MCP_ENV=.env.prod` in the process env (the registrations `foundry-halruaa5e` and
   `sessionscribe` carry the same pair). The box has no file plane for the MCP (no WebDAV, not this machine's disk), so
