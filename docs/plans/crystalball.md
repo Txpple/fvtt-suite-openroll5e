@@ -174,8 +174,9 @@ never logged. The user's role and the world setting *Who may ask* decide whether
 its `.env`), opens one socket and keeps it: reconnects with backoff when Foundry restarts or the world closes
 (returns to setup for an install), and reports *dark* to the window meanwhile. It takes the `world` payload at
 connect and again when a request finds it older than sixty seconds (phase 2 may follow `modifyDocument`
-broadcasts instead); the payload lives in memory only, never on disk. The socket emits nothing but `world`: the
-Seer writes nothing to Foundry in phase 1 (D11). The user has **role Player** (D4), a name and an avatar the DM
+broadcasts instead); the payload lives in memory only, never on disk. The socket emits nothing but `world` (and,
+since the rulebooks, a compendium pack's `modifyDocument` get): the Seer writes nothing to Foundry in phase 1
+(D11). The user has **role Player** (D4), a name and an avatar the DM
 picks, a password only the DM and the `.env` know.
 
 **The gaze, per player.** From the live world, filtered exactly as that player's client would (the Seer carries
@@ -211,8 +212,9 @@ hash per layer goes to the usage line, so a month's log says which layer kept mi
 **The call.** `claude-opus-5-5` by default (D6), `claude-sonnet-5-5` the cheaper setting; adaptive thinking as the
 model's default (the parameter omitted; these models do not take it off), `output_config.effort: "low"` for chat
 (a config knob; Opus 5.5 defaults to medium, so it is set explicitly); `max_tokens` 2,048; streaming; the SDK's
-refusal fallback on (`fallbacks: "default"`, the API's routing for a declined request). No tools, no server tools,
-no prefill. The response's `usage` (input, cache write, cache read, output) and the config's price table make the
+refusal fallback on (`fallbacks: "default"`, the API's routing for a declined request). No server tools and no
+prefill; since the rulebooks, two client tools that search and read the table's compendium books (the module's
+contract, *The rulebooks*). The response's `usage` (input, cache write, cache read, output) and the config's price table make the
 ledger line.
 
 **Limits, all in the Seer** (the client's claims count for nothing): 10 messages per user per hour, 40 per day; a
