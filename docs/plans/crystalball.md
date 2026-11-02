@@ -18,8 +18,9 @@ player-observable on this world (ownership decides the lore). **The morning of t
 cache and each later one read it for about three cents; the player's first read the shared layers and wrote only
 his own 8k), then effort medium and instructions version 2 (the ball may make suggestions, grounded and marked as
 its own). The name checked free and the GitHub repo made the same
-morning (`sync` on, every family section carrying it). **Owed:** the ownership of the Bestiary on prod if it is
-not meant to be read; prod itself.
+morning (`sync` on, every family section carrying it). Released as 1.0.0 and on prod the same day, the
+Seer as a systemd unit on the box and the tunnel's route from the dashboard. **Owed:** the ownership of the
+Bestiary on prod if it is not meant to be read.
 
 Drafted 2026-11-01 from the brief ("a new module that works like clueboard, sort of ... a button in the side menu
 with a crystal ball icon, immediately after clueboard ... a chat box ... a window to talk to an API enabled claude
