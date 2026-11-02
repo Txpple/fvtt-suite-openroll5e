@@ -21,7 +21,7 @@ chevron the rest; the two sidebar-tabs rules; installed and enabled through the 
 opening with all its cards; it replaces Scroll Case, disabled and uninstalled, its repo archived), each the latest release. The servers' latest releases are the MCP 4.7.3 (`manage-clues` lists *found*, the Clue's Found at, never the stamp's scene; `dist` built and live, smoked after a restart; 4.7.2's `pull-prod-to-local.mjs --from`, mirroring a self-hosted instance over SSH; 4.7.1's refusal of a key a scene placeable function does not take; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.3 (the `illustration-builder` skill's map lessons; `dist` built, live on a
 restart), Session Scribe 1.3.2 (the `generic` host; `dist` built, live on a restart). The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 31st, again after the cut-over) runs prod's versions,
 checked identical module for module on the 31st (Scroll Case and Map Case uninstalled there), and any `main` a
-module's live checks left (a deploy `--check` tells). Unreleased on a `main`: Card Catalogue's painted sidebar icons, the tab behind its window, the stock right-click menu on its cards and the Reader without *Open in journal*, and Clue Board's painted button (both deployed `--local` and enabled on the sandbox, where the mirror had left them off); otherwise docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+module's live checks left (a deploy `--check` tells). Unreleased on a `main`: Card Catalogue's compendium case and client sidebar button size, its painted sidebar icons, the tab behind its window, the stock right-click menu on its cards and the Reader without *Open in journal*, and Clue Board's painted button (both deployed `--local` and enabled on the sandbox, where the mirror had left them off); otherwise docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
@@ -80,7 +80,7 @@ campaigns.
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
 | `fvtt-mod-clueboard` | the party's Mysteries: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read, the party's own mysteries to pin clues to (`docs/plans/clueboard.md`) |
-| `fvtt-mod-cardcatalogue` | every directory the table uses as a case of cards (journal, scenes, actors, items), each sidebar button opening its case, Classic Mode per case and client; the sidebar shows only the tabs the table uses; a skin, no data of its own (`docs/plans/cardcatalogue.md`) |
+| `fvtt-mod-cardcatalogue` | every directory the table uses as a case of cards (journal, scenes, actors, items, compendium), each sidebar button opening its case, Classic Mode per case and client; the sidebar shows only the tabs the table uses; a skin, no data of its own (`docs/plans/cardcatalogue.md`) |
 | `fvtt-mod-houserules` | one table's always-on overrides, GM settings on by default, applied on every client; public, no blurb, so out of the catalogue |
 
 - `fvtt-mcp-dnd5e` (public): the DM assistant, driving a live world on any host through Claude Code.
