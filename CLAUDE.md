@@ -4,7 +4,7 @@ The umbrella for the **Open Roll 5e** family: ten public Foundry VTT modules, th
 library, each its own GitHub repo with its own history, releases and CI. This public repo is the thin layer over them;
 this file holds the rules that span repos, each sibling's CLAUDE.md its own. The journal is `docs/log/YYYY-MM.md`.
 
-**State (2026-10-31).** Prod (Echoes of Halruaa) moved on the 31st from Molten to the self-hosted box, a
+**State (2026-11-01).** Prod (Echoes of Halruaa) moved on the 31st from Molten to the self-hosted box, a
 byte-identical copy (no change on Molten since), the MCP and Session Scribe repointed (`.env.prod`, doctor green on
 both; this machine only, the other machines' registrations still name Molten). Prod runs By the Books 3.4.21 (#20–#23: a change's kind read as v14's `type`; the landing
 ledger, so a step a dropped GM client left lands once; an arriving elect keeps the auras; battery 67/67 green;
@@ -21,7 +21,7 @@ chevron the rest; the two sidebar-tabs rules; installed and enabled through the 
 opening with all its cards; it replaces Scroll Case, disabled and uninstalled, its repo archived), each the latest release. The servers' latest releases are the MCP 4.7.3 (`manage-clues` lists *found*, the Clue's Found at, never the stamp's scene; `dist` built and live, smoked after a restart; 4.7.2's `pull-prod-to-local.mjs --from`, mirroring a self-hosted instance over SSH; 4.7.1's refusal of a key a scene placeable function does not take; 4.7.0's `manage-clues`; `dist` built and live), imagegen 1.3.3 (the `illustration-builder` skill's map lessons; `dist` built, live on a
 restart), Session Scribe 1.3.2 (the `generic` host; `dist` built, live on a restart). The sandbox (local Foundry 14.369, dnd5e 6.0.6, mirrored from prod on the 31st, again after the cut-over) runs prod's versions,
 checked identical module for module on the 31st (Scroll Case and Map Case uninstalled there), and any `main` a
-module's live checks left (a deploy `--check` tells). Unreleased on a `main`: nothing but docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
+module's live checks left (a deploy `--check` tells). Unreleased on a `main`: Card Catalogue's painted sidebar icons, the tab behind its window, the stock right-click menu on its cards and the Reader without *Open in journal*, and Clue Board's painted button (both deployed `--local` and enabled on the sandbox, where the mirror had left them off); otherwise docs, tooling and workflows; no branch but `main` stands anywhere (By the Books' `familiar-eyes`, superseded
 by Open Server's jump, is gone). The
 plan from `docs/reviews/2026-10-15-suite-review.md` was delivered on 2026-10-15; `HANDOFF.md` is retired, its §7 the
 queue for the user.
