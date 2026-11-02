@@ -506,6 +506,7 @@
       "dnd5eConfig": [],
       "api": [
         "escapeHTML",
+        "getProperty",
         "getRoute"
       ],
       "routes": [
