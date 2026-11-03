@@ -464,6 +464,7 @@
         "renderApplication",
         "renderApplicationV2",
         "renderCompendiumDirectory",
+        "renderDocumentOwnershipConfig",
         "renderItemDirectory",
         "renderJournalDirectory",
         "renderSceneDirectory",
