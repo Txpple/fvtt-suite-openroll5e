@@ -507,7 +507,8 @@
       "api": [
         "escapeHTML",
         "getProperty",
-        "getRoute"
+        "getRoute",
+        "saveDataToFile"
       ],
       "routes": [
         "/join"
