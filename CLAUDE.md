@@ -198,8 +198,9 @@ run closes the issue once every row is ticked.
   script in `configure-modules.mjs`'s pattern (`run-script` fences `game` off). Never `game.shutDown()` via the bridge.
 - **Crystal Ball's Seer on the sandbox** is the scheduled task `fvtt-mod-crystalball/tools/sandbox-seer.mjs` keeps
   (`status`, `start`, `stop`, `log`), never a session's terminal or background job, which dies with the session and
-  holds the port meanwhile. The ball's user counts as a connected user to `local-foundry.mjs restart` and to the
-  mirror's prod guard: with only bridges and the ball connected, `--force` the restart.
+  holds the port meanwhile. The ball's user is connected for as long as a Seer runs, on the sandbox and on prod;
+  the MCP's `local-foundry.mjs stop`/`restart` and the mirror's prod guard ask the Seer's `healthz` and discount it
+  (`scripts/lib/seer.mjs`; prod's Seer through `FOUNDRY_SEER_URL` in `.env.prod`), so neither needs `--force` for it.
 
 ## Keep this file current
 
