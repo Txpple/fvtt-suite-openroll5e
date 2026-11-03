@@ -113,7 +113,7 @@
       "sync": true,
       "description": "The party's Mysteries: a Clue item type of its own, never carried, collected by the DM onto the party's record (the Group actor), stamped with where it was found and who has read it, sorted into the party's own mysteries. 1.2.0 released and on prod; fvtt-mcp-dnd5e's manage-clues collects through its API. Created 2026-10-28 from docs/plans/clueboard.md.",
       "kit": true,
-      "blurb": "keeps the party's Mysteries: every clue the GM hands them, stamped with where it was found and who has read it, sorted into the questions the party names."
+      "blurb": "keeps the party's Clue Board: every clue the DM hands them, stamped with where it was found and who has read it, pinned to the threads the party names."
     },
     {
       "name": "fvtt-mod-houserules",
@@ -143,7 +143,7 @@
       "sync": true,
       "description": "Every directory the table uses as a case of cards, a skin over Foundry's own: the journal (Scroll Case, carried over whole), the scenes, the actors and the items, each opened by its own sidebar button and switched between in place, a click doing each case's one thing and the chevron the rest; the sidebar's two tab rules (moved from House Rules 1.4.0). Created 2026-10-31 from docs/plans/cardcatalogue.md; 1.0.0 the first release, on prod, replacing Scroll Case.",
       "kit": true,
-      "blurb": "turns every directory the table uses into a case of cards: the journal, the scenes, the actors and the items, each found by any word with its main action a click away, and a sidebar that shows only the tabs the table uses."
+      "blurb": "turns every directory the table uses into a case of cards: the journal, the scenes, the actors, the items and the compendium packs, each found by any word with its main action a click away, and a sidebar that shows only the tabs the table uses."
     },
     {
       "name": "fvtt-mod-crystalball",

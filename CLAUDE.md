@@ -80,7 +80,7 @@ campaigns.
 | `fvtt-mod-partystash` | a dnd5e Group's inventory as the party stash: moves, a coin dialog, receipts |
 | `fvtt-mod-areasounds` | scene sound: one-shots, crossfaded loops, day and night, quiet in combat |
 | `fvtt-mod-tokenart` | a token wears its state's look (ready, combat, dead), a file beside its base art |
-| `fvtt-mod-clueboard` | the party's Mysteries: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read, the party's own mysteries to pin clues to (`docs/plans/clueboard.md`) |
+| `fvtt-mod-clueboard` | the party's Clue Board: a Clue item type of its own, never carried; the DM collects, the record on the Group actor, a player's opening marks the read, the party's own threads to pin clues to (`docs/plans/clueboard.md`) |
 | `fvtt-mod-cardcatalogue` | every directory the table uses as a case of cards (journal, scenes, actors, items, compendium), each sidebar button opening its case, Classic Mode per case and client; the sidebar shows only the tabs the table uses; a skin, no data of its own (`docs/plans/cardcatalogue.md`) |
 | `fvtt-mod-houserules` | one table's always-on overrides, GM settings on by default, applied on every client; public, no blurb, so out of the catalogue |
 
