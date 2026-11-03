@@ -485,6 +485,7 @@
       "dnd5eConfig": [],
       "api": [
         "ApplicationV2",
+        "Collection",
         "ContextMenu",
         "DocumentOwnershipConfig",
         "deepClone",
