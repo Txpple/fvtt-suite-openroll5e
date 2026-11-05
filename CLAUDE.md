@@ -6,11 +6,11 @@ this file holds the rules that span repos, each sibling's CLAUDE.md its own. The
 
 **State (2026-11-04).** Prod (Echoes of Halruaa) moved on the 31st from Molten to the self-hosted box, a
 byte-identical copy (no change on Molten since), the MCP and Session Scribe repointed (`.env.prod`, doctor green on
-both; this machine only, the other machines' registrations still name Molten). Prod runs By the Books 3.4.23 (Session 03's table fixes: Help on a familiar asks its player alone, reach measured space to
-space, auras with the Seer connected, the Alert swap's 60 s floor, a reroll's odds, Lay on Hands' amount, a condition named
-on the formula; battery green by the two-run rule; installed through the installer, byte-identical; 3.4.22 five level-3
-class features reviewed; 3.4.21 the landing ledger and the auras an
-arriving elect keeps), FX Studio 0.10.9 (Dark One's Blessing in Fiendish Vigor's look, Inspiring Smite on the gift,
+both; this machine only, the other machines' registrations still name Molten). Prod runs By the Books 3.4.24 (free casts, then slots: a granted spell's ways to pay as "Cast using" pills, the player's pick
+over the module's order, in the rebuke popup, the hold's Cast, the sheet's cast window and a summon spell's; a feature's own
+cast (Favored Enemy's Hunter's Mark) castable with a slot; the smite on the hit; the rulebook inventory in its RULINGS;
+`Battery: 2026-11-05T02-29-21 — 68/68 suites, 2387/2387 checks, GREEN`; installed through the installer, 159/159 served
+files byte-identical; 3.4.23 Session 03's table fixes; 3.4.22 five level-3 class features reviewed), FX Studio 0.10.9 (Dark One's Blessing in Fiendish Vigor's look, Inspiring Smite on the gift,
 Sacred Weapon in Heroism's; installed through the installer, byte-identical), Errata 1.2.2, Combat Plus 1.7.2 (Confirm Reset Initiative), Token Art 1.0.3 (the five open issues; a world's art folders listed once, no 404 per look), Area Sounds 2.0.2, Autoexplore 1.1.2,
 Loot Shelf 1.3.3 (dropped loot drawn small, a sack for a pile; the `isGM` check in verify), Open Server 1.4.2 (the jump menu's `jQuery: false`; the jump to one's character and creatures from the Players list, its tooltip "Jump To Actor ..."; the landing scene removed), Party Stash 1.8.3, House Rules 1.4.1 (the arrow keys move tokens; going down costs a level of Exhaustion, its level now shown on dnd5e 6.0; its two sidebar-tabs rules moved to Card Catalogue in 1.4.0; installed through the installer, byte-identical), Clue Board 1.2.8 (its sidebar button's picture lifted for the black sidebar; installed through the installer, byte-identical; 1.2.6 Ctrl/Shift multi-select, the picked clues dragged onto a thread together; the window's dialogs follow it into a detached window; installed through the installer, byte-identical; 1.2.5 its sidebar button's painted picture; 1.2.4 the stamp is when, never a scene; installed through the installer, byte-identical; 1.2.3 Card
 Catalogue's card, a click picks, a double click or Read opens, the chevron of Read, the thread toggles and the GM's

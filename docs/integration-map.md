@@ -1,6 +1,6 @@
 # Integration map
 
-Generated 2026-11-04 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
+Generated 2026-11-05 by `tools/integration-map.mjs` from the clones next to this file's repo. Do not edit by hand; rerun the script.
 
 ## Modules
 
@@ -8,14 +8,14 @@ Generated 2026-11-04 by `tools/integration-map.mjs` from the clones next to this
 |---|---|---|---|---|---|---|
 | fvtt-mod-areasounds | fvtt-mod-areasounds | Open Roll 5e: Area Sounds | 2.0.2 | 13–14 | any | none |
 | fvtt-mod-autoexplore | fvtt-mod-autoexplore | Open Roll 5e: Autoexplore | 1.1.2 | 13–14 | any | none |
-| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.22 | 14–14 | dnd5e | none |
-| fvtt-mod-cardcatalogue | fvtt-mod-cardcatalogue | Open Roll 5e: Card Catalogue | 1.0.19 | 14–14 | any | none |
+| fvtt-mod-bythebooks | fvtt-mod-bythebooks | Open Roll 5e: By the Books | 3.4.24 | 14–14 | dnd5e | none |
+| fvtt-mod-cardcatalogue | fvtt-mod-cardcatalogue | Open Roll 5e: Card Catalogue | 1.0.20 | 14–14 | any | none |
 | fvtt-mod-clueboard | fvtt-mod-clueboard | Open Roll 5e: Clue Board | 1.2.8 | 13–14 | dnd5e | none |
 | fvtt-mod-combatplus | fvtt-mod-combatplus | Open Roll 5e: Combat Plus | 1.7.2 | 13–14 | any | none |
 | fvtt-mod-crystalball | fvtt-mod-crystalball | Open Roll 5e: Crystal Ball | 1.0.13 | 13–14 | dnd5e | none |
 | fvtt-mod-errata5e | fvtt-mod-errata5e | Open Roll 5e: Errata | 1.2.2 | 13–14 | dnd5e | none |
 | fvtt-mod-fxstudio | fvtt-mod-fxstudio | Open Roll 5e: FX Studio | 0.10.9 | 14–14 | dnd5e | sequencer |
-| fvtt-mod-houserules | fvtt-mod-houserules | Open Roll 5e: House Rules | 1.4.0 | 13–14 | dnd5e | none |
+| fvtt-mod-houserules | fvtt-mod-houserules | Open Roll 5e: House Rules | 1.4.1 | 13–14 | dnd5e | none |
 | fvtt-mod-lootshelf | fvtt-mod-lootshelf | Open Roll 5e: Loot Shelf | 1.3.3 | 13–14 | dnd5e | none |
 | fvtt-mod-openserver | fvtt-mod-openserver | Open Roll 5e: Open Server | 1.4.2 | 11–14 | any | none |
 | fvtt-mod-partystash | fvtt-mod-partystash | Open Roll 5e: Party Stash | 1.8.3 | 13–14 | dnd5e | none |
