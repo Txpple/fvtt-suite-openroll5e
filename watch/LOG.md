@@ -33,3 +33,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | 2026-11-05 | none | foundry 14.369 -> 14.370 | — |
 | 2026-11-06 | none | none | closed #10: Foundry VTT reviewed at 14.370 |
 | 2026-11-07 | none | none | — |
+| 2026-11-08 | none | none | — |
