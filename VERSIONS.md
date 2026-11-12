@@ -14,5 +14,5 @@ and moves only when every repo's row on that review's issue has a verdict.
 | Package | Name | Reviewed | Reviewed on | Latest published | First seen | Newest pre-release |
 | --- | --- | --- | --- | --- | --- | --- |
 | foundry | Foundry VTT | 14.370 | 2026-11-06 | 14.370 | 2026-11-04 | — |
-| dnd5e | dnd5e system | 6.0.6 | 2026-10-10 | 6.0.6 | 2026-10-10 | — |
+| dnd5e | dnd5e system | 6.0.6 | 2026-10-10 | 6.1.0 | 2026-11-12 | — |
 <!-- versions:end -->
