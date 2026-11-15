@@ -163,7 +163,7 @@
       "visibility": "private",
       "status": "active",
       "sync": true,
-      "description": "One table's module, private: the DM drops actors on a board and the DM's sidebar button shows it on every client; anyone rolls a d20 under each, a 1 or a 2 crossing the portrait out, 3 or higher ticking it; a player's roll recorded by the elect GM over the socket. Sandbox only by the user's choice: prod installs only from a public release. Created 2026-11-15.",
+      "description": "One table's module, private: the DM drops actors on a board and the DM's sidebar button shows it on every client; anyone rolls a d20 under each, a 1 or a 2 crossing the portrait out, 3 or higher ticking it; a player's roll recorded by the elect GM over the socket. Private by the user's choice, so never released: on prod by hand (its files copied over SSH into the box's Data/modules, the service restarted), on the sandbox by deploy --local. Created 2026-11-15.",
       "kit": true
     },
     {
