@@ -41,3 +41,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | 2026-11-13 | none | dnd5e 6.0.6 -> 6.1.0 | — |
 | 2026-11-14 | none | dnd5e 6.0.6 -> 6.1.0 | — |
 | 2026-11-15 | none | dnd5e 6.0.6 -> 6.1.0 | — |
+| 2026-11-16 | none | dnd5e 6.0.6 -> 6.1.0 | — |
