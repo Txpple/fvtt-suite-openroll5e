@@ -45,3 +45,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | 2026-11-17 | dnd5e 6.1.0 -> 6.1.1 | dnd5e 6.0.6 -> 6.1.1 | retitled #11: Upgrade review: dnd5e system 6.0.6 → 6.1.1 |
 | 2026-11-18 | none | dnd5e 6.0.6 -> 6.1.1 | — |
 | 2026-11-19 | none | dnd5e 6.0.6 -> 6.1.1 | — |
+| 2026-11-20 | none | dnd5e 6.0.6 -> 6.1.1 | — |
