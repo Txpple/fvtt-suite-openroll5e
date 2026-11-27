@@ -52,3 +52,4 @@ One row per run (`tools/upstream-watch.mjs`).
 | 2026-11-24 | none | dnd5e 6.0.6 -> 6.1.1 | — |
 | 2026-11-25 | none | dnd5e 6.0.6 -> 6.1.1 | — |
 | 2026-11-26 | none | dnd5e 6.0.6 -> 6.1.1 | — |
+| 2026-11-27 | foundry 14.370 -> 14.371; dnd5e 6.1.1 -> 6.1.2 | foundry 14.370 -> 14.371; dnd5e 6.0.6 -> 6.1.2 | opened #12: Upgrade review: Foundry VTT 14.370 → 14.371; retitled #11: Upgrade review: dnd5e system 6.0.6 → 6.1.2 |
